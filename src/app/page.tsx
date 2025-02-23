@@ -4,74 +4,114 @@ import AppointmentForm from '@/components/AppointmentForm'
 
 export default function Home() {
   return (
-    <main>
+    <main className="bg-black">
       {/* Hero Section */}
-      <section className="bg-primary text-white py-20">
-        <div className="container">
+      <section className="relative h-screen flex items-center">
+        {/* Dark overlay */}
+        <div className="absolute inset-0 bg-black/60 z-10"></div>
+        
+        {/* Background image */}
+        <div className="absolute inset-0">
+          <Image
+            src="/images/hero-bg.jpg"
+            alt="Auto reparatie werkplaats"
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
+
+        <div className="container relative z-20">
           <div className="max-w-3xl">
-            <h1 className="text-5xl font-bold mb-6">
-              Welkom bij GP Auto's
+            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
+              Betrouwbare Auto Reparatie Services
             </h1>
-            <p className="text-xl mb-8">
-              Uw betrouwbare partner voor autoservice en onderhoud in Lichtenvoorde.
-              Professioneel, eerlijk en persoonlijk.
+            <p className="text-xl text-gray-200 mb-8">
+              Professionele autoservice en onderhoud in Lichtenvoorde.
+              Vertrouw op onze expertise voor al uw autoreparaties.
             </p>
             <Link 
               href="#afspraak" 
-              className="btn bg-white text-primary hover:bg-gray-100"
+              className="btn btn-primary"
             >
-              Maak een Afspraak
+              Maak Direct een Afspraak
             </Link>
           </div>
         </div>
       </section>
 
       {/* Services Section */}
-      <section className="py-16">
+      <section className="py-20 bg-zinc-950">
         <div className="container">
-          <h2 className="text-3xl font-bold mb-12 text-center">Onze Diensten</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-semibold mb-4">Onderhoud</h3>
-              <p>Regulier onderhoud en service voor alle automerken</p>
+          <h2 className="section-title text-center text-white">Onze Diensten</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+            <div className="service-card">
+              <Image
+                src="/images/service-1.jpg"
+                alt="Algemeen onderhoud"
+                width={400}
+                height={300}
+                className="service-image"
+              />
+              <h3 className="text-xl font-semibold mb-4">Algemeen Onderhoud</h3>
+              <p className="text-gray-400">Regulier onderhoud en service voor alle automerken. Houd uw auto in topconditie.</p>
+              <Link href="#afspraak" className="btn btn-outline mt-4 w-full">Plan Onderhoud</Link>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-md">
+
+            <div className="service-card">
+              <Image
+                src="/images/service-2.jpg"
+                alt="Reparaties"
+                width={400}
+                height={300}
+                className="service-image"
+              />
               <h3 className="text-xl font-semibold mb-4">Reparaties</h3>
-              <p>Snelle en betrouwbare reparatie van uw auto</p>
+              <p className="text-gray-400">Snelle en betrouwbare reparatie van uw auto door ervaren monteurs.</p>
+              <Link href="#afspraak" className="btn btn-outline mt-4 w-full">Plan Reparatie</Link>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-semibold mb-4">APK</h3>
-              <p>Officiële APK-keuring met gratis herkeuring</p>
+
+            <div className="service-card">
+              <Image
+                src="/images/service-3.jpg"
+                alt="APK Keuring"
+                width={400}
+                height={300}
+                className="service-image"
+              />
+              <h3 className="text-xl font-semibold mb-4">APK Keuring</h3>
+              <p className="text-gray-400">Officiële APK-keuring met gratis herkeuring. Snel en betrouwbaar.</p>
+              <Link href="#afspraak" className="btn btn-outline mt-4 w-full">Plan APK</Link>
             </div>
           </div>
         </div>
       </section>
 
       {/* Appointment Section */}
-      <section className="py-16 bg-white" id="afspraak">
+      <section className="py-20 bg-zinc-900" id="afspraak">
         <div className="container">
-          <h2 className="text-3xl font-bold mb-12 text-center">Maak een Afspraak</h2>
           <div className="max-w-2xl mx-auto">
+            <h2 className="section-title text-center text-white mb-12">Maak een Afspraak</h2>
             <AppointmentForm />
           </div>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section className="bg-gray-100 py-16" id="contact">
+      <section className="py-20 bg-zinc-950" id="contact">
         <div className="container">
           <div className="grid md:grid-cols-2 gap-12">
             <div>
-              <h2 className="text-3xl font-bold mb-6">Contact</h2>
-              <div className="space-y-4">
-                <p><strong>Adres:</strong> Galileïstraat 5, 7131PE Lichtenvoorde</p>
-                <p><strong>Email:</strong> info@gpautos.nl</p>
-                <p><strong>Telefoon:</strong> +31 (0)6 12345678</p>
+              <h2 className="section-title text-white">Contact</h2>
+              <div className="space-y-4 text-gray-300">
+                <p><strong className="text-white">Adres:</strong> Galileïstraat 5, 7131PE Lichtenvoorde</p>
+                <p><strong className="text-white">Email:</strong> info@gpautos.nl</p>
+                <p><strong className="text-white">Telefoon:</strong> +31 (0)6 12345678</p>
               </div>
             </div>
             <div>
-              <h2 className="text-3xl font-bold mb-6">Openingstijden</h2>
-              <div className="space-y-2">
+              <h2 className="section-title text-white">Openingstijden</h2>
+              <div className="space-y-2 text-gray-300">
                 <p>Maandag - Vrijdag: 08:00 - 17:30</p>
                 <p>Zaterdag: Op afspraak</p>
                 <p>Zondag: Gesloten</p>
@@ -82,8 +122,8 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-secondary text-white py-8">
-        <div className="container text-center">
+      <footer className="py-8 bg-black border-t border-zinc-800">
+        <div className="container text-center text-gray-400">
           <p>© {new Date().getFullYear()} GP Auto's - Alle rechten voorbehouden</p>
         </div>
       </footer>
