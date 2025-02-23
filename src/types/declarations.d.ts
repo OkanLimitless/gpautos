@@ -7,6 +7,8 @@ declare module 'react-datepicker' {
     dateFormat?: string
     minDate?: Date
     locale?: string
+    placeholderText?: string
+    className?: string
   }
 
   const DatePicker: React.FC<ReactDatePickerProps>
