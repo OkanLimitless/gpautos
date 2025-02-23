@@ -24,4 +24,37 @@
   .btn-secondary {
     @apply bg-secondary text-white hover:bg-secondary/90;
   }
+}
+
+/* DatePicker customization */
+.react-datepicker-wrapper {
+  @apply w-full;
+}
+
+.react-datepicker {
+  @apply border border-gray-300 rounded-lg shadow-lg !important;
+}
+
+.react-datepicker__header {
+  @apply bg-primary text-white rounded-t-lg !important;
+}
+
+.react-datepicker__current-month {
+  @apply text-white !important;
+}
+
+.react-datepicker__day-name {
+  @apply text-white !important;
+}
+
+.react-datepicker__day--selected {
+  @apply bg-primary !important;
+}
+
+.react-datepicker__day--keyboard-selected {
+  @apply bg-primary/80 !important;
+}
+
+.react-datepicker__input-container input {
+  @apply w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm;
 } 

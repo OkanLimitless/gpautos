@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import DatePicker, { registerLocale } from 'react-datepicker'
-import nl from 'date-fns/locale/nl'
+import { nl } from 'date-fns/locale'
 import "react-datepicker/dist/react-datepicker.css"
 import toast from 'react-hot-toast'
 
@@ -36,7 +36,7 @@ export default function AppointmentForm() {
         </label>
         <DatePicker
           selected={selectedDate}
-          onChange={(date) => setSelectedDate(date)}
+          onChange={(date: Date | null) => setSelectedDate(date)}
           locale="nl"
           dateFormat="P"
           minDate={new Date()}

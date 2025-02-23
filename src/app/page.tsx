@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import AppointmentForm from '@/components/AppointmentForm'
 
 export default function Home() {
   return (
@@ -42,6 +43,16 @@ export default function Home() {
               <h3 className="text-xl font-semibold mb-4">APK</h3>
               <p>Officiële APK-keuring met gratis herkeuring</p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Appointment Section */}
+      <section className="py-16 bg-white" id="afspraak">
+        <div className="container">
+          <h2 className="text-3xl font-bold mb-12 text-center">Maak een Afspraak</h2>
+          <div className="max-w-2xl mx-auto">
+            <AppointmentForm />
           </div>
         </div>
       </section>
