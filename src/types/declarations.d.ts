@@ -18,6 +18,20 @@ declare module 'react-datepicker' {
 }
 
 declare module 'react-hot-toast' {
+  import { ReactNode } from 'react'
+
+  export interface ToasterProps {
+    position?: 'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right'
+    toastOptions?: {
+      className?: string
+      duration?: number
+      style?: React.CSSProperties
+    }
+    children?: ReactNode
+  }
+
+  export const Toaster: React.FC<ToasterProps>
+
   const toast: {
     (message: string): void
     success: (message: string) => void
