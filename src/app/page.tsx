@@ -55,40 +55,6 @@ function ErrorFallback({ error, resetErrorBoundary }: FallbackProps) {
   );
 }
 
-// Safari detection component
-function SafariDetection() {
-  const [isSafari, setIsSafari] = useState(false);
-  
-  useEffect(() => {
-    // Check if browser is Safari
-    const isSafariCheck = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-    setIsSafari(isSafariCheck);
-    
-    if (isSafariCheck) {
-      console.log('Safari detected. User agent:', navigator.userAgent);
-      
-      // Log Safari version
-      const match = navigator.userAgent.match(/Version\/(\d+\.\d+)/);
-      const safariVersion = match ? match[1] : 'unknown';
-      console.log('Safari version:', safariVersion);
-      
-      // Log iOS version if applicable
-      const iosMatch = navigator.userAgent.match(/OS (\d+_\d+)/);
-      const iosVersion = iosMatch ? iosMatch[1].replace('_', '.') : 'not iOS';
-      console.log('iOS version:', iosVersion);
-    }
-  }, []);
-  
-  if (!isSafari) return null;
-  
-  return (
-    <div className="fixed bottom-4 left-4 right-4 bg-yellow-800 text-white p-4 rounded-lg z-50 text-sm">
-      <p className="font-bold mb-1">Safari Browser Gedetecteerd</p>
-      <p>We hebben gedetecteerd dat u Safari gebruikt. Als u problemen ondervindt, probeer dan een andere browser zoals Chrome of Firefox.</p>
-    </div>
-  );
-}
-
 // Safari-safe image component
 interface SafariSafeImageProps {
   src: string;
@@ -331,9 +297,6 @@ function ContactSection() {
 export default function Home() {
   return (
     <Layout>
-      {/* Safari Detection */}
-      <SafariDetection />
-      
       {/* Hero Section */}
       <HeroSlideshow />
       
