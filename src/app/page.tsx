@@ -96,6 +96,18 @@ function SafariSafeImage({ src, alt, className = '' }: SafariSafeImageProps) {
 
 // Services section with Safari-safe images
 function ServicesSection() {
+  // State to track which service is expanded on mobile
+  const [expandedService, setExpandedService] = useState<number | null>(null);
+
+  // Toggle expanded service
+  const toggleService = (id: number) => {
+    if (expandedService === id) {
+      setExpandedService(null);
+    } else {
+      setExpandedService(id);
+    }
+  };
+
   return (
     <section id="diensten" className="py-16 md:py-20 bg-zinc-900">
       <div className="container mx-auto px-4">
@@ -107,7 +119,47 @@ function ServicesSection() {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+        {/* Mobile view - Accordion style */}
+        <div className="md:hidden space-y-3">
+          {services.map((service) => (
+            <div 
+              key={service.id} 
+              className="bg-zinc-800 rounded-lg overflow-hidden shadow-md"
+            >
+              <button 
+                onClick={() => toggleService(service.id)}
+                className="w-full flex items-center justify-between p-4 text-left"
+              >
+                <h3 className="text-xl font-bold text-white">{service.title}</h3>
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  className={`h-5 w-5 text-white transition-transform ${expandedService === service.id ? 'transform rotate-180' : ''}`} 
+                  fill="none" 
+                  viewBox="0 0 24 24" 
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              
+              {expandedService === service.id && (
+                <div className="p-4 pt-0 border-t border-zinc-700">
+                  <div className="relative h-40 bg-zinc-700 mb-4">
+                    <SafariSafeImage
+                      src={service.icon}
+                      alt={service.title}
+                      className="h-full w-full"
+                    />
+                  </div>
+                  <p className="text-gray-400">{service.description}</p>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+        
+        {/* Desktop view - Grid layout */}
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           {services.map((service) => (
             <div 
               key={service.id} 
