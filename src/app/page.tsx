@@ -147,8 +147,8 @@ function AboutSection() {
     <section id="about-section" className="py-16 md:py-20 bg-zinc-950">
       <div className="container mx-auto px-4">
         <div className="flex flex-col lg:flex-row items-center gap-12">
-          <div className="lg:w-1/2">
-            <div className="relative h-[300px] md:h-[400px] w-full rounded-lg overflow-hidden bg-zinc-800">
+          <div className="hidden lg:block lg:w-1/2">
+            <div className="relative h-[400px] w-full rounded-lg overflow-hidden bg-zinc-800">
               <SafariSafeImage
                 src="/images/about.jpg"
                 alt="Over GP Auto's"
@@ -157,7 +157,7 @@ function AboutSection() {
             </div>
           </div>
           
-          <div className="lg:w-1/2">
+          <div className="w-full lg:w-1/2">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Over GP Auto's</h2>
             <p className="text-gray-400 mb-4">
               GP Auto's is een moderne autogarage in Lichtenvoorde met meer dan 15 jaar ervaring. 
@@ -247,8 +247,8 @@ function ContactSection() {
             </div>
             <h3 className="text-xl font-bold text-white mb-2">Adres</h3>
             <p className="text-gray-400">
-              Hoofdstraat 123<br />
-              7131 AA Lichtenvoorde
+              Galileïstraat 5<br />
+              7131PE Lichtenvoorde
             </p>
           </div>
           
