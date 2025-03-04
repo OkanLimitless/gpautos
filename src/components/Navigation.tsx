@@ -25,14 +25,16 @@ export default function Navigation() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <Image 
-              src="/logo.png" 
-              alt="GP Auto's Logo" 
-              width={150} 
-              height={60}
-              className="h-auto w-auto"
-              priority
-            />
+            <div className="relative w-[150px] h-[60px]">
+              <Image 
+                src="/logo.png" 
+                alt="GP Auto's Logo" 
+                fill
+                sizes="150px"
+                style={{ objectFit: 'contain' }}
+                priority
+              />
+            </div>
           </Link>
 
           {/* Desktop Menu */}
@@ -92,14 +94,16 @@ export default function Navigation() {
         <div className="flex flex-col h-full p-6">
           <div className="flex justify-between items-center mb-8">
             <Link href="/" className="flex items-center" onClick={() => setIsMobileMenuOpen(false)}>
-              <Image 
-                src="/logo.png" 
-                alt="GP Auto's Logo" 
-                width={120} 
-                height={48}
-                className="h-auto w-auto"
-                priority
-              />
+              <div className="relative w-[120px] h-[48px]">
+                <Image 
+                  src="/logo.png" 
+                  alt="GP Auto's Logo" 
+                  fill
+                  sizes="120px"
+                  style={{ objectFit: 'contain' }}
+                  priority
+                />
+              </div>
             </Link>
             <button 
               className="text-white focus:outline-none"
