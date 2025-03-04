@@ -41,15 +41,28 @@ export default function AppointmentPage() {
     try {
       setLoading(true)
       
+      // First verify the reCAPTCHA token
+      const recaptchaResponse = await fetch('/api/verify-recaptcha', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ token: captchaValue }),
+      })
+      
+      const recaptchaData = await recaptchaResponse.json()
+      
+      if (!recaptchaResponse.ok || !recaptchaData.success) {
+        throw new Error('reCAPTCHA verificatie mislukt. Probeer het opnieuw.')
+      }
+      
+      // If reCAPTCHA verification is successful, submit the form
       const response = await fetch('/api/appointment', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          ...formData,
-          recaptchaToken: captchaValue
-        }),
+        body: JSON.stringify(formData),
       })
 
       const data = await response.json()
@@ -233,7 +246,7 @@ export default function AppointmentPage() {
                   
                   <div className="mt-6">
                     <ReCAPTCHA
-                      sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI" // Replace with your actual site key in production
+                      sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"} // Fallback to test key if env var not set
                       onChange={handleCaptchaChange}
                       theme="dark"
                     />

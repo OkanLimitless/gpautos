@@ -7,7 +7,7 @@ A modern website for GP Auto's, featuring a responsive design, appointment booki
 - Responsive design for all devices
 - Interactive slideshow hero section
 - Service showcase
-- Online appointment booking system
+- Online appointment booking system with reCAPTCHA protection
 - Contact information and opening hours
 - Privacy policy page
 
@@ -18,6 +18,7 @@ A modern website for GP Auto's, featuring a responsive design, appointment booki
 - Tailwind CSS
 - React Hooks
 - Nodemailer for email functionality
+- Google reCAPTCHA v2 for form protection
 
 ## Deployment on Vercel
 
@@ -29,6 +30,8 @@ This project is configured for seamless deployment on Vercel. Follow these steps
    - `EMAIL_USER`: Your Gmail address
    - `EMAIL_PASSWORD`: Your Gmail app password
    - `EMAIL_RECIPIENT`: Email address to receive appointment notifications
+   - `NEXT_PUBLIC_RECAPTCHA_SITE_KEY`: Your Google reCAPTCHA site key
+   - `RECAPTCHA_SECRET_KEY`: Your Google reCAPTCHA secret key
 
 ### Important Notes
 
@@ -40,6 +43,12 @@ This project is configured for seamless deployment on Vercel. Follow these steps
 
 If you need to run the project locally:
 
+1. Copy `.env.example` to `.env.local` and fill in your credentials:
+```bash
+cp .env.example .env.local
+```
+
+2. Install dependencies and run the development server:
 ```bash
 # Install dependencies
 npm install
@@ -47,6 +56,18 @@ npm install
 # Run development server
 npm run dev
 ```
+
+## Setting up reCAPTCHA
+
+To set up reCAPTCHA for the appointment form:
+
+1. Go to the [Google reCAPTCHA Admin Console](https://www.google.com/recaptcha/admin)
+2. Register a new site with reCAPTCHA v2 (checkbox)
+3. Add your domain(s) to the list of allowed domains
+4. Copy the Site Key and Secret Key
+5. Add these keys to your environment variables:
+   - For local development: add to `.env.local`
+   - For production: add to Vercel environment variables
 
 ## Image Credits
 
