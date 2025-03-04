@@ -31,6 +31,7 @@ export default function Navigation() {
               width={150} 
               height={60}
               className="h-auto w-auto"
+              priority
             />
           </Link>
 
@@ -97,6 +98,7 @@ export default function Navigation() {
                 width={120} 
                 height={48}
                 className="h-auto w-auto"
+                priority
               />
             </Link>
             <button 
