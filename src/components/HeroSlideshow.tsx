@@ -25,6 +25,14 @@ const slides = [
   {
     id: 3,
     image: '/images/slide3.jpg',
+    title: 'APK Keuring',
+    subtitle: 'Snel en betrouwbaar',
+    cta: 'Maak een Afspraak',
+    ctaLink: '/afspraak'
+  },
+  {
+    id: 4,
+    image: '/images/slide4.jpg',
     title: 'Ervaren Monteurs',
     subtitle: 'Met passie voor auto\'s',
     cta: 'Contact Opnemen',
