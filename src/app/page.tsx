@@ -55,22 +55,81 @@ function ErrorFallback({ error, resetErrorBoundary }: FallbackProps) {
   );
 }
 
-// Simple service section without any fancy features
-function SimpleServicesSection() {
-  // Log browser info for debugging
+// Safari detection component
+function SafariDetection() {
+  const [isSafari, setIsSafari] = useState(false);
+  
   useEffect(() => {
-    console.log('Browser info:', {
-      userAgent: navigator.userAgent,
-      platform: navigator.platform,
-      vendor: navigator.vendor,
-      memory: (performance as any).memory ? {
-        jsHeapSizeLimit: (performance as any).memory.jsHeapSizeLimit,
-        totalJSHeapSize: (performance as any).memory.totalJSHeapSize,
-        usedJSHeapSize: (performance as any).memory.usedJSHeapSize
-      } : 'Not available'
-    });
+    // Check if browser is Safari
+    const isSafariCheck = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    setIsSafari(isSafariCheck);
+    
+    if (isSafariCheck) {
+      console.log('Safari detected. User agent:', navigator.userAgent);
+      
+      // Log Safari version
+      const match = navigator.userAgent.match(/Version\/(\d+\.\d+)/);
+      const safariVersion = match ? match[1] : 'unknown';
+      console.log('Safari version:', safariVersion);
+      
+      // Log iOS version if applicable
+      const iosMatch = navigator.userAgent.match(/OS (\d+_\d+)/);
+      const iosVersion = iosMatch ? iosMatch[1].replace('_', '.') : 'not iOS';
+      console.log('iOS version:', iosVersion);
+    }
   }, []);
+  
+  if (!isSafari) return null;
+  
+  return (
+    <div className="fixed bottom-4 left-4 right-4 bg-yellow-800 text-white p-4 rounded-lg z-50 text-sm">
+      <p className="font-bold mb-1">Safari Browser Gedetecteerd</p>
+      <p>We hebben gedetecteerd dat u Safari gebruikt. Als u problemen ondervindt, probeer dan een andere browser zoals Chrome of Firefox.</p>
+    </div>
+  );
+}
 
+// Safari-safe image component
+interface SafariSafeImageProps {
+  src: string;
+  alt: string;
+  className?: string;
+}
+
+function SafariSafeImage({ src, alt, className = '' }: SafariSafeImageProps) {
+  const [isSafari, setIsSafari] = useState(false);
+  
+  useEffect(() => {
+    // Check if browser is Safari
+    const isSafariCheck = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    setIsSafari(isSafariCheck);
+  }, []);
+  
+  // For Safari, use a div with background-image instead of Next.js Image
+  if (isSafari) {
+    return (
+      <div 
+        className={`${className} bg-cover bg-center`}
+        style={{ backgroundImage: `url(${src})` }}
+        role="img"
+        aria-label={alt}
+      />
+    );
+  }
+  
+  // For other browsers, use a regular img tag with lower quality
+  return (
+    <img 
+      src={src} 
+      alt={alt} 
+      className={`${className} object-cover w-full h-full`}
+      loading="lazy"
+    />
+  );
+}
+
+// Services section with Safari-safe images
+function ServicesSection() {
   return (
     <section id="diensten" className="py-16 md:py-20 bg-zinc-900">
       <div className="container mx-auto px-4">
@@ -88,6 +147,13 @@ function SimpleServicesSection() {
               key={service.id} 
               className="bg-zinc-800 rounded-lg overflow-hidden shadow-md"
             >
+              <div className="relative h-40 md:h-48 bg-zinc-700">
+                <SafariSafeImage
+                  src={service.icon}
+                  alt={service.title}
+                  className="h-full w-full"
+                />
+              </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-white mb-3">{service.title}</h3>
                 <p className="text-gray-400">{service.description}</p>
@@ -109,7 +175,7 @@ function SimpleServicesSection() {
   );
 }
 
-// About section component with optimized image loading
+// About section with Safari-safe image
 function AboutSection() {
   return (
     <section id="about-section" className="py-16 md:py-20 bg-zinc-950">
@@ -117,7 +183,11 @@ function AboutSection() {
         <div className="flex flex-col lg:flex-row items-center gap-12">
           <div className="lg:w-1/2">
             <div className="relative h-[300px] md:h-[400px] w-full rounded-lg overflow-hidden bg-zinc-800">
-              {/* No image for now to test if that's the issue */}
+              <SafariSafeImage
+                src="/images/about.jpg"
+                alt="Over GP Auto's"
+                className="h-full w-full"
+              />
             </div>
           </div>
           
@@ -258,171 +328,6 @@ function ContactSection() {
   );
 }
 
-// Test component with just one service and image
-function TestServiceWithImage() {
-  const [hasError, setHasError] = useState(false);
-  
-  useEffect(() => {
-    // Add window error handler to catch any errors
-    const handleError = (event: ErrorEvent) => {
-      console.error('Caught window error:', event.error);
-      setHasError(true);
-    };
-    
-    window.addEventListener('error', handleError);
-    
-    return () => {
-      window.removeEventListener('error', handleError);
-    };
-  }, []);
-  
-  if (hasError) {
-    return (
-      <section className="py-16 md:py-20 bg-zinc-900">
-        <div className="container mx-auto px-4 text-center">
-          <div className="p-6 bg-red-900 text-white rounded-lg inline-block">
-            <h3 className="text-xl font-bold mb-2">Er is een fout opgetreden</h3>
-            <p>Er was een probleem met het laden van de afbeelding.</p>
-          </div>
-        </div>
-      </section>
-    );
-  }
-  
-  return (
-    <section className="py-16 md:py-20 bg-zinc-900">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Test Service</h2>
-          <p className="text-gray-400">Dit is een test om te zien of de afbeelding het probleem veroorzaakt.</p>
-        </div>
-        
-        <div className="max-w-md mx-auto">
-          <div className="bg-zinc-800 rounded-lg overflow-hidden shadow-md">
-            <div className="relative h-48 bg-zinc-700">
-              <Image
-                src="/images/service-maintenance.jpg"
-                alt="Test Service"
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 500px"
-                quality={60}
-              />
-            </div>
-            <div className="p-6">
-              <h3 className="text-xl font-bold text-white mb-3">Test Service</h3>
-              <p className="text-gray-400">Dit is een test service met één afbeelding.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// Safari detection component
-function SafariDetection() {
-  const [isSafari, setIsSafari] = useState(false);
-  
-  useEffect(() => {
-    // Check if browser is Safari
-    const isSafariCheck = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-    setIsSafari(isSafariCheck);
-    
-    if (isSafariCheck) {
-      console.log('Safari detected. User agent:', navigator.userAgent);
-      
-      // Log Safari version
-      const match = navigator.userAgent.match(/Version\/(\d+\.\d+)/);
-      const safariVersion = match ? match[1] : 'unknown';
-      console.log('Safari version:', safariVersion);
-      
-      // Log iOS version if applicable
-      const iosMatch = navigator.userAgent.match(/OS (\d+_\d+)/);
-      const iosVersion = iosMatch ? iosMatch[1].replace('_', '.') : 'not iOS';
-      console.log('iOS version:', iosVersion);
-    }
-  }, []);
-  
-  if (!isSafari) return null;
-  
-  return (
-    <div className="fixed bottom-4 left-4 right-4 bg-yellow-800 text-white p-4 rounded-lg z-50 text-sm">
-      <p className="font-bold mb-1">Safari Browser Gedetecteerd</p>
-      <p>We hebben gedetecteerd dat u Safari gebruikt. Als u problemen ondervindt, probeer dan een andere browser zoals Chrome of Firefox.</p>
-    </div>
-  );
-}
-
-// Safari-safe image component
-interface SafariSafeImageProps {
-  src: string;
-  alt: string;
-  className?: string;
-}
-
-function SafariSafeImage({ src, alt, className = '' }: SafariSafeImageProps) {
-  const [isSafari, setIsSafari] = useState(false);
-  
-  useEffect(() => {
-    // Check if browser is Safari
-    const isSafariCheck = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-    setIsSafari(isSafariCheck);
-  }, []);
-  
-  // For Safari, use a div with background-image instead of Next.js Image
-  if (isSafari) {
-    return (
-      <div 
-        className={`${className} bg-cover bg-center`}
-        style={{ backgroundImage: `url(${src})` }}
-        role="img"
-        aria-label={alt}
-      />
-    );
-  }
-  
-  // For other browsers, use a regular img tag with lower quality
-  return (
-    <img 
-      src={src} 
-      alt={alt} 
-      className={`${className} object-cover w-full h-full`}
-      loading="lazy"
-    />
-  );
-}
-
-// Test component with Safari-safe image
-function TestServiceWithSafariImage() {
-  return (
-    <section className="py-16 md:py-20 bg-zinc-900">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Safari-Veilige Test</h2>
-          <p className="text-gray-400">Dit is een test met een Safari-veilige afbeelding.</p>
-        </div>
-        
-        <div className="max-w-md mx-auto">
-          <div className="bg-zinc-800 rounded-lg overflow-hidden shadow-md">
-            <div className="relative h-48 bg-zinc-700">
-              <SafariSafeImage
-                src="/images/service-maintenance.jpg"
-                alt="Test Service"
-                className="h-full w-full"
-              />
-            </div>
-            <div className="p-6">
-              <h3 className="text-xl font-bold text-white mb-3">Safari-Veilige Afbeelding</h3>
-              <p className="text-gray-400">Deze afbeelding zou moeten werken in Safari zonder problemen.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 export default function Home() {
   return (
     <Layout>
@@ -432,22 +337,12 @@ export default function Home() {
       {/* Hero Section */}
       <HeroSlideshow />
       
-      {/* Safari-safe Test */}
+      {/* Services Section with Safari-safe images */}
       <ErrorBoundary FallbackComponent={ErrorFallback}>
-        <TestServiceWithSafariImage />
+        <ServicesSection />
       </ErrorBoundary>
       
-      {/* Test Service with Image */}
-      <ErrorBoundary FallbackComponent={ErrorFallback}>
-        <TestServiceWithImage />
-      </ErrorBoundary>
-      
-      {/* Simple Services Section without images */}
-      <ErrorBoundary FallbackComponent={ErrorFallback}>
-        <SimpleServicesSection />
-      </ErrorBoundary>
-      
-      {/* About Section */}
+      {/* About Section with Safari-safe image */}
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         <AboutSection />
       </ErrorBoundary>

@@ -40,6 +40,49 @@ const slides = [
   }
 ]
 
+// Safari-safe image component
+interface SafariSafeImageProps {
+  src: string;
+  alt: string;
+  className?: string;
+  priority?: boolean;
+}
+
+function SafariSafeImage({ src, alt, className = '', priority = false }: SafariSafeImageProps) {
+  const [isSafari, setIsSafari] = useState(false);
+  
+  useEffect(() => {
+    // Check if browser is Safari
+    const isSafariCheck = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    setIsSafari(isSafariCheck);
+  }, []);
+  
+  // For Safari, use a div with background-image instead of Next.js Image
+  if (isSafari) {
+    return (
+      <div 
+        className={`${className} bg-cover bg-center`}
+        style={{ backgroundImage: `url(${src})` }}
+        role="img"
+        aria-label={alt}
+      />
+    );
+  }
+  
+  // For other browsers, use Next.js Image with proper optimization
+  return (
+    <Image
+      src={src}
+      alt={alt}
+      fill
+      priority={priority}
+      className={`object-cover ${className}`}
+      sizes="100vw"
+      quality={priority ? 85 : 60}
+    />
+  );
+}
+
 export default function HeroSlideshow() {
   const [currentSlide, setCurrentSlide] = useState(0)
   const intervalRef = useRef<NodeJS.Timeout | null>(null)
@@ -116,15 +159,11 @@ export default function HeroSlideshow() {
           >
             {/* Image with overlay */}
             <div className="relative h-full">
-              <Image
+              <SafariSafeImage
                 src={slide.image}
                 alt={slide.title}
-                fill
                 priority={index === currentSlide}
-                loading={index === currentSlide ? "eager" : "lazy"}
-                className="object-cover"
-                sizes="100vw"
-                quality={index === currentSlide ? 85 : 60}
+                className="w-full h-full"
               />
               <div className="absolute inset-0 bg-black bg-opacity-50"></div>
             </div>
