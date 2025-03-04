@@ -12,6 +12,7 @@ registerLocale('nl', nl)
 
 export default function AppointmentPage() {
   const [step, setStep] = useState(1)
+  const [loading, setLoading] = useState(false)
   const [formData, setFormData] = useState({
     kenteken: '',
     name: '',
@@ -29,8 +30,43 @@ export default function AppointmentPage() {
       return
     }
 
-    // Here we'll add the API call to save the appointment
-    toast.success('Bedankt voor uw aanvraag! We nemen zo spoedig mogelijk contact met u op.')
+    try {
+      setLoading(true)
+      
+      const response = await fetch('/api/appointment', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await response.json()
+      
+      if (!response.ok) {
+        throw new Error(data.error || 'Er is iets misgegaan')
+      }
+      
+      // Reset form
+      setFormData({
+        kenteken: '',
+        name: '',
+        email: '',
+        phone: '',
+        description: '',
+        date: null
+      })
+      
+      // Go back to step 1
+      setStep(1)
+      
+      toast.success('Bedankt voor uw aanvraag! We nemen zo spoedig mogelijk contact met u op.')
+    } catch (error) {
+      console.error('Error submitting form:', error)
+      toast.error(error instanceof Error ? error.message : 'Er is iets misgegaan')
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -178,14 +214,16 @@ export default function AppointmentPage() {
                       type="button"
                       onClick={() => setStep(2)}
                       className="w-full btn btn-outline"
+                      disabled={loading}
                     >
                       Terug
                     </button>
                     <button
                       type="submit"
                       className="w-full btn btn-primary"
+                      disabled={loading}
                     >
-                      Afspraak Aanvragen
+                      {loading ? 'Bezig met verzenden...' : 'Afspraak Aanvragen'}
                     </button>
                   </div>
                 </div>

@@ -1,166 +1,228 @@
-import Image from 'next/image'
+import Layout from '@/components/Layout'
 import HeroSlideshow from '@/components/HeroSlideshow'
-import Navigation from '@/components/Navigation'
+import Image from 'next/image'
+import Link from 'next/link'
+
+// Service data
+const services = [
+  {
+    id: 1,
+    title: 'Onderhoud & Reparatie',
+    description: 'Regulier onderhoud en reparaties voor alle automerken. Wij werken volgens fabrieksvoorschriften met behoud van garantie.',
+    icon: '/images/service-maintenance.jpg'
+  },
+  {
+    id: 2,
+    title: 'APK Keuring',
+    description: 'Snelle en betrouwbare APK keuring. Bij afkeuring bieden wij gratis herkeuring aan na reparatie bij ons.',
+    icon: '/images/service-apk.jpg'
+  },
+  {
+    id: 3,
+    title: 'Airco Service',
+    description: 'Complete airco-service inclusief reiniging, controle en bijvullen. Zorg voor een aangename temperatuur in uw auto.',
+    icon: '/images/service-airco.jpg'
+  },
+  {
+    id: 4,
+    title: 'Diagnose',
+    description: 'Geavanceerde diagnose apparatuur voor het opsporen van storingen. Wij lossen complexe problemen snel en efficiënt op.',
+    icon: '/images/service-diagnostics.jpg'
+  }
+]
 
 export default function Home() {
   return (
-    <main className="bg-black">
-      <Navigation />
+    <Layout>
+      {/* Hero Section */}
       <HeroSlideshow />
-
+      
       {/* Services Section */}
-      <section className="py-20 bg-zinc-950" id="diensten">
-        <div className="container">
-          <h2 className="section-title text-center text-white">Onze Expertise</h2>
-          <p className="text-gray-400 text-center max-w-2xl mx-auto mb-12">
-            Met jarenlange ervaring en vakkundig personeel staan wij klaar voor al uw auto onderhoud en reparaties.
-            Vertrouw op onze expertise voor het beste resultaat.
-          </p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
-            <div className="service-card">
-              <Image
-                src="/images/service-1.jpg"
-                alt="Algemeen onderhoud"
-                width={400}
-                height={300}
-                className="service-image"
-              />
-              <h3 className="text-xl font-semibold mb-4 text-white">Algemeen Onderhoud</h3>
-              <p className="text-gray-400">
-                Regulier onderhoud en service voor alle automerken. 
-                Wij zorgen ervoor dat uw auto in topconditie blijft met:
-              </p>
-              <ul className="mt-4 space-y-2 text-gray-400">
-                <li>• Grote en kleine beurten</li>
-                <li>• Olie verversen</li>
-                <li>• Filter vervanging</li>
-                <li>• Remmen service</li>
-              </ul>
+      <section id="diensten" className="py-20 bg-zinc-900">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Onze Diensten</h2>
+            <p className="text-gray-400 max-w-3xl mx-auto">
+              Bij GP Auto's bieden wij een breed scala aan diensten om uw auto in optimale conditie te houden.
+              Onze ervaren monteurs staan voor u klaar.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {services.map((service) => (
+              <div key={service.id} className="bg-zinc-800 rounded-lg overflow-hidden transition-transform hover:scale-105">
+                <div className="relative h-48">
+                  <Image
+                    src={service.icon}
+                    alt={service.title}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-white mb-3">{service.title}</h3>
+                  <p className="text-gray-400 mb-4">{service.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          <div className="text-center mt-12">
+            <Link 
+              href="/afspraak" 
+              className="inline-block bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-md transition-colors"
+            >
+              Maak een Afspraak
+            </Link>
+          </div>
+        </div>
+      </section>
+      
+      {/* About Section */}
+      <section className="py-20 bg-zinc-950">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col lg:flex-row items-center gap-12">
+            <div className="lg:w-1/2">
+              <div className="relative h-[400px] w-full rounded-lg overflow-hidden">
+                <Image
+                  src="/images/about.jpg"
+                  alt="Over GP Auto's"
+                  fill
+                  className="object-cover"
+                />
+              </div>
             </div>
-
-            <div className="service-card">
-              <Image
-                src="/images/service-2.jpg"
-                alt="Reparaties"
-                width={400}
-                height={300}
-                className="service-image"
-              />
-              <h3 className="text-xl font-semibold mb-4 text-white">Reparaties</h3>
-              <p className="text-gray-400">
-                Snelle en betrouwbare reparatie van uw auto door ervaren monteurs.
-                Onze diensten omvatten:
+            
+            <div className="lg:w-1/2">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Over GP Auto's</h2>
+              <p className="text-gray-400 mb-4">
+                GP Auto's is een moderne autogarage in Lichtenvoorde met meer dan 15 jaar ervaring. 
+                Wij staan voor kwaliteit, betrouwbaarheid en persoonlijke service.
               </p>
-              <ul className="mt-4 space-y-2 text-gray-400">
-                <li>• Motor reparaties</li>
-                <li>• Uitlaat systemen</li>
-                <li>• Airco service</li>
-                <li>• Elektrische storingen</li>
-              </ul>
-            </div>
-
-            <div className="service-card">
-              <Image
-                src="/images/service-3.jpg"
-                alt="APK Keuring"
-                width={400}
-                height={300}
-                className="service-image"
-              />
-              <h3 className="text-xl font-semibold mb-4 text-white">APK Keuring</h3>
-              <p className="text-gray-400">
-                Officiële APK-keuring met gratis herkeuring. 
-                Ons APK proces omvat:
+              <p className="text-gray-400 mb-6">
+                Onze monteurs zijn vakbekwaam en worden regelmatig bijgeschoold om op de hoogte te blijven 
+                van de nieuwste technologieën en ontwikkelingen in de autobranche.
               </p>
-              <ul className="mt-4 space-y-2 text-gray-400">
-                <li>• Volledige voertuig inspectie</li>
-                <li>• Uitlaatgastest</li>
-                <li>• Veiligheidscontroles</li>
-                <li>• Gratis herkeuring</li>
-              </ul>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="flex items-start">
+                  <div className="bg-red-600 p-2 rounded-md mr-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="text-white font-medium">Ervaren Monteurs</h4>
+                    <p className="text-gray-400 text-sm">Vakkundig en betrouwbaar</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start">
+                  <div className="bg-red-600 p-2 rounded-md mr-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="text-white font-medium">Moderne Apparatuur</h4>
+                    <p className="text-gray-400 text-sm">Voor alle automerken</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start">
+                  <div className="bg-red-600 p-2 rounded-md mr-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="text-white font-medium">Transparante Prijzen</h4>
+                    <p className="text-gray-400 text-sm">Geen verrassingen achteraf</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start">
+                  <div className="bg-red-600 p-2 rounded-md mr-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="text-white font-medium">Persoonlijke Service</h4>
+                    <p className="text-gray-400 text-sm">Klant staat centraal</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
-
-      {/* Why Choose Us Section */}
-      <section className="py-20 bg-zinc-900">
-        <div className="container">
-          <h2 className="section-title text-center text-white mb-12">Waarom Kiezen voor GP Auto's?</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+      
+      {/* Contact Section */}
+      <section id="contact" className="py-20 bg-zinc-900">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Contact</h2>
+            <p className="text-gray-400 max-w-3xl mx-auto">
+              Heeft u vragen of wilt u een afspraak maken? Neem gerust contact met ons op.
+              Wij staan voor u klaar!
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-zinc-800 p-8 rounded-lg text-center">
+              <div className="bg-red-600 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
               </div>
-              <h3 className="text-lg font-semibold text-white mb-2">Ervaren Team</h3>
-              <p className="text-gray-400">Vakkundige monteurs met jarenlange ervaring</p>
+              <h3 className="text-xl font-bold text-white mb-2">Adres</h3>
+              <p className="text-gray-400">
+                Hoofdstraat 123<br />
+                7131 AA Lichtenvoorde
+              </p>
             </div>
             
-            <div className="text-center">
-              <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <div className="bg-zinc-800 p-8 rounded-lg text-center">
+              <div className="bg-red-600 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-white mb-2">Telefoon</h3>
+              <p className="text-gray-400">
+                <a href="tel:+31612345678" className="hover:text-red-500 transition-colors">
+                  +31 6 12345678
+                </a>
+              </p>
+            </div>
+            
+            <div className="bg-zinc-800 p-8 rounded-lg text-center">
+              <div className="bg-red-600 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <h3 className="text-lg font-semibold text-white mb-2">Snelle Service</h3>
-              <p className="text-gray-400">Efficiënte werkprocessen voor minimale wachttijd</p>
+              <h3 className="text-xl font-bold text-white mb-2">Openingstijden</h3>
+              <p className="text-gray-400">
+                Maandag - Vrijdag: 8:00 - 17:30<br />
+                Zaterdag: 9:00 - 13:00<br />
+                Zondag: Gesloten
+              </p>
             </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
-                </svg>
-              </div>
-              <h3 className="text-lg font-semibold text-white mb-2">Eerlijke Prijzen</h3>
-              <p className="text-gray-400">Transparante tarieven zonder verborgen kosten</p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-              </div>
-              <h3 className="text-lg font-semibold text-white mb-2">Kwaliteit Gegarandeerd</h3>
-              <p className="text-gray-400">Gebruik van hoogwaardige onderdelen en materialen</p>
-            </div>
+          </div>
+          
+          <div className="mt-12 text-center">
+            <Link 
+              href="/afspraak" 
+              className="inline-block bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-md transition-colors"
+            >
+              Maak een Afspraak
+            </Link>
           </div>
         </div>
       </section>
-
-      {/* Contact Section */}
-      <section className="py-20 bg-zinc-950" id="contact">
-        <div className="container">
-          <div className="grid md:grid-cols-2 gap-12">
-            <div>
-              <h2 className="section-title text-white">Contact</h2>
-              <div className="space-y-4 text-gray-300">
-                <p><strong className="text-white">Adres:</strong> Galileïstraat 5, 7131PE Lichtenvoorde</p>
-                <p><strong className="text-white">Email:</strong> info@gpautos.nl</p>
-                <p><strong className="text-white">Telefoon:</strong> +31 (0)6 12345678</p>
-              </div>
-            </div>
-            <div>
-              <h2 className="section-title text-white">Openingstijden</h2>
-              <div className="space-y-2 text-gray-300">
-                <p>Maandag - Vrijdag: 08:00 - 17:30</p>
-                <p>Zaterdag: Op afspraak</p>
-                <p>Zondag: Gesloten</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="py-8 bg-black border-t border-zinc-800">
-        <div className="container text-center text-gray-400">
-          <p>© {new Date().getFullYear()} GP Auto's - Alle rechten voorbehouden</p>
-        </div>
-      </footer>
-    </main>
+    </Layout>
   )
 } 
