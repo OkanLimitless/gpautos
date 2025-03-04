@@ -5,6 +5,7 @@ import HeroSlideshow from '@/components/HeroSlideshow'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
+import { ErrorBoundary, FallbackProps } from 'react-error-boundary'
 
 // Service data
 const services = [
@@ -34,44 +35,42 @@ const services = [
   }
 ]
 
-// Client component for services section
-function ServicesSection() {
-  const [visibleServices, setVisibleServices] = useState<number[]>([]);
-  
+// Error fallback component
+function ErrorFallback({ error, resetErrorBoundary }: FallbackProps) {
+  return (
+    <div className="p-6 bg-red-900 text-white rounded-lg">
+      <h3 className="text-xl font-bold mb-2">Er is iets misgegaan</h3>
+      <p className="mb-4">Er is een fout opgetreden bij het laden van deze sectie.</p>
+      <pre className="bg-red-950 p-4 rounded overflow-auto text-sm mb-4">
+        {error.message}
+        {error.stack && `\n\n${error.stack}`}
+      </pre>
+      <button
+        onClick={resetErrorBoundary}
+        className="bg-white text-red-900 px-4 py-2 rounded font-medium"
+      >
+        Probeer opnieuw
+      </button>
+    </div>
+  );
+}
+
+// Simple service section without any fancy features
+function SimpleServicesSection() {
+  // Log browser info for debugging
   useEffect(() => {
-    // Initialize with first service visible
-    setVisibleServices([0]);
-    
-    // Set up intersection observer for each service card
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const id = parseInt(entry.target.getAttribute('data-id') || '0');
-            setVisibleServices(prev => {
-              if (!prev.includes(id)) {
-                return [...prev, id];
-              }
-              return prev;
-            });
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: '100px' }
-    );
-    
-    // Observe all service cards
-    document.querySelectorAll('.service-card').forEach(card => {
-      observer.observe(card);
+    console.log('Browser info:', {
+      userAgent: navigator.userAgent,
+      platform: navigator.platform,
+      vendor: navigator.vendor,
+      memory: (performance as any).memory ? {
+        jsHeapSizeLimit: (performance as any).memory.jsHeapSizeLimit,
+        totalJSHeapSize: (performance as any).memory.totalJSHeapSize,
+        usedJSHeapSize: (performance as any).memory.usedJSHeapSize
+      } : 'Not available'
     });
-    
-    return () => {
-      document.querySelectorAll('.service-card').forEach(card => {
-        observer.unobserve(card);
-      });
-    };
   }, []);
-  
+
   return (
     <section id="diensten" className="py-16 md:py-20 bg-zinc-900">
       <div className="container mx-auto px-4">
@@ -84,31 +83,15 @@ function ServicesSection() {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-          {services.map((service, index) => (
+          {services.map((service) => (
             <div 
               key={service.id} 
-              className="service-card bg-zinc-800 rounded-lg overflow-hidden shadow-md"
-              data-id={index}
+              className="bg-zinc-800 rounded-lg overflow-hidden shadow-md"
             >
-              {visibleServices.includes(index) && (
-                <>
-                  <div className="relative h-40 md:h-48 bg-zinc-700">
-                    <Image
-                      src={service.icon}
-                      alt={service.title}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                      loading={index < 2 ? "eager" : "lazy"}
-                      quality={70}
-                    />
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-white mb-3">{service.title}</h3>
-                    <p className="text-gray-400">{service.description}</p>
-                  </div>
-                </>
-              )}
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-white mb-3">{service.title}</h3>
+                <p className="text-gray-400">{service.description}</p>
+              </div>
             </div>
           ))}
         </div>
@@ -128,48 +111,13 @@ function ServicesSection() {
 
 // About section component with optimized image loading
 function AboutSection() {
-  const [isVisible, setIsVisible] = useState(false);
-  
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.1, rootMargin: '200px' }
-    );
-    
-    const aboutElement = document.getElementById('about-section');
-    if (aboutElement) {
-      observer.observe(aboutElement);
-    }
-    
-    return () => {
-      if (aboutElement) {
-        observer.unobserve(aboutElement);
-      }
-    };
-  }, []);
-  
   return (
     <section id="about-section" className="py-16 md:py-20 bg-zinc-950">
       <div className="container mx-auto px-4">
         <div className="flex flex-col lg:flex-row items-center gap-12">
           <div className="lg:w-1/2">
             <div className="relative h-[300px] md:h-[400px] w-full rounded-lg overflow-hidden bg-zinc-800">
-              {isVisible && (
-                <Image
-                  src="/images/about.jpg"
-                  alt="Over GP Auto's"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  loading="lazy"
-                  quality={70}
-                />
-              )}
+              {/* No image for now to test if that's the issue */}
             </div>
           </div>
           
@@ -310,20 +258,204 @@ function ContactSection() {
   );
 }
 
+// Test component with just one service and image
+function TestServiceWithImage() {
+  const [hasError, setHasError] = useState(false);
+  
+  useEffect(() => {
+    // Add window error handler to catch any errors
+    const handleError = (event: ErrorEvent) => {
+      console.error('Caught window error:', event.error);
+      setHasError(true);
+    };
+    
+    window.addEventListener('error', handleError);
+    
+    return () => {
+      window.removeEventListener('error', handleError);
+    };
+  }, []);
+  
+  if (hasError) {
+    return (
+      <section className="py-16 md:py-20 bg-zinc-900">
+        <div className="container mx-auto px-4 text-center">
+          <div className="p-6 bg-red-900 text-white rounded-lg inline-block">
+            <h3 className="text-xl font-bold mb-2">Er is een fout opgetreden</h3>
+            <p>Er was een probleem met het laden van de afbeelding.</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+  
+  return (
+    <section className="py-16 md:py-20 bg-zinc-900">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Test Service</h2>
+          <p className="text-gray-400">Dit is een test om te zien of de afbeelding het probleem veroorzaakt.</p>
+        </div>
+        
+        <div className="max-w-md mx-auto">
+          <div className="bg-zinc-800 rounded-lg overflow-hidden shadow-md">
+            <div className="relative h-48 bg-zinc-700">
+              <Image
+                src="/images/service-maintenance.jpg"
+                alt="Test Service"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 500px"
+                quality={60}
+              />
+            </div>
+            <div className="p-6">
+              <h3 className="text-xl font-bold text-white mb-3">Test Service</h3>
+              <p className="text-gray-400">Dit is een test service met één afbeelding.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// Safari detection component
+function SafariDetection() {
+  const [isSafari, setIsSafari] = useState(false);
+  
+  useEffect(() => {
+    // Check if browser is Safari
+    const isSafariCheck = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    setIsSafari(isSafariCheck);
+    
+    if (isSafariCheck) {
+      console.log('Safari detected. User agent:', navigator.userAgent);
+      
+      // Log Safari version
+      const match = navigator.userAgent.match(/Version\/(\d+\.\d+)/);
+      const safariVersion = match ? match[1] : 'unknown';
+      console.log('Safari version:', safariVersion);
+      
+      // Log iOS version if applicable
+      const iosMatch = navigator.userAgent.match(/OS (\d+_\d+)/);
+      const iosVersion = iosMatch ? iosMatch[1].replace('_', '.') : 'not iOS';
+      console.log('iOS version:', iosVersion);
+    }
+  }, []);
+  
+  if (!isSafari) return null;
+  
+  return (
+    <div className="fixed bottom-4 left-4 right-4 bg-yellow-800 text-white p-4 rounded-lg z-50 text-sm">
+      <p className="font-bold mb-1">Safari Browser Gedetecteerd</p>
+      <p>We hebben gedetecteerd dat u Safari gebruikt. Als u problemen ondervindt, probeer dan een andere browser zoals Chrome of Firefox.</p>
+    </div>
+  );
+}
+
+// Safari-safe image component
+interface SafariSafeImageProps {
+  src: string;
+  alt: string;
+  className?: string;
+}
+
+function SafariSafeImage({ src, alt, className = '' }: SafariSafeImageProps) {
+  const [isSafari, setIsSafari] = useState(false);
+  
+  useEffect(() => {
+    // Check if browser is Safari
+    const isSafariCheck = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    setIsSafari(isSafariCheck);
+  }, []);
+  
+  // For Safari, use a div with background-image instead of Next.js Image
+  if (isSafari) {
+    return (
+      <div 
+        className={`${className} bg-cover bg-center`}
+        style={{ backgroundImage: `url(${src})` }}
+        role="img"
+        aria-label={alt}
+      />
+    );
+  }
+  
+  // For other browsers, use a regular img tag with lower quality
+  return (
+    <img 
+      src={src} 
+      alt={alt} 
+      className={`${className} object-cover w-full h-full`}
+      loading="lazy"
+    />
+  );
+}
+
+// Test component with Safari-safe image
+function TestServiceWithSafariImage() {
+  return (
+    <section className="py-16 md:py-20 bg-zinc-900">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Safari-Veilige Test</h2>
+          <p className="text-gray-400">Dit is een test met een Safari-veilige afbeelding.</p>
+        </div>
+        
+        <div className="max-w-md mx-auto">
+          <div className="bg-zinc-800 rounded-lg overflow-hidden shadow-md">
+            <div className="relative h-48 bg-zinc-700">
+              <SafariSafeImage
+                src="/images/service-maintenance.jpg"
+                alt="Test Service"
+                className="h-full w-full"
+              />
+            </div>
+            <div className="p-6">
+              <h3 className="text-xl font-bold text-white mb-3">Safari-Veilige Afbeelding</h3>
+              <p className="text-gray-400">Deze afbeelding zou moeten werken in Safari zonder problemen.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function Home() {
   return (
     <Layout>
+      {/* Safari Detection */}
+      <SafariDetection />
+      
       {/* Hero Section */}
       <HeroSlideshow />
       
-      {/* Services Section - Now a client component */}
-      <ServicesSection />
+      {/* Safari-safe Test */}
+      <ErrorBoundary FallbackComponent={ErrorFallback}>
+        <TestServiceWithSafariImage />
+      </ErrorBoundary>
       
-      {/* About Section - Now a client component */}
-      <AboutSection />
+      {/* Test Service with Image */}
+      <ErrorBoundary FallbackComponent={ErrorFallback}>
+        <TestServiceWithImage />
+      </ErrorBoundary>
+      
+      {/* Simple Services Section without images */}
+      <ErrorBoundary FallbackComponent={ErrorFallback}>
+        <SimpleServicesSection />
+      </ErrorBoundary>
+      
+      {/* About Section */}
+      <ErrorBoundary FallbackComponent={ErrorFallback}>
+        <AboutSection />
+      </ErrorBoundary>
       
       {/* Contact Section */}
-      <ContactSection />
+      <ErrorBoundary FallbackComponent={ErrorFallback}>
+        <ContactSection />
+      </ErrorBoundary>
     </Layout>
   )
 } 
