@@ -144,6 +144,19 @@ export default function AppointmentPage() {
                     />
                     <p className="mt-2 text-sm text-gray-400">Voer uw kenteken in zonder streepjes</p>
                   </div>
+                  
+                  <div>
+                    <label className="block text-base font-medium text-gray-200 mb-2">
+                      Meldcode (optioneel)
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="Laatste 4 cijfers van het chassisnummer"
+                      className="mt-1 block w-full rounded-md bg-zinc-800 border-zinc-700 text-white shadow-sm focus:border-red-500 focus:ring-red-500 text-base py-3 px-4"
+                    />
+                    <p className="mt-2 text-sm text-gray-400">De laatste 4 cijfers van uw chassisnummer helpen ons bij het identificeren van uw voertuig</p>
+                  </div>
+                  
                   <button
                     type="button"
                     onClick={() => setStep(2)}

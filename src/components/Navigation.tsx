@@ -22,15 +22,15 @@ export default function Navigation() {
       isScrolled ? 'bg-zinc-900/95 shadow-lg' : 'bg-transparent'
     }`}>
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-24">
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <div className="relative w-[180px] h-[70px]">
+            <div className="relative w-[220px] h-[80px]">
               <Image 
                 src="/logo.png" 
                 alt="GP Auto's Logo" 
                 fill
-                sizes="180px"
+                sizes="220px"
                 style={{ objectFit: 'contain' }}
                 priority
               />

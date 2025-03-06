@@ -17,18 +17,12 @@ const services = [
   },
   {
     id: 2,
-    title: 'APK Keuring',
-    description: 'Snelle en betrouwbare APK keuring. Bij afkeuring bieden wij gratis herkeuring aan na reparatie bij ons.',
-    icon: '/images/service-apk.jpg'
+    title: 'VAG Groep Specialist',
+    description: 'Wij zijn gespecialiseerd in Volkswagen, Audi, SEAT en Škoda. Onze expertise in VAG groep voertuigen zorgt voor de beste service voor uw auto.',
+    icon: '/images/service-diagnostics.jpg'
   },
   {
     id: 3,
-    title: 'Airco Service',
-    description: 'Complete airco-service inclusief reiniging, controle en bijvullen. Zorg voor een aangename temperatuur in uw auto.',
-    icon: '/images/service-airco.jpg'
-  },
-  {
-    id: 4,
     title: 'Diagnose',
     description: 'Geavanceerde diagnose apparatuur voor het opsporen van storingen. Wij lossen complexe problemen snel en efficiënt op.',
     icon: '/images/service-diagnostics.jpg'
@@ -212,12 +206,16 @@ function AboutSection() {
           <div className="w-full lg:w-1/2">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Over GP Auto's</h2>
             <p className="text-gray-400 mb-4">
-              GP Auto's is een moderne autogarage in Lichtenvoorde met meer dan 15 jaar ervaring. 
+              GP Auto's is een moderne autogarage in Lichtenvoorde met jaren ervaring. 
               Wij staan voor kwaliteit, betrouwbaarheid en persoonlijke service.
             </p>
-            <p className="text-gray-400 mb-6">
+            <p className="text-gray-400 mb-4">
               Onze monteurs zijn vakbekwaam en worden regelmatig bijgeschoold om op de hoogte te blijven 
               van de nieuwste technologieën en ontwikkelingen in de autobranche.
+            </p>
+            <p className="text-gray-400 mb-6">
+              Wij zijn gespecialiseerd in de VAG groep (Volkswagen, Audi, SEAT en Škoda) en hebben uitgebreide kennis 
+              en ervaring met deze merken.
             </p>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
