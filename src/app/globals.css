@@ -29,24 +29,48 @@
     @apply border-2 border-primary text-white hover:bg-primary;
   }
 
+  .btn-dark {
+    @apply bg-secondary text-white hover:bg-accent shadow-sonic;
+  }
+
   .section-title {
     @apply text-4xl md:text-5xl font-bold mb-6 uppercase tracking-wider;
+  }
+
+  .section-title-dark {
+    @apply text-4xl md:text-5xl font-bold mb-6 uppercase tracking-wider text-text-dark;
   }
 
   .section-subtitle {
     @apply text-lg md:text-xl text-text-gray mb-12 max-w-3xl mx-auto;
   }
 
+  .section-subtitle-dark {
+    @apply text-lg md:text-xl text-text-dark/70 mb-12 max-w-3xl mx-auto;
+  }
+
   .card {
     @apply bg-accent p-6 rounded hover:shadow-sonic transition-all duration-300;
+  }
+
+  .card-light {
+    @apply bg-light p-6 rounded hover:shadow-sonic transition-all duration-300;
   }
 
   .feature-card {
     @apply flex flex-col items-center text-center p-6;
   }
 
+  .feature-card-light {
+    @apply flex flex-col items-center text-center p-6 bg-light text-text-dark;
+  }
+
   .service-card {
     @apply bg-accent p-6 rounded hover:bg-black transition-colors duration-300 shadow-sonic;
+  }
+
+  .service-card-light {
+    @apply bg-light p-6 rounded hover:bg-light-gray transition-colors duration-300 shadow-sonic text-text-dark;
   }
 
   .service-image {
@@ -59,6 +83,18 @@
   
   .gallery-item {
     @apply relative overflow-hidden aspect-square;
+  }
+
+  .white-section {
+    @apply bg-light text-text-dark;
+  }
+
+  .dark-section {
+    @apply bg-secondary text-text-white;
+  }
+
+  .black-section {
+    @apply bg-black text-text-white;
   }
 }
 

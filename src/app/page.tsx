@@ -13,19 +13,19 @@ const services = [
     id: 1,
     title: 'Onderhoud & Reparatie',
     description: 'Regulier onderhoud en reparaties voor alle automerken. Wij werken volgens fabrieksvoorschriften met behoud van garantie.',
-    icon: '/images/unsplash/service1.jpg'
+    icon: 'https://source.unsplash.com/random/800x600/?car,maintenance'
   },
   {
     id: 2,
     title: 'VAG Groep Specialist',
     description: 'Wij zijn gespecialiseerd in Volkswagen, Audi, SEAT en Škoda. Onze expertise in VAG groep voertuigen zorgt voor de beste service voor uw auto.',
-    icon: '/images/unsplash/slide2.jpg'
+    icon: 'https://source.unsplash.com/random/800x600/?volkswagen,audi'
   },
   {
     id: 3,
     title: 'Diagnose',
     description: 'Geavanceerde diagnose apparatuur voor het opsporen van storingen. Wij lossen complexe problemen snel en efficiënt op.',
-    icon: '/images/unsplash/slide3.jpg'
+    icon: 'https://source.unsplash.com/random/800x600/?car,diagnosis'
   }
 ]
 
@@ -91,45 +91,45 @@ function SafariSafeImage({ src, alt, className = '' }: SafariSafeImageProps) {
 // Three Pillars Section
 function ThreePillarsSection() {
   return (
-    <section className="py-16 bg-black">
+    <section className="py-16 white-section">
       <div className="container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Efficiency Pillar */}
-          <div className="feature-card">
+          {/* Quality Pillar */}
+          <div className="feature-card-light">
             <div className="mb-4">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
               </svg>
             </div>
-            <h3 className="text-2xl font-bold text-white uppercase mb-2 tracking-wide">Efficiëntie</h3>
-            <p className="text-text-gray">
-              Al het juiste gereedschap, precies wanneer u het nodig heeft
+            <h3 className="text-2xl font-bold text-text-dark uppercase mb-2 tracking-wide">Kwaliteit</h3>
+            <p className="text-text-dark/70">
+              Hoogwaardige service met garantie voor alle reparaties en onderhoud
             </p>
           </div>
           
-          {/* Style Pillar */}
-          <div className="feature-card">
+          {/* Expertise Pillar */}
+          <div className="feature-card-light">
             <div className="mb-4">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2" />
               </svg>
             </div>
-            <h3 className="text-2xl font-bold text-white uppercase mb-2 tracking-wide">Stijl</h3>
-            <p className="text-text-gray">
-              Elke auto heeft uw aandacht. Wij brengen uw werkplaats in het vizier
+            <h3 className="text-2xl font-bold text-text-dark uppercase mb-2 tracking-wide">Expertise</h3>
+            <p className="text-text-dark/70">
+              Vakkundige monteurs met specifieke kennis van VAG groep voertuigen
             </p>
           </div>
           
-          {/* Support Pillar */}
-          <div className="feature-card">
+          {/* Service Pillar */}
+          <div className="feature-card-light">
             <div className="mb-4">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
-            <h3 className="text-2xl font-bold text-white uppercase mb-2 tracking-wide">Ondersteuning</h3>
-            <p className="text-text-gray">
-              Lokale service, trots om dag en nacht voor u klaar te staan
+            <h3 className="text-2xl font-bold text-text-dark uppercase mb-2 tracking-wide">Transparantie</h3>
+            <p className="text-text-dark/70">
+              Heldere prijzen en eerlijk advies zonder verrassingen achteraf
             </p>
           </div>
         </div>
@@ -153,7 +153,7 @@ function ServicesSection() {
   };
 
   return (
-    <section id="diensten" className="py-16 md:py-20 bg-accent">
+    <section id="diensten" className="py-16 md:py-20 dark-section">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12 md:mb-16">
           <h2 className="section-title text-white">Onze Diensten</h2>
@@ -235,29 +235,49 @@ function ServicesSection() {
   );
 }
 
-// Limited Edition Toolbox Section
-function LimitedEditionSection() {
+// APK Section (replacing Limited Edition Toolbox)
+function APKSection() {
   return (
-    <section className="py-16 bg-black">
+    <section className="py-16 white-section">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <div className="relative h-[400px] md:h-[500px]">
             <SafariSafeImage
-              src="/images/unsplash/toolbox.jpg"
-              alt="Limited edition gereedschapskist"
+              src="https://source.unsplash.com/random/800x600/?car,inspection"
+              alt="APK Keuring"
               className="h-full w-full rounded"
             />
           </div>
           <div className="p-6">
-            <h2 className="section-title text-white">Limited Edition Gereedschapskist</h2>
-            <p className="text-text-gray mb-6">
-              Onze gereedschapskisten zijn speciaal ontworpen voor professionele autoservice. Met hoogwaardige materialen en slimme indeling zorgen wij dat u altijd het juiste gereedschap bij de hand heeft.
+            <h2 className="section-title-dark text-text-dark">APK Keuring</h2>
+            <p className="text-text-dark/70 mb-6">
+              Voorkom problemen met uw auto door regelmatige APK-keuringen. Bij GP Auto's bent u verzekerd van een grondig onderzoek naar de veiligheid en milieuvriendelijkheid van uw auto. Wij controleren alle onderdelen volgens de strenge RDW normen.
             </p>
+            <ul className="space-y-3 mb-6 text-text-dark/70">
+              <li className="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-primary mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                <span>Officieel RDW erkend keuringsstation</span>
+              </li>
+              <li className="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-primary mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                <span>Kleine reparaties direct uitgevoerd</span>
+              </li>
+              <li className="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-primary mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                <span>APK-afspraak binnen 24 uur mogelijk</span>
+              </li>
+            </ul>
             <Link 
-              href="/#contact" 
-              className="btn btn-primary"
+              href="/afspraak" 
+              className="btn bg-primary text-white hover:bg-red-700 shadow-sonic"
             >
-              Meer Info
+              APK Afspraak Maken
             </Link>
           </div>
         </div>
@@ -269,13 +289,13 @@ function LimitedEditionSection() {
 // About section with Safari-safe image
 function AboutSection() {
   return (
-    <section id="about-section" className="py-16 md:py-20 bg-secondary">
+    <section id="about-section" className="py-16 md:py-20 dark-section">
       <div className="container mx-auto px-4">
         <div className="flex flex-col lg:flex-row items-center gap-12">
           <div className="hidden lg:block lg:w-1/2">
             <div className="relative h-[400px] w-full rounded overflow-hidden">
               <SafariSafeImage
-                src="/images/unsplash/about.jpg"
+                src="https://source.unsplash.com/random/1000x800/?car,workshop"
                 alt="Over GP Auto's"
                 className="h-full w-full"
               />
@@ -283,7 +303,7 @@ function AboutSection() {
           </div>
           
           <div className="lg:w-1/2">
-            <h2 className="section-title text-white">GP Elite en GP Auto's</h2>
+            <h2 className="section-title text-white">Over GP Auto's</h2>
             <p className="text-text-gray mb-6">
               GP Auto's is al meer dan 20 jaar uw betrouwbare partner voor autoservice en onderhoud in de regio. Als specialist in de VAG groep (Volkswagen, Audi, SEAT en Škoda) bieden wij expertise en vakmanschap voor uw voertuig.
             </p>
@@ -303,7 +323,7 @@ function AboutSection() {
           <div className="lg:hidden w-full">
             <div className="relative h-[300px] w-full rounded overflow-hidden">
               <SafariSafeImage
-                src="/images/unsplash/about.jpg"
+                src="https://source.unsplash.com/random/1000x800/?car,workshop"
                 alt="Over GP Auto's"
                 className="h-full w-full"
               />
@@ -315,10 +335,46 @@ function AboutSection() {
   );
 }
 
+// World of GP Gallery Section
+function GallerySection() {
+  const galleryImages = [
+    "https://source.unsplash.com/random/600x600/?car,repair",
+    "https://source.unsplash.com/random/600x600/?mechanic",
+    "https://source.unsplash.com/random/600x600/?car,service",
+    "https://source.unsplash.com/random/600x600/?automobile,workshop",
+    "https://source.unsplash.com/random/600x600/?car,inspection",
+    "https://source.unsplash.com/random/600x600/?car,engine",
+    "https://source.unsplash.com/random/600x600/?garage",
+    "https://source.unsplash.com/random/600x600/?car,maintenance",
+    "https://source.unsplash.com/random/600x600/?auto,shop",
+    "https://source.unsplash.com/random/600x600/?car,diagnosis"
+  ];
+
+  return (
+    <section className="py-16 white-section">
+      <div className="container mx-auto px-4 text-center mb-10">
+        <h2 className="section-title-dark">Impressies van GP Auto's</h2>
+      </div>
+      
+      <div className="grid-gallery mx-4">
+        {galleryImages.map((image, i) => (
+          <div key={i} className="gallery-item">
+            <SafariSafeImage
+              src={image}
+              alt={`GP Auto's Workshop ${i+1}`}
+              className="w-full h-full hover:opacity-80 transition-opacity duration-300"
+            />
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 // Contact section
 function ContactSection() {
   return (
-    <section id="contact" className="py-16 md:py-20 bg-black">
+    <section id="contact" className="py-16 md:py-20 dark-section">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="section-title text-white">Contact</h2>
@@ -422,30 +478,6 @@ function ContactSection() {
   );
 }
 
-// World of GP Gallery Section
-function GallerySection() {
-  return (
-    <section className="py-16 bg-accent">
-      <div className="container mx-auto px-4 text-center mb-10">
-        <h2 className="section-title text-white">Wereld van GP Auto's</h2>
-      </div>
-      
-      <div className="grid-gallery mx-4">
-        {/* Use actual workshop images here */}
-        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((i) => (
-          <div key={i} className="gallery-item">
-            <SafariSafeImage
-              src={`/images/unsplash/${i === 1 ? 'about' : i === 2 ? 'toolbox' : `slide${(i % 4) + 1}`}.jpg`}
-              alt={`GP Auto's Workshop ${i}`}
-              className="w-full h-full hover:opacity-80 transition-opacity duration-300"
-            />
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-
 export default function Home() {
   return (
     <Layout>
@@ -462,7 +494,7 @@ export default function Home() {
       </ErrorBoundary>
       
       <ErrorBoundary FallbackComponent={ErrorFallback}>
-        <LimitedEditionSection />
+        <APKSection />
       </ErrorBoundary>
       
       <ErrorBoundary FallbackComponent={ErrorFallback}>

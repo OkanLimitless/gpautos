@@ -8,7 +8,7 @@ import Link from 'next/link'
 const slides = [
   {
     id: 1,
-    image: '/images/unsplash/slide1.jpg',
+    image: 'https://source.unsplash.com/random/1920x1080/?auto,mechanic,workshop',
     title: '20 JAAR ERVARING',
     subtitle: 'Uw auto in betrouwbare handen',
     cta: 'Maak een Afspraak',
@@ -16,7 +16,7 @@ const slides = [
   },
   {
     id: 2,
-    image: '/images/unsplash/slide2.jpg',
+    image: 'https://source.unsplash.com/random/1920x1080/?car,service',
     title: 'ONDERHOUD & REPARATIE',
     subtitle: 'Voor alle merken en modellen',
     cta: 'Onze Diensten',
@@ -24,7 +24,7 @@ const slides = [
   },
   {
     id: 3,
-    image: '/images/unsplash/slide3.jpg',
+    image: 'https://source.unsplash.com/random/1920x1080/?car,diagnosis',
     title: 'APK KEURING',
     subtitle: 'Snel en betrouwbaar',
     cta: 'Maak een Afspraak',
@@ -32,7 +32,7 @@ const slides = [
   },
   {
     id: 4,
-    image: '/images/unsplash/slide4.jpg',
+    image: 'https://source.unsplash.com/random/1920x1080/?mechanic,technician',
     title: 'ERVAREN MONTEURS',
     subtitle: 'Met passie voor auto\'s',
     cta: 'Contact Opnemen',

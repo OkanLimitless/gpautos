@@ -10,7 +10,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <main className="flex-grow">
         {children}
       </main>
-      <footer className="py-10 bg-black border-t border-accent">
+      <footer className="py-10 black-section border-t border-accent">
         <div className="container">
           <div className="grid md:grid-cols-3 gap-8 mb-8">
             <div>
@@ -35,7 +35,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               <ul className="space-y-3 text-text-gray">
                 <li>
                   <Link href="/#diensten" className="hover:text-primary transition-colors">
-                    Diensten
+                    Onze Diensten
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/#about-section" className="hover:text-primary transition-colors">
+                    Over Ons
                   </Link>
                 </li>
                 <li>

@@ -11,10 +11,13 @@ module.exports = {
         primary: '#FF0000', // Sonic red
         secondary: '#121212', // Deep black for backgrounds
         accent: '#1A1A1A', // Slightly lighter black for cards
+        light: '#FFFFFF', // White for sections
+        'light-gray': '#F5F5F5', // Light gray background
         text: {
-          white: '#FFFFFF',
-          gray: '#CCCCCC',
-          light: '#F2F2F2',
+          white: '#FFFFFF', // White text
+          dark: '#333333', // Dark text for light backgrounds
+          gray: '#CCCCCC', // Gray text
+          light: '#F2F2F2', // Light text
         }
       },
       fontFamily: {

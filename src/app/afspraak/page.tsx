@@ -100,34 +100,34 @@ export default function AppointmentPage() {
 
   return (
     <Layout>
-      <div className="pt-20 min-h-screen bg-secondary">
+      <div className="pt-20 min-h-screen white-section">
         <div className="container py-12">
           <div className="max-w-3xl mx-auto">
-            <h1 className="section-title text-center mb-8">Maak een Afspraak</h1>
+            <h1 className="section-title-dark text-center mb-8">Maak een Afspraak</h1>
             
             {/* Progress Steps */}
             <div className="flex justify-between mb-12">
-              <div className={`flex-1 text-center ${step >= 1 ? 'text-primary' : 'text-text-gray'}`}>
+              <div className={`flex-1 text-center ${step >= 1 ? 'text-primary' : 'text-text-dark/50'}`}>
                 <div className={`w-10 h-10 mx-auto rounded-full flex items-center justify-center border-2 ${
-                  step >= 1 ? 'border-primary bg-primary/10' : 'border-text-gray'
+                  step >= 1 ? 'border-primary bg-primary/10' : 'border-text-dark/30'
                 }`}>1</div>
                 <span className="text-sm mt-2 uppercase tracking-wide">Kenteken</span>
               </div>
-              <div className={`flex-1 text-center ${step >= 2 ? 'text-primary' : 'text-text-gray'}`}>
+              <div className={`flex-1 text-center ${step >= 2 ? 'text-primary' : 'text-text-dark/50'}`}>
                 <div className={`w-10 h-10 mx-auto rounded-full flex items-center justify-center border-2 ${
-                  step >= 2 ? 'border-primary bg-primary/10' : 'border-text-gray'
+                  step >= 2 ? 'border-primary bg-primary/10' : 'border-text-dark/30'
                 }`}>2</div>
                 <span className="text-sm mt-2 uppercase tracking-wide">Details</span>
               </div>
-              <div className={`flex-1 text-center ${step >= 3 ? 'text-primary' : 'text-text-gray'}`}>
+              <div className={`flex-1 text-center ${step >= 3 ? 'text-primary' : 'text-text-dark/50'}`}>
                 <div className={`w-10 h-10 mx-auto rounded-full flex items-center justify-center border-2 ${
-                  step >= 3 ? 'border-primary bg-primary/10' : 'border-text-gray'
+                  step >= 3 ? 'border-primary bg-primary/10' : 'border-text-dark/30'
                 }`}>3</div>
                 <span className="text-sm mt-2 uppercase tracking-wide">Bevestiging</span>
               </div>
             </div>
 
-            <form onSubmit={handleSubmit} className="bg-accent p-8 rounded shadow-sonic">
+            <form onSubmit={handleSubmit} className="bg-secondary p-8 rounded shadow-sonic">
               {step === 1 && (
                 <div className="space-y-6">
                   <div>
