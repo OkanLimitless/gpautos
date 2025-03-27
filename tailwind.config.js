@@ -8,12 +8,20 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#1E40AF', // Deep blue
-        secondary: '#1F2937', // Dark gray
-        accent: '#EF4444', // Red for CTAs
+        primary: '#FF0000', // Sonic red
+        secondary: '#121212', // Deep black for backgrounds
+        accent: '#1A1A1A', // Slightly lighter black for cards
+        text: {
+          white: '#FFFFFF',
+          gray: '#CCCCCC',
+          light: '#F2F2F2',
+        }
       },
       fontFamily: {
         sans: ['var(--font-inter)'],
+      },
+      boxShadow: {
+        'sonic': '0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2)',
       },
     },
   },

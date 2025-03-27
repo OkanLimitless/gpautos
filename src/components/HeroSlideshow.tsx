@@ -8,32 +8,32 @@ import Link from 'next/link'
 const slides = [
   {
     id: 1,
-    image: '/images/slide1.jpg',
-    title: 'Professionele Autoservice',
+    image: '/images/unsplash/slide1.jpg',
+    title: '20 JAAR ERVARING',
     subtitle: 'Uw auto in betrouwbare handen',
     cta: 'Maak een Afspraak',
     ctaLink: '/afspraak'
   },
   {
     id: 2,
-    image: '/images/slide2.jpg',
-    title: 'Onderhoud & Reparatie',
+    image: '/images/unsplash/slide2.jpg',
+    title: 'ONDERHOUD & REPARATIE',
     subtitle: 'Voor alle merken en modellen',
     cta: 'Onze Diensten',
     ctaLink: '/#diensten'
   },
   {
     id: 3,
-    image: '/images/slide3.jpg',
-    title: 'APK Keuring',
+    image: '/images/unsplash/slide3.jpg',
+    title: 'APK KEURING',
     subtitle: 'Snel en betrouwbaar',
     cta: 'Maak een Afspraak',
     ctaLink: '/afspraak'
   },
   {
     id: 4,
-    image: '/images/slide4.jpg',
-    title: 'Ervaren Monteurs',
+    image: '/images/unsplash/slide4.jpg',
+    title: 'ERVAREN MONTEURS',
     subtitle: 'Met passie voor auto\'s',
     cta: 'Contact Opnemen',
     ctaLink: '/#contact'
@@ -165,13 +165,13 @@ export default function HeroSlideshow() {
                 priority={index === currentSlide}
                 className="w-full h-full"
               />
-              <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+              <div className="absolute inset-0 bg-black bg-opacity-60"></div>
             </div>
             
             {/* Content */}
             <div className="absolute inset-0 flex items-center justify-center z-20">
               <div className="container mx-auto px-4 text-center">
-                <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
+                <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-4 uppercase tracking-wider">
                   {slide.title}
                 </h1>
                 <p className="text-lg md:text-xl lg:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto">
@@ -179,7 +179,7 @@ export default function HeroSlideshow() {
                 </p>
                 <Link 
                   href={slide.ctaLink}
-                  className="inline-block bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-md transition-colors"
+                  className="inline-block bg-primary hover:bg-red-700 text-white font-bold py-3 px-10 rounded transition-colors uppercase tracking-wide shadow-sonic"
                 >
                   {slide.cta}
                 </Link>
@@ -198,7 +198,7 @@ export default function HeroSlideshow() {
               onClick={() => goToSlide(index)}
               className={`w-3 h-3 rounded-full transition-all ${
                 index === currentSlide 
-                  ? 'bg-red-500 w-6' 
+                  ? 'bg-primary w-6' 
                   : 'bg-white bg-opacity-50 hover:bg-opacity-75'
               }`}
               aria-label={`Go to slide ${index + 1}`}
@@ -206,6 +206,27 @@ export default function HeroSlideshow() {
           ))}
         </div>
       </div>
+      
+      {/* Left/Right navigation arrows */}
+      <button 
+        onClick={() => goToSlide((currentSlide - 1 + slides.length) % slides.length)}
+        className="absolute left-4 top-1/2 transform -translate-y-1/2 z-30 bg-black bg-opacity-30 hover:bg-opacity-50 rounded-full p-2 focus:outline-none"
+        aria-label="Previous slide"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+      
+      <button 
+        onClick={() => goToSlide((currentSlide + 1) % slides.length)}
+        className="absolute right-4 top-1/2 transform -translate-y-1/2 z-30 bg-black bg-opacity-30 hover:bg-opacity-50 rounded-full p-2 focus:outline-none"
+        aria-label="Next slide"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
     </div>
   )
 } 

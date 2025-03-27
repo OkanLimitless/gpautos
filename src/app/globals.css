@@ -4,7 +4,11 @@
 
 @layer base {
   body {
-    @apply bg-black text-gray-200;
+    @apply bg-secondary text-text-white;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-wide;
   }
 }
 
@@ -14,27 +18,47 @@
   }
   
   .btn {
-    @apply px-6 py-3 rounded font-medium transition-all duration-300 inline-flex items-center justify-center;
+    @apply px-6 py-3 rounded font-bold tracking-wide uppercase transition-all duration-300 inline-flex items-center justify-center;
   }
   
   .btn-primary {
-    @apply bg-red-600 text-white hover:bg-red-700;
+    @apply bg-primary text-white hover:bg-red-700 shadow-sonic;
   }
   
   .btn-outline {
-    @apply border-2 border-red-600 text-white hover:bg-red-600;
+    @apply border-2 border-primary text-white hover:bg-primary;
   }
 
   .section-title {
-    @apply text-4xl md:text-5xl font-bold mb-6;
+    @apply text-4xl md:text-5xl font-bold mb-6 uppercase tracking-wider;
+  }
+
+  .section-subtitle {
+    @apply text-lg md:text-xl text-text-gray mb-12 max-w-3xl mx-auto;
+  }
+
+  .card {
+    @apply bg-accent p-6 rounded hover:shadow-sonic transition-all duration-300;
+  }
+
+  .feature-card {
+    @apply flex flex-col items-center text-center p-6;
   }
 
   .service-card {
-    @apply bg-zinc-900 p-6 rounded-lg hover:bg-zinc-800 transition-colors duration-300;
+    @apply bg-accent p-6 rounded hover:bg-black transition-colors duration-300 shadow-sonic;
   }
 
   .service-image {
-    @apply w-full h-48 object-cover rounded-lg mb-4;
+    @apply w-full h-48 object-cover rounded mb-4;
+  }
+  
+  .grid-gallery {
+    @apply grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2;
+  }
+  
+  .gallery-item {
+    @apply relative overflow-hidden aspect-square;
   }
 }
 
@@ -44,11 +68,11 @@
 }
 
 .react-datepicker {
-  @apply border border-zinc-700 rounded-lg shadow-lg bg-zinc-900 !important;
+  @apply border border-accent rounded shadow-sonic bg-secondary !important;
 }
 
 .react-datepicker__header {
-  @apply bg-zinc-800 text-white rounded-t-lg border-zinc-700 !important;
+  @apply bg-accent text-white rounded-t border-accent !important;
 }
 
 .react-datepicker__current-month {
@@ -56,21 +80,21 @@
 }
 
 .react-datepicker__day-name {
-  @apply text-gray-400 !important;
+  @apply text-text-gray !important;
 }
 
 .react-datepicker__day {
-  @apply text-gray-200 hover:bg-red-600 !important;
+  @apply text-text-light hover:bg-primary !important;
 }
 
 .react-datepicker__day--selected {
-  @apply bg-red-600 !important;
+  @apply bg-primary !important;
 }
 
 .react-datepicker__day--keyboard-selected {
-  @apply bg-red-600/80 !important;
+  @apply bg-primary/80 !important;
 }
 
 .react-datepicker__input-container input {
-  @apply w-full rounded-md bg-zinc-900 border-zinc-700 text-white shadow-sm focus:border-red-600 focus:ring-red-600 sm:text-sm;
+  @apply w-full rounded bg-accent border-accent text-white shadow-sm focus:border-primary focus:ring-primary sm:text-sm;
 } 
