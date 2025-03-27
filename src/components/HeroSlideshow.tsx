@@ -8,7 +8,7 @@ import Link from 'next/link'
 const slides = [
   {
     id: 1,
-    image: 'https://source.unsplash.com/random/1920x1080/?auto,mechanic,workshop',
+    image: 'https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80',
     title: '20 JAAR ERVARING',
     subtitle: 'Uw auto in betrouwbare handen',
     cta: 'Maak een Afspraak',
@@ -16,7 +16,7 @@ const slides = [
   },
   {
     id: 2,
-    image: 'https://source.unsplash.com/random/1920x1080/?car,service',
+    image: 'https://images.unsplash.com/photo-1493238792000-8113da705763?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80',
     title: 'ONDERHOUD & REPARATIE',
     subtitle: 'Voor alle merken en modellen',
     cta: 'Onze Diensten',
@@ -24,7 +24,7 @@ const slides = [
   },
   {
     id: 3,
-    image: 'https://source.unsplash.com/random/1920x1080/?car,diagnosis',
+    image: 'https://images.unsplash.com/photo-1576435728678-68d0fbf94e91?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80',
     title: 'APK KEURING',
     subtitle: 'Snel en betrouwbaar',
     cta: 'Maak een Afspraak',
@@ -32,7 +32,7 @@ const slides = [
   },
   {
     id: 4,
-    image: 'https://source.unsplash.com/random/1920x1080/?mechanic,technician',
+    image: 'https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80',
     title: 'ERVAREN MONTEURS',
     subtitle: 'Met passie voor auto\'s',
     cta: 'Contact Opnemen',

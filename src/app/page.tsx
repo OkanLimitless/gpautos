@@ -13,19 +13,19 @@ const services = [
     id: 1,
     title: 'Onderhoud & Reparatie',
     description: 'Regulier onderhoud en reparaties voor alle automerken. Wij werken volgens fabrieksvoorschriften met behoud van garantie.',
-    icon: 'https://source.unsplash.com/random/800x600/?car,maintenance'
+    icon: 'https://images.unsplash.com/photo-1625047509248-ec889cbff17f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 2,
     title: 'VAG Groep Specialist',
     description: 'Wij zijn gespecialiseerd in Volkswagen, Audi, SEAT en Škoda. Onze expertise in VAG groep voertuigen zorgt voor de beste service voor uw auto.',
-    icon: 'https://source.unsplash.com/random/800x600/?volkswagen,audi'
+    icon: 'https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 3,
     title: 'Diagnose',
     description: 'Geavanceerde diagnose apparatuur voor het opsporen van storingen. Wij lossen complexe problemen snel en efficiënt op.',
-    icon: 'https://source.unsplash.com/random/800x600/?car,diagnosis'
+    icon: 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
   }
 ]
 
@@ -243,7 +243,7 @@ function APKSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <div className="relative h-[400px] md:h-[500px]">
             <SafariSafeImage
-              src="https://source.unsplash.com/random/800x600/?car,inspection"
+              src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
               alt="APK Keuring"
               className="h-full w-full rounded"
             />
@@ -295,7 +295,7 @@ function AboutSection() {
           <div className="hidden lg:block lg:w-1/2">
             <div className="relative h-[400px] w-full rounded overflow-hidden">
               <SafariSafeImage
-                src="https://source.unsplash.com/random/1000x800/?car,workshop"
+                src="https://images.unsplash.com/photo-1566379606295-2bf6c64ac47a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
                 alt="Over GP Auto's"
                 className="h-full w-full"
               />
@@ -323,7 +323,7 @@ function AboutSection() {
           <div className="lg:hidden w-full">
             <div className="relative h-[300px] w-full rounded overflow-hidden">
               <SafariSafeImage
-                src="https://source.unsplash.com/random/1000x800/?car,workshop"
+                src="https://images.unsplash.com/photo-1566379606295-2bf6c64ac47a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
                 alt="Over GP Auto's"
                 className="h-full w-full"
               />
@@ -338,16 +338,16 @@ function AboutSection() {
 // World of GP Gallery Section
 function GallerySection() {
   const galleryImages = [
-    "https://source.unsplash.com/random/600x600/?car,repair",
-    "https://source.unsplash.com/random/600x600/?mechanic",
-    "https://source.unsplash.com/random/600x600/?car,service",
-    "https://source.unsplash.com/random/600x600/?automobile,workshop",
-    "https://source.unsplash.com/random/600x600/?car,inspection",
-    "https://source.unsplash.com/random/600x600/?car,engine",
-    "https://source.unsplash.com/random/600x600/?garage",
-    "https://source.unsplash.com/random/600x600/?car,maintenance",
-    "https://source.unsplash.com/random/600x600/?auto,shop",
-    "https://source.unsplash.com/random/600x600/?car,diagnosis"
+    "https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+    "https://images.unsplash.com/photo-1550355291-bbee04a92027?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+    "https://images.unsplash.com/photo-1537984822441-cff330075342?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+    "https://images.unsplash.com/photo-1562141955-ac9c23a0593b?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+    "https://images.unsplash.com/photo-1504222490429-c075f91d6f22?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+    "https://images.unsplash.com/photo-1588636142475-a62d56692870?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+    "https://images.unsplash.com/photo-1593460354902-9dc70ed7f297?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+    "https://images.unsplash.com/photo-1599256872237-5dcc0fbe9668?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+    "https://images.unsplash.com/photo-1574197634772-1ff1578298e6?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+    "https://images.unsplash.com/photo-1610647752706-3bb12232b3e4?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"
   ];
 
   return (
