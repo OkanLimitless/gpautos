@@ -9,7 +9,7 @@ const slides = [
   {
     id: 1,
     image: 'https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80',
-    title: '20 JAAR ERVARING',
+    title: 'PROFESSIONELE AUTOSERVICE',
     subtitle: 'Uw auto in betrouwbare handen',
     cta: 'Maak een Afspraak',
     ctaLink: '/afspraak'
@@ -25,7 +25,7 @@ const slides = [
   {
     id: 3,
     image: 'https://images.unsplash.com/photo-1576435728678-68d0fbf94e91?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80',
-    title: 'APK KEURING',
+    title: 'DIAGNOSE & REPARATIE',
     subtitle: 'Snel en betrouwbaar',
     cta: 'Maak een Afspraak',
     ctaLink: '/afspraak'

@@ -236,7 +236,7 @@ function ServicesSection() {
 }
 
 // APK Section (replacing Limited Edition Toolbox)
-function APKSection() {
+function PremiumServiceSection() {
   return (
     <section className="py-16 white-section">
       <div className="container mx-auto px-4">
@@ -244,40 +244,40 @@ function APKSection() {
           <div className="relative h-[400px] md:h-[500px]">
             <SafariSafeImage
               src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-              alt="APK Keuring"
+              alt="Premium Service"
               className="h-full w-full rounded"
             />
           </div>
           <div className="p-6">
-            <h2 className="section-title-dark text-text-dark">APK Keuring</h2>
+            <h2 className="section-title-dark text-text-dark">Premium Service</h2>
             <p className="text-text-dark/70 mb-6">
-              Voorkom problemen met uw auto door regelmatige APK-keuringen. Bij GP Auto's bent u verzekerd van een grondig onderzoek naar de veiligheid en milieuvriendelijkheid van uw auto. Wij controleren alle onderdelen volgens de strenge RDW normen.
+              Bij GP Auto's bieden wij premium onderhoudsservice voor uw auto. Wij werken volgens fabrieksvoorschriften en zorgen ervoor dat uw auto in optimale conditie blijft. Onze ervaren monteurs staan klaar om u de beste service te bieden.
             </p>
             <ul className="space-y-3 mb-6 text-text-dark/70">
               <li className="flex items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-primary mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
-                <span>Officieel RDW erkend keuringsstation</span>
+                <span>Premium onderhoud voor alle merken</span>
               </li>
               <li className="flex items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-primary mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
-                <span>Kleine reparaties direct uitgevoerd</span>
+                <span>Specialisatie in VAG groep voertuigen</span>
               </li>
               <li className="flex items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-primary mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
-                <span>APK-afspraak binnen 24 uur mogelijk</span>
+                <span>Hoogwaardige onderdelen en materialen</span>
               </li>
             </ul>
             <Link 
               href="/afspraak" 
               className="btn bg-primary text-white hover:bg-red-700 shadow-sonic"
             >
-              APK Afspraak Maken
+              Service Afspraak Maken
             </Link>
           </div>
         </div>
@@ -311,7 +311,7 @@ function AboutSection() {
               Onze hoogopgeleide monteurs werken met de nieuwste diagnoseapparatuur en gereedschappen om uw auto in topconditie te houden. Wij staan voor kwaliteit, eerlijkheid en transparantie.
             </p>
             <p className="text-text-gray mb-8">
-              Of het nu gaat om regulier onderhoud, APK, reparaties of diagnose van complexe problemen - bij GP Auto's bent u aan het juiste adres.
+              Of het nu gaat om regulier onderhoud, reparaties, diagnose of tuning van complexe problemen - bij GP Auto's bent u aan het juiste adres.
             </p>
             
             <Link href="/#contact" className="btn btn-primary">
@@ -478,36 +478,39 @@ function ContactSection() {
   );
 }
 
+// Main page component
 export default function Home() {
   return (
     <Layout>
-      <ErrorBoundary FallbackComponent={ErrorFallback}>
-        <HeroSlideshow />
-      </ErrorBoundary>
-      
-      <ErrorBoundary FallbackComponent={ErrorFallback}>
-        <ThreePillarsSection />
-      </ErrorBoundary>
-      
-      <ErrorBoundary FallbackComponent={ErrorFallback}>
-        <ServicesSection />
-      </ErrorBoundary>
-      
-      <ErrorBoundary FallbackComponent={ErrorFallback}>
-        <APKSection />
-      </ErrorBoundary>
-      
-      <ErrorBoundary FallbackComponent={ErrorFallback}>
-        <AboutSection />
-      </ErrorBoundary>
-      
-      <ErrorBoundary FallbackComponent={ErrorFallback}>
-        <GallerySection />
-      </ErrorBoundary>
-      
-      <ErrorBoundary FallbackComponent={ErrorFallback}>
-        <ContactSection />
-      </ErrorBoundary>
+      <div className="pt-[88px] md:pt-[96px]"> {/* Adjusted for navigation height */}
+        <ErrorBoundary FallbackComponent={ErrorFallback}>
+          <HeroSlideshow />
+        </ErrorBoundary>
+        
+        <ErrorBoundary FallbackComponent={ErrorFallback}>
+          <ThreePillarsSection />
+        </ErrorBoundary>
+        
+        <ErrorBoundary FallbackComponent={ErrorFallback}>
+          <ServicesSection />
+        </ErrorBoundary>
+        
+        <ErrorBoundary FallbackComponent={ErrorFallback}>
+          <PremiumServiceSection />
+        </ErrorBoundary>
+        
+        <ErrorBoundary FallbackComponent={ErrorFallback}>
+          <AboutSection />
+        </ErrorBoundary>
+        
+        <ErrorBoundary FallbackComponent={ErrorFallback}>
+          <GallerySection />
+        </ErrorBoundary>
+        
+        <ErrorBoundary FallbackComponent={ErrorFallback}>
+          <ContactSection />
+        </ErrorBoundary>
+      </div>
     </Layout>
   )
 } 

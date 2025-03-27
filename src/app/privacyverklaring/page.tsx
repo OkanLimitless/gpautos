@@ -28,7 +28,7 @@ export default function PrivacyPolicy() {
               <li>Het inplannen en uitvoeren van onderhoud en reparaties</li>
               <li>Het versturen van afspraakbevestigingen</li>
               <li>Het bijhouden van uw onderhoudshistorie</li>
-              <li>Het versturen van relevante herinneringen (bijv. APK)</li>
+              <li>Het versturen van relevante herinneringen (bijv. onderhoudsbeurten)</li>
               <li>Facturatie en administratie</li>
             </ul>
 
