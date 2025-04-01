@@ -11,21 +11,46 @@ import { ErrorBoundary, FallbackProps } from 'react-error-boundary'
 const services = [
   {
     id: 1,
-    title: 'Onderhoud & Reparatie',
-    description: 'Professioneel onderhoud en reparaties voor alle automerken, met speciale expertise in VAG voertuigen. Wij werken volgens fabrieksvoorschriften met behoud van garantie.',
-    icon: 'https://images.unsplash.com/photo-1625047509248-ec889cbff17f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
+    title: 'VAG Specialist',
+    description: 'Gespecialiseerd in Volkswagen, Audi, SEAT en Škoda. Van DSG-versnellingsbak service tot motormanagement, distributieriem vervanging en specifieke VAG-diagnoses. Met originele diagnoseapparatuur.',
+    icon: 'https://images.unsplash.com/photo-1614200187524-dc4b892acf16?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 2,
-    title: 'VAG Groep Specialist',
-    description: 'Als specialist in Volkswagen, Audi, SEAT en Škoda beschikken wij over de nieuwste diagnoseapparatuur en technische kennis voor optimale service van uw VAG voertuig.',
-    icon: 'https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
+    title: 'Onderhoud & Reparatie',
+    description: 'Professioneel onderhoud volgens fabrieksvoorschriften. Expertise in VAG-specifieke systemen zoals DSG, quattro, en meer. Ook voor andere merken bieden wij vakkundige service.',
+    icon: 'https://images.unsplash.com/photo-1589147708291-c3be8a5d085c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 3,
-    title: 'Diagnose & Reparatie',
-    description: 'Geavanceerde diagnose apparatuur voor het opsporen van storingen. Wij lossen complexe problemen snel en efficiënt op, met transparante communicatie over de werkzaamheden.',
-    icon: 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
+    title: 'Diagnose & APK',
+    description: 'Geavanceerde VAG diagnoseapparatuur voor nauwkeurige storingsdiagnose. Officiële VCDS/VAGCOM diagnose, codering en aanpassingen. APK met vakkundig advies.',
+    icon: 'https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
+  }
+]
+
+// Testimonials data
+const testimonials = [
+  {
+    id: 1,
+    name: "Mark",
+    car: "Audi A4 B8",
+    text: "Uitstekende service voor mijn Audi. Ze hebben een hardnekkig probleem opgelost waar andere garages niet uitkwamen.",
+    rating: 5
+  },
+  {
+    id: 2,
+    name: "Lisa",
+    car: "VW Golf 7",
+    text: "Zeer tevreden met de DSG service. Duidelijke uitleg en scherpe prijs.",
+    rating: 5
+  },
+  {
+    id: 3,
+    name: "Peter",
+    car: "SEAT Leon FR",
+    text: "Vakkundige diagnose en reparatie. Prettige communicatie en geen verrassingen achteraf.",
+    rating: 5
   }
 ]
 
@@ -237,47 +262,46 @@ function ServicesSection() {
 
 // APK Section (replacing Limited Edition Toolbox)
 function PremiumServiceSection() {
+  const services = [
+    "Officiële VAG diagnoseapparatuur (VCDS/VAGCOM)",
+    "DSG versnellingsbak service en reparatie",
+    "Distributieriem vervanging volgens fabrieksvoorschrift",
+    "Codering en aanpassingen van ECU's",
+    "Uitgebreide storingsdiagnose",
+    "Onderhoud met behoud van fabrieksgarantie"
+  ];
+
   return (
     <section className="py-16 white-section">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <div className="relative h-[400px] md:h-[500px]">
             <SafariSafeImage
-              src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-              alt="Premium Service"
-              className="h-full w-full rounded"
+              src="https://images.unsplash.com/photo-1614200187524-dc4b892acf16?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+              alt="VAG Specialist Service"
+              className="h-full w-full rounded object-cover"
             />
           </div>
           <div className="p-6">
-            <h2 className="section-title-dark text-text-dark">Premium Service</h2>
+            <h2 className="section-title-dark text-text-dark">VAG Specialist</h2>
             <p className="text-text-dark/70 mb-6">
-              Bij GP Auto's bieden wij premium onderhoudsservice voor uw auto. Wij werken volgens fabrieksvoorschriften en zorgen ervoor dat uw auto in optimale conditie blijft. Onze ervaren monteurs staan klaar om u de beste service te bieden.
+              Als specialisten in Volkswagen, Audi, SEAT en Škoda bieden wij professionele service met originele diagnoseapparatuur. Onze expertise in VAG voertuigen zorgt voor efficiënte en accurate service.
             </p>
-            <ul className="space-y-3 mb-6 text-text-dark/70">
-              <li className="flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-primary mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-                <span>Premium onderhoud voor alle merken</span>
-              </li>
-              <li className="flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-primary mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-                <span>Specialisatie in VAG groep voertuigen</span>
-              </li>
-              <li className="flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-primary mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-                <span>Hoogwaardige onderdelen en materialen</span>
-              </li>
+            <ul className="space-y-3 mb-6">
+              {services.map((service, index) => (
+                <li key={index} className="flex items-center text-text-dark/70">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-primary mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>{service}</span>
+                </li>
+              ))}
             </ul>
             <Link 
               href="/afspraak" 
               className="btn bg-primary text-white hover:bg-red-700 shadow-sonic"
             >
-              Service Afspraak Maken
+              Plan Uw Afspraak
             </Link>
           </div>
         </div>
@@ -337,62 +361,116 @@ function AboutSection() {
 
 // Workshop section
 function WorkshopSection() {
+  const equipment = [
+    {
+      title: "VAG Diagnoseapparatuur",
+      description: "Officiële VCDS/VAGCOM diagnose tools voor alle VAG modellen"
+    },
+    {
+      title: "DSG Specialist",
+      description: "Specifieke apparatuur voor DSG versnellingsbak service"
+    },
+    {
+      title: "Moderne Hefbruggen",
+      description: "Veilige en efficiënte service van uw voertuig"
+    },
+    {
+      title: "Uitlijnapparatuur",
+      description: "Nauwkeurige wieluitlijning voor optimale wegligging"
+    }
+  ];
+
   return (
     <section className="py-16 white-section">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="section-title-dark">Onze Werkplaats</h2>
           <p className="section-subtitle-dark">
-            Een moderne werkplaats uitgerust met de nieuwste apparatuur voor optimale service
+            Uitgerust met de modernste VAG-specifieke diagnoseapparatuur voor optimale service
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {/* Workshop Image 1 */}
           <div className="relative h-[300px] rounded overflow-hidden">
             <SafariSafeImage
-              src="https://images.unsplash.com/photo-1566379606295-2bf6c64ac47a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-              alt="Moderne Werkplaats"
+              src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+              alt="VAG Diagnoseapparatuur"
               className="h-full w-full object-cover"
             />
+            <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-75 text-white p-4">
+              <h3 className="font-bold">VAG Diagnose</h3>
+            </div>
           </div>
 
           {/* Workshop Image 2 */}
           <div className="relative h-[300px] rounded overflow-hidden">
             <SafariSafeImage
-              src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-              alt="Diagnose Apparatuur"
+              src="https://images.unsplash.com/photo-1487754160820-0dcd3c16c6fc?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+              alt="DSG Service"
               className="h-full w-full object-cover"
             />
+            <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-75 text-white p-4">
+              <h3 className="font-bold">DSG Specialist</h3>
+            </div>
           </div>
 
           {/* Workshop Image 3 */}
           <div className="relative h-[300px] rounded overflow-hidden">
             <SafariSafeImage
-              src="https://images.unsplash.com/photo-1493238792000-8113da705763?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-              alt="Professionele Gereedschappen"
+              src="https://images.unsplash.com/photo-1487754161015-7cd9c0dc1c0d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+              alt="Moderne Werkplaats"
               className="h-full w-full object-cover"
             />
+            <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-75 text-white p-4">
+              <h3 className="font-bold">Moderne Werkplaats</h3>
+            </div>
           </div>
         </div>
 
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="text-center">
-            <div className="text-4xl font-bold text-primary mb-2">100%</div>
-            <p className="text-text-dark/70">Professionele Service</p>
-          </div>
-          <div className="text-center">
-            <div className="text-4xl font-bold text-primary mb-2">24/7</div>
-            <p className="text-text-dark/70">Pechhulp Service</p>
-          </div>
-          <div className="text-center">
-            <div className="text-4xl font-bold text-primary mb-2">100%</div>
-            <p className="text-text-dark/70">Garantie op Reparaties</p>
-          </div>
-          <div className="text-center">
-            <div className="text-4xl font-bold text-primary mb-2">100%</div>
-            <p className="text-text-dark/70">Klanttevredenheid</p>
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {equipment.map((item, index) => (
+            <div key={index} className="bg-light p-6 rounded shadow-lg">
+              <h3 className="text-lg font-bold text-text-dark mb-2">{item.title}</h3>
+              <p className="text-text-dark/70">{item.description}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-12 text-center">
+          <Link 
+            href="/afspraak" 
+            className="btn btn-primary"
+          >
+            Plan Uw Afspraak
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// Testimonials section
+function TestimonialsSection() {
+  return (
+    <section className="py-16 dark-section">
+      <div className="container mx-auto px-4">
+        <h2 className="section-title text-white text-center mb-12">Wat Onze Klanten Zeggen</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {testimonials.map((testimonial) => (
+            <div key={testimonial.id} className="card">
+              <div className="flex items-center mb-4">
+                {[...Array(testimonial.rating)].map((_, i) => (
+                  <svg key={i} className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                ))}
+              </div>
+              <p className="text-text-gray mb-4">"{testimonial.text}"</p>
+              <div className="text-white font-medium">{testimonial.name}</div>
+              <div className="text-text-gray text-sm">{testimonial.car}</div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
@@ -424,8 +502,8 @@ function ContactSection() {
                 </svg>
                 <div>
                   <p className="text-white font-medium">Adres</p>
-                  <p className="text-text-gray">Examplestraat 123</p>
-                  <p className="text-text-gray">1234 AB Amsterdam</p>
+                  <p className="text-text-gray">Galileïstraat 5</p>
+                  <p className="text-text-gray">7131PE Lichtenvoorde</p>
                 </div>
               </div>
               
@@ -478,7 +556,7 @@ function ContactSection() {
               </div>
               <div className="flex justify-between">
                 <span className="text-text-gray">Zaterdag</span>
-                <span className="text-white">Gesloten</span>
+                <span className="text-white">Op afspraak</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-text-gray">Zondag</span>
@@ -487,17 +565,17 @@ function ContactSection() {
             </div>
           </div>
           
-          {/* Quick Contact */}
-          <div className="card flex flex-col">
+          {/* Quick Contact Form */}
+          <div className="card">
             <h3 className="text-xl font-bold text-white uppercase mb-4 tracking-wide">Snel Contact</h3>
-            <p className="text-text-gray mb-6">
-              Vul het formulier in voor een snelle reactie of maak direct een afspraak.
+            <p className="text-text-gray mb-4">
+              Vul uw gegevens in en we nemen zo snel mogelijk contact met u op.
             </p>
             <Link 
-              href="/afspraak" 
-              className="btn btn-primary mt-auto"
+              href="/afspraak"
+              className="btn btn-primary w-full"
             >
-              Maak een Afspraak
+              Afspraak Maken
             </Link>
           </div>
         </div>
@@ -510,7 +588,7 @@ function ContactSection() {
 export default function Home() {
   return (
     <Layout>
-      <div className="pt-[88px] md:pt-[96px]"> {/* Adjusted for navigation height */}
+      <div className="pt-[88px] md:pt-[96px]">
         <ErrorBoundary FallbackComponent={ErrorFallback}>
           <HeroSection />
         </ErrorBoundary>
@@ -533,6 +611,10 @@ export default function Home() {
         
         <ErrorBoundary FallbackComponent={ErrorFallback}>
           <WorkshopSection />
+        </ErrorBoundary>
+
+        <ErrorBoundary FallbackComponent={ErrorFallback}>
+          <TestimonialsSection />
         </ErrorBoundary>
         
         <ErrorBoundary FallbackComponent={ErrorFallback}>
