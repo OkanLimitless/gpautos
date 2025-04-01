@@ -21,7 +21,7 @@ export default function Navigation() {
     <header className="fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300">
       {/* Top bar */}
       <div className="bg-primary text-white px-4 py-2 text-center text-sm font-medium">
-        <p>VAKKUNDIGE AUTOSERVICE VOOR ALLE MERKEN</p>
+        <p>PROFESSIONELE AUTOSERVICE IN LICHTENVOORDE</p>
       </div>
       
       {/* Main navigation */}
@@ -46,7 +46,7 @@ export default function Navigation() {
               href="/#diensten" 
               className="text-text-dark font-medium hover:text-primary transition-colors"
             >
-              Onze Diensten
+              Diensten
             </Link>
             <Link 
               href="/#about-section" 

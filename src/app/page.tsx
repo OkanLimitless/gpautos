@@ -1,7 +1,7 @@
 'use client'
 
 import Layout from '@/components/Layout'
-import HeroSlideshow from '@/components/HeroSlideshow'
+import HeroSection from '@/components/HeroSection'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
@@ -12,19 +12,19 @@ const services = [
   {
     id: 1,
     title: 'Onderhoud & Reparatie',
-    description: 'Regulier onderhoud en reparaties voor alle automerken. Wij werken volgens fabrieksvoorschriften met behoud van garantie.',
+    description: 'Professioneel onderhoud en reparaties voor alle automerken, met speciale expertise in VAG voertuigen. Wij werken volgens fabrieksvoorschriften met behoud van garantie.',
     icon: 'https://images.unsplash.com/photo-1625047509248-ec889cbff17f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 2,
     title: 'VAG Groep Specialist',
-    description: 'Wij zijn gespecialiseerd in Volkswagen, Audi, SEAT en Škoda. Onze expertise in VAG groep voertuigen zorgt voor de beste service voor uw auto.',
+    description: 'Als specialist in Volkswagen, Audi, SEAT en Škoda beschikken wij over de nieuwste diagnoseapparatuur en technische kennis voor optimale service van uw VAG voertuig.',
     icon: 'https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 3,
-    title: 'Diagnose',
-    description: 'Geavanceerde diagnose apparatuur voor het opsporen van storingen. Wij lossen complexe problemen snel en efficiënt op.',
+    title: 'Diagnose & Reparatie',
+    description: 'Geavanceerde diagnose apparatuur voor het opsporen van storingen. Wij lossen complexe problemen snel en efficiënt op, met transparante communicatie over de werkzaamheden.',
     icon: 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
   }
 ]
@@ -305,13 +305,13 @@ function AboutSection() {
           <div className="lg:w-1/2">
             <h2 className="section-title text-white">Over GP Auto's</h2>
             <p className="text-text-gray mb-6">
-              GP Auto's is al meer dan 20 jaar uw betrouwbare partner voor autoservice en onderhoud in de regio. Als specialist in de VAG groep (Volkswagen, Audi, SEAT en Škoda) bieden wij expertise en vakmanschap voor uw voertuig.
+              Bij GP Auto's combineren wij onze passie voor auto's met professionele expertise. Als specialist in VAG voertuigen bieden wij hoogwaardige service en onderhoud, terwijl we ook andere merken van harte welkom heten.
             </p>
             <p className="text-text-gray mb-6">
-              Onze hoogopgeleide monteurs werken met de nieuwste diagnoseapparatuur en gereedschappen om uw auto in topconditie te houden. Wij staan voor kwaliteit, eerlijkheid en transparantie.
+              Onze moderne werkplaats is uitgerust met de nieuwste diagnoseapparatuur en gereedschappen. Met onze technische kennis en aandacht voor detail zorgen wij ervoor dat uw auto in optimale conditie blijft.
             </p>
             <p className="text-text-gray mb-8">
-              Of het nu gaat om regulier onderhoud, reparaties, diagnose of tuning van complexe problemen - bij GP Auto's bent u aan het juiste adres.
+              Of het nu gaat om regulier onderhoud, reparaties, diagnose of het oplossen van complexe problemen - bij GP Auto's bent u aan het juiste adres voor een eerlijke en professionele service.
             </p>
             
             <Link href="/#contact" className="btn btn-primary">
@@ -335,37 +335,65 @@ function AboutSection() {
   );
 }
 
-// World of GP Gallery Section
-function GallerySection() {
-  const galleryImages = [
-    "https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
-    "https://images.unsplash.com/photo-1550355291-bbee04a92027?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
-    "https://images.unsplash.com/photo-1537984822441-cff330075342?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
-    "https://images.unsplash.com/photo-1562141955-ac9c23a0593b?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
-    "https://images.unsplash.com/photo-1504222490429-c075f91d6f22?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
-    "https://images.unsplash.com/photo-1588636142475-a62d56692870?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
-    "https://images.unsplash.com/photo-1593460354902-9dc70ed7f297?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
-    "https://images.unsplash.com/photo-1599256872237-5dcc0fbe9668?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
-    "https://images.unsplash.com/photo-1574197634772-1ff1578298e6?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
-    "https://images.unsplash.com/photo-1610647752706-3bb12232b3e4?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"
-  ];
-
+// Workshop section
+function WorkshopSection() {
   return (
     <section className="py-16 white-section">
-      <div className="container mx-auto px-4 text-center mb-10">
-        <h2 className="section-title-dark">Impressies van GP Auto's</h2>
-      </div>
-      
-      <div className="grid-gallery mx-4">
-        {galleryImages.map((image, i) => (
-          <div key={i} className="gallery-item">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-12">
+          <h2 className="section-title-dark">Onze Werkplaats</h2>
+          <p className="section-subtitle-dark">
+            Een moderne werkplaats uitgerust met de nieuwste apparatuur voor optimale service
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* Workshop Image 1 */}
+          <div className="relative h-[300px] rounded overflow-hidden">
             <SafariSafeImage
-              src={image}
-              alt={`GP Auto's Workshop ${i+1}`}
-              className="w-full h-full hover:opacity-80 transition-opacity duration-300"
+              src="https://images.unsplash.com/photo-1566379606295-2bf6c64ac47a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+              alt="Moderne Werkplaats"
+              className="h-full w-full object-cover"
             />
           </div>
-        ))}
+
+          {/* Workshop Image 2 */}
+          <div className="relative h-[300px] rounded overflow-hidden">
+            <SafariSafeImage
+              src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+              alt="Diagnose Apparatuur"
+              className="h-full w-full object-cover"
+            />
+          </div>
+
+          {/* Workshop Image 3 */}
+          <div className="relative h-[300px] rounded overflow-hidden">
+            <SafariSafeImage
+              src="https://images.unsplash.com/photo-1493238792000-8113da705763?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+              alt="Professionele Gereedschappen"
+              className="h-full w-full object-cover"
+            />
+          </div>
+        </div>
+
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="text-center">
+            <div className="text-4xl font-bold text-primary mb-2">100%</div>
+            <p className="text-text-dark/70">Professionele Service</p>
+          </div>
+          <div className="text-center">
+            <div className="text-4xl font-bold text-primary mb-2">24/7</div>
+            <p className="text-text-dark/70">Pechhulp Service</p>
+          </div>
+          <div className="text-center">
+            <div className="text-4xl font-bold text-primary mb-2">100%</div>
+            <p className="text-text-dark/70">Garantie op Reparaties</p>
+          </div>
+          <div className="text-center">
+            <div className="text-4xl font-bold text-primary mb-2">100%</div>
+            <p className="text-text-dark/70">Klanttevredenheid</p>
+          </div>
+        </div>
       </div>
     </section>
   );
@@ -484,7 +512,7 @@ export default function Home() {
     <Layout>
       <div className="pt-[88px] md:pt-[96px]"> {/* Adjusted for navigation height */}
         <ErrorBoundary FallbackComponent={ErrorFallback}>
-          <HeroSlideshow />
+          <HeroSection />
         </ErrorBoundary>
         
         <ErrorBoundary FallbackComponent={ErrorFallback}>
@@ -504,7 +532,7 @@ export default function Home() {
         </ErrorBoundary>
         
         <ErrorBoundary FallbackComponent={ErrorFallback}>
-          <GallerySection />
+          <WorkshopSection />
         </ErrorBoundary>
         
         <ErrorBoundary FallbackComponent={ErrorFallback}>
