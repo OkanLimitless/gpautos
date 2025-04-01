@@ -13,19 +13,19 @@ const services = [
     id: 1,
     title: 'VAG Specialist',
     description: 'Gespecialiseerd in Volkswagen, Audi, SEAT en Škoda. Van DSG-versnellingsbak service tot motormanagement, distributieriem vervanging en specifieke VAG-diagnoses. Met originele diagnoseapparatuur.',
-    icon: 'https://images.unsplash.com/photo-1614200187524-dc4b892acf16?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
+    icon: 'https://images.unsplash.com/photo-1630019209880-6b53557d0a8b?q=80&w=3242&auto=format&fit=crop'
   },
   {
     id: 2,
     title: 'Onderhoud & Reparatie',
     description: 'Professioneel onderhoud volgens fabrieksvoorschriften. Expertise in VAG-specifieke systemen zoals DSG, quattro, en meer. Ook voor andere merken bieden wij vakkundige service.',
-    icon: 'https://images.unsplash.com/photo-1589147708291-c3be8a5d085c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
+    icon: 'https://images.unsplash.com/photo-1599474151975-1f978922fa02?q=80&w=3270&auto=format&fit=crop'
   },
   {
     id: 3,
-    title: 'Diagnose & APK',
-    description: 'Geavanceerde VAG diagnoseapparatuur voor nauwkeurige storingsdiagnose. Officiële VCDS/VAGCOM diagnose, codering en aanpassingen. APK met vakkundig advies.',
-    icon: 'https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
+    title: 'Diagnose',
+    description: 'Geavanceerde VAG diagnoseapparatuur voor nauwkeurige storingsdiagnose. Officiële VCDS/VAGCOM diagnose, codering en aanpassingen voor optimale prestaties.',
+    icon: 'https://plus.unsplash.com/premium_photo-1658526934242-aa541776ca49?q=80&w=3272&auto=format&fit=crop'
   }
 ]
 
@@ -260,56 +260,6 @@ function ServicesSection() {
   );
 }
 
-// APK Section (replacing Limited Edition Toolbox)
-function PremiumServiceSection() {
-  const services = [
-    "Officiële VAG diagnoseapparatuur (VCDS/VAGCOM)",
-    "DSG versnellingsbak service en reparatie",
-    "Distributieriem vervanging volgens fabrieksvoorschrift",
-    "Codering en aanpassingen van ECU's",
-    "Uitgebreide storingsdiagnose",
-    "Onderhoud met behoud van fabrieksgarantie"
-  ];
-
-  return (
-    <section className="py-16 white-section">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-          <div className="relative h-[400px] md:h-[500px]">
-            <SafariSafeImage
-              src="https://images.unsplash.com/photo-1614200187524-dc4b892acf16?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-              alt="VAG Specialist Service"
-              className="h-full w-full rounded object-cover"
-            />
-          </div>
-          <div className="p-6">
-            <h2 className="section-title-dark text-text-dark">VAG Specialist</h2>
-            <p className="text-text-dark/70 mb-6">
-              Als specialisten in Volkswagen, Audi, SEAT en Škoda bieden wij professionele service met originele diagnoseapparatuur. Onze expertise in VAG voertuigen zorgt voor efficiënte en accurate service.
-            </p>
-            <ul className="space-y-3 mb-6">
-              {services.map((service, index) => (
-                <li key={index} className="flex items-center text-text-dark/70">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-primary mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span>{service}</span>
-                </li>
-              ))}
-            </ul>
-            <Link 
-              href="/afspraak" 
-              className="btn bg-primary text-white hover:bg-red-700 shadow-sonic"
-            >
-              Plan Uw Afspraak
-            </Link>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 // About section with Safari-safe image
 function AboutSection() {
   return (
@@ -319,7 +269,7 @@ function AboutSection() {
           <div className="hidden lg:block lg:w-1/2">
             <div className="relative h-[400px] w-full rounded overflow-hidden">
               <SafariSafeImage
-                src="https://images.unsplash.com/photo-1566379606295-2bf6c64ac47a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
+                src="https://images.unsplash.com/photo-1627612839512-7f7d01226ec5?q=80&w=3387&auto=format&fit=crop"
                 alt="Over GP Auto's"
                 className="h-full w-full"
               />
@@ -347,11 +297,61 @@ function AboutSection() {
           <div className="lg:hidden w-full">
             <div className="relative h-[300px] w-full rounded overflow-hidden">
               <SafariSafeImage
-                src="https://images.unsplash.com/photo-1566379606295-2bf6c64ac47a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
+                src="https://images.unsplash.com/photo-1627612839512-7f7d01226ec5?q=80&w=3387&auto=format&fit=crop"
                 alt="Over GP Auto's"
                 className="h-full w-full"
               />
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// VAG Specialist Section
+function PremiumServiceSection() {
+  const services = [
+    "Officiële VAG diagnoseapparatuur (VCDS/VAGCOM)",
+    "DSG versnellingsbak service en reparatie",
+    "Distributieriem vervanging volgens fabrieksvoorschrift",
+    "Codering en aanpassingen van ECU's",
+    "Uitgebreide storingsdiagnose",
+    "Onderhoud met behoud van fabrieksgarantie"
+  ];
+
+  return (
+    <section className="py-16 white-section">
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <div className="relative h-[400px] md:h-[500px]">
+            <SafariSafeImage
+              src="https://images.unsplash.com/photo-1555652736-e92021d28a10?q=80&w=3270&auto=format&fit=crop"
+              alt="VAG Specialist Service"
+              className="h-full w-full rounded object-cover"
+            />
+          </div>
+          <div className="p-6">
+            <h2 className="section-title-dark text-text-dark">VAG Specialist</h2>
+            <p className="text-text-dark/70 mb-6">
+              Als specialisten in Volkswagen, Audi, SEAT en Škoda bieden wij professionele service met originele diagnoseapparatuur. Onze expertise in VAG voertuigen zorgt voor efficiënte en accurate service.
+            </p>
+            <ul className="space-y-3 mb-6">
+              {services.map((service, index) => (
+                <li key={index} className="flex items-center text-text-dark/70">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-primary mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>{service}</span>
+                </li>
+              ))}
+            </ul>
+            <Link 
+              href="/afspraak" 
+              className="btn bg-primary text-white hover:bg-red-700 shadow-sonic"
+            >
+              Plan Uw Afspraak
+            </Link>
           </div>
         </div>
       </div>
@@ -394,7 +394,7 @@ function WorkshopSection() {
           {/* Workshop Image 1 */}
           <div className="relative h-[300px] rounded overflow-hidden">
             <SafariSafeImage
-              src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+              src="https://images.unsplash.com/photo-1727893372771-b4ccae9b9f0b?q=80&w=3270&auto=format&fit=crop"
               alt="VAG Diagnoseapparatuur"
               className="h-full w-full object-cover"
             />
@@ -406,7 +406,7 @@ function WorkshopSection() {
           {/* Workshop Image 2 */}
           <div className="relative h-[300px] rounded overflow-hidden">
             <SafariSafeImage
-              src="https://images.unsplash.com/photo-1487754160820-0dcd3c16c6fc?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+              src="https://images.unsplash.com/photo-1679251884095-d6ad5095b8ed?q=80&w=3270&auto=format&fit=crop"
               alt="DSG Service"
               className="h-full w-full object-cover"
             />
@@ -418,7 +418,7 @@ function WorkshopSection() {
           {/* Workshop Image 3 */}
           <div className="relative h-[300px] rounded overflow-hidden">
             <SafariSafeImage
-              src="https://images.unsplash.com/photo-1487754161015-7cd9c0dc1c0d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+              src="https://images.unsplash.com/photo-1619505372149-07875c35b313?q=80&w=3387&auto=format&fit=crop"
               alt="Moderne Werkplaats"
               className="h-full w-full object-cover"
             />
