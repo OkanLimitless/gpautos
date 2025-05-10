@@ -2,8 +2,10 @@
 
 import Navigation from './Navigation'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 export default function Layout({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
   return (
     <div className="min-h-screen flex flex-col">
       <Navigation />
@@ -13,24 +15,28 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <footer className="py-10 black-section border-t border-accent">
         <div className="container">
           <div className="grid md:grid-cols-3 gap-8 mb-8">
-            <div>
-              <h3 className="text-white font-bold text-xl uppercase mb-4 tracking-wide">Contact</h3>
-              <div className="space-y-3 text-text-gray">
-                <p>Galileïstraat 5</p>
-                <p>7131PE Lichtenvoorde</p>
-                <p>Tel Oktay: <a href="tel:+31615530641" className="text-primary hover:text-red-400 transition-colors">+31 (0)6 15530641</a></p>
-                <p>Tel Joost: <a href="tel:+31622995398" className="text-primary hover:text-red-400 transition-colors">+31 (0)6 22995398</a></p>
-                <p>Email: <a href="mailto:info@gpautos.nl" className="text-primary hover:text-red-400 transition-colors">info@gpautos.nl</a></p>
-              </div>
-            </div>
-            <div>
-              <h3 className="text-white font-bold text-xl uppercase mb-4 tracking-wide">Openingstijden</h3>
-              <div className="space-y-3 text-text-gray">
-                <p>Maandag - Vrijdag: Op afspraak</p>
-                <p>Zaterdag: Op afspraak</p>
-                <p>Zondag: Op afspraak</p>
-              </div>
-            </div>
+            {pathname !== '/' && (
+              <>
+                <div>
+                  <h3 className="text-white font-bold text-xl uppercase mb-4 tracking-wide">Contact</h3>
+                  <div className="space-y-3 text-text-gray">
+                    <p>Galileïstraat 5</p>
+                    <p>7131PE Lichtenvoorde</p>
+                    <p>Tel Oktay: <a href="tel:+31615530641" className="text-primary hover:text-red-400 transition-colors">+31 (0)6 15530641</a></p>
+                    <p>Tel Joost: <a href="tel:+31622995398" className="text-primary hover:text-red-400 transition-colors">+31 (0)6 22995398</a></p>
+                    <p>Email: <a href="mailto:info@gpautos.nl" className="text-primary hover:text-red-400 transition-colors">info@gpautos.nl</a></p>
+                  </div>
+                </div>
+                <div>
+                  <h3 className="text-white font-bold text-xl uppercase mb-4 tracking-wide">Openingstijden</h3>
+                  <div className="space-y-3 text-text-gray">
+                    <p>Maandag - Vrijdag: Op afspraak</p>
+                    <p>Zaterdag: Op afspraak</p>
+                    <p>Zondag: Op afspraak</p>
+                  </div>
+                </div>
+              </>
+            )}
             <div>
               <h3 className="text-white font-bold text-xl uppercase mb-4 tracking-wide">Links</h3>
               <ul className="space-y-3 text-text-gray">
