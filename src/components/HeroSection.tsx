@@ -22,6 +22,19 @@ export default function HeroSection() {
       <div className="relative h-full flex items-center">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl">
+            {/* Summer Check Promo */}
+            <div className="mb-8 p-6 rounded-lg bg-white bg-opacity-90 shadow-sonic border-l-8 border-primary">
+              <h2 className="text-3xl md:text-4xl font-extrabold text-primary mb-2 uppercase tracking-wider">GRATIS ZOMERCHECK</h2>
+              <p className="text-lg text-text-dark font-semibold mb-1">Kom langs voor een gratis zomercheck!</p>
+              <p className="text-base text-text-dark mb-2">Voorkom verrassingen onderweg – we controleren je banden, vloeistoffen, verlichting en meer.</p>
+              <p className="text-sm text-text-dark mb-4 italic">Deze actie is de gehele maand juni geldig!</p>
+              <Link 
+                href="/afspraak" 
+                className="inline-block bg-primary hover:bg-red-700 text-white font-bold py-2 px-6 rounded transition-colors uppercase tracking-wide shadow-sonic"
+              >
+                Maak direct een afspraak
+              </Link>
+            </div>
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 uppercase tracking-wider">
               Professionele Autoservice
             </h1>
