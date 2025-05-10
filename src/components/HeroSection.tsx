@@ -35,27 +35,6 @@ export default function HeroSection() {
                 Maak direct een afspraak
               </Link>
             </div>
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 uppercase tracking-wider">
-              Professionele Autoservice
-            </h1>
-            <p className="text-lg md:text-xl lg:text-2xl text-gray-200 mb-8">
-              Specialist in VAG voertuigen met expertise in diagnose, onderhoud en reparatie. 
-              Uw auto in betrouwbare handen.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link 
-                href="/afspraak" 
-                className="bg-primary hover:bg-red-700 text-white font-bold py-3 px-8 rounded transition-colors uppercase tracking-wide shadow-sonic text-center"
-              >
-                Maak een Afspraak
-              </Link>
-              <Link 
-                href="/#diensten" 
-                className="bg-white hover:bg-gray-100 text-text-dark font-bold py-3 px-8 rounded transition-colors uppercase tracking-wide text-center"
-              >
-                Onze Diensten
-              </Link>
-            </div>
           </div>
         </div>
       </div>
