@@ -539,23 +539,23 @@ function ContactSection() {
             <div className="space-y-2">
               <div className="flex justify-between">
                 <span className="text-text-gray">Maandag</span>
-                <span className="text-white">08:00 - 17:30</span>
+                <span className="text-white">Op afspraak</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-text-gray">Dinsdag</span>
-                <span className="text-white">08:00 - 17:30</span>
+                <span className="text-white">Op afspraak</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-text-gray">Woensdag</span>
-                <span className="text-white">08:00 - 17:30</span>
+                <span className="text-white">Op afspraak</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-text-gray">Donderdag</span>
-                <span className="text-white">08:00 - 17:30</span>
+                <span className="text-white">Op afspraak</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-text-gray">Vrijdag</span>
-                <span className="text-white">08:00 - 17:30</span>
+                <span className="text-white">Op afspraak</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-text-gray">Zaterdag</span>
@@ -563,7 +563,7 @@ function ContactSection() {
               </div>
               <div className="flex justify-between">
                 <span className="text-text-gray">Zondag</span>
-                <span className="text-white">Gesloten</span>
+                <span className="text-white">Op afspraak</span>
               </div>
             </div>
           </div>
