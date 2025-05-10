@@ -26,9 +26,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             <div>
               <h3 className="text-white font-bold text-xl uppercase mb-4 tracking-wide">Openingstijden</h3>
               <div className="space-y-3 text-text-gray">
-                <p>Maandag - Vrijdag: 08:00 - 17:30</p>
+                <p>Maandag - Vrijdag: Op afspraak</p>
                 <p>Zaterdag: Op afspraak</p>
-                <p>Zondag: Gesloten</p>
+                <p>Zondag: Op afspraak</p>
               </div>
             </div>
             <div>
