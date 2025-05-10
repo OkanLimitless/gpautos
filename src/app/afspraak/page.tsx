@@ -100,7 +100,7 @@ export default function AppointmentPage() {
 
   return (
     <Layout>
-      <div className="pt-20 min-h-screen white-section">
+      <div className="pt-32 min-h-screen white-section">
         <div className="container py-12">
           <div className="max-w-3xl mx-auto">
             <h1 className="section-title-dark text-center mb-8">Maak een Afspraak</h1>
