@@ -34,9 +34,9 @@ export default function Navigation() {
             <Image 
               src="/logo.png" 
               alt="GP Auto's" 
-              width={120} 
-              height={50} 
-              className="h-12 w-auto"
+              width={200} 
+              height={80} 
+              className="h-20 w-auto"
             />
           </Link>
           
