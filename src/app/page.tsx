@@ -12,7 +12,7 @@ const services = [
   {
     id: 1,
     title: 'VAG Specialist',
-    description: 'Gespecialiseerd in Volkswagen, Audi, SEAT en Škoda. Van DSG-versnellingsbak service tot motormanagement, distributieriem vervanging en specifieke VAG-diagnoses. Met originele diagnoseapparatuur.',
+    description: 'Gespecialiseerd in Volkswagen, Audi, SEAT en Škoda. Van DSG-versnellingsbak service tot motormanagement, distributieriem vervanging en specifieke VAG-diagnoses. Met onze diagnoseapparatuur.',
     icon: 'https://images.unsplash.com/photo-1630019209880-6b53557d0a8b?q=80&w=3242&auto=format&fit=crop'
   },
   {
@@ -24,7 +24,7 @@ const services = [
   {
     id: 3,
     title: 'Diagnose',
-    description: 'Geavanceerde VAG diagnoseapparatuur voor nauwkeurige storingsdiagnose. Officiële VCDS/VAGCOM diagnose, codering en aanpassingen voor optimale prestaties.',
+    description: 'Uitgebreide diagnose van uw auto met moderne apparatuur. Snel en nauwkeurig storingen opsporen en oplossen voor optimale prestaties.',
     icon: 'https://plus.unsplash.com/premium_photo-1658526934242-aa541776ca49?q=80&w=3272&auto=format&fit=crop'
   }
 ]
@@ -282,7 +282,7 @@ function AboutSection() {
               Bij GP Auto's combineren wij onze passie voor auto's met professionele expertise. Als specialist in VAG voertuigen bieden wij hoogwaardige service en onderhoud, terwijl we ook andere merken van harte welkom heten.
             </p>
             <p className="text-text-gray mb-6">
-              Onze moderne werkplaats is uitgerust met de nieuwste diagnoseapparatuur en gereedschappen. Met onze technische kennis en aandacht voor detail zorgen wij ervoor dat uw auto in optimale conditie blijft.
+              Onze werkplaats is uitgerust met de nieuwste diagnoseapparatuur en gereedschappen. Met onze technische kennis en aandacht voor detail zorgen wij ervoor dat uw auto in optimale conditie blijft.
             </p>
             <p className="text-text-gray mb-8">
               Of het nu gaat om regulier onderhoud, reparaties, diagnose of het oplossen van complexe problemen - bij GP Auto's bent u aan het juiste adres voor een eerlijke en professionele service.
@@ -312,7 +312,7 @@ function AboutSection() {
 // VAG Specialist Section
 function PremiumServiceSection() {
   const services = [
-    "Officiële VAG diagnoseapparatuur (VCDS/VAGCOM)",
+    "Moderne diagnoseapparatuur",
     "DSG versnellingsbak service en reparatie",
     "Distributieriem vervanging volgens fabrieksvoorschrift",
     "Codering en aanpassingen van ECU's",
@@ -513,7 +513,10 @@ function ContactSection() {
                 </svg>
                 <div>
                   <p className="text-white font-medium">Telefoon</p>
-                  <a href="tel:+31612345678" className="text-text-gray hover:text-primary transition-colors">+31 6 12345678</a>
+                  <div>
+                    <span className="block">Oktay: <a href="tel:+31615530641" className="text-text-gray hover:text-primary transition-colors">+31 6 15530641</a></span>
+                    <span className="block">Joost: <a href="tel:+31622995398" className="text-text-gray hover:text-primary transition-colors">+31 6 22995398</a></span>
+                  </div>
                 </div>
               </div>
               

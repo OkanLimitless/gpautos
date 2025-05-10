@@ -147,14 +147,14 @@ export default function AppointmentPage() {
                   
                   <div>
                     <label className="block text-base font-medium text-white mb-2 uppercase tracking-wide">
-                      Meldcode (optioneel)
+                      Chassisnummer
                     </label>
                     <input
                       type="text"
-                      placeholder="Laatste 4 cijfers van het chassisnummer"
+                      placeholder="Volledig chassisnummer"
                       className="mt-1 block w-full rounded bg-black border-accent text-white shadow-sm focus:border-primary focus:ring-primary text-base py-3 px-4"
                     />
-                    <p className="mt-2 text-sm text-text-gray">De laatste 4 cijfers van uw chassisnummer helpen ons bij het identificeren van uw voertuig</p>
+                    <p className="mt-2 text-sm text-text-gray">Vul hier het volledige chassisnummer van uw voertuig in</p>
                   </div>
                   
                   <button

@@ -18,7 +18,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               <div className="space-y-3 text-text-gray">
                 <p>Galileïstraat 5</p>
                 <p>7131PE Lichtenvoorde</p>
-                <p>Tel: <a href="tel:+31612345678" className="text-primary hover:text-red-400 transition-colors">+31 (0)6 12345678</a></p>
+                <p>Tel Oktay: <a href="tel:+31615530641" className="text-primary hover:text-red-400 transition-colors">+31 (0)6 15530641</a></p>
+                <p>Tel Joost: <a href="tel:+31622995398" className="text-primary hover:text-red-400 transition-colors">+31 (0)6 22995398</a></p>
                 <p>Email: <a href="mailto:info@gpautos.nl" className="text-primary hover:text-red-400 transition-colors">info@gpautos.nl</a></p>
               </div>
             </div>

@@ -66,7 +66,7 @@ export default function PrivacyPolicy() {
               Galileïstraat 5<br />
               7131PE Lichtenvoorde<br />
               Email: info@gpautos.nl<br />
-              Tel: +31 (0)6 12345678
+              Tel: +31 (0)6 15530641
             </p>
 
             <h2>Wijzigingen</h2>
