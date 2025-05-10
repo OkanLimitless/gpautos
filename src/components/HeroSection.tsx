@@ -38,7 +38,7 @@ export default function HeroSection() {
               <p className="text-lg text-text-dark font-semibold mb-1 text-center">Kom langs voor een gratis zomercheck!</p>
               <p className="text-base text-text-dark mb-2 text-center">Voorkom verrassingen onderweg – we controleren je banden, vloeistoffen, verlichting en meer.</p>
               <p className="text-sm text-text-dark mb-4 italic text-center">Deze actie is de gehele maand juni geldig!</p>
-              <p className="text-sm text-primary font-bold mb-4 text-center">Al meer dan 50 klanten gingen je voor deze maand!</p>
+              <p className="text-sm text-primary font-bold mb-4 text-center">Plan nu je zomercheck, beperkt beschikbaar!</p>
               <Link 
                 href="/afspraak" 
                 className="inline-block bg-primary hover:bg-red-700 text-white font-bold py-2 px-6 rounded transition-colors uppercase tracking-wide shadow-sonic"
