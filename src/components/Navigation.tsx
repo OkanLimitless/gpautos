@@ -20,7 +20,7 @@ export default function Navigation() {
   return (
     <header className="w-full transition-all duration-300">
       {/* Main navigation */}
-      <nav className={`px-4 py-4 transition-all duration-300 bg-white ${
+      <nav className={`px-4 py-2 transition-all duration-300 bg-white ${
         isScrolled ? 'shadow-md' : ''
       }`}>
         <div className="container mx-auto flex items-center justify-between">
@@ -31,7 +31,7 @@ export default function Navigation() {
               alt="GP Auto's" 
               width={200} 
               height={80} 
-              className="h-20 w-auto"
+              className="h-14 w-auto"
             />
           </Link>
           
