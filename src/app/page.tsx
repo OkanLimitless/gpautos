@@ -591,7 +591,7 @@ function ContactSection() {
 export default function Home() {
   return (
     <Layout>
-      <div className="pt-[88px] md:pt-[96px]">
+      <div>
         <ErrorBoundary FallbackComponent={ErrorFallback}>
           <HeroSection />
         </ErrorBoundary>
