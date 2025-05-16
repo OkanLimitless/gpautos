@@ -364,7 +364,7 @@ function WorkshopSection() {
   const equipment = [
     {
       title: "VAG Diagnoseapparatuur",
-      description: "Officiële VCDS/VAGCOM diagnose tools voor alle VAG modellen"
+      description: "Diagnoseapparatuur voor het uitlezen van storingen en foutcodes."
     },
     {
       title: "DSG Specialist",
@@ -419,11 +419,11 @@ function WorkshopSection() {
           <div className="relative h-[300px] rounded overflow-hidden">
             <SafariSafeImage
               src="https://images.unsplash.com/photo-1619505372149-07875c35b313?q=80&w=3387&auto=format&fit=crop"
-              alt="Moderne Werkplaats"
+              alt="Werkplaats"
               className="h-full w-full object-cover"
             />
             <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-75 text-white p-4">
-              <h3 className="font-bold">Moderne Werkplaats</h3>
+              <h3 className="font-bold">Werkplaats</h3>
             </div>
           </div>
         </div>
