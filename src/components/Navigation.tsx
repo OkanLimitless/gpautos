@@ -18,12 +18,7 @@ export default function Navigation() {
   }, [])
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300">
-      {/* Top bar */}
-      <div className="bg-primary text-white px-4 py-2 text-center text-sm font-medium">
-        <p>PROFESSIONELE AUTOSERVICE IN LICHTENVOORDE</p>
-      </div>
-      
+    <header className="w-full transition-all duration-300">
       {/* Main navigation */}
       <nav className={`px-4 py-4 transition-all duration-300 bg-white ${
         isScrolled ? 'shadow-md' : ''
