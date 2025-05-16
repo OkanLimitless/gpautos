@@ -375,8 +375,8 @@ function WorkshopSection() {
       description: "Veilige en efficiënte service van uw voertuig"
     },
     {
-      title: "Uitlijnapparatuur",
-      description: "Nauwkeurige wieluitlijning voor optimale wegligging"
+      title: "Aircoservice",
+      description: "Onderhoud en bijvullen van uw airco voor een koel interieur."
     }
   ];
 
