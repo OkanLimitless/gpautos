@@ -10,7 +10,7 @@ export default function HeroSection() {
       <div className="absolute inset-0">
         <img
           src="https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=1500&q=80"
-          alt="Zomercheck auto"
+          alt="Autogarage GP Auto's"
           className="object-cover w-full h-full brightness-90"
         />
         <div className="absolute inset-0 bg-black bg-opacity-50"></div>
@@ -19,31 +19,25 @@ export default function HeroSection() {
       {/* Content */}
       <div className="relative h-full flex items-center justify-center">
         <div className="container mx-auto px-4 flex justify-center">
-          <div className="max-w-xl w-full">
-            {/* Badge */}
-            <div className="inline-block mb-4 px-4 py-1 bg-primary text-white font-bold rounded-full shadow-lg text-sm uppercase tracking-wide animate-pulse">
-              Actie van de maand juni!
-            </div>
-            {/* Summer Check Promo */}
-            <div className="p-8 rounded-2xl bg-white bg-opacity-95 shadow-sonic border-l-8 border-primary flex flex-col items-center">
-              {/* Icon */}
-              <div className="mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-14 w-14 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="#fff200" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 12l2 2 4-4" stroke="#333" />
-                  <path d="M12 6v2m0 8v2m6-6h-2M8 12H6m9.07-4.93l-1.41 1.41M6.34 17.66l1.41-1.41m0-8.49l-1.41 1.41m8.49 8.49l1.41-1.41" stroke="#f59e42" />
-                </svg>
-              </div>
-              <h2 className="text-3xl md:text-4xl font-extrabold text-primary mb-2 uppercase tracking-wider text-center">GRATIS ZOMERCHECK</h2>
-              <p className="text-lg text-text-dark font-semibold mb-1 text-center">Kom langs voor een gratis zomercheck!</p>
-              <p className="text-base text-text-dark mb-2 text-center">Voorkom verrassingen onderweg – we controleren je banden, vloeistoffen, verlichting en meer.</p>
-              <p className="text-sm text-text-dark mb-4 italic text-center">Deze actie is de gehele maand juni geldig!</p>
-              <p className="text-sm text-primary font-bold mb-4 text-center">Plan nu je zomercheck, beperkt beschikbaar!</p>
+          <div className="max-w-3xl w-full text-center">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 uppercase tracking-wider">
+              Uw Auto in Betrouwbare Handen
+            </h1>
+            <p className="text-lg md:text-xl lg:text-2xl text-gray-200 mb-8">
+              Vakkundig onderhoud, reparatie en diagnose. Persoonlijke service, heldere communicatie en eerlijke prijzen.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link 
                 href="/afspraak" 
-                className="inline-block bg-primary hover:bg-red-700 text-white font-bold py-2 px-6 rounded transition-colors uppercase tracking-wide shadow-sonic"
+                className="bg-primary hover:bg-red-700 text-white font-bold py-3 px-8 rounded transition-colors uppercase tracking-wide shadow-sonic text-center"
               >
-                Maak direct een afspraak
+                Afspraak Maken
+              </Link>
+              <Link 
+                href="/#about-section" 
+                className="bg-white hover:bg-gray-100 text-text-dark font-bold py-3 px-8 rounded transition-colors uppercase tracking-wide text-center"
+              >
+                Over Ons
               </Link>
             </div>
           </div>
