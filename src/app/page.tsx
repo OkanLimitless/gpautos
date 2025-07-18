@@ -22,8 +22,8 @@ function ErrorFallback({ error, resetErrorBoundary }: FallbackProps) {
   );
 }
 
-// Modern Hero Section
-function ModernHeroSection() {
+// Professional Hero Section
+function ProfessionalHeroSection() {
   const [currentSlide, setCurrentSlide] = useState(0);
   
   const slides = [
@@ -65,9 +65,9 @@ function ModernHeroSection() {
             <img
               src={slide.image}
               alt={slide.title}
-              className="object-cover w-full h-full scale-110"
+              className="object-cover w-full h-full"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30"></div>
+            <div className="absolute inset-0 bg-black/60"></div>
           </div>
         ))}
       </div>
@@ -76,97 +76,96 @@ function ModernHeroSection() {
       <div className="relative h-full flex items-center">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl">
-            <div className="mb-6">
-              <span className="inline-block bg-primary/20 backdrop-blur-sm text-primary px-4 py-2 rounded-full text-sm font-semibold uppercase tracking-wide">
-                GP Auto's Lichtenvoorde
+            <div className="mb-8">
+              <span className="inline-block bg-white/10 backdrop-blur-sm text-white px-6 py-3 rounded text-sm font-semibold uppercase tracking-wider border border-white/20">
+                GP Auto's • Lichtenvoorde
               </span>
             </div>
             
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-tight">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-8 leading-tight">
               Uw Auto in
               <span className="text-primary block">Betrouwbare Handen</span>
             </h1>
             
-            <p className="text-xl md:text-2xl text-gray-200 mb-8 max-w-2xl leading-relaxed">
-              Vakkundig onderhoud, reparatie en diagnose van VAG voertuigen. 
-              Persoonlijke service met moderne apparatuur en eerlijke prijzen.
+            <p className="text-xl md:text-2xl text-gray-200 mb-12 max-w-3xl leading-relaxed">
+              Professioneel onderhoud en reparatie van VAG voertuigen door ervaren monteurs. 
+              Moderne diagnoseapparatuur, transparante communicatie en eerlijke prijzen.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 mb-12">
+            <div className="flex flex-col sm:flex-row gap-6">
               <Link 
                 href="/afspraak" 
-                className="group bg-primary hover:bg-red-700 text-white font-bold py-4 px-8 rounded-lg transition-all duration-300 uppercase tracking-wide shadow-xl hover:shadow-2xl transform hover:-translate-y-1 flex items-center justify-center"
+                className="group bg-primary hover:bg-red-700 text-white font-bold py-4 px-8 rounded transition-all duration-300 uppercase tracking-wide shadow-lg hover:shadow-xl flex items-center justify-center"
               >
                 <span>Afspraak Maken</span>
-                <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 ml-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </Link>
               <Link 
                 href="#services" 
-                className="group bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white font-bold py-4 px-8 rounded-lg transition-all duration-300 uppercase tracking-wide border border-white/20 hover:border-white/40 flex items-center justify-center"
+                className="group bg-transparent hover:bg-white/10 text-white font-bold py-4 px-8 rounded transition-all duration-300 uppercase tracking-wide border-2 border-white/30 hover:border-white/50 flex items-center justify-center"
               >
                 <span>Onze Diensten</span>
-                <svg className="w-5 h-5 ml-2 group-hover:translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 ml-3 group-hover:translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
                 </svg>
               </Link>
-            </div>
-
-            {/* Current slide indicator */}
-            <div className="text-white/60 text-lg font-medium">
-              {slides[currentSlide].title} • {slides[currentSlide].subtitle}
             </div>
           </div>
         </div>
       </div>
 
       {/* Slide indicators */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2">
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-3">
         {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrentSlide(index)}
             className={`w-3 h-3 rounded-full transition-all duration-300 ${
-              index === currentSlide ? 'bg-primary scale-125' : 'bg-white/30 hover:bg-white/50'
+              index === currentSlide ? 'bg-primary' : 'bg-white/40 hover:bg-white/60'
             }`}
           />
         ))}
-      </div>
-
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 right-8 text-white/60 animate-bounce">
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-        </svg>
       </div>
     </section>
   );
 }
 
-// Stats Section
-function StatsSection() {
+// Professional Stats Section
+function ProfessionalStatsSection() {
   const stats = [
-    { number: "15+", label: "Jaar Ervaring", icon: "🏆" },
-    { number: "1000+", label: "Tevreden Klanten", icon: "😊" },
-    { number: "24/7", label: "Bereikbaarheid", icon: "📞" },
-    { number: "100%", label: "Garantie", icon: "✅" }
+    { number: "15+", label: "Jaar Ervaring", description: "Bewezen expertise in de automotive sector" },
+    { number: "1000+", label: "Tevreden Klanten", description: "Vertrouwen opgebouwd door kwaliteit" },
+    { number: "100%", label: "Diagnose Accuraatheid", description: "Moderne apparatuur, betrouwbare resultaten" },
+    { number: "24u", label: "Service Respons", description: "Snelle reactie op uw vragen" }
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-r from-gray-900 via-black to-gray-900">
+    <section className="py-20 bg-gray-900">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            Waarom Klanten Ons Vertrouwen
+          </h2>
+          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+            Cijfers die onze toewijding aan kwaliteit en service bewijzen
+          </p>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {stats.map((stat, index) => (
             <div key={index} className="text-center group">
-              <div className="text-4xl mb-2 group-hover:scale-110 transition-transform duration-300">
-                {stat.icon}
-              </div>
-              <div className="text-4xl md:text-5xl font-bold text-primary mb-2">
-                {stat.number}
-              </div>
-              <div className="text-white/80 font-medium uppercase tracking-wide">
-                {stat.label}
+              <div className="bg-white/5 backdrop-blur-sm rounded-xl p-8 border border-white/10 hover:border-primary/30 transition-all duration-300">
+                <div className="text-4xl md:text-5xl font-bold text-primary mb-3">
+                  {stat.number}
+                </div>
+                <div className="text-white font-semibold text-lg mb-2 uppercase tracking-wide">
+                  {stat.label}
+                </div>
+                <div className="text-gray-400 text-sm leading-relaxed">
+                  {stat.description}
+                </div>
               </div>
             </div>
           ))}
@@ -176,29 +175,57 @@ function StatsSection() {
   );
 }
 
-// Modern Services Section
-function ModernServicesSection() {
+// Professional Services Section
+function ProfessionalServicesSection() {
   const services = [
     {
       title: "VAG Specialist",
-      description: "Gespecialiseerd in Volkswagen, Audi, SEAT en Škoda met originele diagnoseapparatuur.",
-      features: ["DSG Service", "Diagnose", "Codering", "Onderhoud"],
+      description: "Gespecialiseerd in Volkswagen, Audi, SEAT en Škoda voertuigen met originele diagnoseapparatuur en jarenlange ervaring.",
+      features: [
+        "DSG Versnellingsbak Service",
+        "Originele Diagnoseapparatuur",
+        "ECU Codering & Aanpassingen",
+        "Fabrieksgarantie Behoud"
+      ],
       image: "https://images.unsplash.com/photo-1630019209880-6b53557d0a8b?q=80&w=800&auto=format&fit=crop",
-      gradient: "from-red-500 to-red-700"
+      icon: (
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+        </svg>
+      )
     },
     {
       title: "Onderhoud & Reparatie",
-      description: "Professioneel onderhoud volgens fabrieksvoorschriften voor alle merken.",
-      features: ["APK Keuring", "Reparaties", "Onderhoud", "Airco Service"],
+      description: "Professioneel onderhoud volgens fabrieksvoorschriften voor alle automerken, uitgevoerd door gecertificeerde monteurs.",
+      features: [
+        "APK Keuring & Controle",
+        "Periodiek Onderhoud",
+        "Reparatie & Revisie",
+        "Airco Service & Onderhoud"
+      ],
       image: "https://images.unsplash.com/photo-1599474151975-1f978922fa02?q=80&w=800&auto=format&fit=crop",
-      gradient: "from-blue-500 to-blue-700"
+      icon: (
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+      )
     },
     {
-      title: "Diagnose",
-      description: "Uitgebreide diagnose met moderne apparatuur voor snelle probleemoplossing.",
-      features: ["Storingen", "Elektronica", "Motor", "Uitlaat"],
+      title: "Diagnose & Analyse",
+      description: "Uitgebreide diagnose met professionele apparatuur voor snelle en accurate identificatie van problemen.",
+      features: [
+        "Computerdiagnose",
+        "Elektrische Systemen",
+        "Motor & Transmissie",
+        "Uitlaatsysteem Controle"
+      ],
       image: "https://images.unsplash.com/photo-1658526934242-aa541776ca49?q=80&w=800&auto=format&fit=crop",
-      gradient: "from-green-500 to-green-700"
+      icon: (
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+        </svg>
+      )
     }
   ];
 
@@ -207,48 +234,53 @@ function ModernServicesSection() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Onze <span className="text-primary">Diensten</span>
+            Onze Expertise
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Van eenvoudig onderhoud tot complexe reparaties - wij zorgen ervoor dat uw auto optimaal presteert.
+            Professionele autoservice met focus op kwaliteit, betrouwbaarheid en klanttevredenheid.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <div key={index} className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden transform hover:-translate-y-2">
+            <div key={index} className="bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group">
               <div className="relative h-48 overflow-hidden">
                 <img
                   src={service.image}
                   alt={service.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className={`absolute inset-0 bg-gradient-to-t ${service.gradient} opacity-20 group-hover:opacity-30 transition-opacity duration-300`}></div>
+                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-all duration-300"></div>
+                <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm p-3 rounded-lg">
+                  <div className="text-primary">
+                    {service.icon}
+                  </div>
+                </div>
               </div>
               
-              <div className="p-6">
-                <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-primary transition-colors">
+              <div className="p-8">
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">
                   {service.title}
                 </h3>
-                <p className="text-gray-600 mb-4 leading-relaxed">
+                <p className="text-gray-600 mb-6 leading-relaxed">
                   {service.description}
                 </p>
                 
-                <div className="grid grid-cols-2 gap-2 mb-6">
+                <ul className="space-y-3 mb-8">
                   {service.features.map((feature, featureIndex) => (
-                    <div key={featureIndex} className="flex items-center text-sm text-gray-500">
-                      <div className="w-2 h-2 bg-primary rounded-full mr-2"></div>
-                      {feature}
-                    </div>
+                    <li key={featureIndex} className="flex items-center text-gray-700">
+                      <div className="w-2 h-2 bg-primary rounded-full mr-3 flex-shrink-0"></div>
+                      <span className="text-sm">{feature}</span>
+                    </li>
                   ))}
-                </div>
+                </ul>
                 
                 <Link
                   href="/afspraak"
-                  className="inline-flex items-center text-primary font-semibold hover:text-red-700 transition-colors group-hover:translate-x-2 transform duration-300"
+                  className="inline-flex items-center text-primary font-semibold hover:text-red-700 transition-colors"
                 >
-                  Meer informatie
-                  <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <span>Afspraak maken</span>
+                  <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
                 </Link>
@@ -261,63 +293,87 @@ function ModernServicesSection() {
   );
 }
 
-// Why Choose Us Section
-function WhyChooseUsSection() {
+// Professional Why Choose Us Section
+function ProfessionalWhyChooseUsSection() {
   const reasons = [
     {
-      icon: "🔧",
-      title: "VAG Specialisten",
-      description: "Uitgebreide kennis van Volkswagen, Audi, SEAT en Škoda voertuigen"
+      icon: (
+        <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      ),
+      title: "Gecertificeerde Expertise",
+      description: "Onze monteurs zijn gecertificeerd en hebben jarenlange ervaring met VAG voertuigen en andere merken."
     },
     {
-      icon: "💎",
-      title: "Kwaliteitsgarantie",
-      description: "Alle reparaties worden uitgevoerd met garantie en originele onderdelen"
-    },
-    {
-      icon: "⚡",
+      icon: (
+        <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+        </svg>
+      ),
       title: "Moderne Apparatuur",
-      description: "Nieuwste diagnoseapparatuur voor snelle en accurate probleemoplossing"
+      description: "Investering in de nieuwste diagnoseapparatuur en gereedschappen voor nauwkeurige service."
     },
     {
-      icon: "💰",
-      title: "Eerlijke Prijzen",
-      description: "Transparante prijzen zonder verrassingen achteraf"
+      icon: (
+        <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      ),
+      title: "Transparante Prijzen",
+      description: "Eerlijke prijsstelling zonder verborgen kosten. U weet vooraf waar u aan toe bent."
     },
     {
-      icon: "🕐",
+      icon: (
+        <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+        </svg>
+      ),
+      title: "Garantie & Zekerheid",
+      description: "Alle werkzaamheden worden uitgevoerd met garantie voor uw gemoedsrust."
+    },
+    {
+      icon: (
+        <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      ),
       title: "Snelle Service",
-      description: "Efficiënte werkwijze en flexibele afspraakplanning"
+      description: "Efficiënte werkwijze en flexibele planning om uw tijd te respecteren."
     },
     {
-      icon: "👥",
-      title: "Persoonlijke Aanpak",
-      description: "Directe communicatie met onze ervaren monteurs"
+      icon: (
+        <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+        </svg>
+      ),
+      title: "Persoonlijke Service",
+      description: "Directe communicatie met onze monteurs en persoonlijke aandacht voor uw auto."
     }
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-br from-gray-900 via-black to-gray-900">
+    <section className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Waarom <span className="text-primary">GP Auto's</span>?
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            Waarom GP Auto's?
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Ontdek waarom klanten voor ons kiezen en waarom wij de juiste keuze zijn voor uw auto.
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Ontdek wat ons onderscheidt als professionele autoservice in Lichtenvoorde.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {reasons.map((reason, index) => (
-            <div key={index} className="group bg-white/5 backdrop-blur-sm rounded-xl p-6 hover:bg-white/10 transition-all duration-300 border border-white/10 hover:border-primary/30">
-              <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
+            <div key={index} className="group text-center p-8 rounded-lg hover:shadow-lg transition-all duration-300">
+              <div className="text-primary mb-6 flex justify-center group-hover:scale-110 transition-transform duration-300">
                 {reason.icon}
               </div>
-              <h3 className="text-xl font-bold text-white mb-3 group-hover:text-primary transition-colors">
+              <h3 className="text-xl font-bold text-gray-900 mb-4">
                 {reason.title}
               </h3>
-              <p className="text-gray-300 leading-relaxed">
+              <p className="text-gray-600 leading-relaxed">
                 {reason.description}
               </p>
             </div>
@@ -328,27 +384,27 @@ function WhyChooseUsSection() {
   );
 }
 
-// Testimonials Section
-function TestimonialsSection() {
+// Professional Testimonials Section
+function ProfessionalTestimonialsSection() {
   const testimonials = [
     {
       name: "Mark van der Berg",
       car: "Audi A4 B8",
-      text: "Uitstekende service! Ze hebben mijn DSG probleem perfect opgelost. Duidelijke communicatie en geen verrassingen.",
+      text: "Uitstekende service en vakkundige reparatie. Het DSG probleem werd snel en efficiënt opgelost. Duidelijke communicatie en eerlijke prijzen.",
       rating: 5,
       avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face"
     },
     {
       name: "Lisa Hendriks",
       car: "VW Golf 7 GTI",
-      text: "Zeer tevreden met de service. Vakkundige diagnose en eerlijke prijzen. Zeker een aanrader!",
+      text: "Zeer professionele aanpak. De diagnose was accuraat en de reparatie werd binnen de afgesproken tijd uitgevoerd. Zeker een aanrader.",
       rating: 5,
       avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face"
     },
     {
       name: "Peter Jansen",
       car: "SEAT Leon FR",
-      text: "Professionele aanpak en uitstekende service. Mijn auto rijdt weer als nieuw!",
+      text: "Betrouwbare service en vakmanschap. Mijn auto rijdt weer perfect na de reparatie. Goede prijs-kwaliteitverhouding.",
       rating: 5,
       avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face"
     }
@@ -359,16 +415,16 @@ function TestimonialsSection() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Wat Klanten <span className="text-primary">Zeggen</span>
+            Wat Onze Klanten Zeggen
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Lees wat onze tevreden klanten over onze service te zeggen hebben.
+            Lees de ervaringen van onze tevreden klanten.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {testimonials.map((testimonial, index) => (
-            <div key={index} className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+            <div key={index} className="bg-white rounded-lg p-8 shadow-lg hover:shadow-xl transition-all duration-300">
               <div className="flex items-center mb-6">
                 <img
                   src={testimonial.avatar}
@@ -389,7 +445,7 @@ function TestimonialsSection() {
                 ))}
               </div>
               
-              <p className="text-gray-600 italic leading-relaxed">
+              <p className="text-gray-600 leading-relaxed">
                 "{testimonial.text}"
               </p>
             </div>
@@ -400,36 +456,30 @@ function TestimonialsSection() {
   );
 }
 
-// CTA Section
-function CTASection() {
+// Professional CTA Section
+function ProfessionalCTASection() {
   return (
-    <section className="py-20 bg-gradient-to-r from-primary to-red-700">
+    <section className="py-20 bg-gray-900">
       <div className="container mx-auto px-4 text-center">
         <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-          Klaar om Uw Auto te Laten Checken?
+          Klaar voor Professionele Autoservice?
         </h2>
-        <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-          Maak vandaag nog een afspraak en ervaar onze professionele service. 
-          Wij zorgen ervoor dat uw auto in topconditie blijft.
+        <p className="text-xl text-gray-300 mb-12 max-w-3xl mx-auto">
+          Maak een afspraak en ervaar de kwaliteit van onze service. 
+          Wij zorgen ervoor dat uw auto in optimale conditie blijft.
         </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <div className="flex flex-col sm:flex-row gap-6 justify-center">
           <Link
             href="/afspraak"
-            className="group bg-white text-primary font-bold py-4 px-8 rounded-lg hover:bg-gray-100 transition-all duration-300 uppercase tracking-wide shadow-xl hover:shadow-2xl transform hover:-translate-y-1 flex items-center justify-center"
+            className="bg-primary hover:bg-red-700 text-white font-bold py-4 px-8 rounded transition-all duration-300 uppercase tracking-wide shadow-lg hover:shadow-xl"
           >
-            <span>Afspraak Maken</span>
-            <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
+            Afspraak Maken
           </Link>
           <Link
             href="#contact"
-            className="group bg-white/10 backdrop-blur-sm text-white font-bold py-4 px-8 rounded-lg hover:bg-white/20 transition-all duration-300 uppercase tracking-wide border border-white/20 hover:border-white/40 flex items-center justify-center"
+            className="bg-transparent hover:bg-white/10 text-white font-bold py-4 px-8 rounded transition-all duration-300 uppercase tracking-wide border-2 border-white/30 hover:border-white/50"
           >
-            <span>Contact Opnemen</span>
-            <svg className="w-5 h-5 ml-2 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-            </svg>
+            Contact Opnemen
           </Link>
         </div>
       </div>
@@ -437,70 +487,70 @@ function CTASection() {
   );
 }
 
-// Contact Section
-function ContactSection() {
+// Professional Contact Section
+function ProfessionalContactSection() {
   return (
-    <section id="contact" className="py-20 bg-gray-900">
+    <section id="contact" className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Neem <span className="text-primary">Contact</span> Op
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            Contact & Locatie
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Heeft u vragen of wilt u een afspraak maken? Wij staan voor u klaar.
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Neem contact op voor vragen of om een afspraak te maken.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Contact Info */}
-          <div className="bg-white/5 backdrop-blur-sm rounded-xl p-8 border border-white/10">
-            <h3 className="text-2xl font-bold text-white mb-6">Contact Informatie</h3>
+          <div className="bg-gray-50 rounded-lg p-8">
+            <h3 className="text-2xl font-bold text-gray-900 mb-6">Contact Informatie</h3>
             
             <div className="space-y-6">
               <div className="flex items-start">
-                <div className="bg-primary/20 p-3 rounded-lg mr-4">
+                <div className="bg-primary/10 p-3 rounded-lg mr-4">
                   <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
                 </div>
                 <div>
-                  <p className="text-white font-semibold">Adres</p>
-                  <p className="text-gray-300">Galileïstraat 5</p>
-                  <p className="text-gray-300">7131PE Lichtenvoorde</p>
+                  <p className="text-gray-900 font-semibold">Werkplaats Adres</p>
+                  <p className="text-gray-600">Galileïstraat 5</p>
+                  <p className="text-gray-600">7131PE Lichtenvoorde</p>
                 </div>
               </div>
               
               <div className="flex items-start">
-                <div className="bg-primary/20 p-3 rounded-lg mr-4">
+                <div className="bg-primary/10 p-3 rounded-lg mr-4">
                   <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                   </svg>
                 </div>
                 <div>
-                  <p className="text-white font-semibold">Telefoon</p>
-                  <p className="text-gray-300">Oktay: <a href="tel:+31615530641" className="hover:text-primary transition-colors">06 15530641</a></p>
-                  <p className="text-gray-300">Joost: <a href="tel:+31622995398" className="hover:text-primary transition-colors">06 22995398</a></p>
+                  <p className="text-gray-900 font-semibold">Telefoon</p>
+                  <p className="text-gray-600">Oktay: <a href="tel:+31615530641" className="hover:text-primary transition-colors">06 15530641</a></p>
+                  <p className="text-gray-600">Joost: <a href="tel:+31622995398" className="hover:text-primary transition-colors">06 22995398</a></p>
                 </div>
               </div>
               
               <div className="flex items-start">
-                <div className="bg-primary/20 p-3 rounded-lg mr-4">
+                <div className="bg-primary/10 p-3 rounded-lg mr-4">
                   <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
                 </div>
                 <div>
-                  <p className="text-white font-semibold">Email</p>
-                  <a href="mailto:info@gpautos.nl" className="text-gray-300 hover:text-primary transition-colors">info@gpautos.nl</a>
+                  <p className="text-gray-900 font-semibold">Email</p>
+                  <a href="mailto:info@gpautos.nl" className="text-gray-600 hover:text-primary transition-colors">info@gpautos.nl</a>
                 </div>
               </div>
             </div>
           </div>
           
           {/* Opening Hours */}
-          <div className="bg-white/5 backdrop-blur-sm rounded-xl p-8 border border-white/10">
-            <h3 className="text-2xl font-bold text-white mb-6">Openingstijden</h3>
+          <div className="bg-gray-50 rounded-lg p-8">
+            <h3 className="text-2xl font-bold text-gray-900 mb-6">Openingstijden</h3>
             
             <div className="space-y-3">
               {[
@@ -512,30 +562,38 @@ function ContactSection() {
                 { day: "Zaterdag", time: "Op afspraak" },
                 { day: "Zondag", time: "Op afspraak" }
               ].map((schedule, index) => (
-                <div key={index} className="flex justify-between items-center py-2 border-b border-white/10 last:border-b-0">
-                  <span className="text-gray-300">{schedule.day}</span>
-                  <span className="text-white font-semibold">{schedule.time}</span>
+                <div key={index} className="flex justify-between items-center py-2 border-b border-gray-200 last:border-b-0">
+                  <span className="text-gray-600">{schedule.day}</span>
+                  <span className="text-gray-900 font-semibold">{schedule.time}</span>
                 </div>
               ))}
+            </div>
+            
+            <div className="mt-6 p-4 bg-blue-50 rounded-lg">
+              <p className="text-sm text-blue-800">
+                <strong>Flexibele service:</strong> Wij werken op afspraak voor uw gemak. 
+                Bel of mail ons voor een passende tijd.
+              </p>
             </div>
           </div>
           
           {/* Quick Action */}
-          <div className="bg-gradient-to-br from-primary to-red-700 rounded-xl p-8">
-            <h3 className="text-2xl font-bold text-white mb-6">Snel een Afspraak?</h3>
-            <p className="text-white/90 mb-6">
-              Bel ons direct of maak online een afspraak. We zorgen ervoor dat uw auto snel weer optimaal presteert.
+          <div className="bg-primary rounded-lg p-8 text-white">
+            <h3 className="text-2xl font-bold mb-6">Direct Contact</h3>
+            <p className="mb-6 text-white/90">
+              Heeft u een vraag of wilt u direct een afspraak maken? 
+              Neem contact op via onderstaande opties.
             </p>
             <div className="space-y-4">
               <Link
                 href="/afspraak"
-                className="block w-full bg-white text-primary font-bold py-3 px-6 rounded-lg hover:bg-gray-100 transition-colors text-center"
+                className="block w-full bg-white text-primary font-bold py-3 px-6 rounded hover:bg-gray-100 transition-colors text-center"
               >
                 Online Afspraak Maken
               </Link>
               <a
                 href="tel:+31615530641"
-                className="block w-full bg-white/10 backdrop-blur-sm text-white font-bold py-3 px-6 rounded-lg hover:bg-white/20 transition-colors text-center border border-white/20"
+                className="block w-full bg-white/20 backdrop-blur-sm text-white font-bold py-3 px-6 rounded hover:bg-white/30 transition-colors text-center border border-white/30"
               >
                 Direct Bellen
               </a>
@@ -553,31 +611,31 @@ export default function Home() {
     <Layout>
       <div>
         <ErrorBoundary FallbackComponent={ErrorFallback}>
-          <ModernHeroSection />
+          <ProfessionalHeroSection />
         </ErrorBoundary>
         
         <ErrorBoundary FallbackComponent={ErrorFallback}>
-          <StatsSection />
+          <ProfessionalStatsSection />
         </ErrorBoundary>
         
         <ErrorBoundary FallbackComponent={ErrorFallback}>
-          <ModernServicesSection />
+          <ProfessionalServicesSection />
         </ErrorBoundary>
         
         <ErrorBoundary FallbackComponent={ErrorFallback}>
-          <WhyChooseUsSection />
+          <ProfessionalWhyChooseUsSection />
         </ErrorBoundary>
         
         <ErrorBoundary FallbackComponent={ErrorFallback}>
-          <TestimonialsSection />
+          <ProfessionalTestimonialsSection />
         </ErrorBoundary>
         
         <ErrorBoundary FallbackComponent={ErrorFallback}>
-          <CTASection />
+          <ProfessionalCTASection />
         </ErrorBoundary>
         
         <ErrorBoundary FallbackComponent={ErrorFallback}>
-          <ContactSection />
+          <ProfessionalContactSection />
         </ErrorBoundary>
       </div>
     </Layout>
