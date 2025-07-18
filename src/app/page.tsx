@@ -52,7 +52,7 @@ function ProfessionalHeroSection() {
   }, []);
 
   return (
-    <section className="relative h-screen overflow-hidden">
+    <section className="relative h-screen overflow-hidden -mt-20">
       {/* Background Slideshow */}
       <div className="absolute inset-0">
         {slides.map((slide, index) => (

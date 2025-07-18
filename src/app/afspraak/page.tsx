@@ -102,7 +102,7 @@ export default function AppointmentPage() {
     <Layout>
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
-        <div className="bg-gray-900 text-white py-20">
+        <div className="bg-gray-900 text-white py-20 -mt-20 pt-32">
           <div className="container mx-auto px-4 text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
               Maak een Afspraak
@@ -138,11 +138,11 @@ export default function AppointmentPage() {
                       }`}>
                         Stap {stepItem.number}
                       </div>
-                      <div className={`text-xs ${
-                        stepItem.active ? 'text-gray-900' : 'text-gray-400'
-                      }`}>
-                        {stepItem.title}
-                      </div>
+                                             <div className={`text-xs ${
+                         stepItem.active ? 'text-gray-700' : 'text-gray-400'
+                       }`}>
+                         {stepItem.title}
+                       </div>
                     </div>
                     {index < 2 && (
                       <div className={`flex-1 h-0.5 mx-4 ${
