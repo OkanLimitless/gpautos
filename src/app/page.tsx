@@ -132,13 +132,25 @@ function ProfessionalHeroSection() {
   );
 }
 
-// Professional Stats Section
-function ProfessionalStatsSection() {
-  const stats = [
-    { number: "15+", label: "Jaar Ervaring", description: "Bewezen expertise in de automotive sector" },
-    { number: "1000+", label: "Tevreden Klanten", description: "Vertrouwen opgebouwd door kwaliteit" },
-    { number: "100%", label: "Diagnose Accuraatheid", description: "Moderne apparatuur, betrouwbare resultaten" },
-    { number: "24u", label: "Service Respons", description: "Snelle reactie op uw vragen" }
+// Trust & Expertise Section (replacing stats)
+function TrustExpertiseSection() {
+  const trustPoints = [
+    {
+      title: "Gecertificeerde Monteurs",
+      description: "Onze monteurs zijn volledig gecertificeerd en hebben jarenlange ervaring in de automotive sector."
+    },
+    {
+      title: "Moderne Diagnoseapparatuur",
+      description: "Wij investeren in de nieuwste technologie voor accurate diagnose en efficiënte reparaties."
+    },
+    {
+      title: "Transparante Communicatie",
+      description: "Heldere uitleg over wat er aan uw auto gedaan wordt, zonder verborgen kosten of verrassingen."
+    },
+    {
+      title: "Garantie op Werkzaamheden",
+      description: "Alle reparaties en onderhoudswerkzaamheden worden uitgevoerd met volledige garantie."
+    }
   ];
 
   return (
@@ -146,27 +158,22 @@ function ProfessionalStatsSection() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Waarom Klanten Ons Vertrouwen
+            Betrouwbare Autoservice in Lichtenvoorde
           </h2>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            Cijfers die onze toewijding aan kwaliteit en service bewijzen
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            Bij GP Auto's staat kwaliteit en vertrouwen centraal. Ontdek waarom klanten ons vertrouwen met hun voertuig.
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {stats.map((stat, index) => (
-            <div key={index} className="text-center group">
-              <div className="bg-white/5 backdrop-blur-sm rounded-xl p-8 border border-white/10 hover:border-primary/30 transition-all duration-300">
-                <div className="text-4xl md:text-5xl font-bold text-primary mb-3">
-                  {stat.number}
-                </div>
-                <div className="text-white font-semibold text-lg mb-2 uppercase tracking-wide">
-                  {stat.label}
-                </div>
-                <div className="text-gray-400 text-sm leading-relaxed">
-                  {stat.description}
-                </div>
-              </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          {trustPoints.map((point, index) => (
+            <div key={index} className="bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10">
+              <h3 className="text-xl font-bold text-white mb-3">
+                {point.title}
+              </h3>
+              <p className="text-gray-300 leading-relaxed">
+                {point.description}
+              </p>
             </div>
           ))}
         </div>
@@ -187,12 +194,7 @@ function ProfessionalServicesSection() {
         "ECU Codering & Aanpassingen",
         "Fabrieksgarantie Behoud"
       ],
-      image: "https://images.unsplash.com/photo-1630019209880-6b53557d0a8b?q=80&w=800&auto=format&fit=crop",
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-        </svg>
-      )
+      image: "https://images.unsplash.com/photo-1625047509168-a7026f36de04?q=80&w=800&auto=format&fit=crop"
     },
     {
       title: "Onderhoud & Reparatie",
@@ -203,13 +205,7 @@ function ProfessionalServicesSection() {
         "Reparatie & Revisie",
         "Airco Service & Onderhoud"
       ],
-      image: "https://images.unsplash.com/photo-1599474151975-1f978922fa02?q=80&w=800&auto=format&fit=crop",
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-        </svg>
-      )
+      image: "https://images.unsplash.com/photo-1599474151975-1f978922fa02?q=80&w=800&auto=format&fit=crop"
     },
     {
       title: "Diagnose & Analyse",
@@ -220,12 +216,7 @@ function ProfessionalServicesSection() {
         "Motor & Transmissie",
         "Uitlaatsysteem Controle"
       ],
-      image: "https://images.unsplash.com/photo-1658526934242-aa541776ca49?q=80&w=800&auto=format&fit=crop",
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-        </svg>
-      )
+      image: "https://images.unsplash.com/photo-1486754735734-325b5831c3ad?q=80&w=800&auto=format&fit=crop"
     }
   ];
 
@@ -250,12 +241,6 @@ function ProfessionalServicesSection() {
                   alt={service.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-all duration-300"></div>
-                <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm p-3 rounded-lg">
-                  <div className="text-primary">
-                    {service.icon}
-                  </div>
-                </div>
               </div>
               
               <div className="p-8">
@@ -391,22 +376,19 @@ function ProfessionalTestimonialsSection() {
       name: "Mark van der Berg",
       car: "Audi A4 B8",
       text: "Uitstekende service en vakkundige reparatie. Het DSG probleem werd snel en efficiënt opgelost. Duidelijke communicatie en eerlijke prijzen.",
-      rating: 5,
-      avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face"
+      rating: 5
     },
     {
       name: "Lisa Hendriks",
       car: "VW Golf 7 GTI",
       text: "Zeer professionele aanpak. De diagnose was accuraat en de reparatie werd binnen de afgesproken tijd uitgevoerd. Zeker een aanrader.",
-      rating: 5,
-      avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face"
+      rating: 5
     },
     {
       name: "Peter Jansen",
       car: "SEAT Leon FR",
       text: "Betrouwbare service en vakmanschap. Mijn auto rijdt weer perfect na de reparatie. Goede prijs-kwaliteitverhouding.",
-      rating: 5,
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face"
+      rating: 5
     }
   ];
 
@@ -425,24 +407,16 @@ function ProfessionalTestimonialsSection() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {testimonials.map((testimonial, index) => (
             <div key={index} className="bg-white rounded-lg p-8 shadow-lg hover:shadow-xl transition-all duration-300">
-              <div className="flex items-center mb-6">
-                <img
-                  src={testimonial.avatar}
-                  alt={testimonial.name}
-                  className="w-16 h-16 rounded-full mr-4 object-cover"
-                />
-                <div>
-                  <h4 className="font-bold text-gray-900">{testimonial.name}</h4>
-                  <p className="text-gray-600 text-sm">{testimonial.car}</p>
+              <div className="mb-6">
+                <div className="flex mb-4">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <svg key={i} className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
                 </div>
-              </div>
-              
-              <div className="flex mb-4">
-                {[...Array(testimonial.rating)].map((_, i) => (
-                  <svg key={i} className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                ))}
+                <h4 className="font-bold text-gray-900">{testimonial.name}</h4>
+                <p className="text-gray-600 text-sm">{testimonial.car}</p>
               </div>
               
               <p className="text-gray-600 leading-relaxed">
@@ -615,7 +589,7 @@ export default function Home() {
         </ErrorBoundary>
         
         <ErrorBoundary FallbackComponent={ErrorFallback}>
-          <ProfessionalStatsSection />
+          <TrustExpertiseSection />
         </ErrorBoundary>
         
         <ErrorBoundary FallbackComponent={ErrorFallback}>
