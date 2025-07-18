@@ -216,7 +216,7 @@ function ProfessionalServicesSection() {
         "Motor & Transmissie",
         "Uitlaatsysteem Controle"
       ],
-      image: "https://images.unsplash.com/photo-1486754735734-325b5831c3ad?q=80&w=800&auto=format&fit=crop"
+      image: "/images/service-apk.jpg"
     }
   ];
 

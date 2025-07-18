@@ -8,6 +8,9 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: 'GP Auto\'s - Autogarage in Lichtenvoorde',
   description: 'Professionele autoservice, onderhoud en reparatie voor alle merken en modellen in Lichtenvoorde en omgeving.',
+  icons: {
+    icon: '/favicon.ico',
+  },
 }
 
 export default function RootLayout({
