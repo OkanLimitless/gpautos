@@ -172,7 +172,7 @@ export default function AppointmentPage() {
                         type="text"
                         required
                         placeholder="Bijvoorbeeld: 12-ABC-3"
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors text-gray-900 bg-white"
                         value={formData.kenteken}
                         onChange={(e) => setFormData({...formData, kenteken: e.target.value.toUpperCase()})}
                       />
@@ -186,7 +186,7 @@ export default function AppointmentPage() {
                       <input
                         type="text"
                         placeholder="Volledig chassisnummer"
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors text-gray-900 bg-white"
                       />
                       <p className="mt-1 text-sm text-gray-500">Helpt ons bij het vinden van de juiste onderdelen</p>
                     </div>
@@ -223,7 +223,7 @@ export default function AppointmentPage() {
                         locale="nl"
                         dateFormat="EEEE d MMMM yyyy"
                         minDate={new Date()}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors text-gray-900 bg-white"
                         placeholderText="Selecteer een datum"
                       />
                       <p className="mt-1 text-sm text-gray-500">Wij nemen contact op om de exacte tijd af te spreken</p>
@@ -236,7 +236,7 @@ export default function AppointmentPage() {
                       <textarea
                         required
                         rows={4}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors resize-none"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors resize-none text-gray-900 bg-white"
                         value={formData.description}
                         onChange={(e) => setFormData({...formData, description: e.target.value})}
                         placeholder="Beschrijf zo duidelijk mogelijk wat er aan uw auto gedaan moet worden. Bijvoorbeeld: 'APK keuring', 'Remmen piepen', 'Motorlampje brandt', etc."
@@ -283,7 +283,7 @@ export default function AppointmentPage() {
                         type="text"
                         required
                         placeholder="Voor- en achternaam"
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors text-gray-900 bg-white"
                         value={formData.name}
                         onChange={(e) => setFormData({...formData, name: e.target.value})}
                       />
@@ -297,7 +297,7 @@ export default function AppointmentPage() {
                         type="email"
                         required
                         placeholder="uw.email@voorbeeld.nl"
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors text-gray-900 bg-white"
                         value={formData.email}
                         onChange={(e) => setFormData({...formData, email: e.target.value})}
                       />
@@ -311,7 +311,7 @@ export default function AppointmentPage() {
                         type="tel"
                         required
                         placeholder="06 12 34 56 78"
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors text-gray-900 bg-white"
                         value={formData.phone}
                         onChange={(e) => setFormData({...formData, phone: e.target.value})}
                       />
