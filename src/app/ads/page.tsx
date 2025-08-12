@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: "GP Auto's • Afspraak of Bel Direct",
-  description: "Plan eenvoudig een afspraak bij GP Auto's in Lichtenvoorde. Betrouwbaar onderhoud en reparatie. Bel nu of vul het formulier in.",
+  description: "Plan eenvoudig een afspraak bij GP Auto's in Lichtenvoorde. Betrouwbaar onderhoud en reparatie voor alle merken. Bel nu of vul het formulier in.",
   robots: {
     index: false,
     follow: false,
@@ -33,11 +33,14 @@ export default function AdsLandingPage() {
 
       {/* Hero two-column */}
       <section className="bg-white">
-        <div className="container mx-auto px-4 py-12 md:py-16 grid md:grid-cols-2 gap-8 items-center">
+        <div className="container mx-auto px-4 py-12 md:py-16 grid md:grid-cols-2 gap-10 items-start">
           <div>
-            <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-4">Betrouwbaar onderhoud en reparatie</h1>
+            <div className="inline-flex items-center gap-2 text-sm text-zinc-600 mb-3">
+              <span className="h-2 w-2 bg-green-500 rounded-full" /> Lichtenvoorde en omgeving
+            </div>
+            <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-4">Onderhoud en reparatie voor alle merken</h1>
             <p className="text-lg text-zinc-600 mb-6">
-              Specialist in VAG (Volkswagen, Audi, SEAT, Škoda) en ervaren in alle merken. Heldere communicatie, eerlijke prijzen, afspraak op korte termijn.
+              Snel geholpen, vaak al binnen enkele dagen — niet pas over weken. Eerlijke prijzen, heldere communicatie en vakmanschap.
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
               <Link href="#afspraak" className="bg-primary hover:bg-red-700 text-white font-semibold py-3 px-6 rounded transition-colors text-center">
@@ -47,16 +50,17 @@ export default function AdsLandingPage() {
                 Bel direct
               </Link>
             </div>
-            <div className="mt-6 flex items-center gap-4 text-sm text-zinc-600">
-              <div className="flex items-center gap-2"><span className="h-2 w-2 bg-green-500 rounded-full"/> Transparante prijzen</div>
-              <div className="flex items-center gap-2"><span className="h-2 w-2 bg-green-500 rounded-full"/> Snelle service</div>
-              <div className="flex items-center gap-2"><span className="h-2 w-2 bg-green-500 rounded-full"/> Ervaren monteurs</div>
-            </div>
+            <ul className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-zinc-700">
+              <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 bg-zinc-400 rounded-full"/> APK, onderhoud, diagnose en reparatie</li>
+              <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 bg-zinc-400 rounded-full"/> Originele of A‑kwaliteit onderdelen</li>
+              <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 bg-zinc-400 rounded-full"/> Transparant overleg vooraf</li>
+              <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 bg-zinc-400 rounded-full"/> Afspraak op korte termijn</li>
+            </ul>
           </div>
           <div>
             <div className="bg-white rounded-lg border border-zinc-200 shadow-sm p-6">
               <h2 className="text-2xl font-bold mb-1">Vraag een afspraak aan</h2>
-              <p className="text-sm text-zinc-600 mb-4">Wij nemen zo snel mogelijk contact met u op om uw verzoek te bevestigen.</p>
+              <p className="text-sm text-zinc-600 mb-4">Wij reageren doorgaans binnen 1 werkdag.</p>
               <AppointmentForm variant="light" />
             </div>
           </div>
@@ -65,19 +69,19 @@ export default function AdsLandingPage() {
 
       {/* Trust section */}
       <section className="bg-zinc-50">
-        <div className="container mx-auto px-4 py-10">
+        <div className="container mx-auto px-4 py-12">
           <div className="grid md:grid-cols-3 gap-6">
             <div className="bg-white border border-zinc-200 rounded-lg p-6">
-              <h3 className="text-lg font-semibold mb-2">VAG Specialist</h3>
-              <p className="text-zinc-600">Diagnose, DSG service en onderhoud volgens fabrieksspecificaties.</p>
+              <h3 className="text-lg font-semibold mb-2">Alle merken welkom</h3>
+              <p className="text-zinc-600">Ervaring met Volkswagen t/m Volvo en alles daartussenin.</p>
             </div>
             <div className="bg-white border border-zinc-200 rounded-lg p-6">
-              <h3 className="text-lg font-semibold mb-2">Heldere communicatie</h3>
-              <p className="text-zinc-600">Geen verrassingen achteraf. We bespreken opties vooraf.</p>
+              <h3 className="text-lg font-semibold mb-2">Snel geholpen</h3>
+              <p className="text-zinc-600">Plan op korte termijn, zonder lange wachttijden.</p>
             </div>
             <div className="bg-white border border-zinc-200 rounded-lg p-6">
-              <h3 className="text-lg font-semibold mb-2">Goede bereikbaarheid</h3>
-              <p className="text-zinc-600">Plan snel een afspraak of bel ons direct.</p>
+              <h3 className="text-lg font-semibold mb-2">Duidelijke prijzen</h3>
+              <p className="text-zinc-600">Eerst overleg, dan pas sleutelen. Geen verrassingen.</p>
             </div>
           </div>
         </div>
