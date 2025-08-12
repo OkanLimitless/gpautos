@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import AppointmentForm from '@/components/AppointmentForm'
 import Image from 'next/image'
 import Link from 'next/link'
+import PhoneCTA from '@/components/PhoneCTA'
 
 export const metadata: Metadata = {
   title: "GP Auto's • Afspraak of Bel Direct",
@@ -25,9 +26,9 @@ export default function AdsLandingPage() {
             <img src="/logo.png" alt="GP Auto's" className="h-10 w-auto" />
             <span className="sr-only">GP Auto's</span>
           </Link>
-          <Link href="tel:+31615530641" className="hidden sm:inline-flex items-center gap-2 bg-primary text-white font-semibold px-4 py-2 rounded shadow-sonic">
-            Bel direct: +31 6 15530641
-          </Link>
+          <div className="hidden sm:block">
+            <PhoneCTA />
+          </div>
         </div>
       </header>
 
@@ -118,9 +119,7 @@ export default function AdsLandingPage() {
 
       {/* Sticky mobile call button */}
       <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-40 md:hidden">
-        <Link href="tel:+31615530641" className="bg-primary text-white font-semibold py-3 px-6 rounded-full shadow-lg">
-          Bel nu
-        </Link>
+        <PhoneCTA className="rounded-full px-6 py-3" />
       </div>
     </div>
   )

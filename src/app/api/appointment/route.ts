@@ -5,7 +5,7 @@ export async function POST(request: Request) {
   try {
     // Parse the request body
     const body = await request.json()
-    const { kenteken, name, email, phone, description, date } = body
+    const { kenteken, name, email, phone, description, date, ...rest } = body as Record<string, any>
 
     if (!kenteken || !name || !email || !phone || !description || !date) {
       return NextResponse.json(
@@ -22,6 +22,18 @@ export async function POST(request: Request) {
       month: 'long',
       day: 'numeric'
     })
+
+    // Optional marketing attribution
+    const attributionEntries = Object.entries(rest).filter(([_, v]) => typeof v === 'string' && v)
+    const attributionHtml = attributionEntries.length
+      ? `
+        <hr />
+        <p><strong>Attributie (optioneel):</strong></p>
+        <ul>
+          ${attributionEntries.map(([k, v]) => `<li><strong>${k}:</strong> ${String(v)}</li>`).join('')}
+        </ul>
+      `
+      : ''
 
     // Create email transporter
     const transporter = nodemailer.createTransport({
@@ -46,6 +58,7 @@ export async function POST(request: Request) {
         <p><strong>Telefoon:</strong> ${phone}</p>
         <p><strong>Omschrijving:</strong></p>
         <p>${description.replace(/\n/g, '<br>')}</p>
+        ${attributionHtml}
       `
     }
 
