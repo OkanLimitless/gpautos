@@ -9,7 +9,27 @@ import toast from 'react-hot-toast'
 // Register Dutch locale
 registerLocale('nl', nl)
 
-export default function AppointmentForm() {
+interface AppointmentFormProps {
+  variant?: 'dark' | 'light'
+}
+
+export default function AppointmentForm({ variant = 'dark' }: AppointmentFormProps) {
+  const isLight = variant === 'light'
+
+  const containerClasses = isLight
+    ? 'space-y-6 bg-white p-8 rounded-lg border border-zinc-200'
+    : 'space-y-6 bg-zinc-800 p-8 rounded-lg'
+
+  const labelClasses = isLight
+    ? 'block text-sm font-medium text-zinc-700'
+    : 'block text-sm font-medium text-gray-200'
+
+  const inputClasses = isLight
+    ? 'mt-1 block w-full rounded-md bg-white border-zinc-300 text-zinc-900 shadow-sm focus:border-primary focus:ring-primary sm:text-sm'
+    : 'mt-1 block w-full rounded-md bg-zinc-900 border-zinc-700 text-white shadow-sm focus:border-red-600 focus:ring-red-600 sm:text-sm'
+
+  const textareaClasses = inputClasses
+
   const [selectedDate, setSelectedDate] = useState<Date | null>(null)
   const [loading, setLoading] = useState(false)
   const [formData, setFormData] = useState({
@@ -77,23 +97,23 @@ export default function AppointmentForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6 bg-zinc-800 p-8 rounded-lg" id="afspraak">
+    <form onSubmit={handleSubmit} className={containerClasses} id="afspraak">
       <div>
-        <label className="block text-sm font-medium text-gray-200">
+        <label className={labelClasses}>
           Kenteken
         </label>
         <input
           type="text"
           required
           placeholder="AA-11-BB"
-          className="mt-1 block w-full rounded-md bg-zinc-900 border-zinc-700 text-white shadow-sm focus:border-red-600 focus:ring-red-600 sm:text-sm"
+          className={inputClasses}
           value={formData.kenteken}
           onChange={(e) => setFormData({...formData, kenteken: e.target.value.toUpperCase()})}
         />
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-200">
+        <label className={labelClasses}>
           Gewenste Datum
         </label>
         <DatePicker
@@ -102,61 +122,65 @@ export default function AppointmentForm() {
           locale="nl"
           dateFormat="P"
           minDate={new Date()}
-          className="mt-1 block w-full rounded-md bg-zinc-900 border-zinc-700 text-white shadow-sm focus:border-red-600 focus:ring-red-600 sm:text-sm"
+          className={inputClasses}
           placeholderText="Selecteer een datum"
         />
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-200">
+        <label className={labelClasses}>
           Naam
         </label>
         <input
           type="text"
           required
-          className="mt-1 block w-full rounded-md bg-zinc-900 border-zinc-700 text-white shadow-sm focus:border-red-600 focus:ring-red-600 sm:text-sm"
+          className={inputClasses}
           value={formData.name}
           onChange={(e) => setFormData({...formData, name: e.target.value})}
         />
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-200">
+        <label className={labelClasses}>
           E-mail
         </label>
         <input
           type="email"
           required
-          className="mt-1 block w-full rounded-md bg-zinc-900 border-zinc-700 text-white shadow-sm focus:border-red-600 focus:ring-red-600 sm:text-sm"
+          className={inputClasses}
           value={formData.email}
           onChange={(e) => setFormData({...formData, email: e.target.value})}
         />
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-200">
+        <label className={labelClasses}>
           Telefoonnummer
         </label>
         <input
           type="tel"
           required
-          className="mt-1 block w-full rounded-md bg-zinc-900 border-zinc-700 text-white shadow-sm focus:border-red-600 focus:ring-red-600 sm:text-sm"
+          className={inputClasses}
           value={formData.phone}
           onChange={(e) => setFormData({...formData, phone: e.target.value})}
         />
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-200">
+        <label className={labelClasses}>
           Omschrijving van de werkzaamheden
         </label>
         <textarea
           required
           rows={4}
-          className="mt-1 block w-full rounded-md bg-zinc-900 border-zinc-700 text-white shadow-sm focus:border-red-600 focus:ring-red-600 sm:text-sm"
+          className={textareaClasses}
           value={formData.description}
           onChange={(e) => setFormData({...formData, description: e.target.value})}
         />
+      </div>
+
+      <div className={isLight ? 'text-xs text-zinc-500' : 'text-xs text-gray-300'}>
+        Door te verzenden gaat u akkoord met onze privacyvoorwaarden.
       </div>
 
       <button
