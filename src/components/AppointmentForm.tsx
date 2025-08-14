@@ -111,6 +111,10 @@ export default function AppointmentForm({ variant = 'dark' }: AppointmentFormPro
       if (typeof window !== 'undefined' && (window as any).dataLayer) {
         ;(window as any).dataLayer.push({ event: 'lead_submit', form: 'ads_landing' })
       }
+      // Google Ads conversion
+      if (typeof window !== 'undefined' && typeof (window as any).gtag_report_conversion === 'function') {
+        ;(window as any).gtag_report_conversion()
+      }
 
       // Reset form
       setFormData({

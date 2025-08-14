@@ -3,6 +3,7 @@ import AppointmentForm from '@/components/AppointmentForm'
 import Image from 'next/image'
 import Link from 'next/link'
 import PhoneCTA from '@/components/PhoneCTA'
+import CTAButton from '@/components/CTAButton'
 
 export const metadata: Metadata = {
   title: "GP Auto's • Afspraak of Bel Direct",
@@ -44,12 +45,10 @@ export default function AdsLandingPage() {
               Snel geholpen, vaak al binnen enkele dagen — niet pas over weken. Eerlijke prijzen, heldere communicatie en vakmanschap.
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
-              <Link href="#afspraak" className="bg-primary hover:bg-red-700 text-white font-semibold py-3 px-6 rounded transition-colors text-center">
+              <CTAButton href="#afspraak" className="bg-primary hover:bg-red-700 text-white font-semibold py-3 px-6 rounded transition-colors text-center">
                 Afspraak aanvragen
-              </Link>
-              <Link href="tel:+31615530641" className="bg-zinc-100 hover:bg-zinc-200 text-zinc-900 font-semibold py-3 px-6 rounded transition-colors text-center">
-                Bel direct
-              </Link>
+              </CTAButton>
+              <PhoneCTA theme="secondary" labelOverride="Bel direct" className="py-3 px-6" />
             </div>
             <ul className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-zinc-700">
               <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 bg-zinc-400 rounded-full"/> APK, onderhoud, diagnose en reparatie</li>
@@ -119,7 +118,7 @@ export default function AdsLandingPage() {
 
       {/* Sticky mobile call button */}
       <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-40 md:hidden">
-        <PhoneCTA className="rounded-full px-6 py-3" />
+        <PhoneCTA className="rounded-full px-6 py-3" labelOverride="Bel nu" />
       </div>
     </div>
   )
