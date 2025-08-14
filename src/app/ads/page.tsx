@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import PhoneCTA from '@/components/PhoneCTA'
 import CTAButton from '@/components/CTAButton'
+import SocialProof from '@/components/SocialProof'
 
 export const metadata: Metadata = {
   title: "GP Auto's • Afspraak of Bel Direct",
@@ -66,6 +67,8 @@ export default function AdsLandingPage() {
           </div>
         </div>
       </section>
+
+      <SocialProof />
 
       {/* Trust section */}
       <section className="bg-zinc-50">
