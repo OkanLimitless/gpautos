@@ -52,7 +52,7 @@ export default function AdsLandingPage() {
               <PhoneCTA theme="secondary" labelOverride="Bel direct" className="py-3 px-6" />
             </div>
             <ul className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-zinc-700">
-              <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 bg-zinc-400 rounded-full"/> APK, onderhoud, diagnose en reparatie</li>
+              <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 bg-zinc-400 rounded-full"/> Onderhoud, diagnose en reparatie</li>
               <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 bg-zinc-400 rounded-full"/> Originele of A‑kwaliteit onderdelen</li>
               <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 bg-zinc-400 rounded-full"/> Transparant overleg vooraf</li>
               <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 bg-zinc-400 rounded-full"/> Afspraak op korte termijn</li>
