@@ -4,20 +4,30 @@ import Link from 'next/link'
 
 export default function PhoneCTA({ className = '', theme = 'primary', labelOverride = 'Bel direct', tel = '+31615530641' }: { className?: string, theme?: 'primary' | 'secondary', labelOverride?: string, tel?: string }) {
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const target = `tel:${tel}`
+    e.preventDefault()
+    let navigated = false
+    const navigate = () => {
+      if (navigated) return
+      navigated = true
+      window.location.href = target
+    }
+
     try {
-      e.preventDefault()
       if (typeof window !== 'undefined') {
         if ((window as any).dataLayer) {
           ;(window as any).dataLayer.push({ event: 'call_click', source: 'ads_landing' })
         }
+        // Safety fallback if conversion callback doesn't fire
+        setTimeout(navigate, 600)
         if (typeof (window as any).gtag_report_conversion === 'function') {
-          ;(window as any).gtag_report_conversion(`tel:${tel}`)
+          ;(window as any).gtag_report_conversion(target)
           return
         }
       }
     } catch {}
-    // Fallback: navigate to tel link
-    window.location.href = `tel:${tel}`
+
+    navigate()
   }
 
   const themeClass = theme === 'secondary'
