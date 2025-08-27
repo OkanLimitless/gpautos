@@ -28,6 +28,24 @@ export default function AppointmentPage() {
   })
   const [submitted, setSubmitted] = useState(false)
 
+  const handleNextFromStep1 = () => {
+    const { kenteken, chassisnummer } = formData
+    if (!kenteken.trim() || !chassisnummer.trim()) {
+      toast.error('Vul zowel kenteken als chassisnummer in')
+      return
+    }
+    setStep(2)
+  }
+
+  const handleNextFromStep2 = () => {
+    const { date, description } = formData
+    if (!date || !description.trim()) {
+      toast.error('Selecteer een datum en vul de omschrijving in')
+      return
+    }
+    setStep(3)
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     
@@ -138,7 +156,7 @@ export default function AppointmentPage() {
                       <p className="mt-2 text-xs text-gray-500">Vul hier het volledige chassisnummer van uw voertuig in</p>
                     </div>
                     <div className="grid gap-4 md:grid-cols-2">
-                      <button type="button" onClick={() => setStep(2)} className="md:col-start-2 w-full bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg px-6 py-3">Volgende</button>
+                      <button type="button" onClick={handleNextFromStep1} className="md:col-start-2 w-full bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg px-6 py-3">Volgende</button>
                     </div>
                   </motion.div>
                 )}
@@ -155,7 +173,7 @@ export default function AppointmentPage() {
                     </div>
                     <div className="grid gap-4 md:grid-cols-2">
                       <button type="button" onClick={() => setStep(1)} className="w-full border border-gray-300 text-gray-700 hover:bg-gray-50 font-semibold rounded-lg px-6 py-3">Terug</button>
-                      <button type="button" onClick={() => setStep(3)} className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg px-6 py-3">Volgende</button>
+                      <button type="button" onClick={handleNextFromStep2} className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg px-6 py-3">Volgende</button>
                     </div>
                   </motion.div>
                 )}
