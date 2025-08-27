@@ -8,7 +8,15 @@
   }
   
   h1, h2, h3, h4, h5, h6 {
-    @apply font-bold tracking-wide;
+    @apply font-bold tracking-tight;
+    font-family: var(--font-poppins), ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation: none !important;
+      transition: none !important;
+      scroll-behavior: auto !important;
+    }
   }
 }
 
@@ -18,7 +26,7 @@
   }
   
   .btn {
-    @apply px-6 py-3 rounded font-bold tracking-wide uppercase transition-all duration-300 inline-flex items-center justify-center;
+    @apply px-6 py-3 rounded-md font-semibold transition-transform duration-300 inline-flex items-center justify-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-white/60;
   }
   
   .btn-primary {
@@ -34,11 +42,11 @@
   }
 
   .section-title {
-    @apply text-4xl md:text-5xl font-bold mb-6 uppercase tracking-wider;
+    @apply text-3xl md:text-4xl font-bold mb-6 tracking-tight;
   }
 
   .section-title-dark {
-    @apply text-4xl md:text-5xl font-bold mb-6 uppercase tracking-wider text-text-dark;
+    @apply text-3xl md:text-4xl font-bold mb-6 tracking-tight text-text-dark;
   }
 
   .section-subtitle {
@@ -50,11 +58,11 @@
   }
 
   .card {
-    @apply bg-accent p-6 rounded hover:shadow-sonic transition-all duration-300;
+    @apply bg-accent p-6 rounded-xl border border-white/10 transition-all duration-300 hover:translate-y-1 hover:shadow-lg hover:ring-1 hover:ring-white/15;
   }
 
   .card-light {
-    @apply bg-light p-6 rounded hover:shadow-sonic transition-all duration-300;
+    @apply bg-light p-6 rounded-xl border border-black/5 transition-all duration-300 hover:translate-y-1 hover:shadow-lg hover:ring-1 hover:ring-black/10;
   }
 
   .feature-card {
@@ -62,15 +70,15 @@
   }
 
   .feature-card-light {
-    @apply flex flex-col items-center text-center p-6 bg-light text-text-dark;
+    @apply flex flex-col items-center text-center p-6 bg-light text-text-dark rounded-xl border border-black/5 transition-all duration-300 hover:translate-y-1 hover:shadow-lg hover:ring-1 hover:ring-black/10;
   }
 
   .service-card {
-    @apply bg-accent p-6 rounded hover:bg-black transition-colors duration-300 shadow-sonic;
+    @apply bg-accent p-6 rounded-xl border border-white/10 transition-all duration-300 hover:translate-y-1 hover:shadow-lg hover:ring-1 hover:ring-white/15;
   }
 
   .service-card-light {
-    @apply bg-light p-6 rounded hover:bg-light-gray transition-colors duration-300 shadow-sonic text-text-dark;
+    @apply bg-light p-6 rounded-xl border border-black/5 transition-all duration-300 text-text-dark hover:translate-y-1 hover:shadow-lg hover:ring-1 hover:ring-black/10;
   }
 
   .service-image {
@@ -104,33 +112,33 @@
 }
 
 .react-datepicker {
-  @apply border border-accent rounded shadow-sonic bg-secondary !important;
+  @apply border border-gray-200 rounded shadow-lg bg-white !important;
 }
 
 .react-datepicker__header {
-  @apply bg-accent text-white rounded-t border-accent !important;
+  @apply bg-gray-50 text-gray-900 rounded-t border-b border-gray-200 !important;
 }
 
 .react-datepicker__current-month {
-  @apply text-white !important;
+  @apply text-gray-900 !important;
 }
 
 .react-datepicker__day-name {
-  @apply text-text-gray !important;
+  @apply text-gray-500 !important;
 }
 
 .react-datepicker__day {
-  @apply text-text-light hover:bg-primary !important;
+  @apply text-gray-700 hover:bg-gray-100 !important;
 }
 
 .react-datepicker__day--selected {
-  @apply bg-primary !important;
+  @apply bg-primary text-white !important;
 }
 
 .react-datepicker__day--keyboard-selected {
-  @apply bg-primary/80 !important;
+  @apply bg-primary/80 text-white !important;
 }
 
 .react-datepicker__input-container input {
-  @apply w-full rounded bg-accent border-accent text-white shadow-sm focus:border-primary focus:ring-primary sm:text-sm;
-} 
+  @apply w-full rounded-md bg-gray-50 border border-gray-300 text-gray-900 shadow-sm focus:border-transparent focus:ring-2 focus:ring-primary sm:text-sm placeholder:text-gray-400;
+}

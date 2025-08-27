@@ -18,10 +18,10 @@ export default function Navigation() {
   }, [])
 
   return (
-    <header className="w-full transition-all duration-300">
+    <header className="w-full fixed top-0 z-50">
       {/* Main navigation */}
-      <nav className={`px-4 py-2 transition-all duration-300 bg-white ${
-        isScrolled ? 'shadow-md' : ''
+      <nav className={`px-4 py-3 transition-all duration-300 ${
+        isScrolled ? 'bg-black/90 backdrop-blur supports-[backdrop-filter]:bg-black/70 shadow-sonic' : 'bg-transparent'
       }`}>
         <div className="container mx-auto flex items-center justify-between">
           {/* Logo */}
@@ -29,9 +29,9 @@ export default function Navigation() {
             <Image 
               src="/logo.png" 
               alt="GP Auto's" 
-              width={200} 
-              height={80} 
-              className="h-14 w-auto"
+              width={180} 
+              height={60} 
+              className="h-10 md:h-12 w-auto drop-shadow"
             />
           </Link>
           
@@ -39,25 +39,25 @@ export default function Navigation() {
           <div className="hidden md:flex space-x-8 items-center">
             <Link 
               href="/#diensten" 
-              className="text-text-dark font-medium hover:text-primary transition-colors"
+              className="text-white/80 hover:text-white transition-colors"
             >
               Diensten
             </Link>
             <Link 
               href="/#about-section" 
-              className="text-text-dark font-medium hover:text-primary transition-colors"
+              className="text-white/80 hover:text-white transition-colors"
             >
               Over Ons
             </Link>
             <Link 
               href="/#contact" 
-              className="text-text-dark font-medium hover:text-primary transition-colors"
+              className="text-white/80 hover:text-white transition-colors"
             >
               Contact
             </Link>
             <Link 
               href="/afspraak" 
-              className="bg-primary hover:bg-red-700 text-white px-4 py-2 rounded font-bold transition-colors"
+              className="btn bg-primary hover:bg-red-700 text-white shadow-sonic rounded-md"
             >
               Afspraak Maken
             </Link>
@@ -66,7 +66,7 @@ export default function Navigation() {
           {/* Mobile menu button */}
           <button 
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden text-text-dark focus:outline-none"
+            className="md:hidden text-white focus:outline-none"
             aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -81,34 +81,34 @@ export default function Navigation() {
       </nav>
       
       {/* Mobile menu */}
-      <div className={`md:hidden transition-all duration-300 overflow-hidden bg-white ${
-        isMobileMenuOpen ? 'max-h-screen shadow-lg' : 'max-h-0'
+      <div className={`md:hidden transition-all duration-300 overflow-hidden ${
+        isMobileMenuOpen ? 'max-h-screen bg-black/95 shadow-sonic' : 'max-h-0 bg-transparent'
       }`}>
         <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
           <Link 
             href="/#diensten" 
-            className="text-text-dark font-medium hover:text-primary transition-colors p-2"
+            className="text-white/90 hover:text-white transition-colors p-2"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Onze Diensten
           </Link>
           <Link 
             href="/#about-section" 
-            className="text-text-dark font-medium hover:text-primary transition-colors p-2"
+            className="text-white/90 hover:text-white transition-colors p-2"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Over Ons
           </Link>
           <Link 
             href="/#contact" 
-            className="text-text-dark font-medium hover:text-primary transition-colors p-2"
+            className="text-white/90 hover:text-white transition-colors p-2"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Contact
           </Link>
           <Link 
             href="/afspraak" 
-            className="bg-primary hover:bg-red-700 text-white px-4 py-2 rounded font-bold transition-colors text-center"
+            className="btn bg-primary hover:bg-red-700 text-white shadow-sonic rounded-md text-center"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Afspraak Maken

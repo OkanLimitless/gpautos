@@ -1,7 +1,7 @@
 export default function SocialProof() {
   return (
-    <section className="bg-white border-t border-zinc-200">
-      <div className="container mx-auto px-4 py-10">
+    <section className="bg-gray-50 border-t border-zinc-200">
+      <div className="container mx-auto px-4 py-12 md:py-20">
         {/* Rating strip */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
           <div className="flex items-center gap-3">
@@ -49,7 +49,20 @@ export default function SocialProof() {
 
 function TestimonialCard({ name, meta, text }: { name: string, meta: string, text: string }) {
   return (
-    <figure className="bg-zinc-50 border border-zinc-200 rounded-lg p-5 h-full">
+    <figure className="bg-white border border-zinc-200 rounded-lg p-5 h-full shadow-md">
+      <div className="text-zinc-400 mb-2" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5"><path d="M7.17 6.17A4.5 4.5 0 1111 11H9v4H5V9a3 3 0 012.17-2.83zM17.17 6.17A4.5 4.5 0 1121 11h-2v4h-4V9a3 3 0 012.17-2.83z"/></svg>
+      </div>
+      <div className="flex items-center gap-1 text-yellow-400 mb-2" aria-hidden="true">
+        <Star />
+        <Star />
+        <Star />
+        <Star />
+        <Star />
+      </div>
+      <div className="inline-flex items-center gap-2 text-xs text-zinc-600 mb-3">
+        <GoogleBadge /> Google Review
+      </div>
       <blockquote className="text-zinc-800">“{text}”</blockquote>
       <figcaption className="mt-4 text-sm text-zinc-600">
         <span className="font-semibold text-zinc-900">{name}</span> • {meta}
@@ -84,6 +97,14 @@ function Badge() {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4">
       <path fillRule="evenodd" d="M12 1.5l3.09 6.26 6.91 1.005-5 4.873 1.18 6.887L12 17.77l-6.18 3.755L7 13.638l-5-4.873 6.91-1.005L12 1.5z" clipRule="evenodd" />
+    </svg>
+  )
+}
+
+function GoogleBadge() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="h-4 w-4" aria-hidden="true">
+      <path fill="#4285F4" d="M21.35 11.1h-9.17v2.98h5.26c-.23 1.24-1.41 3.64-5.26 3.64-3.17 0-5.77-2.62-5.77-5.85s2.6-5.85 5.77-5.85c1.81 0 3.02.77 3.72 1.44l2.54-2.45C17.11 3.08 15.07 2 12.18 2 6.99 2 2.78 6.2 2.78 11.37s4.21 9.37 9.4 9.37c5.43 0 9.01-3.81 9.01-9.18 0-.62-.07-1.08-.16-1.46h.32z"/>
     </svg>
   )
 }

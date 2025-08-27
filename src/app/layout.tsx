@@ -1,14 +1,15 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, Poppins } from 'next/font/google'
 import './globals.css'
 import { Toaster } from 'react-hot-toast'
 import Script from 'next/script'
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
+const poppins = Poppins({ subsets: ['latin'], weight: ['400','500','600','700'], variable: '--font-poppins' })
 
 export const metadata: Metadata = {
-  title: 'GP Auto\'s - Autogarage in Lichtenvoorde',
-  description: 'Professionele autoservice, onderhoud en reparatie voor alle merken en modellen in Lichtenvoorde en omgeving.',
+  title: "GP Auto's – Premium Autoservice, Onderhoud & VAG Specialist",
+  description: 'Premium onderhoud, reparatie en diagnose. VAG specialist in Lichtenvoorde.',
 }
 
 export default function RootLayout({
@@ -50,7 +51,7 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body className={`${inter.className} bg-zinc-950 text-white`}>
+      <body className={`${inter.variable} ${poppins.variable} bg-zinc-950 text-white`}>
         {children}
         <Toaster 
           position="bottom-center"

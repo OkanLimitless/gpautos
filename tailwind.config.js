@@ -8,14 +8,14 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#FF0000', // Sonic red
-        secondary: '#121212', // Deep black for backgrounds
-        accent: '#1A1A1A', // Slightly lighter black for cards
+        primary: '#E10600', // Ferrari Red
+        secondary: '#111111', // Anthracite background
+        accent: '#1A1A1A', // Card background
         light: '#FFFFFF', // White for sections
         'light-gray': '#F5F5F5', // Light gray background
         text: {
           white: '#FFFFFF', // White text
-          dark: '#333333', // Dark text for light backgrounds
+          dark: '#1F1F1F', // Dark text for light backgrounds
           gray: '#CCCCCC', // Gray text
           light: '#F2F2F2', // Light text
         }
@@ -24,7 +24,7 @@ module.exports = {
         sans: ['var(--font-inter)'],
       },
       boxShadow: {
-        'sonic': '0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2)',
+        'sonic': '0 8px 24px rgba(0,0,0,0.4)',
       },
     },
   },
