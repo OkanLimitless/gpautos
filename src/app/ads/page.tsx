@@ -35,7 +35,7 @@ export default function AdsLandingPage() {
       {/* Hero two-column */}
       <section className="bg-gray-50">
         <div className="container mx-auto px-4 py-12 md:py-20 grid md:grid-cols-2 gap-10 items-start">
-          <div>
+          <div className="text-center md:text-left">
             <div className="inline-flex items-center gap-2 text-sm text-zinc-600 mb-3">
               <span className="h-2 w-2 bg-green-500 rounded-full" /> Lichtenvoorde en omgeving
             </div>
@@ -50,17 +50,20 @@ export default function AdsLandingPage() {
               </CTAButton>
               <a href="tel:+31615530641" className="w-full sm:w-auto border border-zinc-300 text-zinc-700 hover:bg-zinc-50 font-semibold py-3 px-6 rounded-lg transition-colors text-center">Bel direct</a>
             </div>
-            <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <USPCard text="Onderhoud, diagnose en reparatie" />
-              <USPCard text="Originele of A‑kwaliteit onderdelen" />
-              <USPCard text="Transparant overleg vooraf" />
-              <USPCard text="Afspraak op korte termijn" />
+            <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <USPCard title="Onderhoud, diagnose en reparatie" text="Service voor alle merken" />
+              <USPCard title="Originele of A‑kwaliteit onderdelen" text="Kwaliteit die u vertrouwt" />
+              <USPCard title="Transparant overleg vooraf" text="Geen verrassingen achteraf" />
+              <USPCard title="Afspraak op korte termijn" text="Snel ingepland" />
             </div>
           </div>
           <div>
             <div className="bg-white rounded-xl border border-gray-200 shadow-md p-6">
-              <h2 className="text-2xl font-bold mb-1">Vraag een afspraak aan</h2>
-              <div className="h-1 w-12 bg-primary mb-3" />
+              <div className="flex items-center gap-3 mb-3">
+                <div className="border-l-4 border-primary pl-3">
+                  <h2 className="text-2xl font-bold">Vraag een afspraak aan</h2>
+                </div>
+              </div>
               <p className="text-sm text-zinc-600 mb-4">Wij reageren doorgaans binnen 1 werkdag.</p>
               <AppointmentForm variant="light" minDateOffsetDays={1} autoFocusNext />
             </div>
@@ -134,11 +137,12 @@ function Check() {
   )
 }
 
-function USPCard({ text }: { text: string }) {
+function USPCard({ title, text }: { title: string, text: string }) {
   return (
-    <div className="flex items-center gap-3 bg-gray-100 border border-gray-200 rounded-lg p-3">
-      <Check />
-      <span className="text-sm text-gray-800">{text}</span>
+    <div className="bg-white border border-gray-200 rounded-lg p-4 shadow-sm">
+      <div className="text-primary mb-2"><Check /></div>
+      <div className="font-semibold text-gray-900">{title}</div>
+      <div className="text-sm text-gray-600">{text}</div>
     </div>
   )
 }

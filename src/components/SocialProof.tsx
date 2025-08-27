@@ -49,7 +49,10 @@ export default function SocialProof() {
 
 function TestimonialCard({ name, meta, text }: { name: string, meta: string, text: string }) {
   return (
-    <figure className="bg-white border border-zinc-200 rounded-lg p-5 h-full shadow-sm">
+    <figure className="bg-white border border-zinc-200 rounded-lg p-5 h-full shadow-md">
+      <div className="text-zinc-400 mb-2" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5"><path d="M7.17 6.17A4.5 4.5 0 1111 11H9v4H5V9a3 3 0 012.17-2.83zM17.17 6.17A4.5 4.5 0 1121 11h-2v4h-4V9a3 3 0 012.17-2.83z"/></svg>
+      </div>
       <div className="flex items-center gap-1 text-yellow-400 mb-2" aria-hidden="true">
         <Star />
         <Star />
@@ -57,7 +60,7 @@ function TestimonialCard({ name, meta, text }: { name: string, meta: string, tex
         <Star />
         <Star />
       </div>
-      <div className="inline-flex items-center gap-2 text-xs text-zinc-600 mb-2">
+      <div className="inline-flex items-center gap-2 text-xs text-zinc-600 mb-3">
         <GoogleBadge /> Google Review
       </div>
       <blockquote className="text-zinc-800">“{text}”</blockquote>

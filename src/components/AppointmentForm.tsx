@@ -142,7 +142,7 @@ export default function AppointmentForm({ variant = 'dark', minDateOffsetDays = 
   return (
     <form onSubmit={handleSubmit} className={containerClasses} id="afspraak">
       {/* Details section */}
-      <div className="space-y-4">
+      <div className="space-y-5">
         <div className="grid md:grid-cols-2 gap-4">
           <div>
             <label className={labelClasses}>Kenteken</label>
