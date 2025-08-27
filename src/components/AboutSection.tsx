@@ -15,7 +15,7 @@ export default function AboutSection() {
             transition={{ duration: 0.6 }}
           >
             <img
-              src="https://images.unsplash.com/photo-1627612839512-7f7d01226ec5?q=80&w=3387&auto=format&fit=crop"
+              src="/images/overgp.jpeg"
               alt="Over GP Auto's – premium workshop"
               className="h-full w-full object-cover"
             />

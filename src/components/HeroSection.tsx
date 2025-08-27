@@ -10,8 +10,8 @@ export default function HeroSection() {
       {/* Background Image */}
       <div className="absolute inset-0">
         <img
-          src="https://images.unsplash.com/photo-1542362567-b07e54358753?q=80&w=3270&auto=format&fit=crop"
-          alt="Sleek sports car in studio lighting"
+          src="/images/vag.jpeg"
+          alt="VAG specialist – premium autoservice"
           className="object-cover w-full h-full"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/30 to-black/60" />

@@ -7,17 +7,17 @@ const SERVICES = [
   {
     title: 'VAG Specialist',
     description: 'Volkswagen, Audi, SEAT, Škoda – diagnose, onderhoud, DSG-service en meer.',
-    image: 'https://images.unsplash.com/photo-1630019209880-6b53557d0a8b?q=80&w=3242&auto=format&fit=crop'
+    image: '/images/vag.jpeg'
   },
   {
     title: 'Onderhoud & Reparatie',
     description: 'Onderhoud volgens fabrieksvoorschrift en vakkundige reparaties voor alle merken.',
-    image: 'https://images.unsplash.com/photo-1599474151975-1f978922fa02?q=80&w=3270&auto=format&fit=crop'
+    image: '/images/overgp.jpeg'
   },
   {
     title: 'Diagnose',
     description: 'Moderne diagnoseapparatuur voor snelle en accurate storingsanalyse.',
-    image: 'https://plus.unsplash.com/premium_photo-1658526934242-aa541776ca49?q=80&w=3272&auto=format&fit=crop'
+    image: '/images/diagnose.jpeg'
   },
 ]
 

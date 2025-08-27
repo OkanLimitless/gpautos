@@ -4,9 +4,9 @@ import { motion } from 'framer-motion'
 
 export default function WorkshopGallery() {
   const images = [
-    { src: 'https://images.unsplash.com/photo-1727893372771-b4ccae9b9f0b?q=80&w=3270&auto=format&fit=crop', label: 'VAG Diagnose' },
-    { src: 'https://images.unsplash.com/photo-1679251884095-d6ad5095b8ed?q=80&w=3270&auto=format&fit=crop', label: 'DSG Specialist' },
-    { src: 'https://images.unsplash.com/photo-1619505372149-07875c35b313?q=80&w=3387&auto=format&fit=crop', label: 'Werkplaats' },
+    { src: '/images/diagnose.jpeg', label: 'VAG Diagnose' },
+    { src: '/images/vag.jpeg', label: 'DSG Specialist' },
+    { src: '/images/overgp.jpeg', label: 'Werkplaats' },
   ]
 
   return (
