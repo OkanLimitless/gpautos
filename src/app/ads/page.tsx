@@ -33,21 +33,22 @@ export default function AdsLandingPage() {
       </header>
 
       {/* Hero two-column */}
-      <section className="bg-white">
-        <div className="container mx-auto px-4 py-12 md:py-16 grid md:grid-cols-2 gap-10 items-start">
+      <section className="bg-gray-50">
+        <div className="container mx-auto px-4 py-12 md:py-20 grid md:grid-cols-2 gap-10 items-start">
           <div>
             <div className="inline-flex items-center gap-2 text-sm text-zinc-600 mb-3">
               <span className="h-2 w-2 bg-green-500 rounded-full" /> Lichtenvoorde en omgeving
             </div>
-            <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-4">Onderhoud en reparatie voor alle merken</h1>
-            <p className="text-lg text-zinc-600 mb-6">
+            <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-2">Onderhoud en reparatie voor alle merken</h1>
+            <div className="h-1 w-14 bg-primary mb-4" />
+            <p className="text-lg text-gray-600 mb-6">
               Snel geholpen, vaak al binnen enkele dagen — niet pas over weken. Eerlijke prijzen, heldere communicatie en vakmanschap.
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
-              <CTAButton href="#afspraak" className="bg-primary hover:bg-red-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors text-center">
+              <CTAButton href="#afspraak" className="w-full sm:w-auto bg-gradient-to-b from-[#E10600] to-[#b10500] hover:brightness-110 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition-colors text-center">
                 Afspraak aanvragen
               </CTAButton>
-              <a href="tel:+31615530641" className="border border-zinc-300 text-zinc-700 hover:bg-zinc-50 font-semibold py-3 px-6 rounded-lg text-center">Bel direct</a>
+              <a href="tel:+31615530641" className="w-full sm:w-auto border border-zinc-300 text-zinc-700 hover:bg-zinc-50 font-semibold py-3 px-6 rounded-lg text-center">Bel direct</a>
             </div>
             <ul className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-zinc-700">
               <li className="flex items-center gap-2"><Check /> Onderhoud, diagnose en reparatie</li>
@@ -57,8 +58,9 @@ export default function AdsLandingPage() {
             </ul>
           </div>
           <div>
-            <div className="bg-white rounded-lg border border-zinc-200 shadow-sm p-6">
+            <div className="bg-white rounded-xl border border-gray-200 shadow-md p-6">
               <h2 className="text-2xl font-bold mb-1">Vraag een afspraak aan</h2>
+              <div className="h-1 w-12 bg-primary mb-3" />
               <p className="text-sm text-zinc-600 mb-4">Wij reageren doorgaans binnen 1 werkdag.</p>
               <AppointmentForm variant="light" minDateOffsetDays={1} autoFocusNext />
             </div>
@@ -69,39 +71,33 @@ export default function AdsLandingPage() {
       <SocialProof />
 
       {/* Trust section */}
-      <section className="bg-zinc-50">
-        <div className="container mx-auto px-4 py-12">
+      <section className="bg-white">
+        <div className="container mx-auto px-4 py-12 md:py-20">
           <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-white border border-zinc-200 rounded-lg p-6">
-              <h3 className="text-lg font-semibold mb-2">Alle merken welkom</h3>
-              <p className="text-zinc-600">Ervaring met Volkswagen t/m Volvo en alles daartussenin.</p>
-            </div>
-            <div className="bg-white border border-zinc-200 rounded-lg p-6">
-              <h3 className="text-lg font-semibold mb-2">Snel geholpen</h3>
-              <p className="text-zinc-600">Plan op korte termijn, zonder lange wachttijden.</p>
-            </div>
-            <div className="bg-white border border-zinc-200 rounded-lg p-6">
-              <h3 className="text-lg font-semibold mb-2">Duidelijke prijzen</h3>
-              <p className="text-zinc-600">Eerst overleg, dan pas sleutelen. Geen verrassingen.</p>
-            </div>
+            <TrustCard title="Alle merken welkom" text="Ervaring met Volkswagen t/m Volvo en alles daartussenin."><IconCar /></TrustCard>
+            <TrustCard title="Snel geholpen" text="Plan op korte termijn, zonder lange wachttijden."><IconClock /></TrustCard>
+            <TrustCard title="Duidelijke prijzen" text="Eerst overleg, dan pas sleutelen. Geen verrassingen."><IconTag /></TrustCard>
           </div>
         </div>
       </section>
 
       {/* Contact card */}
-      <section className="bg-white border-t border-zinc-200">
-        <div className="container mx-auto px-4 py-12 grid md:grid-cols-2 gap-8">
-          <div className="bg-zinc-50 rounded-lg border border-zinc-200 p-6">
-            <h3 className="text-xl font-bold mb-3">Liever direct contact?</h3>
-            <div className="space-y-2 text-zinc-700">
-              <p>Tel Oktay: <Link href="tel:+31615530641" className="text-primary font-semibold">+31 (0)6 15530641</Link></p>
-              <p>Tel Joost: <Link href="tel:+31622995398" className="text-primary font-semibold">+31 (0)6 22995398</Link></p>
-              <p>Email: <Link href="mailto:info@gpautos.nl" className="text-primary font-semibold">info@gpautos.nl</Link></p>
+      <section className="bg-gray-900 text-white">
+        <div className="container mx-auto px-4 py-12 md:py-20 grid md:grid-cols-2 gap-8">
+          <div className="rounded-lg border border-white/10 p-6">
+            <h3 className="text-xl font-bold mb-2">Liever direct contact?</h3>
+            <div className="h-1 w-10 bg-primary mb-4" />
+            <div className="flex flex-col sm:flex-row gap-3">
+              <a href="tel:+31615530641" className="bg-primary hover:bg-red-700 text-white font-semibold rounded-lg px-5 py-3 text-center">Bel Oktay</a>
+              <a href="tel:+31622995398" className="bg-white text-gray-900 hover:bg-gray-100 font-semibold rounded-lg px-5 py-3 text-center">Bel Joost</a>
+              <a href="https://wa.me/31615530641" className="bg-white text-gray-900 hover:bg-gray-100 font-semibold rounded-lg px-5 py-3 text-center">WhatsApp</a>
+              <a href="mailto:info@gpautos.nl" className="bg-white text-gray-900 hover:bg-gray-100 font-semibold rounded-lg px-5 py-3 text-center">E‑mail</a>
             </div>
           </div>
-          <div className="bg-zinc-50 rounded-lg border border-zinc-200 p-6">
-            <h3 className="text-xl font-bold mb-3">Adres & Openingstijden</h3>
-            <div className="text-zinc-700 space-y-1">
+          <div className="rounded-lg border border-white/10 p-6">
+            <h3 className="text-xl font-bold mb-2">Adres & Openingstijden</h3>
+            <div className="h-1 w-10 bg-primary mb-4" />
+            <div className="text-white/80 space-y-1">
               <p>Galileïstraat 5</p>
               <p>7131PE Lichtenvoorde</p>
               <p className="mt-3">Maandag - Zondag: Op afspraak</p>
@@ -111,8 +107,8 @@ export default function AdsLandingPage() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-white border-t border-zinc-200">
-        <div className="container mx-auto px-4 py-6 text-center text-zinc-500 text-sm">
+      <footer className="bg-gray-900">
+        <div className="container mx-auto px-4 py-6 text-center text-white/70 text-sm">
           <p>© {new Date().getFullYear()} GP Auto's • <Link href="/privacyverklaring" className="text-primary">privacybeleid</Link></p>
         </div>
       </footer>
@@ -122,7 +118,7 @@ export default function AdsLandingPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-4">
           <div className="rounded-xl bg-white/95 backdrop-blur border border-zinc-200 shadow-lg overflow-hidden">
             <div className="grid grid-cols-2">
-              <a href="#afspraak" className="py-3 text-center bg-primary text-white font-semibold">📅 Afspraak aanvragen</a>
+              <a href="#afspraak" className="py-3 text-center bg-gradient-to-b from-[#E10600] to-[#b10500] text-white font-semibold">📅 Afspraak aanvragen</a>
               <a href="tel:+31615530641" className="py-3 text-center text-zinc-800 font-semibold">📞 Bel direct</a>
             </div>
           </div>
@@ -134,6 +130,34 @@ export default function AdsLandingPage() {
 
 function Check() {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="h-5 w-5 text-green-600"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="h-5 w-5 text-primary"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/></svg>
+  )
+}
+
+function TrustCard({ title, text, children }: { title: string, text: string, children: React.ReactNode }) {
+  return (
+    <div className="bg-white border border-zinc-200 rounded-lg p-6 shadow-sm">
+      <div className="text-primary mb-3">{children}</div>
+      <h3 className="text-lg font-semibold mb-1">{title}</h3>
+      <p className="text-zinc-600">{text}</p>
+    </div>
+  )
+}
+
+function IconCar() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="h-6 w-6"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 13l2-5a2 2 0 011.874-1.316h8.252A2 2 0 0117 8l2 5m-1 4h-1a2 2 0 01-2-2v-1H8v1a2 2 0 01-2 2H5a2 2 0 01-2-2v-3h18v3a2 2 0 01-2 2z"/></svg>
+  )
+}
+
+function IconClock() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="h-6 w-6"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+  )
+}
+
+function IconTag() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="h-6 w-6"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 7h.01M3 11l8-8 8 8-8 8-8-8z"/></svg>
   )
 }
