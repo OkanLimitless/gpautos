@@ -11,9 +11,11 @@ registerLocale('nl', nl)
 
 interface AppointmentFormProps {
   variant?: 'dark' | 'light'
+  minDateOffsetDays?: number
+  autoFocusNext?: boolean
 }
 
-export default function AppointmentForm({ variant = 'dark' }: AppointmentFormProps) {
+export default function AppointmentForm({ variant = 'dark', minDateOffsetDays = 0, autoFocusNext = false }: AppointmentFormProps) {
   const isLight = variant === 'light'
 
   const containerClasses = isLight
@@ -39,6 +41,7 @@ export default function AppointmentForm({ variant = 'dark' }: AppointmentFormPro
 
   const [selectedDate, setSelectedDate] = useState<Date | null>(null)
   const [loading, setLoading] = useState(false)
+  const [errors, setErrors] = useState<{ [key: string]: string | undefined }>({})
   const [formData, setFormData] = useState({
     kenteken: '',
     name: '',
@@ -70,14 +73,16 @@ export default function AppointmentForm({ variant = 'dark' }: AppointmentFormPro
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    
-    if (!selectedDate) {
-      toast.error('Selecteer een datum voor de afspraak')
-      return
-    }
-
-    if (!formData.kenteken) {
-      toast.error('Vul uw kenteken in')
+    const newErrors: { [key: string]: string | undefined } = {}
+    if (!formData.kenteken) newErrors.kenteken = 'Vul uw kenteken in'
+    if (!selectedDate) newErrors.date = 'Selecteer een datum'
+    if (!formData.name) newErrors.name = 'Vul uw naam in'
+    if (!formData.phone) newErrors.phone = 'Vul uw telefoonnummer in'
+    if (!formData.email) newErrors.email = 'Vul uw e‑mail in'
+    if (!formData.description) newErrors.description = 'Beschrijf de werkzaamheden'
+    setErrors(newErrors)
+    if (Object.keys(newErrors).length > 0) {
+      toast.error('Controleer de invoer en probeer opnieuw')
       return
     }
 
@@ -125,6 +130,7 @@ export default function AppointmentForm({ variant = 'dark' }: AppointmentFormPro
         description: ''
       })
       setSelectedDate(null)
+      setErrors({})
     } catch (error) {
       console.error('Error submitting appointment:', error)
       toast.error(error instanceof Error ? error.message : 'Er is iets misgegaan')
@@ -146,9 +152,18 @@ export default function AppointmentForm({ variant = 'dark' }: AppointmentFormPro
               placeholder="AA-11-BB"
               className={inputClasses}
               value={formData.kenteken}
-              onChange={(e) => setFormData({...formData, kenteken: e.target.value.toUpperCase()})}
+              onChange={(e) => {
+                const val = e.target.value.toUpperCase()
+                setFormData({...formData, kenteken: val})
+                if (autoFocusNext && val.replace(/[^A-Z0-9]/g, '').length >= 6) {
+                  const dateEl = document.querySelector('input[name="date"]') as HTMLInputElement | null
+                  if (dateEl) dateEl.focus()
+                }
+              }}
+              autoFocus
             />
             <p className={hintClasses}>Voer uw kenteken in zonder streepjes</p>
+            {errors.kenteken && <p className="text-xs text-red-600 mt-1">{errors.kenteken}</p>}
           </div>
           <div>
             <label className={labelClasses}>Gewenste datum</label>
@@ -157,10 +172,12 @@ export default function AppointmentForm({ variant = 'dark' }: AppointmentFormPro
               onChange={(date: Date | null) => setSelectedDate(date)}
               locale="nl"
               dateFormat="P"
-              minDate={new Date()}
+              minDate={new Date(Date.now() + minDateOffsetDays * 24 * 60 * 60 * 1000)}
               className={inputClasses}
               placeholderText="Selecteer een datum"
+              name="date"
             />
+            {errors.date && <p className="text-xs text-red-600 mt-1">{errors.date}</p>}
           </div>
         </div>
 
@@ -175,6 +192,7 @@ export default function AppointmentForm({ variant = 'dark' }: AppointmentFormPro
               onChange={(e) => setFormData({...formData, name: e.target.value})}
               placeholder="Uw volledige naam"
             />
+            {errors.name && <p className="text-xs text-red-600 mt-1">{errors.name}</p>}
           </div>
           <div>
             <label className={labelClasses}>Telefoonnummer</label>
@@ -183,9 +201,14 @@ export default function AppointmentForm({ variant = 'dark' }: AppointmentFormPro
               required
               className={inputClasses}
               value={formData.phone}
-              onChange={(e) => setFormData({...formData, phone: e.target.value})}
+              onChange={(e) => {
+                let v = e.target.value.replace(/\s+/g, '')
+                if (v.startsWith('31') && !v.startsWith('+31')) v = '+31' + v.slice(2)
+                setFormData({...formData, phone: v})
+              }}
               placeholder="06 12345678"
             />
+            {errors.phone && <p className="text-xs text-red-600 mt-1">{errors.phone}</p>}
           </div>
         </div>
 
@@ -199,6 +222,7 @@ export default function AppointmentForm({ variant = 'dark' }: AppointmentFormPro
             onChange={(e) => setFormData({...formData, email: e.target.value})}
             placeholder="uw.email@voorbeeld.nl"
           />
+          {errors.email && <p className="text-xs text-red-600 mt-1">{errors.email}</p>}
         </div>
 
         <div>
@@ -211,6 +235,7 @@ export default function AppointmentForm({ variant = 'dark' }: AppointmentFormPro
             onChange={(e) => setFormData({...formData, description: e.target.value})}
             placeholder="Beschrijf kort wat er aan uw auto gedaan moet worden"
           />
+          {errors.description && <p className="text-xs text-red-600 mt-1">{errors.description}</p>}
         </div>
       </div>
 

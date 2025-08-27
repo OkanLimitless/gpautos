@@ -28,9 +28,7 @@ export default function AdsLandingPage() {
             <img src="/logo.png" alt="GP Auto's" className="h-10 w-auto" />
             <span className="sr-only">GP Auto's</span>
           </Link>
-          <div className="hidden sm:block">
-            <PhoneCTA />
-          </div>
+          <a href="tel:+31615530641" className="hidden sm:inline-flex bg-primary text-white font-semibold rounded-lg px-4 py-2">Bel direct</a>
         </div>
       </header>
 
@@ -46,23 +44,23 @@ export default function AdsLandingPage() {
               Snel geholpen, vaak al binnen enkele dagen — niet pas over weken. Eerlijke prijzen, heldere communicatie en vakmanschap.
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
-              <CTAButton href="#afspraak" className="bg-primary hover:bg-red-700 text-white font-semibold py-3 px-6 rounded transition-colors text-center">
+              <CTAButton href="#afspraak" className="bg-primary hover:bg-red-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors text-center">
                 Afspraak aanvragen
               </CTAButton>
-              <PhoneCTA theme="secondary" labelOverride="Bel direct" className="py-3 px-6" />
+              <a href="tel:+31615530641" className="border border-zinc-300 text-zinc-700 hover:bg-zinc-50 font-semibold py-3 px-6 rounded-lg text-center">Bel direct</a>
             </div>
             <ul className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-zinc-700">
-              <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 bg-zinc-400 rounded-full"/> Onderhoud, diagnose en reparatie</li>
-              <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 bg-zinc-400 rounded-full"/> Originele of A‑kwaliteit onderdelen</li>
-              <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 bg-zinc-400 rounded-full"/> Transparant overleg vooraf</li>
-              <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 bg-zinc-400 rounded-full"/> Afspraak op korte termijn</li>
+              <li className="flex items-center gap-2"><Check /> Onderhoud, diagnose en reparatie</li>
+              <li className="flex items-center gap-2"><Check /> Originele of A‑kwaliteit onderdelen</li>
+              <li className="flex items-center gap-2"><Check /> Transparant overleg vooraf</li>
+              <li className="flex items-center gap-2"><Check /> Afspraak op korte termijn</li>
             </ul>
           </div>
           <div>
             <div className="bg-white rounded-lg border border-zinc-200 shadow-sm p-6">
               <h2 className="text-2xl font-bold mb-1">Vraag een afspraak aan</h2>
               <p className="text-sm text-zinc-600 mb-4">Wij reageren doorgaans binnen 1 werkdag.</p>
-              <AppointmentForm variant="light" />
+              <AppointmentForm variant="light" minDateOffsetDays={1} autoFocusNext />
             </div>
           </div>
         </div>
@@ -115,14 +113,27 @@ export default function AdsLandingPage() {
       {/* Footer */}
       <footer className="bg-white border-t border-zinc-200">
         <div className="container mx-auto px-4 py-6 text-center text-zinc-500 text-sm">
-          <p>© {new Date().getFullYear()} GP Auto's</p>
+          <p>© {new Date().getFullYear()} GP Auto's • <Link href="/privacyverklaring" className="text-primary">privacybeleid</Link></p>
         </div>
       </footer>
 
-      {/* Sticky mobile call button */}
-      <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-40 md:hidden">
-        <PhoneCTA className="rounded-full px-6 py-3" labelOverride="Bel nu" />
+      {/* Sticky mobile CTA bar */}
+      <div className="fixed bottom-0 inset-x-0 z-40 md:hidden">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-4">
+          <div className="rounded-xl bg-white/95 backdrop-blur border border-zinc-200 shadow-lg overflow-hidden">
+            <div className="grid grid-cols-2">
+              <a href="#afspraak" className="py-3 text-center bg-primary text-white font-semibold">📅 Afspraak aanvragen</a>
+              <a href="tel:+31615530641" className="py-3 text-center text-zinc-800 font-semibold">📞 Bel direct</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+  )
+}
+
+function Check() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="h-5 w-5 text-green-600"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/></svg>
   )
 }
