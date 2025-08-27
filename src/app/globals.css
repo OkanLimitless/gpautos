@@ -112,33 +112,33 @@
 }
 
 .react-datepicker {
-  @apply border border-accent rounded shadow-sonic bg-secondary !important;
+  @apply border border-gray-200 rounded shadow-lg bg-white !important;
 }
 
 .react-datepicker__header {
-  @apply bg-accent text-white rounded-t border-accent !important;
+  @apply bg-gray-50 text-gray-900 rounded-t border-b border-gray-200 !important;
 }
 
 .react-datepicker__current-month {
-  @apply text-white !important;
+  @apply text-gray-900 !important;
 }
 
 .react-datepicker__day-name {
-  @apply text-text-gray !important;
+  @apply text-gray-500 !important;
 }
 
 .react-datepicker__day {
-  @apply text-text-light hover:bg-primary !important;
+  @apply text-gray-700 hover:bg-gray-100 !important;
 }
 
 .react-datepicker__day--selected {
-  @apply bg-primary !important;
+  @apply bg-primary text-white !important;
 }
 
 .react-datepicker__day--keyboard-selected {
-  @apply bg-primary/80 !important;
+  @apply bg-primary/80 text-white !important;
 }
 
 .react-datepicker__input-container input {
-  @apply w-full rounded bg-accent border-accent text-white shadow-sm focus:border-primary focus:ring-primary sm:text-sm;
-} 
+  @apply w-full rounded-md bg-gray-50 border border-gray-300 text-gray-900 shadow-sm focus:border-transparent focus:ring-2 focus:ring-primary sm:text-sm placeholder:text-gray-400;
+}
