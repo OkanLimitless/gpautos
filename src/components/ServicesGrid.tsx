@@ -46,8 +46,7 @@ export default function ServicesGrid() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
               </div>
               <h3 className="text-[22px] font-semibold text-white tracking-tight mb-2">{s.title}</h3>
-              <p className="text-text-gray mb-4 text-[16px]">{s.description}</p>
-              <Link href="#" className="text-primary hover:text-red-400 font-semibold">Bekijk dienst</Link>
+              <p className="text-text-gray text-[16px]">{s.description}</p>
             </motion.div>
           ))}
         </div>
