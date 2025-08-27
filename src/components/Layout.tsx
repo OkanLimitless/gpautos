@@ -9,7 +9,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-screen flex flex-col">
       <Navigation />
-      <main className="flex-grow">
+      <main className="flex-grow pt-16">
         {children}
       </main>
       <footer className="py-10 black-section border-t border-accent">
@@ -64,7 +64,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             </div>
           </div>
           <div className="text-center text-text-gray pt-8 border-t border-accent">
-            <p>© {new Date().getFullYear()} GP Auto's - Alle rechten voorbehouden</p>
+            <p>© {new Date().getFullYear()} GP Auto's • Alle rechten voorbehouden</p>
           </div>
         </div>
       </footer>
