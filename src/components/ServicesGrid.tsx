@@ -23,11 +23,12 @@ const SERVICES = [
 
 export default function ServicesGrid() {
   return (
-    <section id="diensten" className="py-16 dark-section">
+    <section id="diensten" className="py-14 md:py-20 dark-section">
       <div className="container">
         <div className="text-center mb-12">
           <h2 className="section-title">Onze Diensten</h2>
           <p className="section-subtitle">Premium service voor elke kilometer. Vakkundig, transparant en betrouwbaar.</p>
+          <div className="mt-8" />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -40,13 +41,13 @@ export default function ServicesGrid() {
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.5, delay: idx * 0.05 }}
             >
-              <div className="relative h-48 mb-6 overflow-hidden rounded">
-                <img src={s.image} alt={s.title} className="h-full w-full object-cover transform hover:scale-105 transition-transform duration-500" />
+              <div className="relative h-48 mb-6 overflow-hidden rounded-lg">
+                <img src={s.image} alt={s.title} className="h-full w-full object-cover transform hover:scale-[1.02] transition-transform duration-300" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
               </div>
-              <h3 className="text-xl font-bold text-white uppercase mb-2 tracking-wide">{s.title}</h3>
-              <p className="text-text-gray mb-4">{s.description}</p>
-              <Link href="#" className="text-primary hover:text-red-400 font-semibold">Lees Meer →</Link>
+              <h3 className="text-[22px] font-semibold text-white tracking-tight mb-2">{s.title}</h3>
+              <p className="text-text-gray mb-4 text-[16px]">{s.description}</p>
+              <Link href="#" className="text-primary hover:text-red-400 font-semibold">Bekijk dienst</Link>
             </motion.div>
           ))}
         </div>

@@ -3,6 +3,9 @@
 import Navigation from './Navigation'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import dynamic from 'next/dynamic'
+
+const MobileStickyCTA = dynamic(() => import('./MobileStickyCTA'), { ssr: false })
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -12,6 +15,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <main className="flex-grow pt-16">
         {children}
       </main>
+      <MobileStickyCTA />
       <footer className="py-10 black-section border-t border-accent">
         <div className="container">
           <div className="grid md:grid-cols-3 gap-8 mb-8">

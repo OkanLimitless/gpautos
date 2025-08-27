@@ -14,7 +14,7 @@ export default function HeroSection() {
           alt="Sleek sports car in studio lighting"
           className="object-cover w-full h-full"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/80" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/30 to-black/60" />
       </div>
 
       {/* Content */}
@@ -26,17 +26,17 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
           >
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
+            <h1 className="text-[52px] leading-[1.1] md:text-[72px] md:leading-[1.1] font-bold text-white mb-4 tracking-tight">
               Uw Auto in Betrouwbare Handen
             </h1>
-            <p className="text-xl md:text-2xl text-white/80 mb-10">
-              Onderhoud, reparatie en diagnose op premium niveau. Transparant, vakkundig en met aandacht.
+            <p className="text-lg md:text-xl text-white/85 mb-8">
+              Premium onderhoud, reparatie en diagnose. Transparant, vakkundig en met aandacht voor detail.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
                 <Link 
                   href="/afspraak" 
-                  className="btn bg-primary hover:bg-[#c90500] text-white rounded-md shadow-sonic"
+                  className="btn bg-primary hover:bg-[#c90500] text-white rounded-md shadow-sonic px-7 py-3 text-base md:px-8 md:py-4 md:text-lg"
                 >
                   Maak Afspraak
                 </Link>
@@ -44,7 +44,7 @@ export default function HeroSection() {
               <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
                 <Link 
                   href="/#about-section" 
-                  className="btn border-2 border-white/30 text-white hover:border-white/60 rounded-md"
+                  className="btn border border-white/30 text-white hover:border-white/60 rounded-md px-6 py-3"
                 >
                   Over Ons
                 </Link>
