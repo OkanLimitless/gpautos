@@ -19,6 +19,11 @@ const SERVICES = [
     description: 'Moderne diagnoseapparatuur voor snelle en accurate storingsanalyse.',
     image: '/images/diagnose.jpeg'
   },
+  {
+    title: 'Retrofit & Inbouw',
+    description: 'Apple CarPlay/Android Auto, cruise control, parkeersensoren en meer.',
+    image: '/images/diagnose.jpeg'
+  },
 ]
 
 export default function ServicesGrid() {
@@ -31,7 +36,7 @@ export default function ServicesGrid() {
           <div className="mt-8" />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {SERVICES.map((s, idx) => (
             <motion.div
               key={s.title}
