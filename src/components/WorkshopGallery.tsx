@@ -35,7 +35,7 @@ export default function WorkshopGallery() {
           {[
             { t: 'VAG Diagnoseapparatuur', d: 'Uitlezen, coderen en programmeren.' },
             { t: 'DSG Service', d: 'Onderhoud en reparatie volgens voorschrift.' },
-            { t: 'Remmen & Onderstel', d: 'Remmen, vering en uitlijning voor optimale controle.' },
+            { t: 'Retrofit & Inbouw', d: 'Apple CarPlay/Android Auto, cruise control, parkeersensoren en meer.' },
           ].map((item) => (
             <div key={item.t} className="bg-light p-6 rounded shadow-sonic">
               <h3 className="text-lg font-bold text-text-dark mb-2">{item.t}</h3>
