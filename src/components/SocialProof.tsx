@@ -6,7 +6,12 @@ export default function SocialProof() {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           {/* Rating Card */}
-          <div className="bg-[#1A1A1A] p-8 rounded-2xl flex flex-col justify-center items-center text-center border border-white/5">
+          <a
+            href="https://g.page/r/CQXgWb2l5RKzEBM/review"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-[#1A1A1A] p-8 rounded-2xl flex flex-col justify-center items-center text-center border border-white/5 hover:border-primary/30 transition-colors cursor-pointer"
+          >
             <div className="text-5xl font-bold text-white mb-2">5.0<span className="text-2xl text-white/60">/5 STERREN</span></div>
             <div className="flex text-primary mb-4">
               <Star /> <Star /> <Star /> <Star /> <Star />
@@ -15,7 +20,7 @@ export default function SocialProof() {
               <GoogleBadge />
               <span className="font-medium tracking-tight">Google Beoordeling</span>
             </div>
-          </div>
+          </a>
 
           {/* Testimonial Cards */}
           <TestimonialCard
