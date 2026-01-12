@@ -7,13 +7,13 @@ export default function SocialProof() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           {/* Rating Card */}
           <div className="bg-[#1A1A1A] p-8 rounded-2xl flex flex-col justify-center items-center text-center border border-white/5">
-            <div className="text-5xl font-bold text-white mb-2">4.9<span className="text-2xl text-white/60">/5 STARS</span></div>
+            <div className="text-5xl font-bold text-white mb-2">5.0<span className="text-2xl text-white/60">/5 STERREN</span></div>
             <div className="flex text-primary mb-4">
               <Star /> <Star /> <Star /> <Star /> <Star />
             </div>
             <div className="flex items-center gap-2 text-white/80">
               <GoogleBadge />
-              <span className="font-medium tracking-tight">Google Rating</span>
+              <span className="font-medium tracking-tight">Google Beoordeling</span>
             </div>
           </div>
 

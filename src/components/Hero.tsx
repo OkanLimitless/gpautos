@@ -73,8 +73,8 @@ export default function Hero() {
                     >
                         <h1 className="text-5xl md:text-7xl lg:text-8xl font-bebas font-bold text-white leading-[0.9] mb-8 tracking-tight">
                             GP AUTO&apos;S: <br />
-                            <span className="text-white">PERFORMANCE &</span> <br />
-                            <span className="text-white">PRECISION REFINED.</span>
+                            <span className="text-white">KWALITEIT &</span> <br />
+                            <span className="text-white">VAKMANSCHAP.</span>
                         </h1>
                     </motion.div>
 
