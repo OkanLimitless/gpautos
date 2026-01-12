@@ -31,7 +31,7 @@ export default function SocialProof() {
           <TestimonialCard
             name="Peter"
             meta="SEAT Leon"
-            text="Vakkundig en vriendelijk team. Echt een aanrader voor onderhoud en complexe diagnoses aan VAG auto's."
+            text="Vakkundig en vriendelijk team. Echt een aanrader voor onderhoud en complexe diagnoses."
           />
         </div>
       </div>

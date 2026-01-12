@@ -45,7 +45,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 <img src="/logo.png" alt="GP Auto's" className="h-10 w-auto" />
               </Link>
               <p className="text-white/20 text-xs">
-                Premium Autoservice & VAG Specialist
+                Premium Autoservice in Lichtenvoorde
               </p>
             </div>
           </div>

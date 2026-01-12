@@ -5,21 +5,21 @@ import { motion } from 'framer-motion'
 
 const SERVICES = [
   {
-    title: 'VAG Specialist',
-    description: 'Volkswagen, Audi, SEAT, Škoda – diagnose, onderhoud, DSG-service en meer.',
+    title: 'Alle Merken',
+    description: 'Onderhoud en reparatie voor alle automerken. Van Audi tot BMW, van Mercedes tot Volkswagen.',
     image: '/images/vag.jpeg',
     car: 'Audi RS6',
     icon: <EngineIcon />
   },
   {
-    title: 'Maintenance',
+    title: 'Onderhoud',
     description: 'Periodiek onderhoud volgens fabrieksvoorschrift voor alle merken.',
     image: '/images/IMG_4210.jpeg',
     car: 'BMW M5',
     icon: <WrenchIcon />
   },
   {
-    title: 'Diagnostics',
+    title: 'Diagnose',
     description: 'Moderne diagnoseapparatuur voor snelle en accurate storingsanalyse.',
     image: '/images/diagnose.jpeg',
     car: 'Porsche Taycan',
@@ -39,7 +39,7 @@ export default function ServicesGrid() {
     <section id="diensten" className="py-20 bg-black">
       <div className="container mx-auto px-4">
         <div className="mb-12">
-          <h2 className="text-4xl font-bold text-white mb-2 uppercase font-bebas tracking-wider">Our Services</h2>
+          <h2 className="text-4xl font-bold text-white mb-2 uppercase font-bebas tracking-wider">Onze Diensten</h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

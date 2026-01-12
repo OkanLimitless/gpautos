@@ -46,9 +46,9 @@ export default function AboutSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl font-bold text-white mb-6 font-bebas tracking-wider uppercase">Why Choose Us</h2>
+            <h2 className="text-4xl font-bold text-white mb-6 font-bebas tracking-wider uppercase">Waarom GP Auto&apos;s</h2>
             <p className="text-white/60 mb-8 leading-relaxed">
-              GP Auto&apos;s combineert passie met technische expertise. Als VAG-specialist en allround mechanieker streven we bij elke klus naar perfectie, of het nu gaat om regulier onderhoud of complexe diagnoses.
+              GP Auto&apos;s combineert passie met technische expertise. Als allround autobedrijf streven we bij elke klus naar perfectie, of het nu gaat om regulier onderhoud of complexe diagnoses.
             </p>
 
             <ul className="space-y-6">
@@ -57,7 +57,7 @@ export default function AboutSection() {
                   <CheckIcon />
                 </div>
                 <div>
-                  <h4 className="text-white font-bold mb-1 uppercase tracking-tight">Experience</h4>
+                  <h4 className="text-white font-bold mb-1 uppercase tracking-tight">Ervaring</h4>
                   <p className="text-white/50 text-sm">Over tien jaar ervaring in vakmanschap en passie voor techniek.</p>
                 </div>
               </li>
@@ -67,7 +67,7 @@ export default function AboutSection() {
                 </div>
                 <div>
                   <h4 className="text-white font-bold mb-1 uppercase tracking-tight">Expertise</h4>
-                  <p className="text-white/50 text-sm">Marktleidende kennis in onderhoud van VAG en alle andere merken.</p>
+                  <p className="text-white/50 text-sm">Marktleidende kennis in onderhoud voor alle merken.</p>
                 </div>
               </li>
               <li className="flex gap-4">
@@ -75,7 +75,7 @@ export default function AboutSection() {
                   <CheckIcon />
                 </div>
                 <div>
-                  <h4 className="text-white font-bold mb-1 uppercase tracking-tight">Transparance</h4>
+                  <h4 className="text-white font-bold mb-1 uppercase tracking-tight">Transparantie</h4>
                   <p className="text-white/50 text-sm">Transparante communicatie over alle werkzaamheden en eerlijke prijzen.</p>
                 </div>
               </li>
@@ -84,7 +84,7 @@ export default function AboutSection() {
                   <CheckIcon />
                 </div>
                 <div>
-                  <h4 className="text-white font-bold mb-1 uppercase tracking-tight">Reliability</h4>
+                  <h4 className="text-white font-bold mb-1 uppercase tracking-tight">Betrouwbaarheid</h4>
                   <p className="text-white/50 text-sm">Betrouwbare service voor een zorgeloze rijervaring, elke kilometer weer.</p>
                 </div>
               </li>
