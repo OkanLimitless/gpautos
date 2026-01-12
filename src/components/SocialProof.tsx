@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 
 export default function SocialProof() {
   return (
-    <section className="relative z-20 -mt-24 pb-16">
+    <section className="relative z-20 -mt-24 pb-20 bg-zinc-950">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
