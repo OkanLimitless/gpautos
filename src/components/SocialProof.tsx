@@ -16,7 +16,7 @@ export default function SocialProof() {
           <div className="flex flex-col md:flex-row items-stretch gap-4 md:gap-0">
             {/* Rating Section */}
             <a
-              href="https://search.google.com/local/writereview?placeid=ChIJRBSnqGB5uEcRMK8e6E0RieE"
+              href="https://share.google/hXaUUDZcESTI2V9tq"
               target="_blank"
               rel="noopener noreferrer"
               className="flex-shrink-0 px-8 py-6 flex flex-col justify-center items-center text-center hover:bg-white/5 transition-colors rounded-xl md:rounded-none md:border-r border-white/10"
