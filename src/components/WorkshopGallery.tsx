@@ -13,7 +13,7 @@ export default function WorkshopGallery() {
   return (
     <section className="py-24 bg-black">
       <div className="container mx-auto px-4 text-center mb-16">
-        <h2 className="text-4xl font-bold text-white uppercase font-bebas tracking-wider">Workshop Showcase</h2>
+        <h2 className="text-4xl font-bold text-white uppercase font-bebas tracking-wider">Onze Werkplaats</h2>
       </div>
 
       <div className="container mx-auto px-4">
