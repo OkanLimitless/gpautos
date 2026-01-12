@@ -22,6 +22,10 @@ module.exports = {
       },
       fontFamily: {
         sans: ['var(--font-inter)'],
+        inter: ['var(--font-inter)'],
+        outfit: ['var(--font-outfit)'],
+        bebas: ['var(--font-bebas)'],
+        heading: ['var(--font-outfit)'],
       },
       boxShadow: {
         'sonic': '0 8px 24px rgba(0,0,0,0.4)',
