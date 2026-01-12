@@ -5,11 +5,76 @@ import { Toaster } from 'react-hot-toast'
 import Script from 'next/script'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
-const poppins = Poppins({ subsets: ['latin'], weight: ['400','500','600','700'], variable: '--font-poppins' })
+const poppins = Poppins({ subsets: ['latin'], weight: ['400', '500', '600', '700'], variable: '--font-poppins' })
 
 export const metadata: Metadata = {
   title: "GP Auto's – Premium Autoservice, Onderhoud & VAG Specialist",
-  description: 'Premium onderhoud, reparatie en diagnose. VAG specialist in Lichtenvoorde.',
+  description: 'Premium onderhoud, reparatie en diagnose. VAG specialist in Lichtenvoorde. Bekijk onze diensten en maak online een afspraak.',
+  metadataBase: new URL('https://gpautos.nl'),
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    title: "GP Auto's – Premium Autoservice, Onderhoud & VAG Specialist",
+    description: 'Premium onderhoud, reparatie en diagnose in Lichtenvoorde. Uw VAG specialist voor Audi, VW, SEAT en Skoda.',
+    url: 'https://gpautos.nl',
+    siteName: "GP Auto's",
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: "GP Auto's Lichtenvoorde",
+      },
+    ],
+    locale: 'nl_NL',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "GP Auto's – Premium Autoservice",
+    description: 'VAG Specialist in Lichtenvoorde voor premium onderhoud en diagnose.',
+    images: ['/og-image.png'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+}
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "AutoDealer",
+  "name": "GP Auto's",
+  "image": "https://gpautos.nl/og-image.png",
+  "logo": "https://gpautos.nl/logo.png",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Galileïstraat 5",
+    "addressLocality": "Lichtenvoorde",
+    "postalCode": "7131PE",
+    "addressCountry": "NL"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 51.988019,
+    "longitude": 6.561491
+  },
+  "url": "https://gpautos.nl",
+  "telephone": "+31615530641",
+  "openingHours": "Mo-Fr 08:30-17:30, Sa 09:00-13:00",
+  "priceRange": "$$",
+  "sameAs": [
+    "https://www.facebook.com/gpautosnl",
+    "https://www.instagram.com/gp.autos"
+  ]
 }
 
 export default function RootLayout({
@@ -50,10 +115,14 @@ export default function RootLayout({
             }
           `}
         </Script>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </head>
       <body className={`${inter.variable} ${poppins.variable} bg-zinc-950 text-white`}>
         {children}
-        <Toaster 
+        <Toaster
           position="bottom-center"
           toastOptions={{
             duration: 5000,

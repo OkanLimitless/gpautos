@@ -1,45 +1,42 @@
 export default function SocialProof() {
   return (
-    <section className="bg-gray-50 border-t border-zinc-200">
-      <div className="container mx-auto px-4 py-12 md:py-20">
+    <section className="bg-secondary relative py-20 overflow-hidden">
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+      <div className="container mx-auto px-4 relative">
         {/* Rating strip */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
-          <div className="flex items-center gap-3">
-            <div className="flex items-center text-yellow-400" aria-hidden="true">
-              <Star />
-              <Star />
-              <Star />
-              <Star />
-              <StarHalf />
-            </div>
-            <div>
-              <div className="text-zinc-900 font-semibold leading-tight">Klanttevredenheid 4,9/5</div>
-              <div className="text-sm text-zinc-600 leading-tight">Op basis van 120+ beoordelingen</div>
+        <div className="flex flex-col md:flex-row items-center justify-between gap-8 mb-16 border-b border-white/5 pb-12">
+          <div className="flex items-center gap-6">
+            <div className="flex flex-col">
+              <div className="flex items-center text-primary mb-1" aria-hidden="true">
+                <Star /> <Star /> <Star /> <Star /> <Star />
+              </div>
+              <div className="text-white text-2xl font-bold tracking-tight">Klanttevredenheid 4,9/5</div>
+              <div className="text-white/50 font-medium">Op basis van 120+ Google beoordelingen</div>
             </div>
           </div>
-          <div className="flex items-center gap-3 text-sm text-zinc-600">
-            <span className="inline-flex items-center gap-1"><Badge /> Betrouwbare service</span>
-            <span className="inline-flex items-center gap-1"><Badge /> Transparante prijzen</span>
-            <span className="inline-flex items-center gap-1"><Badge /> Snelle planning</span>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-white/70">
+            <span className="inline-flex items-center gap-2 font-medium"><Badge /> Betrouwbare service</span>
+            <span className="inline-flex items-center gap-2 font-medium"><Badge /> Transparante prijzen</span>
+            <span className="inline-flex items-center gap-2 font-medium"><Badge /> Snelle planning</span>
           </div>
         </div>
 
         {/* Testimonials */}
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-3 gap-8">
           <TestimonialCard
             name="Mark"
             meta="Audi A4"
-            text="Super service. Snel ingepland en helder overleg. Auto rijdt weer perfect."
+            text="Super service. Snel ingepland en helder overleg. De auto rijdt weer perfect en de communicatie was top."
           />
           <TestimonialCard
             name="Lisa"
             meta="VW Golf"
-            text="Eerlijke prijs en duidelijke uitleg. Binnen enkele dagen geholpen."
+            text="Eerlijke prijs en een hele duidelijke uitleg. Binnen enkele dagen geholpen met mijn DSG probleem."
           />
           <TestimonialCard
             name="Peter"
             meta="SEAT Leon"
-            text="Vakkundig en vriendelijk. Aanrader voor onderhoud en diagnose."
+            text="Vakkundig en vriendelijk team. Echt een aanrader voor onderhoud en complexe diagnoses aan VAG auto's."
           />
         </div>
       </div>
@@ -49,23 +46,17 @@ export default function SocialProof() {
 
 function TestimonialCard({ name, meta, text }: { name: string, meta: string, text: string }) {
   return (
-    <figure className="bg-white border border-zinc-200 rounded-lg p-5 h-full shadow-md">
-      <div className="text-zinc-400 mb-2" aria-hidden="true">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5"><path d="M7.17 6.17A4.5 4.5 0 1111 11H9v4H5V9a3 3 0 012.17-2.83zM17.17 6.17A4.5 4.5 0 1121 11h-2v4h-4V9a3 3 0 012.17-2.83z"/></svg>
+    <figure className="bg-black/40 backdrop-blur-sm border border-white/5 rounded-2xl p-8 h-full transition-all hover:bg-black/60 hover:border-primary/20 hover:translate-y-[-4px]">
+      <div className="text-primary/40 mb-4" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6"><path d="M7.17 6.17A4.5 4.5 0 1111 11H9v4H5V9a3 3 0 012.17-2.83zM17.17 6.17A4.5 4.5 0 1121 11h-2v4h-4V9a3 3 0 012.17-2.83z" /></svg>
       </div>
-      <div className="flex items-center gap-1 text-yellow-400 mb-2" aria-hidden="true">
-        <Star />
-        <Star />
-        <Star />
-        <Star />
-        <Star />
+      <div className="flex items-center gap-1 text-primary mb-4" aria-hidden="true">
+        <Star /> <Star /> <Star /> <Star /> <Star />
       </div>
-      <div className="inline-flex items-center gap-2 text-xs text-zinc-600 mb-3">
-        <GoogleBadge /> Google Review
-      </div>
-      <blockquote className="text-zinc-800">“{text}”</blockquote>
-      <figcaption className="mt-4 text-sm text-zinc-600">
-        <span className="font-semibold text-zinc-900">{name}</span> • {meta}
+      <blockquote className="text-white/90 text-lg leading-relaxed mb-6">“{text}”</blockquote>
+      <figcaption className="mt-auto pt-6 border-t border-white/5 flex flex-col">
+        <span className="font-bold text-white text-lg">{name}</span>
+        <span className="text-white/40">{meta}</span>
       </figcaption>
     </figure>
   )
@@ -104,7 +95,7 @@ function Badge() {
 function GoogleBadge() {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="h-4 w-4" aria-hidden="true">
-      <path fill="#4285F4" d="M21.35 11.1h-9.17v2.98h5.26c-.23 1.24-1.41 3.64-5.26 3.64-3.17 0-5.77-2.62-5.77-5.85s2.6-5.85 5.77-5.85c1.81 0 3.02.77 3.72 1.44l2.54-2.45C17.11 3.08 15.07 2 12.18 2 6.99 2 2.78 6.2 2.78 11.37s4.21 9.37 9.4 9.37c5.43 0 9.01-3.81 9.01-9.18 0-.62-.07-1.08-.16-1.46h.32z"/>
+      <path fill="#4285F4" d="M21.35 11.1h-9.17v2.98h5.26c-.23 1.24-1.41 3.64-5.26 3.64-3.17 0-5.77-2.62-5.77-5.85s2.6-5.85 5.77-5.85c1.81 0 3.02.77 3.72 1.44l2.54-2.45C17.11 3.08 15.07 2 12.18 2 6.99 2 2.78 6.2 2.78 11.37s4.21 9.37 9.4 9.37c5.43 0 9.01-3.81 9.01-9.18 0-.62-.07-1.08-.16-1.46h.32z" />
     </svg>
   )
 }

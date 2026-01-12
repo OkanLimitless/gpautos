@@ -6,11 +6,17 @@
   body {
     @apply bg-secondary text-text-white;
   }
-  
-  h1, h2, h3, h4, h5, h6 {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-bold tracking-tight;
     font-family: var(--font-poppins), ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
   }
+
   @media (prefers-reduced-motion: reduce) {
     * {
       animation: none !important;
@@ -24,15 +30,15 @@
   .container {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
-  
+
   .btn {
     @apply px-6 py-3 rounded-md font-semibold transition-transform duration-300 inline-flex items-center justify-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-white/60;
   }
-  
+
   .btn-primary {
     @apply bg-primary text-white hover:bg-red-700 shadow-sonic;
   }
-  
+
   .btn-outline {
     @apply border-2 border-primary text-white hover:bg-primary;
   }
@@ -58,7 +64,23 @@
   }
 
   .card {
-    @apply bg-accent p-6 rounded-xl border border-white/10 transition-all duration-300 hover:translate-y-1 hover:shadow-lg hover:ring-1 hover:ring-white/15;
+    @apply bg-[#121214] p-6 rounded-xl border border-white/5 transition-all duration-500 hover:translate-y-[-4px] hover:shadow-[0_20px_40px_-15px_rgba(0, 0, 0, 0.5)] hover:ring-1 hover:ring-primary/20;
+  }
+
+  .shadow-sonic {
+    box-shadow: 0 0 20px -5px rgba(239, 68, 68, 0.4);
+  }
+
+  .shadow-sonic-lg {
+    box-shadow: 0 0 35px -5px rgba(239, 68, 68, 0.5);
+  }
+
+  .glow-red {
+    @apply relative after:absolute after:inset-0 after:rounded-full after:bg-primary/20 after:blur-2xl after:-z-10;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-br from-white via-white to-white/60;
   }
 
   .card-light {
@@ -84,11 +106,11 @@
   .service-image {
     @apply w-full h-48 object-cover rounded mb-4;
   }
-  
+
   .grid-gallery {
     @apply grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2;
   }
-  
+
   .gallery-item {
     @apply relative overflow-hidden aspect-square;
   }

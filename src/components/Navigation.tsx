@@ -12,7 +12,7 @@ export default function Navigation() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10)
     }
-    
+
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
@@ -20,51 +20,52 @@ export default function Navigation() {
   return (
     <header className="w-full fixed top-0 z-50">
       {/* Main navigation */}
-      <nav className={`px-4 py-3 transition-all duration-300 ${
-        isScrolled ? 'bg-black/90 backdrop-blur supports-[backdrop-filter]:bg-black/70 shadow-sonic' : 'bg-transparent'
-      }`}>
+      <nav className={`px-4 py-3 transition-all duration-500 ${isScrolled
+          ? 'bg-black/60 backdrop-blur-xl border-b border-white/5 shadow-sonic'
+          : 'bg-transparent'
+        }`}>
         <div className="container mx-auto flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <Image 
-              src="/logo.png" 
-              alt="GP Auto's" 
-              width={180} 
-              height={60} 
+            <Image
+              src="/logo.png"
+              alt="GP Auto's"
+              width={180}
+              height={60}
               className="h-10 md:h-12 w-auto drop-shadow"
             />
           </Link>
-          
+
           {/* Desktop menu */}
           <div className="hidden md:flex space-x-8 items-center">
-            <Link 
-              href="/#diensten" 
+            <Link
+              href="/#diensten"
               className="text-white/80 hover:text-white transition-colors"
             >
               Diensten
             </Link>
-            <Link 
-              href="/#about-section" 
+            <Link
+              href="/#about-section"
               className="text-white/80 hover:text-white transition-colors"
             >
               Over Ons
             </Link>
-            <Link 
-              href="/#contact" 
+            <Link
+              href="/#contact"
               className="text-white/80 hover:text-white transition-colors"
             >
               Contact
             </Link>
-            <Link 
-              href="/afspraak" 
+            <Link
+              href="/afspraak"
               className="btn bg-primary hover:bg-red-700 text-white shadow-sonic rounded-md"
             >
               Afspraak Maken
             </Link>
           </div>
-          
+
           {/* Mobile menu button */}
-          <button 
+          <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="md:hidden text-white focus:outline-none"
             aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
@@ -79,35 +80,34 @@ export default function Navigation() {
           </button>
         </div>
       </nav>
-      
+
       {/* Mobile menu */}
-      <div className={`md:hidden transition-all duration-300 overflow-hidden ${
-        isMobileMenuOpen ? 'max-h-screen bg-black/95 shadow-sonic' : 'max-h-0 bg-transparent'
-      }`}>
+      <div className={`md:hidden transition-all duration-300 overflow-hidden ${isMobileMenuOpen ? 'max-h-screen bg-black/95 shadow-sonic' : 'max-h-0 bg-transparent'
+        }`}>
         <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
-          <Link 
-            href="/#diensten" 
+          <Link
+            href="/#diensten"
             className="text-white/90 hover:text-white transition-colors p-2"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Onze Diensten
           </Link>
-          <Link 
-            href="/#about-section" 
+          <Link
+            href="/#about-section"
             className="text-white/90 hover:text-white transition-colors p-2"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Over Ons
           </Link>
-          <Link 
-            href="/#contact" 
+          <Link
+            href="/#contact"
             className="text-white/90 hover:text-white transition-colors p-2"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Contact
           </Link>
-          <Link 
-            href="/afspraak" 
+          <Link
+            href="/afspraak"
             className="btn bg-primary hover:bg-red-700 text-white shadow-sonic rounded-md text-center"
             onClick={() => setIsMobileMenuOpen(false)}
           >
