@@ -1,76 +1,113 @@
 'use client'
 
-import Link from 'next/link'
-import { motion } from 'framer-motion'
-
 export default function ContactSection() {
   return (
-    <section id="contact" className="py-14 md:py-20 dark-section">
-      <div className="container">
-        <div className="text-center mb-12">
-          <h2 className="section-title">Contact</h2>
-          <p className="section-subtitle">Vragen of afspraak maken? We helpen u graag.</p>
-          <div className="mt-8" />
-        </div>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.5 }}
-            className="card"
-          >
-            <h3 className="text-xl font-bold text-white uppercase mb-4 tracking-wide">Gegevens</h3>
-            <div className="space-y-4">
-              <div>
-                <p className="text-white font-medium">Adres</p>
-                <p className="text-text-gray">Galileïstraat 5, 7131PE Lichtenvoorde</p>
-                <a className="text-primary hover:text-red-400" href="https://maps.google.com/?q=Galile%C3%AFstraat%205%2C%207131PE%20Lichtenvoorde" target="_blank" rel="noreferrer">Route</a>
+    <section id="contact" className="py-24 bg-black">
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+
+          {/* Contact Form */}
+          <div>
+            <h2 className="text-4xl font-bold text-white mb-8 border-b border-white/10 pb-4 font-bebas tracking-wider uppercase">Contact</h2>
+            <form className="space-y-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <input
+                  type="text"
+                  placeholder="Naam"
+                  className="bg-[#1A1A1A] border border-white/5 rounded-sm p-4 text-white placeholder:text-white/30 focus:outline-none focus:border-primary transition-colors"
+                />
+                <input
+                  type="email"
+                  placeholder="E-mail"
+                  className="bg-[#1A1A1A] border border-white/5 rounded-sm p-4 text-white placeholder:text-white/30 focus:outline-none focus:border-primary transition-colors"
+                />
               </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <input
+                  type="tel"
+                  placeholder="Telefoon"
+                  className="bg-[#1A1A1A] border border-white/5 rounded-sm p-4 text-white placeholder:text-white/30 focus:outline-none focus:border-primary transition-colors"
+                />
+                <select className="bg-[#1A1A1A] border border-white/5 rounded-sm p-4 text-white/30 focus:outline-none focus:border-primary transition-colors">
+                  <option>Dienst selecteren</option>
+                  <option>Onderhoud</option>
+                  <option>Reparatie</option>
+                  <option>Diagnose</option>
+                  <option>Tuning</option>
+                </select>
+              </div>
+              <textarea
+                placeholder="Bericht"
+                rows={4}
+                className="w-full bg-[#1A1A1A] border border-white/5 rounded-sm p-4 text-white placeholder:text-white/30 focus:outline-none focus:border-primary transition-colors resize-none"
+              ></textarea>
+              <button
+                type="submit"
+                className="w-full bg-primary hover:bg-red-700 text-white font-bold py-4 px-8 rounded-sm transition-all duration-300 uppercase tracking-widest"
+              >
+                Bericht verzenden
+              </button>
+            </form>
+          </div>
+
+          {/* Contact Info */}
+          <div className="flex flex-col justify-between">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
               <div>
-                <p className="text-white font-medium">Telefoon</p>
-                <div className="flex flex-col sm:flex-row sm:items-center gap-3">
-                  <a href="tel:+31615530641" className="btn btn-dark">Bel Oktay</a>
-                  <a href="tel:+31622995398" className="btn btn-dark">Bel Joost</a>
-                  <a href="https://wa.me/31615530641" className="btn btn-primary">WhatsApp</a>
+                <h3 className="text-white font-bold uppercase tracking-widest mb-4">Contact</h3>
+                <div className="space-y-6 text-sm">
+                  <div>
+                    <p className="text-white/40 mb-1">Adres</p>
+                    <p className="text-white">Galileïstraat 5, 7131PE Lichtenvoorde</p>
+                  </div>
+                  <div>
+                    <p className="text-white/40 mb-1">Telefoon</p>
+                    <p className="text-white">+31 6 15530641</p>
+                  </div>
+                  <div>
+                    <p className="text-white/40 mb-1">E-mail</p>
+                    <p className="text-white">info@gpautos.nl</p>
+                  </div>
                 </div>
               </div>
               <div>
-                <p className="text-white font-medium">Email</p>
-                <div className="flex gap-3 flex-wrap">
-                  <a href="mailto:info@gpautos.nl" className="btn btn-dark">Kopieer e-mail</a>
-                  <a href="mailto:info@gpautos.nl" className="btn btn-primary">E-mail ons</a>
-                </div>
-              </div>
-              <div>
-                <p className="text-white font-medium">Openingstijden</p>
-                <div className="mt-2 grid grid-cols-2 gap-y-1 text-sm text-text-gray max-w-xs">
-                  <span>Maandag</span><span className="text-right text-white">Op afspraak</span>
-                  <span>Dinsdag</span><span className="text-right text-white">Op afspraak</span>
-                  <span>Woensdag</span><span className="text-right text-white">Op afspraak</span>
-                  <span>Donderdag</span><span className="text-right text-white">Op afspraak</span>
-                  <span>Vrijdag</span><span className="text-right text-white">Op afspraak</span>
-                  <span>Zaterdag</span><span className="text-right text-white">Op afspraak</span>
-                  <span>Zondag</span><span className="text-right text-white">Op afspraak</span>
+                <h3 className="text-white font-bold uppercase tracking-widest mb-4">Openingstijden</h3>
+                <div className="space-y-2 text-sm">
+                  <div className="flex justify-between border-b border-white/5 pb-2">
+                    <span className="text-white/40">Maandag</span>
+                    <span className="text-white">Op afspraak</span>
+                  </div>
+                  <div className="flex justify-between border-b border-white/5 pb-2">
+                    <span className="text-white/40">Dinsdag</span>
+                    <span className="text-white">Op afspraak</span>
+                  </div>
+                  <div className="flex justify-between border-b border-white/5 pb-2">
+                    <span className="text-white/40">Woensdag</span>
+                    <span className="text-white">Op afspraak</span>
+                  </div>
+                  <div className="flex justify-between border-b border-white/5 pb-2">
+                    <span className="text-white/40">Donderdag</span>
+                    <span className="text-white">Op afspraak</span>
+                  </div>
+                  <div className="flex justify-between border-b border-white/5 pb-2">
+                    <span className="text-white/40">Vrijdag</span>
+                    <span className="text-white">Op afspraak</span>
+                  </div>
+                  <div className="flex justify-between border-b border-white/5 pb-2">
+                    <span className="text-white/40">Zaterdag</span>
+                    <span className="text-white">Op afspraak</span>
+                  </div>
+                  <div className="flex justify-between border-b border-white/5 pb-2">
+                    <span className="text-white/40">Zondag</span>
+                    <span className="text-white">Gesloten</span>
+                  </div>
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="card"
-          >
-            <h3 className="text-xl font-bold text-white uppercase mb-4 tracking-wide">Bericht sturen</h3>
-            <p className="text-text-gray mb-4">We reageren doorgaans binnen 24 uur.</p>
-            <Link href="/afspraak" className="btn btn-primary w-full">Afspraak Maken</Link>
-          </motion.div>
         </div>
       </div>
     </section>
   )
 }
-
