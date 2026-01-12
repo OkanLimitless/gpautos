@@ -58,7 +58,7 @@ export default function SocialProof() {
 
 function TestimonialCard({ name, meta, text }: { name: string, meta: string, text: string }) {
   return (
-    <div className="px-6 py-6 flex flex-col justify-center hover:bg-white/5 transition-colors group">
+    <div className="px-6 py-4 md:py-6 flex flex-col justify-center hover:bg-white/5 transition-colors group">
       <div className="flex text-primary mb-3 group-hover:scale-105 transition-transform origin-left">
         <Star /> <Star /> <Star /> <Star /> <Star />
       </div>
