@@ -4,19 +4,19 @@ import { motion } from 'framer-motion'
 
 export default function SocialProof() {
   return (
-    <section className="relative z-20 -mt-24 pb-20 bg-zinc-950">
+    <section className="relative z-20 -mt-24 pb-20 bg-transparent">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="bg-zinc-900/40 backdrop-blur-xl border border-white/10 rounded-2xl p-4 md:p-2 lg:p-4 shadow-2xl"
+          className="bg-black/60 backdrop-blur-xl border border-white/10 rounded-2xl p-4 md:p-2 lg:p-4 shadow-2xl"
         >
           <div className="flex flex-col md:flex-row items-stretch gap-4 md:gap-0">
             {/* Rating Section */}
             <a
-              href="https://g.page/r/CQXgWb2l5RKzEBM/review"
+              href="https://search.google.com/local/writereview?placeid=ChIJRBSnqGB5uEcRMK8e6E0RieE"
               target="_blank"
               rel="noopener noreferrer"
               className="flex-shrink-0 px-8 py-6 flex flex-col justify-center items-center text-center hover:bg-white/5 transition-colors rounded-xl md:rounded-none md:border-r border-white/10"
