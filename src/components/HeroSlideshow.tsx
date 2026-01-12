@@ -9,35 +9,27 @@ import { motion, AnimatePresence } from 'framer-motion'
 const slides = [
   {
     id: 1,
-    image: 'https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?q=80&w=2070&auto=format&fit=crop', // Audi Front
+    image: '/images/hero.jpeg',
     title: 'VAG SPECIALIST',
-    subtitle: 'Passie voor techniek, oog voor detail. Uw Audi, VW, SEAT of Skoda in expert handen.',
+    subtitle: 'Uw expert voor Audi, Volkswagen, SEAT en Skoda in Lichtenvoorde.',
     cta: 'Maak Afspraak',
     ctaLink: '/afspraak'
   },
   {
     id: 2,
-    image: 'https://images.unsplash.com/photo-1596733430284-f7437764b1a9?q=80&w=2070&auto=format&fit=crop', // Workshop Engine
-    title: 'PREMIUM ONDERHOUD',
-    subtitle: 'Volgens fabrieksvoorschrift behoudt u uw fabrieksgarantie en rijkwaliteit.',
+    image: '/images/diagnose.jpeg',
+    title: 'DIAGNOSE & SERVICE',
+    subtitle: 'Moderne techniek voor betrouwbaar onderhoud en complexe reparaties.',
     cta: 'Bekijk Diensten',
     ctaLink: '/#diensten'
   },
   {
     id: 3,
-    image: 'https://images.unsplash.com/photo-1542282088-fe8426682b8f?q=80&w=2070&auto=format&fit=crop', // Diagnosis tool
-    title: 'MODERNE DIAGNOSE',
-    subtitle: 'Accurate storingsanalyse voor complexe technische problemen aan moderne voertuigen.',
-    cta: 'Plan Diagnose',
-    ctaLink: '/afspraak'
-  },
-  {
-    id: 4,
-    image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=2070&auto=format&fit=crop', // Porsche/VAG wheel
+    image: '/images/vag.jpeg',
     title: 'KWALITEITSGARANTIE',
-    subtitle: 'Wij werken uitsluitend met hoogwaardige onderdelen en de nieuwste apparatuur.',
-    cta: 'Over Ons',
-    ctaLink: '/#about-section'
+    subtitle: 'Passie voor techniek en oog voor detail bij elke onderhoudsbeurt.',
+    cta: 'Neem Contact Op',
+    ctaLink: '/#contact'
   }
 ]
 
@@ -176,10 +168,10 @@ export default function HeroSlideshow() {
                   animate={index === currentSlide ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.8, delay: 0.2 }}
                 >
-                  <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 uppercase tracking-tighter text-gradient">
+                  <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 uppercase tracking-tighter text-gradient font-bebas">
                     {slide.title}
                   </h1>
-                  <p className="text-xl md:text-2xl text-white/80 mb-10 max-w-2xl mx-auto font-poppins leading-relaxed">
+                  <p className="text-xl md:text-2xl text-white/80 mb-10 max-w-2xl mx-auto leading-relaxed">
                     {slide.subtitle}
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">

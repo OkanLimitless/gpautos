@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply bg-secondary text-text-white;
+    @apply bg-zinc-950 text-white font-inter;
   }
 
   h1,
@@ -13,8 +13,7 @@
   h4,
   h5,
   h6 {
-    @apply font-bold tracking-tight;
-    font-family: var(--font-poppins), ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+    @apply font-heading tracking-tight;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -64,7 +63,7 @@
   }
 
   .card {
-    @apply bg-[#121214] p-6 rounded-xl border border-white/5 transition-all duration-500 hover:translate-y-[-4px] hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)] hover:ring-1 hover:ring-primary/20;
+    @apply bg-[#121214] p-6 rounded-xl border border-white/5 transition-all duration-500 hover:translate-y-[-4px] hover:shadow-[0_20px_40px_-15px_rgba(0, 0, 0, 0.5)] hover:ring-1 hover:ring-primary/20;
   }
 
   .shadow-sonic {

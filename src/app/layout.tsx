@@ -1,11 +1,12 @@
 import type { Metadata } from 'next'
-import { Inter, Poppins } from 'next/font/google'
+import { Inter, Outfit, Bebas_Neue } from 'next/font/google'
 import './globals.css'
 import { Toaster } from 'react-hot-toast'
 import Script from 'next/script'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
-const poppins = Poppins({ subsets: ['latin'], weight: ['400', '500', '600', '700'], variable: '--font-poppins' })
+const outfit = Outfit({ subsets: ['latin'], variable: '--font-outfit' })
+const bebas = Bebas_Neue({ subsets: ['latin'], weight: ['400'], variable: '--font-bebas' })
 
 export const metadata: Metadata = {
   title: "GP Auto's – Premium Autoservice, Onderhoud & VAG Specialist",
@@ -120,7 +121,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className={`${inter.variable} ${poppins.variable} bg-zinc-950 text-white`}>
+      <body className={`${inter.variable} ${outfit.variable} ${bebas.variable} bg-zinc-950 text-white`}>
         {children}
         <Toaster
           position="bottom-center"
