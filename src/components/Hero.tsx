@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
+import SocialProof from './SocialProof'
 
 // Safari-safe image component
 interface SafariSafeImageProps {
@@ -50,7 +51,7 @@ function SafariSafeImage({ src, alt, className = '', priority = false }: SafariS
 
 export default function Hero() {
     return (
-        <section className="relative h-screen min-h-[700px] flex items-center overflow-hidden">
+        <section className="relative h-screen min-h-[700px] flex items-center">
             {/* Background Image */}
             <div className="absolute inset-0 z-0">
                 <SafariSafeImage
@@ -64,7 +65,7 @@ export default function Hero() {
                 <div className="absolute inset-0 bg-black/40" />
             </div>
 
-            <div className="container relative z-10 mx-auto px-4 md:px-8">
+            <div className="container relative z-10 mx-auto px-4 md:px-8 pb-12">
                 <div className="max-w-4xl">
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
@@ -100,6 +101,10 @@ export default function Hero() {
                 </div>
             </div>
 
+            {/* Social Proof Overlay */}
+            <div className="absolute bottom-0 left-0 right-0 translate-y-1/2 z-30">
+                <SocialProof />
+            </div>
         </section>
     )
 }
