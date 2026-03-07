@@ -98,6 +98,32 @@ export default function Hero() {
                             Onze diensten
                         </Link>
                     </motion.div>
+
+                    <motion.a
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.45, ease: "easeOut" }}
+                        href="https://www.rdw.nl/zakelijke-partners/erkende-bedrijven/voorwaarden-en-gebruik/promotiemateriaal-erkende-bedrijven"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-6 inline-flex max-w-xl items-center gap-4 rounded-2xl border border-white/15 bg-black/45 px-4 py-3 backdrop-blur-md transition-colors hover:bg-black/60"
+                    >
+                        <Image
+                            src="/images/rdw-muurschild-erkend-bedrijf.jpg"
+                            alt="Officieel RDW-muurschild voor erkende bedrijven"
+                            width={110}
+                            height={62}
+                            className="h-auto w-[110px] flex-shrink-0 rounded-md bg-white/95 p-1"
+                        />
+                        <div className="min-w-0">
+                            <div className="text-sm font-bold uppercase tracking-[0.22em] text-white/80">
+                                RDW erkend bedrijf
+                            </div>
+                            <p className="mt-1 text-sm leading-relaxed text-white/70">
+                                Officieel RDW-promotiemateriaal voor erkende bedrijven.
+                            </p>
+                        </div>
+                    </motion.a>
                 </div>
             </div>
 
