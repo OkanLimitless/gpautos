@@ -4,31 +4,40 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 
+const SERVICE_AREAS = [
+  { label: 'Lichtenvoorde', slug: 'lichtenvoorde' },
+  { label: 'Groenlo', slug: 'groenlo' },
+  { label: 'Aalten', slug: 'aalten' },
+  { label: 'Winterswijk', slug: 'winterswijk' },
+  { label: 'Varsseveld', slug: 'varsseveld' },
+  { label: 'Eibergen', slug: 'eibergen' },
+]
+
 const SERVICES = [
   {
     title: 'Onderhoud & Service',
-    description: 'Periodiek onderhoud volgens fabrieksvoorschrift voor alle merken.',
+    description: 'Periodiek onderhoud volgens fabrieksvoorschrift voor Audi, Volkswagen, SEAT, Skoda en andere auto\'s in de Achterhoek.',
     image: '/images/vag.jpeg',
     slug: 'onderhoud-service',
     icon: <WrenchIcon />
   },
   {
     title: 'Diagnose & Storing',
-    description: 'Moderne diagnoseapparatuur voor snelle en accurate storingsanalyse.',
+    description: 'Moderne diagnoseapparatuur voor snelle en accurate storingsanalyse in Lichtenvoorde en omgeving.',
     image: '/images/diagnose.jpeg',
     slug: 'diagnose-storing',
     icon: <DiagnosticIcon />
   },
   {
     title: 'APK Keuring',
-    description: 'Officiële APK keuring met snelle doorlooptijd.',
+    description: 'Officiële APK-keuring met heldere terugkoppeling en snelle doorlooptijd.',
     image: '/images/IMG_4210.jpeg',
     slug: 'apk-keuring',
     icon: <CheckIcon />
   },
   {
     title: 'Retrofit & Tuning',
-    description: 'Apple CarPlay, cruise control, parkeersensoren en software optimalisatie.',
+    description: 'Apple CarPlay, cruise control, parkeersensoren en software-optimalisatie voor VAG-modellen.',
     image: '/images/IMG_4208.jpeg',
     slug: 'software-chiptuning',
     icon: <TuningIcon />
@@ -40,7 +49,24 @@ export default function ServicesGrid() {
     <section id="diensten" className="pt-64 md:pt-32 pb-20 bg-black">
       <div className="container mx-auto px-4">
         <div className="mb-12">
-          <h2 className="text-4xl font-bold text-white mb-2 uppercase font-bebas tracking-wider">Onze Diensten</h2>
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.35em] text-white/45">
+            Garage in Lichtenvoorde en de Achterhoek
+          </p>
+          <h2 className="text-4xl font-bold text-white mb-4 uppercase font-bebas tracking-wider">Onze Diensten</h2>
+          <p className="max-w-3xl text-white/60 leading-7">
+            Van APK tot diagnose: wij helpen klanten uit Lichtenvoorde, Groenlo, Aalten, Winterswijk, Varsseveld en Eibergen met duidelijke service en een praktische planning.
+          </p>
+          <div className="mt-6 flex flex-wrap gap-3">
+            {SERVICE_AREAS.map((area) => (
+              <Link
+                key={area.slug}
+                href={`/regio/${area.slug}`}
+                className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.28em] text-white/70 transition-colors hover:border-primary/40 hover:text-white"
+              >
+                {area.label}
+              </Link>
+            ))}
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
 import { motion } from 'framer-motion'
 
 export default function AboutSection() {
@@ -46,10 +47,28 @@ export default function AboutSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
+            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.35em] text-white/45">
+              Lokale expertise in Lichtenvoorde
+            </p>
             <h2 className="text-4xl font-bold text-white mb-6 font-bebas tracking-wider uppercase">Waarom GP Auto&apos;s</h2>
             <p className="text-white/60 mb-8 leading-relaxed">
-              GP Auto&apos;s combineert passie met technische expertise. Als allround autobedrijf streven we bij elke klus naar perfectie, of het nu gaat om regulier onderhoud of complexe diagnoses.
+              GP Auto&apos;s combineert praktische werkplaatskennis met duidelijke communicatie. Voor automobilisten uit Lichtenvoorde en de Achterhoek is dat vooral handig als u snel wilt schakelen voor onderhoud, APK of een storingsdiagnose.
             </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 mb-10">
+              <Link
+                href="/afspraak"
+                className="inline-flex items-center justify-center rounded-sm bg-primary px-6 py-3 text-sm font-bold uppercase tracking-widest text-white transition-colors hover:bg-red-700"
+              >
+                Afspraak maken
+              </Link>
+              <Link
+                href="/regio/lichtenvoorde"
+                className="inline-flex items-center justify-center rounded-sm border border-white/10 px-6 py-3 text-sm font-bold uppercase tracking-widest text-white transition-colors hover:bg-white/5"
+              >
+                Werkgebied bekijken
+              </Link>
+            </div>
 
             <ul className="space-y-6">
               <li className="flex gap-4">
@@ -57,8 +76,8 @@ export default function AboutSection() {
                   <CheckIcon />
                 </div>
                 <div>
-                  <h4 className="text-white font-bold mb-1 uppercase tracking-tight">Ervaring</h4>
-                  <p className="text-white/50 text-sm">Over tien jaar ervaring in vakmanschap en passie voor techniek.</p>
+                  <h4 className="text-white font-bold mb-1 uppercase tracking-tight">Vaste werkplaats</h4>
+                  <p className="text-white/50 text-sm">Gevestigd aan de Galileïstraat 5 in Lichtenvoorde, goed bereikbaar voor de hele Achterhoek.</p>
                 </div>
               </li>
               <li className="flex gap-4">
@@ -66,8 +85,8 @@ export default function AboutSection() {
                   <CheckIcon />
                 </div>
                 <div>
-                  <h4 className="text-white font-bold mb-1 uppercase tracking-tight">Expertise</h4>
-                  <p className="text-white/50 text-sm">Marktleidende kennis in onderhoud voor alle merken.</p>
+                  <h4 className="text-white font-bold mb-1 uppercase tracking-tight">VAG expertise</h4>
+                  <p className="text-white/50 text-sm">Speciaal voor Audi, Volkswagen, SEAT en Skoda, met onderhoud en diagnose op merkniveau.</p>
                 </div>
               </li>
               <li className="flex gap-4">
@@ -75,8 +94,8 @@ export default function AboutSection() {
                   <CheckIcon />
                 </div>
                 <div>
-                  <h4 className="text-white font-bold mb-1 uppercase tracking-tight">Transparantie</h4>
-                  <p className="text-white/50 text-sm">Transparante communicatie over alle werkzaamheden en eerlijke prijzen.</p>
+                  <h4 className="text-white font-bold mb-1 uppercase tracking-tight">Heldere planning</h4>
+                  <p className="text-white/50 text-sm">Op afspraak werken betekent minder wachttijd en sneller duidelijkheid over uw auto.</p>
                 </div>
               </li>
               <li className="flex gap-4">
@@ -84,8 +103,8 @@ export default function AboutSection() {
                   <CheckIcon />
                 </div>
                 <div>
-                  <h4 className="text-white font-bold mb-1 uppercase tracking-tight">Betrouwbaarheid</h4>
-                  <p className="text-white/50 text-sm">Betrouwbare service voor een zorgeloze rijervaring, elke kilometer weer.</p>
+                  <h4 className="text-white font-bold mb-1 uppercase tracking-tight">Eerlijk advies</h4>
+                  <p className="text-white/50 text-sm">We leggen uit wat nodig is, wat kan wachten en wat de beste route is voor uw budget en gebruik.</p>
                 </div>
               </li>
             </ul>

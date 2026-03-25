@@ -12,6 +12,12 @@ export default function SocialProof() {
         transition={{ duration: 0.8 }}
         className="bg-black/60 backdrop-blur-xl border border-white/10 rounded-2xl p-4 md:p-2 lg:p-4 shadow-2xl"
       >
+        <div className="border-b border-white/10 px-6 py-5 text-center md:text-left">
+          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-white/40">Lokale reviews</p>
+          <h3 className="mt-2 text-lg font-semibold text-white">
+            Vertrouwd door klanten uit Lichtenvoorde en de Achterhoek
+          </h3>
+        </div>
         <div className="flex flex-col md:flex-row items-stretch gap-4 md:gap-0">
           {/* Rating Section */}
           <a
@@ -19,7 +25,7 @@ export default function SocialProof() {
             target="_blank"
             rel="noopener noreferrer"
             className="flex-shrink-0 px-8 py-6 flex flex-col justify-center items-center text-center hover:bg-white/5 transition-colors rounded-xl md:rounded-none md:border-r border-white/10"
-          >
+            >
             <div className="text-4xl font-bold text-white mb-1">
               5.0<span className="text-xl text-white/50 ml-1">/5 STERREN</span>
             </div>
@@ -30,6 +36,9 @@ export default function SocialProof() {
               <GoogleBadge />
               <span className="text-xs font-semibold tracking-wider text-white/70 uppercase">Google Beoordeling</span>
             </div>
+            <p className="mt-3 max-w-xs text-center text-xs leading-5 text-white/45">
+              Gemaakt op basis van ervaringen van klanten die onderhoud, APK en diagnose bij ons laten uitvoeren.
+            </p>
           </a>
 
           {/* Testimonials Section */}

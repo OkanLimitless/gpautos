@@ -72,11 +72,17 @@ export default function Hero() {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
                     >
+                        <p className="mb-5 text-xs font-semibold uppercase tracking-[0.35em] text-white/70">
+                            Autogarage in Lichtenvoorde
+                        </p>
                         <h1 className="mb-8 text-4xl font-bebas font-bold leading-[0.9] tracking-tight text-white sm:text-5xl md:text-7xl lg:text-8xl">
-                            GP AUTO&apos;S: <br />
-                            <span className="text-white">KWALITEIT &</span> <br />
-                            <span className="text-white">VAKMANSCHAP.</span>
+                            APK, ONDERHOUD & <br />
+                            <span className="text-white">DIAGNOSE</span> <br />
+                            <span className="text-white">IN DE ACHTERHOEK.</span>
                         </h1>
+                        <p className="max-w-2xl text-base leading-7 text-white/75 sm:text-lg">
+                            Zoekt u een garage in Lichtenvoorde voor een APK, onderhoudsbeurt of storingsdiagnose? GP Auto&apos;s helpt automobilisten uit Lichtenvoorde, Groenlo, Aalten, Winterswijk en de rest van de Achterhoek met duidelijke afspraken en merkspecifieke kennis.
+                        </p>
                     </motion.div>
 
                     <motion.div
@@ -99,6 +105,17 @@ export default function Hero() {
                         </Link>
                     </motion.div>
 
+                    <div className="mt-8 flex flex-wrap gap-3 text-[11px] font-semibold uppercase tracking-[0.3em] text-white/60">
+                        {['APK', 'Onderhoud', 'Diagnose', 'Airco', 'VAG specialist'].map((item) => (
+                            <span
+                                key={item}
+                                className="rounded-full border border-white/10 bg-white/5 px-4 py-2"
+                            >
+                                {item}
+                            </span>
+                        ))}
+                    </div>
+
                     <motion.a
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -107,7 +124,7 @@ export default function Hero() {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="mt-6 inline-flex w-full max-w-xl items-center gap-4 rounded-2xl border border-white/15 bg-black/45 px-4 py-3 backdrop-blur-md transition-colors hover:bg-black/60"
-                    >
+                        >
                         <Image
                             src="/images/rdw-muurschild-erkend-bedrijf.jpg"
                             alt="Officieel RDW-muurschild voor erkende bedrijven"
@@ -119,8 +136,15 @@ export default function Hero() {
                             <div className="text-sm font-bold uppercase tracking-[0.22em] text-white/80">
                                 RDW erkend bedrijf
                             </div>
+                            <div className="mt-1 text-xs text-white/55">
+                                Werkplaats aan de Galileïstraat 5 in Lichtenvoorde.
+                            </div>
                         </div>
                     </motion.a>
+
+                    <p className="mt-6 max-w-2xl text-sm leading-6 text-white/55">
+                        Veel klanten komen ook vanuit Groenlo, Varsseveld, Eibergen en Borculo voor onderhoud, APK en diagnose.
+                    </p>
                 </div>
             </div>
 

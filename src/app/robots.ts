@@ -7,6 +7,7 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/api/', '/admin/'],
     },
+    host: 'gpautos.nl',
     sitemap: 'https://gpautos.nl/sitemap.xml',
   }
 }

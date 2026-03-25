@@ -7,25 +7,39 @@ import Script from 'next/script'
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const outfit = Outfit({ subsets: ['latin'], variable: '--font-outfit' })
 const bebas = Bebas_Neue({ subsets: ['latin'], weight: ['400'], variable: '--font-bebas' })
+const siteUrl = 'https://gpautos.nl'
 
 export const metadata: Metadata = {
-  title: "GP Auto's – Premium Autoservice, Onderhoud & VAG Specialist",
-  description: 'Premium onderhoud, reparatie en diagnose. VAG specialist in Lichtenvoorde. Bekijk onze diensten en maak online een afspraak.',
-  metadataBase: new URL('https://gpautos.nl'),
-  alternates: {
-    canonical: '/',
-  },
+  title: "GP Auto's – Premium autoservice in Lichtenvoorde",
+  description: 'Premium onderhoud, reparatie en diagnose in Lichtenvoorde. VAG specialist voor Audi, Volkswagen, SEAT en Skoda.',
+  applicationName: "GP Auto's",
+  keywords: [
+    'autogarage Lichtenvoorde',
+    'garage Lichtenvoorde',
+    'VAG specialist Achterhoek',
+    'auto onderhoud',
+    'auto reparatie',
+    'APK Lichtenvoorde',
+    'Audi specialist',
+    'Volkswagen specialist',
+    'SEAT specialist',
+    'Skoda specialist',
+  ],
+  authors: [{ name: "GP Auto's" }],
+  creator: "GP Auto's",
+  publisher: "GP Auto's",
+  metadataBase: new URL(siteUrl),
   openGraph: {
-    title: "GP Auto's – Premium Autoservice, Onderhoud & VAG Specialist",
-    description: 'Premium onderhoud, reparatie en diagnose in Lichtenvoorde. Uw VAG specialist voor Audi, VW, SEAT en Skoda.',
-    url: 'https://gpautos.nl',
+    title: "GP Auto's – Premium autoservice in Lichtenvoorde",
+    description: 'Premium onderhoud, reparatie en diagnose in Lichtenvoorde. Uw VAG specialist voor Audi, Volkswagen, SEAT en Skoda.',
+    url: siteUrl,
     siteName: "GP Auto's",
     images: [
       {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: "GP Auto's Lichtenvoorde",
+        alt: "GP Auto's werkplaats in Lichtenvoorde",
       },
     ],
     locale: 'nl_NL',
@@ -33,7 +47,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "GP Auto's – Premium Autoservice",
+    title: "GP Auto's – Premium autoservice in Lichtenvoorde",
     description: 'VAG Specialist in Lichtenvoorde voor premium onderhoud en diagnose.',
     images: ['/og-image.png'],
   },
@@ -52,10 +66,15 @@ export const metadata: Metadata = {
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "AutoDealer",
+  "@type": ["AutoRepair", "AutomotiveBusiness", "LocalBusiness"],
+  "@id": `${siteUrl}/#business`,
   "name": "GP Auto's",
-  "image": "https://gpautos.nl/og-image.png",
-  "logo": "https://gpautos.nl/logo.png",
+  "description": "Premium autoservice, onderhoud en diagnose in Lichtenvoorde. Specialist in Audi, Volkswagen, SEAT en Skoda.",
+  "url": siteUrl,
+  "image": `${siteUrl}/og-image.png`,
+  "logo": `${siteUrl}/logo.png`,
+  "telephone": "+31615530641",
+  "priceRange": "$$",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Galileïstraat 5",
@@ -68,10 +87,34 @@ const jsonLd = {
     "latitude": 51.988019,
     "longitude": 6.561491
   },
-  "url": "https://gpautos.nl",
-  "telephone": "+31615530641",
-  "openingHours": "Mo-Fr 08:30-17:30, Sa 09:00-13:00",
-  "priceRange": "$$",
+  "contactPoint": [
+    {
+      "@type": "ContactPoint",
+      "telephone": "+31615530641",
+      "contactType": "customer service",
+      "areaServed": "NL",
+      "availableLanguage": ["nl"]
+    }
+  ],
+  "areaServed": [
+    {
+      "@type": "Place",
+      "name": "Lichtenvoorde"
+    },
+    {
+      "@type": "Place",
+      "name": "Achterhoek"
+    },
+    {
+      "@type": "Place",
+      "name": "Groenlo"
+    },
+    {
+      "@type": "Place",
+      "name": "Aalten"
+    }
+  ],
+  "slogan": "Autoservice op afspraak in Lichtenvoorde en de Achterhoek",
   "sameAs": [
     "https://www.facebook.com/gpautosnl",
     "https://www.instagram.com/gp.autos"
@@ -137,4 +180,4 @@ export default function RootLayout({
       </body>
     </html>
   )
-} 
+}

@@ -4,6 +4,15 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 
+const quickLinks = [
+  { href: '/diensten/apk-keuring', label: 'APK' },
+  { href: '/diensten/onderhoud-service', label: 'Onderhoud' },
+  { href: '/diensten/diagnose-storing', label: 'Diagnose' },
+  { href: '/regio/lichtenvoorde', label: 'Lichtenvoorde' },
+  { href: '/regio/groenlo', label: 'Groenlo' },
+  { href: '/kennisbank', label: 'Kennisbank' },
+] as const
+
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -43,6 +52,12 @@ export default function Navigation() {
               className="text-white/80 hover:text-white transition-colors"
             >
               Diensten
+            </Link>
+            <Link
+              href="/kennisbank"
+              className="text-white/80 hover:text-white transition-colors"
+            >
+              Kennisbank
             </Link>
             <Link
               href="/#about-section"
@@ -100,6 +115,30 @@ export default function Navigation() {
             Over Ons
           </Link>
           <Link
+            href="/kennisbank"
+            className="text-white/90 hover:text-white transition-colors p-2"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Kennisbank
+          </Link>
+          <div className="pt-2">
+            <p className="px-2 text-xs font-semibold uppercase tracking-[0.2em] text-white/40">
+              Snel naar
+            </p>
+            <div className="mt-3 flex flex-wrap gap-2">
+              {quickLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="rounded-full border border-white/10 bg-white/5 px-3 py-2 text-xs font-medium text-white/80 transition-colors hover:border-primary/40 hover:text-white"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+          <Link
             href="/#contact"
             className="text-white/90 hover:text-white transition-colors p-2"
             onClick={() => setIsMobileMenuOpen(false)}
@@ -117,4 +156,4 @@ export default function Navigation() {
       </div>
     </header>
   )
-} 
+}
