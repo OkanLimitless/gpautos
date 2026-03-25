@@ -46,7 +46,7 @@ const SERVICES = [
 
 export default function ServicesGrid() {
   return (
-    <section id="diensten" className="pt-64 md:pt-32 pb-20 bg-black">
+    <section id="diensten" className="bg-black pb-20 pt-8 md:pt-12">
       <div className="container mx-auto px-4">
         <div className="mb-12">
           <p className="mb-3 text-xs font-semibold uppercase tracking-[0.35em] text-white/45">

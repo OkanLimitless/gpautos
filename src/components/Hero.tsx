@@ -51,7 +51,7 @@ function SafariSafeImage({ src, alt, className = '', priority = false }: SafariS
 
 export default function Hero() {
     return (
-        <section className="relative flex min-h-[900px] flex-col justify-center md:h-screen md:min-h-[700px]">
+        <section className="relative overflow-hidden bg-black">
             {/* Background Image */}
             <div className="absolute inset-0 z-0">
                 <SafariSafeImage
@@ -63,93 +63,148 @@ export default function Hero() {
                 {/* Dark Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-r from-black via-black/60 to-transparent" />
                 <div className="absolute inset-0 bg-black/40" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(239,68,68,0.18),_transparent_28%),radial-gradient(circle_at_bottom_left,_rgba(255,255,255,0.05),_transparent_22%)]" />
             </div>
 
-            <div className="container relative z-10 mx-auto px-4 pb-28 pt-10 md:px-8 md:pb-12 md:pt-0">
-                <div className="max-w-4xl">
-                    <motion.div
-                        initial={{ opacity: 0, x: -30 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.8, ease: "easeOut" }}
-                    >
-                        <p className="mb-5 text-xs font-semibold uppercase tracking-[0.35em] text-white/70">
-                            Autogarage in Lichtenvoorde
-                        </p>
-                        <h1 className="mb-8 text-4xl font-bebas font-bold leading-[0.9] tracking-tight text-white sm:text-5xl md:text-7xl lg:text-8xl">
-                            APK, ONDERHOUD & <br />
-                            <span className="text-white">DIAGNOSE</span> <br />
-                            <span className="text-white">IN DE ACHTERHOEK.</span>
-                        </h1>
-                        <p className="max-w-2xl text-base leading-7 text-white/75 sm:text-lg">
-                            Zoekt u een garage in Lichtenvoorde voor een APK, onderhoudsbeurt of storingsdiagnose? GP Auto&apos;s helpt automobilisten uit Lichtenvoorde, Groenlo, Aalten, Winterswijk en de rest van de Achterhoek met duidelijke afspraken en merkspecifieke kennis.
-                        </p>
-                    </motion.div>
-
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-                        className="flex flex-col gap-4 sm:flex-row sm:flex-wrap"
-                    >
-                        <Link
-                            href="/afspraak"
-                            className="bg-primary hover:bg-red-700 text-center text-white font-bold py-4 px-8 rounded-sm transition-all duration-300 text-lg uppercase tracking-wider shadow-sonic"
+            <div className="container relative z-10 mx-auto px-4 pb-14 pt-28 md:px-8 md:pb-16 md:pt-36">
+                <div className="grid items-end gap-10 lg:grid-cols-[minmax(0,1fr)_360px] lg:gap-12">
+                    <div className="max-w-4xl">
+                        <motion.div
+                            initial={{ opacity: 0, x: -30 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.8, ease: "easeOut" }}
                         >
-                            Afspraak maken
-                        </Link>
-                        <Link
-                            href="/#diensten"
-                            className="border border-white hover:bg-white hover:text-black text-center text-white font-bold py-4 px-8 rounded-sm transition-all duration-300 text-lg uppercase tracking-wider"
-                        >
-                            Onze diensten
-                        </Link>
-                    </motion.div>
+                            <div className="mb-6 inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.32em] text-white/70 backdrop-blur-sm">
+                                <span className="h-2 w-2 rounded-full bg-primary" />
+                                Autogarage in Lichtenvoorde
+                            </div>
+                            <h1 className="max-w-4xl text-4xl font-bebas font-bold leading-[0.9] tracking-tight text-white sm:text-5xl md:text-7xl lg:text-[5.5rem]">
+                                DUIDELIJKE AUTOSERVICE
+                                <br />
+                                <span className="text-white/78">VOOR LICHTENVOORDE</span>
+                                <br />
+                                <span className="text-gradient">EN DE ACHTERHOEK.</span>
+                            </h1>
+                            <p className="mt-7 max-w-2xl text-base leading-7 text-white/72 sm:text-lg">
+                                Voor APK, onderhoud en storingsdiagnose hoeft u niet te gokken. GP Auto&apos;s helpt automobilisten uit Lichtenvoorde, Groenlo, Aalten en Winterswijk met duidelijke afspraken, technisch inzicht en specialistische VAG-kennis.
+                            </p>
+                        </motion.div>
 
-                    <div className="mt-8 flex flex-wrap gap-3 text-[11px] font-semibold uppercase tracking-[0.3em] text-white/60">
-                        {['APK', 'Onderhoud', 'Diagnose', 'Airco', 'VAG specialist'].map((item) => (
-                            <span
-                                key={item}
-                                className="rounded-full border border-white/10 bg-white/5 px-4 py-2"
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+                            className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap"
+                        >
+                            <Link
+                                href="/afspraak"
+                                className="inline-flex min-h-[52px] items-center justify-center rounded-sm bg-primary px-8 py-4 text-center text-lg font-bold uppercase tracking-wider text-white shadow-sonic transition-all duration-300 hover:bg-red-700"
                             >
-                                {item}
-                            </span>
-                        ))}
+                                Afspraak maken
+                            </Link>
+                            <Link
+                                href="/#diensten"
+                                className="inline-flex min-h-[52px] items-center justify-center rounded-sm border border-white/20 px-8 py-4 text-center text-lg font-bold uppercase tracking-wider text-white transition-all duration-300 hover:border-white hover:bg-white hover:text-black"
+                            >
+                                Onze diensten
+                            </Link>
+                        </motion.div>
+
+                        <div className="mt-8 flex flex-wrap gap-3 text-[11px] font-semibold uppercase tracking-[0.3em] text-white/60">
+                            {['APK', 'Onderhoud', 'Diagnose', 'Airco', 'VAG specialist'].map((item) => (
+                                <span
+                                    key={item}
+                                    className="rounded-full border border-white/10 bg-black/30 px-4 py-2 backdrop-blur-sm"
+                                >
+                                    {item}
+                                </span>
+                            ))}
+                        </div>
+
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8, delay: 0.45, ease: "easeOut" }}
+                            className="mt-8 flex flex-col gap-4 rounded-2xl border border-white/10 bg-black/35 p-4 backdrop-blur-md sm:flex-row sm:items-center sm:justify-between sm:px-5"
+                        >
+                            <a
+                                href="https://www.rdw.nl/zakelijke-partners/erkende-bedrijven/voorwaarden-en-gebruik/promotiemateriaal-erkende-bedrijven"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-4 text-white transition-opacity hover:opacity-90"
+                            >
+                                <Image
+                                    src="/images/rdw-muurschild-erkend-bedrijf.jpg"
+                                    alt="Officieel RDW-muurschild voor erkende bedrijven"
+                                    width={88}
+                                    height={50}
+                                    className="h-auto w-[88px] flex-shrink-0 rounded-sm bg-white"
+                                />
+                                <div className="min-w-0">
+                                    <div className="text-sm font-bold uppercase tracking-[0.22em] text-white/90">
+                                        RDW erkend bedrijf
+                                    </div>
+                                    <div className="mt-1 text-sm text-white/58">
+                                        Erkende werkplaats voor APK, onderhoud en diagnose.
+                                    </div>
+                                </div>
+                            </a>
+                            <p className="max-w-sm text-sm leading-6 text-white/52">
+                                Veel klanten komen ook vanuit Groenlo, Varsseveld, Eibergen en Borculo.
+                            </p>
+                        </motion.div>
                     </div>
 
-                    <motion.a
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.45, ease: "easeOut" }}
-                        href="https://www.rdw.nl/zakelijke-partners/erkende-bedrijven/voorwaarden-en-gebruik/promotiemateriaal-erkende-bedrijven"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="mt-6 inline-flex w-full max-w-xl items-center gap-4 rounded-2xl border border-white/15 bg-black/45 px-4 py-3 backdrop-blur-md transition-colors hover:bg-black/60"
-                        >
-                        <Image
-                            src="/images/rdw-muurschild-erkend-bedrijf.jpg"
-                            alt="Officieel RDW-muurschild voor erkende bedrijven"
-                            width={110}
-                            height={62}
-                            className="h-auto w-[110px] flex-shrink-0 rounded-md bg-white/95 p-1"
-                        />
-                        <div className="min-w-0">
-                            <div className="text-sm font-bold uppercase tracking-[0.22em] text-white/80">
-                                RDW erkend bedrijf
+                    <motion.aside
+                        initial={{ opacity: 0, x: 24 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.85, delay: 0.2, ease: "easeOut" }}
+                        className="rounded-[28px] border border-white/10 bg-black/45 p-6 backdrop-blur-xl lg:p-7"
+                    >
+                        <p className="text-xs font-semibold uppercase tracking-[0.3em] text-white/45">
+                            Werkplaats info
+                        </p>
+                        <h2 className="mt-4 text-2xl font-semibold text-white">
+                            Snel duidelijkheid over uw auto
+                        </h2>
+                        <p className="mt-3 text-sm leading-6 text-white/62">
+                            Geen vage intake, maar direct helder overleg over klacht, planning en vervolgstappen.
+                        </p>
+
+                        <div className="mt-6 space-y-3">
+                            <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                                <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-white/40">Adres</p>
+                                <p className="mt-2 text-sm text-white/85">Galileïstraat 5, 7131PE Lichtenvoorde</p>
                             </div>
-                            <div className="mt-1 text-xs text-white/55">
-                                Werkplaats aan de Galileïstraat 5 in Lichtenvoorde.
+                            <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                                <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-white/40">Specialisme</p>
+                                <p className="mt-2 text-sm text-white/85">Audi, Volkswagen, SEAT, Skoda, APK en storingsdiagnose</p>
+                            </div>
+                            <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                                <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-white/40">Regio</p>
+                                <p className="mt-2 text-sm text-white/85">Lichtenvoorde, Groenlo, Aalten, Winterswijk en de Achterhoek</p>
                             </div>
                         </div>
-                    </motion.a>
 
-                    <p className="mt-6 max-w-2xl text-sm leading-6 text-white/55">
-                        Veel klanten komen ook vanuit Groenlo, Varsseveld, Eibergen en Borculo voor onderhoud, APK en diagnose.
-                    </p>
+                        <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
+                            <Link
+                                href="/afspraak"
+                                className="inline-flex min-h-[48px] items-center justify-center rounded-xl bg-white px-5 py-3 text-sm font-semibold text-black transition-colors hover:bg-primary hover:text-white"
+                            >
+                                Plan uw bezoek
+                            </Link>
+                            <a
+                                href="tel:+31615530641"
+                                className="inline-flex min-h-[48px] items-center justify-center rounded-xl border border-white/15 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/5"
+                            >
+                                Bel direct
+                            </a>
+                        </div>
+                    </motion.aside>
                 </div>
             </div>
 
-            {/* Social Proof Overlay */}
-            <div className="relative z-30 mt-2 pb-24 md:absolute md:bottom-0 md:left-0 md:right-0 md:mt-0 md:translate-y-1/2 md:pb-0">
+            <div className="relative z-10 pb-12 md:pb-16">
                 <SocialProof />
             </div>
         </section>

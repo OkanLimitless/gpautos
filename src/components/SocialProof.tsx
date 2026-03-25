@@ -10,9 +10,9 @@ export default function SocialProof() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
-        className="bg-black/60 backdrop-blur-xl border border-white/10 rounded-2xl p-4 md:p-2 lg:p-4 shadow-2xl"
+        className="rounded-2xl border border-white/10 bg-black/70 p-4 shadow-2xl backdrop-blur-xl md:p-5"
       >
-        <div className="border-b border-white/10 px-6 py-5 text-center md:text-left">
+        <div className="border-b border-white/10 px-4 py-5 text-center md:px-6 md:text-left">
           <p className="text-xs font-semibold uppercase tracking-[0.35em] text-white/40">Lokale reviews</p>
           <h3 className="mt-2 text-lg font-semibold text-white">
             Vertrouwd door klanten uit Lichtenvoorde en de Achterhoek
@@ -24,8 +24,8 @@ export default function SocialProof() {
             href="https://share.google/hXaUUDZcESTI2V9tq"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-shrink-0 px-8 py-6 flex flex-col justify-center items-center text-center hover:bg-white/5 transition-colors rounded-xl md:rounded-none md:border-r border-white/10"
-            >
+            className="flex flex-shrink-0 flex-col items-center justify-center rounded-xl px-6 py-6 text-center transition-colors hover:bg-white/5 md:rounded-none md:border-r md:border-white/10 md:px-8"
+          >
             <div className="text-4xl font-bold text-white mb-1">
               5.0<span className="text-xl text-white/50 ml-1">/5 STERREN</span>
             </div>
@@ -67,7 +67,7 @@ export default function SocialProof() {
 
 function TestimonialCard({ name, meta, text }: { name: string, meta: string, text: string }) {
   return (
-    <div className="px-6 py-4 md:py-6 flex flex-col justify-center hover:bg-white/5 transition-colors group">
+    <div className="flex flex-col justify-center px-6 py-5 transition-colors hover:bg-white/5 group md:py-6">
       <div className="flex text-primary mb-3 group-hover:scale-105 transition-transform origin-left">
         <Star /> <Star /> <Star /> <Star /> <Star />
       </div>
