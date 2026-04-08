@@ -30,7 +30,6 @@ export async function generateMetadata({ params }: CityPageProps): Promise<Metad
             'autogarage',
             'garage',
             'VAG specialist',
-            'APK',
             'onderhoud',
             'diagnose',
         ],
@@ -179,7 +178,7 @@ export default function CityPage({ params }: CityPageProps) {
                                         Populaire diensten voor {city.name}
                                     </h2>
                                     <p className="mt-2 max-w-2xl text-white/60">
-                                        Veel klanten combineren hun rit met een gerichte afspraak voor onderhoud, diagnose of APK.
+                                        Veel klanten combineren hun rit met een gerichte afspraak voor onderhoud, diagnose of remwerk.
                                     </p>
                                 </div>
                                 <Link href="/afspraak" className="hidden text-sm font-semibold text-primary md:block">
@@ -221,7 +220,7 @@ export default function CityPage({ params }: CityPageProps) {
                                     </div>
                                     <div className="rounded-2xl border border-white/10 bg-zinc-950 p-5">
                                         <p className="text-sm uppercase tracking-[0.24em] text-white/40">Focus</p>
-                                        <p className="mt-2 text-white/80">APK, onderhoud, diagnose en reparatie voor VAG-modellen</p>
+                                        <p className="mt-2 text-white/80">Onderhoud, diagnose en reparatie voor VAG-modellen</p>
                                     </div>
                                 </div>
                             </div>

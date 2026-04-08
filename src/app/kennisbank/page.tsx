@@ -5,11 +5,10 @@ import { services } from '@/lib/seo-data'
 export const metadata = {
   title: 'Kennisbank | GP Auto\'s Lichtenvoorde',
   description:
-    'Praktische artikelen over APK, onderhoud en storingen voor automobilisten in Lichtenvoorde en de Achterhoek.',
+    'Praktische artikelen over onderhoud en storingen voor automobilisten in Lichtenvoorde en de Achterhoek.',
   keywords: [
     'garage Lichtenvoorde',
     'auto onderhoud Achterhoek',
-    'APK Lichtenvoorde',
     'autogarage nabij Lichtenvoorde',
   ],
   alternates: {
@@ -33,7 +32,7 @@ export default function KnowledgeBasePage() {
               Praktisch auto-advies voor Lichtenvoorde en de Achterhoek
             </h1>
             <p className="mt-6 max-w-2xl text-lg text-white/70 md:text-xl">
-              Korte, bruikbare artikelen over APK, onderhoud en storingen. Geschreven voor mensen die snel
+              Korte, bruikbare artikelen over onderhoud en storingen. Geschreven voor mensen die snel
               willen weten wat slim is en wanneer een afspraak nodig is.
             </p>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
@@ -90,7 +89,7 @@ export default function KnowledgeBasePage() {
                 <h2 className="text-xl font-semibold">Waar deze artikelen voor helpen</h2>
                 <ul className="mt-4 space-y-3 text-white/70">
                   <li>sneller beslissen of u direct naar de garage moet</li>
-                  <li>beter voorbereid naar een APK of onderhoudsbeurt gaan</li>
+                  <li>beter voorbereid naar een onderhoudsbeurt of diagnose-afspraak gaan</li>
                   <li>minder onnodige kosten door uitstel</li>
                 </ul>
               </div>
@@ -114,7 +113,7 @@ export default function KnowledgeBasePage() {
               <div className="rounded-2xl border border-primary/20 bg-primary/10 p-6">
                 <h2 className="text-xl font-semibold">Direct afspraak nodig?</h2>
                 <p className="mt-3 text-white/75">
-                  Voor APK, diagnose of onderhoud kunt u direct een afspraak plannen. Dat is meestal sneller
+                  Voor diagnose, onderhoud of remwerk kunt u direct een afspraak plannen. Dat is meestal sneller
                   dan wachten tot een klein probleem groter wordt.
                 </p>
                 <Link

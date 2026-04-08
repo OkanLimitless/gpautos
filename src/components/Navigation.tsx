@@ -5,9 +5,9 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 const quickLinks = [
-  { href: '/diensten/apk-keuring', label: 'APK' },
   { href: '/diensten/onderhoud-service', label: 'Onderhoud' },
   { href: '/diensten/diagnose-storing', label: 'Diagnose' },
+  { href: '/diensten/airco-service', label: 'Airco' },
   { href: '/regio/lichtenvoorde', label: 'Lichtenvoorde' },
   { href: '/regio/groenlo', label: 'Groenlo' },
   { href: '/kennisbank', label: 'Kennisbank' },

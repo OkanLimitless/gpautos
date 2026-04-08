@@ -19,7 +19,6 @@ export const metadata: Metadata = {
     'VAG specialist Achterhoek',
     'auto onderhoud',
     'auto reparatie',
-    'APK Lichtenvoorde',
     'Audi specialist',
     'Volkswagen specialist',
     'SEAT specialist',

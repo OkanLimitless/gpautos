@@ -28,7 +28,7 @@ export const metadata: Metadata = {
 
 export default function VolkswagenSpecialistPage() {
     const relevantServices = services.filter((service) =>
-        ['onderhoud-service', 'diagnose-storing', 'apk-keuring', 'remmen-wielophanging'].includes(service.slug)
+        ['onderhoud-service', 'diagnose-storing', 'remmen-wielophanging', 'airco-service'].includes(service.slug)
     );
 
     const vwModels = ['Polo', 'Golf', 'T-Cross', 'T-Roc', 'Tiguan', 'Passat', 'Arteon', 'Touran', 'Touareg', 'ID.3', 'ID.4', 'ID.5', 'Caddy', 'Transporter'];
@@ -132,7 +132,7 @@ export default function VolkswagenSpecialistPage() {
                             <div className="rounded-2xl border border-white/10 bg-zinc-900 p-6">
                                 <h2 className="text-2xl font-bold mb-4">Diensten voor uw Volkswagen</h2>
                                 <p className="text-white/65 mb-6">
-                                    Van onderhoud en APK tot diagnose en remwerk.
+                                    Van onderhoud en diagnose tot remwerk en aircoservice.
                                 </p>
                                 <div className="space-y-3">
                                     {relevantServices.map((service) => (
@@ -170,7 +170,7 @@ export default function VolkswagenSpecialistPage() {
                                 <ul className="space-y-3 text-white/75">
                                     <li>Storingen aan motor, transmissie, elektronica en veiligheidssystemen.</li>
                                     <li>Onderhoud voor Golf, Polo, Passat, Tiguan, Transporter en ID-modellen.</li>
-                                    <li>APK-voorbereiding en reparatie van remmen, ophanging en verlichting.</li>
+                                    <li>Reparatie van remmen, ophanging en verlichting met duidelijke prioriteiten.</li>
                                     <li>Praktische uitleg over de staat van uw auto en vervolgstappen.</li>
                                 </ul>
                             </div>
@@ -195,14 +195,14 @@ export default function VolkswagenSpecialistPage() {
                             Plan uw Volkswagen-bezoek in Lichtenvoorde
                         </h2>
                         <p className="text-white/70 max-w-2xl mx-auto mb-8">
-                            Boek direct een afspraak voor onderhoud, diagnose of APK. U kunt ook eerst een specifieke dienst bekijken.
+                            Boek direct een afspraak voor onderhoud, diagnose of remwerk. U kunt ook eerst een specifieke dienst bekijken.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Link href="/afspraak" className="inline-block px-8 py-4 bg-primary text-white font-semibold rounded-lg hover:bg-primary/90 transition-colors">
                                 Afspraak maken
                             </Link>
-                            <Link href="/diensten/apk-keuring" className="inline-block px-8 py-4 border border-white/20 text-white font-semibold rounded-lg hover:bg-white/5 transition-colors">
-                                APK bekijken
+                            <Link href="/diensten/remmen-wielophanging" className="inline-block px-8 py-4 border border-white/20 text-white font-semibold rounded-lg hover:bg-white/5 transition-colors">
+                                Remwerk bekijken
                             </Link>
                         </div>
                     </div>

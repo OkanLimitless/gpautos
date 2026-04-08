@@ -227,7 +227,7 @@ export default function KnowledgeArticlePage({ params }: KnowledgeArticlePagePro
               <div className="rounded-2xl border border-primary/20 bg-primary/10 p-6">
                 <h2 className="text-xl font-semibold">Snel hulp nodig?</h2>
                 <p className="mt-3 text-white/75">
-                  Heeft uw auto een storing, APK-punt of onderhoud nodig? Dan kunt u direct een afspraak
+                  Heeft uw auto een storing, remprobleem of onderhoud nodig? Dan kunt u direct een afspraak
                   plannen.
                 </p>
                 <Link
@@ -280,7 +280,7 @@ export default function KnowledgeArticlePage({ params }: KnowledgeArticlePagePro
             <div>
               <h2 className="text-2xl font-semibold">Wilt u dat we meekijken?</h2>
               <p className="mt-2 text-white/70">
-                Voor APK, onderhoud en diagnose in Lichtenvoorde kunt u direct contact opnemen.
+                Voor onderhoud, diagnose en reparatie in Lichtenvoorde kunt u direct contact opnemen.
               </p>
             </div>
             <div className="flex flex-col gap-3 sm:flex-row">

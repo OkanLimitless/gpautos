@@ -28,7 +28,7 @@ export const metadata: Metadata = {
 
 export default function SkodaSpecialistPage() {
     const relevantServices = services.filter((service) =>
-        ['onderhoud-service', 'apk-keuring', 'diagnose-storing', 'airco-service'].includes(service.slug)
+        ['onderhoud-service', 'diagnose-storing', 'airco-service', 'remmen-wielophanging'].includes(service.slug)
     );
 
     const skodaModels = ['Fabia', 'Scala', 'Octavia', 'Superb', 'Kamiq', 'Karoq', 'Kodiaq', 'Enyaq iV', 'Citigo'];
@@ -40,7 +40,7 @@ export default function SkodaSpecialistPage() {
         },
         {
             question: "Helpen jullie ook bij familieauto's en leasewagens?",
-            answer: 'Ja. Veel Škoda-rijders komen met Octavia, Superb, Kodiaq of Fabia voor onderhoud, APK en diagnose.',
+            answer: 'Ja. Veel Škoda-rijders komen met Octavia, Superb, Kodiaq of Fabia voor onderhoud, diagnose en reparatie.',
         },
         {
             question: 'Zijn jullie bereikbaar voor klanten uit de Achterhoek?',
@@ -132,7 +132,7 @@ export default function SkodaSpecialistPage() {
                             <div className="rounded-2xl border border-white/10 bg-zinc-900 p-6">
                                 <h2 className="text-2xl font-bold mb-4">Diensten voor uw Škoda</h2>
                                 <p className="text-white/65 mb-6">
-                                    Voor onderhoud, APK, diagnose en aircoservice.
+                                    Voor onderhoud, diagnose, remwerk en aircoservice.
                                 </p>
                                 <div className="space-y-3">
                                     {relevantServices.map((service) => (
@@ -169,7 +169,7 @@ export default function SkodaSpecialistPage() {
                                 <h2 className="text-2xl font-bold mb-4">Waar wij u mee helpen</h2>
                                 <ul className="space-y-3 text-white/75">
                                     <li>Onderhoud voor Fabia, Octavia, Superb, Kodiaq, Karoq en Enyaq.</li>
-                                    <li>APK-voorbereiding en controle op remmen, verlichting en onderstel.</li>
+                                    <li>Controle en herstel van remmen, verlichting en onderstel.</li>
                                     <li>Diagnose van storingen, airco-problemen en elektronische meldingen.</li>
                                     <li>Praktische service voor zowel privéauto's als zakelijke voertuigen.</li>
                                 </ul>

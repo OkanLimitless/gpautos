@@ -14,7 +14,7 @@ export default function ContactSection() {
             Plan uw bezoek aan GP Auto&apos;s
           </h2>
           <p className="max-w-2xl text-white/60 leading-7">
-            Stuur uw kenteken, omschrijving van de klacht en gewenste datum mee. Dan kunnen we u sneller helpen met onderhoud, APK of diagnose in Lichtenvoorde en de Achterhoek.
+            Stuur uw kenteken, omschrijving van de klacht en gewenste datum mee. Dan kunnen we u sneller helpen met onderhoud, diagnose of aircoservice in Lichtenvoorde en de Achterhoek.
           </p>
         </div>
 
@@ -46,7 +46,6 @@ export default function ContactSection() {
                 />
                 <select className="bg-[#1A1A1A] border border-white/5 rounded-sm p-4 text-white/70 focus:outline-none focus:border-primary transition-colors">
                   <option>Dienst selecteren</option>
-                  <option>APK keuring</option>
                   <option>Onderhoud & service</option>
                   <option>Diagnose & storing</option>
                   <option>Airco service</option>
@@ -55,7 +54,7 @@ export default function ContactSection() {
                 </select>
               </div>
               <textarea
-                placeholder="Vertel kort wat er aan de hand is, bijvoorbeeld storingslampje, onderhoud of APK."
+                placeholder="Vertel kort wat er aan de hand is, bijvoorbeeld storingslampje, onderhoud of airco."
                 rows={4}
                 className="w-full bg-[#1A1A1A] border border-white/5 rounded-sm p-4 text-white placeholder:text-white/30 focus:outline-none focus:border-primary transition-colors resize-none"
               ></textarea>
@@ -146,7 +145,7 @@ export default function ContactSection() {
             <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
               <h3 className="text-white font-bold uppercase tracking-widest mb-3">Wij helpen vooral met</h3>
               <p className="text-sm leading-6 text-white/60">
-                APK, onderhoud, diagnose, remmen, airco en VAG-specialisme voor klanten uit Lichtenvoorde, Groenlo, Aalten, Winterswijk, Eibergen en Varsseveld.
+                Onderhoud, diagnose, remmen, airco en VAG-specialisme voor klanten uit Lichtenvoorde, Groenlo, Aalten, Winterswijk, Eibergen en Varsseveld.
               </p>
             </div>
           </div>

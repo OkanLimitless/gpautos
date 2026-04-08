@@ -9,11 +9,10 @@ import ContactSection from '@/components/ContactSection'
 export const metadata: Metadata = {
   title: "Autogarage Lichtenvoorde | GP Auto's VAG Specialist",
   description:
-    'GP Auto\'s is uw autogarage in Lichtenvoorde voor APK, onderhoud, diagnose en VAG-service. Ook voor klanten uit Groenlo, Aalten, Winterswijk, Eibergen en de rest van de Achterhoek.',
+    'GP Auto\'s is uw autogarage in Lichtenvoorde voor onderhoud, diagnose en VAG-service. Ook voor klanten uit Groenlo, Aalten, Winterswijk, Eibergen en de rest van de Achterhoek.',
   keywords: [
     'autogarage Lichtenvoorde',
     'garage Lichtenvoorde',
-    'APK Lichtenvoorde',
     'onderhoud Lichtenvoorde',
     'diagnose Achterhoek',
     'VAG specialist Lichtenvoorde',
@@ -24,7 +23,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Autogarage Lichtenvoorde | GP Auto's VAG Specialist",
     description:
-      'APK, onderhoud en diagnose in Lichtenvoorde voor Audi, Volkswagen, SEAT en Skoda. Ook bereikbaar voor klanten uit de Achterhoek.',
+      'Onderhoud, diagnose en VAG-service in Lichtenvoorde voor Audi, Volkswagen, SEAT en Skoda. Ook bereikbaar voor klanten uit de Achterhoek.',
     url: 'https://gpautos.nl',
     siteName: "GP Auto's",
     locale: 'nl_NL',

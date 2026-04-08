@@ -52,7 +52,7 @@ export const cities: City[] = [
         region: 'Oost Gelre',
         distance: '0 km',
         description: 'Onze thuisbasis in het hart van de Achterhoek. Bezoek onze werkplaats aan de Galileïstraat voor premium VAG onderhoud.',
-        metaDescription: "Autogarage in Lichtenvoorde voor APK, onderhoud, diagnose en reparatie. GP Auto's is uw lokale VAG specialist in de Achterhoek.",
+        metaDescription: "Autogarage in Lichtenvoorde voor onderhoud, diagnose en reparatie. GP Auto's is uw lokale VAG specialist in de Achterhoek.",
         intro: 'Wie in Lichtenvoorde een autogarage zoekt, wil vooral snelheid, duidelijkheid en iemand die VAG-modellen echt kent. Dat is precies waar GP Auto\'s op is ingericht.',
         whyChoose: [
             'U brengt uw auto direct naar een werkplaats in Lichtenvoorde zelf, zonder omrijden naar een dealer buiten de regio.',
@@ -60,7 +60,7 @@ export const cities: City[] = [
             'U krijgt een helder advies over wat direct moet gebeuren en wat nog even kan wachten.',
         ],
         routeTip: 'Vanaf het centrum van Lichtenvoorde bent u in een paar minuten bij onze werkplaats aan de Galileïstraat. Voor dorpen in Oost Gelre is dit meestal de praktischste keuze.',
-        featuredServiceSlugs: ['apk-keuring', 'onderhoud-service', 'diagnose-storing', 'airco-service'],
+        featuredServiceSlugs: ['onderhoud-service', 'diagnose-storing', 'airco-service', 'remmen-wielophanging'],
         nearbyCitySlugs: ['groenlo', 'varsseveld', 'aalten'],
         faqs: [
             {
@@ -68,7 +68,7 @@ export const cities: City[] = [
                 answer: 'Ja. U zit lokaal, kunt snel langs voor onderhoud of diagnose en hoeft niet onnodig ver te rijden voor een specialistische VAG-aanpak.',
             },
             {
-                question: 'Kunnen APK en onderhoud worden gecombineerd?',
+                question: 'Kunnen onderhoud en diagnose worden gecombineerd?',
                 answer: 'Dat kan vaak prima. Daarmee bespaart u tijd en kunnen eventuele aandachtspunten direct worden besproken.',
             },
             {
@@ -83,15 +83,15 @@ export const cities: City[] = [
         region: 'Oost Gelre',
         distance: '5 km',
         description: 'Slechts enkele minuten rijden van Groenlo. Uw Audi, VW, SEAT of Skoda is bij ons in vertrouwde handen.',
-        metaDescription: "Autogarage voor Groenlo en omgeving. GP Auto's helpt met APK, onderhoud en diagnose voor Audi, Volkswagen, SEAT en Skoda.",
+        metaDescription: "Autogarage voor Groenlo en omgeving. GP Auto's helpt met onderhoud en diagnose voor Audi, Volkswagen, SEAT en Skoda.",
         intro: 'Voor bestuurders uit Groenlo is GP Auto\'s dichtbij genoeg voor praktisch onderhoud, maar specialistisch genoeg voor merken waarbij diagnose en softwarekennis echt verschil maken.',
         whyChoose: [
             'Korte rit vanuit Groenlo, dus makkelijk te combineren met werk, boodschappen of een snelle afspraak.',
-            'Sterk in storingen, onderhoud en APK voor VAG-auto\'s waar merkkennis belangrijk is.',
+            'Sterk in storingen en onderhoud voor VAG-auto\'s waar merkkennis belangrijk is.',
             'U houdt grip op kosten doordat we helder uitleggen wat nodig is en waarom.',
         ],
         routeTip: 'Vanaf Groenlo rijdt u snel richting Lichtenvoorde. Voor een onderhoudsbeurt of storingscontrole is dit een efficiënte regionale keuze.',
-        featuredServiceSlugs: ['apk-keuring', 'diagnose-storing', 'remmen-wielophanging'],
+        featuredServiceSlugs: ['diagnose-storing', 'remmen-wielophanging', 'airco-service'],
         nearbyCitySlugs: ['lichtenvoorde', 'eibergen', 'borculo'],
         faqs: [
             {
@@ -114,14 +114,14 @@ export const cities: City[] = [
         region: 'Aalten',
         distance: '10 km',
         description: 'Vanuit Aalten bent u snel bij GP Auto\'s voor professioneel VAG onderhoud en diagnose.',
-        metaDescription: "Autogarage voor Aalten: onderhoud, APK en diagnose voor VAG-modellen bij GP Auto's in Lichtenvoorde.",
+        metaDescription: "Autogarage voor Aalten: onderhoud en diagnose voor VAG-modellen bij GP Auto's in Lichtenvoorde.",
         intro: 'Komt u uit Aalten, dan zoekt u meestal een garage die snel bereikbaar is en die VAG-problemen niet alleen uitleest maar ook echt doorgrondt.',
         whyChoose: [
             'U bent vanuit Aalten snel in Lichtenvoorde, waardoor een afspraak weinig logistiek gedoe geeft.',
             'Onze aanpak is praktisch: eerst vaststellen wat er speelt, daarna pas repareren.',
             'Wij werken veel aan Audi, Volkswagen, SEAT en Skoda, dus de meeste platformen zijn bekend terrein.',
         ],
-        routeTip: 'Vanuit Aalten is de rit kort genoeg voor een geplande onderhoudsbeurt, APK of diagnose-afspraak zonder een halve dag kwijt te zijn.',
+        routeTip: 'Vanuit Aalten is de rit kort genoeg voor een geplande onderhoudsbeurt of diagnose-afspraak zonder een halve dag kwijt te zijn.',
         featuredServiceSlugs: ['onderhoud-service', 'diagnose-storing', 'airco-service'],
         nearbyCitySlugs: ['winterswijk', 'varsseveld', 'lichtenvoorde'],
         faqs: [
@@ -145,15 +145,15 @@ export const cities: City[] = [
         region: 'Winterswijk',
         distance: '15 km',
         description: 'Ook voor inwoners van Winterswijk zijn wij een VAG specialist in de regio. Premium service, eerlijke prijzen.',
-        metaDescription: "Autogarage voor Winterswijk en de Achterhoek. GP Auto's verzorgt onderhoud, diagnose en APK voor Audi, Volkswagen, SEAT en Skoda.",
+        metaDescription: "Autogarage voor Winterswijk en de Achterhoek. GP Auto's verzorgt onderhoud, diagnose en softwarewerk voor Audi, Volkswagen, SEAT en Skoda.",
         intro: 'Bestuurders uit Winterswijk komen vaak voor precies werk: onderhoud dat klopt, diagnose die verder gaat dan foutcodes en een eerlijke inschatting van de volgende stap.',
         whyChoose: [
             'GP Auto\'s is dichtbij genoeg voor een praktische afspraak, maar gespecialiseerd genoeg om het merkgevoel te behouden.',
             'We leggen technische keuzes uit in normale taal, zodat u weet waar u aan toe bent.',
-            'Voor VAG-rijders uit Winterswijk is het prettig dat APK, onderhoud en diagnose onder één dak zitten.',
+            'Voor VAG-rijders uit Winterswijk is het prettig dat onderhoud, diagnose en softwarewerk onder één dak zitten.',
         ],
         routeTip: 'Komt u uit Winterswijk, plan dan een afspraak wanneer het u uitkomt. De rit naar Lichtenvoorde is goed te doen voor een gerichte onderhoudsbeurt.',
-        featuredServiceSlugs: ['apk-keuring', 'onderhoud-service', 'software-chiptuning'],
+        featuredServiceSlugs: ['onderhoud-service', 'software-chiptuning', 'diagnose-storing'],
         nearbyCitySlugs: ['aalten', 'eibergen', 'borculo'],
         faqs: [
             {
@@ -176,7 +176,7 @@ export const cities: City[] = [
         region: 'Berkelland',
         distance: '12 km',
         description: 'Vanuit Eibergen eenvoudig te bereiken via de N18. Specialist in Audi, Volkswagen, SEAT en Skoda.',
-        metaDescription: "Autogarage voor Eibergen met VAG-specialisme. Voor diagnose, onderhoud, APK en remwerk bij GP Auto's in Lichtenvoorde.",
+        metaDescription: "Autogarage voor Eibergen met VAG-specialisme. Voor diagnose, onderhoud en remwerk bij GP Auto's in Lichtenvoorde.",
         intro: 'Voor Eibergen geldt vaak: snel bereikbaar, maar wel graag een garage die logisch denkt en niet direct onderdelen gaat vervangen zonder goede diagnose.',
         whyChoose: [
             'U kunt Eibergen eenvoudig combineren met een afspraak in Lichtenvoorde via een korte regionale rit.',
@@ -207,15 +207,15 @@ export const cities: City[] = [
         region: 'Berkelland',
         distance: '15 km',
         description: 'Rijdt u vanuit Borculo? Wij staan voor u klaar met vakkundige VAG service en moderne diagnoseapparatuur.',
-        metaDescription: "Autogarage voor Borculo met VAG-specialisme. GP Auto's verzorgt onderhoud, diagnose, APK en tuning vanuit Lichtenvoorde.",
+        metaDescription: "Autogarage voor Borculo met VAG-specialisme. GP Auto's verzorgt onderhoud, diagnose en tuning vanuit Lichtenvoorde.",
         intro: 'Vanuit Borculo kiezen klanten vaak voor een garage die zowel onderhoud als technische storingen aankan. Die combinatie maakt GP Auto\'s relevant voor dagelijkse en complexere vragen.',
         whyChoose: [
             'U heeft vanuit Borculo een haalbare rit naar een specialist die niet alleen uitleest, maar ook doorzoekt.',
             'We zijn sterk in onderhoud en diagnostiek voor VAG-modellen waar kennis van het platform belangrijk is.',
             'U krijgt een advies dat past bij de leeftijd, kilometerstand en gebruiksdoel van de auto.',
         ],
-        routeTip: 'Voor Borculo is Lichtenvoorde een praktische regio-oplossing, zeker als u een onderhoudsbeurt, APK of update wilt plannen.',
-        featuredServiceSlugs: ['onderhoud-service', 'apk-keuring', 'software-chiptuning'],
+        routeTip: 'Voor Borculo is Lichtenvoorde een praktische regio-oplossing, zeker als u een onderhoudsbeurt of update wilt plannen.',
+        featuredServiceSlugs: ['onderhoud-service', 'software-chiptuning', 'diagnose-storing'],
         nearbyCitySlugs: ['eibergen', 'groenlo', 'lichtenvoorde'],
         faqs: [
             {
@@ -238,12 +238,12 @@ export const cities: City[] = [
         region: 'Doetinchem',
         distance: '20 km',
         description: 'De grootste stad in de Achterhoek, op korte rijafstand van onze werkplaats. VAG expertise voor elke situatie.',
-        metaDescription: "Autogarage voor Doetinchem en de Achterhoek. GP Auto's biedt VAG onderhoud, diagnose, APK en softwarewerk in Lichtenvoorde.",
+        metaDescription: "Autogarage voor Doetinchem en de Achterhoek. GP Auto's biedt VAG onderhoud, diagnose en softwarewerk in Lichtenvoorde.",
         intro: 'Doetinchem heeft veel verkeer, veel kilometers en dus ook veel vraag naar een garage die snel kan schakelen zonder in te leveren op technische kwaliteit.',
         whyChoose: [
             'Voor bestuurders uit Doetinchem is GP Auto\'s een regionale specialist met korte lijnen en duidelijke communicatie.',
             'Bij VAG-auto\'s telt vaak meer dan alleen sleutelwerk; diagnose en softwarekennis zijn essentieel.',
-            'U kunt onderhoud, APK en storingscontrole combineren in één afspraak.',
+            'U kunt onderhoud, softwarewerk en storingscontrole combineren in één afspraak.',
         ],
         routeTip: 'Een rit vanuit Doetinchem is prima te plannen voor een onderhoudsbeurt of diagnose-afspraak, zeker als u vooraf belt.',
         featuredServiceSlugs: ['diagnose-storing', 'software-chiptuning', 'onderhoud-service'],
@@ -269,15 +269,15 @@ export const cities: City[] = [
         region: 'Oude IJsselstreek',
         distance: '12 km',
         description: 'Vanuit Varsseveld bent u snel bij GP Auto\'s. Wij zijn uw vertrouwde partner voor VAG onderhoud.',
-        metaDescription: "Autogarage voor Varsseveld. GP Auto's helpt met APK, onderhoud, remmen en diagnose voor Audi, Volkswagen, SEAT en Skoda.",
+        metaDescription: "Autogarage voor Varsseveld. GP Auto's helpt met onderhoud, remmen en diagnose voor Audi, Volkswagen, SEAT en Skoda.",
         intro: 'Voor klanten uit Varsseveld draait het vaak om een garage die betrouwbaar is, snel kan schakelen en niet moeilijk doet over heldere uitleg of praktische planning.',
         whyChoose: [
-            'De afstand vanuit Varsseveld is goed te doen voor onderhoud, APK of een remcontrole.',
+            'De afstand vanuit Varsseveld is goed te doen voor onderhoud of een remcontrole.',
             'Onze werkplaats combineert praktische service met VAG-specifieke kennis.',
             'U krijgt een helder beeld van de prioriteiten, zodat de auto niet onnodig lang stilstaat.',
         ],
         routeTip: 'Varsseveld ligt gunstig genoeg om een afspraak in Lichtenvoorde eenvoudig te combineren met de rest van uw dag.',
-        featuredServiceSlugs: ['apk-keuring', 'remmen-wielophanging', 'airco-service'],
+        featuredServiceSlugs: ['remmen-wielophanging', 'airco-service', 'onderhoud-service'],
         nearbyCitySlugs: ['doetinchem', 'aalten', 'lichtenvoorde'],
         faqs: [
             {
@@ -300,7 +300,7 @@ export const cities: City[] = [
         region: 'Bronckhorst',
         distance: '18 km',
         description: 'Ook vanuit Zelhem bereikbaar voor premium autoservice. Specialist in het volledige VAG-gamma.',
-        metaDescription: "Autogarage voor Zelhem en Bronckhorst. GP Auto's verzorgt VAG onderhoud, APK, diagnose en remmen vanuit Lichtenvoorde.",
+        metaDescription: "Autogarage voor Zelhem en Bronckhorst. GP Auto's verzorgt VAG onderhoud, diagnose en remmen vanuit Lichtenvoorde.",
         intro: 'Vanuit Zelhem komen klanten vaak met de wens om een vaste garage te hebben die technische kennis combineert met duidelijke afspraken en een nuchtere aanpak.',
         whyChoose: [
             'U rijdt vanuit Zelhem naar een specialist die echt op VAG-techniek is ingericht.',
@@ -308,7 +308,7 @@ export const cities: City[] = [
             'We houden het gesprek praktisch, zodat u snel weet wat de beste vervolgstap is.',
         ],
         routeTip: 'Voor Zelhem is een geplande afspraak in Lichtenvoorde prima haalbaar, zeker wanneer u onderhoud of diagnose wilt combineren.',
-        featuredServiceSlugs: ['onderhoud-service', 'diagnose-storing', 'apk-keuring'],
+        featuredServiceSlugs: ['onderhoud-service', 'diagnose-storing', 'remmen-wielophanging'],
         nearbyCitySlugs: ['doetinchem', 'varsseveld', 'borculo'],
         faqs: [
             {
@@ -316,7 +316,7 @@ export const cities: City[] = [
                 answer: 'Omdat specialistische kennis vaak belangrijker is dan de kortste afstand, vooral bij VAG-auto\'s met storingen of onderhoudsbehoefte.',
             },
             {
-                question: 'Kunnen jullie onderhoud en APK tegelijk plannen?',
+                question: 'Kunnen jullie onderhoud en diagnose tegelijk plannen?',
                 answer: 'Ja, dat is vaak een slimme combinatie als u de auto toch al langs wilt brengen.',
             },
             {
@@ -331,40 +331,6 @@ export const cities: City[] = [
 // SERVICES - Core offerings
 // ============================================
 export const services: Service[] = [
-    {
-        slug: 'apk-keuring',
-        name: 'APK Keuring',
-        shortDescription: 'Officiële APK keuring met snelle doorlooptijd',
-        longDescription: 'Laat uw auto keuren bij een erkende RDW keuringsinstantie. Wij voeren de APK uit volgens de regels, bespreken afkeurpunten helder en adviseren eerlijk over wat direct aandacht nodig heeft.',
-        metaDescription: "APK keuring in Lichtenvoorde voor VAG-auto's. GP Auto's bespreekt afkeurpunten helder en helpt direct met een passende vervolgstap.",
-        icon: '✓',
-        intro: 'Een APK is meer dan een vinkje. U wilt weten of uw auto veilig is, welke punten opvallen en of u zaken kunt combineren met onderhoud.',
-        idealFor: [
-            'Uw APK-vervaldatum nadert en u wilt snel duidelijkheid.',
-            'U wilt APK combineren met onderhoud of een onderhoudsbeurt.',
-            'U wilt een eerlijk advies over afkeur- of aandachtspunten.',
-        ],
-        checklist: [
-            'Verlichting, banden, remmen en onderstel.',
-            'Uitlaatgas en relevante veiligheidscontroles.',
-            'Praktisch advies over punten die nu of later aandacht vragen.',
-        ],
-        faqs: [
-            {
-                question: 'Kan ik APK en onderhoud in één afspraak plannen?',
-                answer: 'Ja, dat is vaak de efficiëntste optie en voorkomt dubbele werkplaatsbezoeken.',
-            },
-            {
-                question: 'Krijg ik uitleg over afkeurpunten?',
-                answer: 'Ja. We leggen uit wat het betekent en wat de meest logische vervolgstap is.',
-            },
-            {
-                question: 'Is de APK ook geschikt voor VAG-modellen met extra elektronica?',
-                answer: 'Ja, juist dan is een gestructureerde controle belangrijk.',
-            },
-        ],
-        relatedServiceSlugs: ['onderhoud-service', 'diagnose-storing', 'remmen-wielophanging'],
-    },
     {
         slug: 'onderhoud-service',
         name: 'Onderhoud & Service',
@@ -397,7 +363,7 @@ export const services: Service[] = [
                 answer: 'Zeker. Juist dan voorkomt goed onderhoud grotere reparaties later.',
             },
         ],
-        relatedServiceSlugs: ['apk-keuring', 'diagnose-storing', 'airco-service'],
+        relatedServiceSlugs: ['diagnose-storing', 'airco-service', 'remmen-wielophanging'],
     },
     {
         slug: 'diagnose-storing',
@@ -465,7 +431,7 @@ export const services: Service[] = [
                 answer: 'Ja, als onderdeel van de service kunnen we het systeem beoordelen en reinigen waar dat logisch is.',
             },
         ],
-        relatedServiceSlugs: ['onderhoud-service', 'diagnose-storing', 'apk-keuring'],
+        relatedServiceSlugs: ['onderhoud-service', 'diagnose-storing', 'remmen-wielophanging'],
     },
     {
         slug: 'remmen-wielophanging',
@@ -499,7 +465,7 @@ export const services: Service[] = [
                 answer: 'Ja. Slijtage daar beïnvloedt direct stuurgevoel, stabiliteit en bandenslijtage.',
             },
         ],
-        relatedServiceSlugs: ['diagnose-storing', 'onderhoud-service', 'apk-keuring'],
+        relatedServiceSlugs: ['diagnose-storing', 'onderhoud-service', 'airco-service'],
     },
     {
         slug: 'software-chiptuning',

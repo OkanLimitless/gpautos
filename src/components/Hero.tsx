@@ -86,7 +86,7 @@ export default function Hero() {
                                 <span className="text-gradient">EN DE ACHTERHOEK.</span>
                             </h1>
                             <p className="mt-7 max-w-2xl text-base leading-7 text-white/72 sm:text-lg">
-                                Voor APK, onderhoud en storingsdiagnose hoeft u niet te gokken. GP Auto&apos;s helpt automobilisten uit Lichtenvoorde, Groenlo, Aalten en Winterswijk met duidelijke afspraken, technisch inzicht en specialistische VAG-kennis.
+                                Voor onderhoud en storingsdiagnose hoeft u niet te gokken. GP Auto&apos;s helpt automobilisten uit Lichtenvoorde, Groenlo, Aalten en Winterswijk met duidelijke afspraken, technisch inzicht en specialistische VAG-kennis.
                             </p>
                         </motion.div>
 
@@ -111,7 +111,7 @@ export default function Hero() {
                         </motion.div>
 
                         <div className="mt-8 flex flex-wrap gap-3 text-[11px] font-semibold uppercase tracking-[0.3em] text-white/60">
-                            {['APK', 'Onderhoud', 'Diagnose', 'Airco', 'VAG specialist'].map((item) => (
+                            {['Onderhoud', 'Diagnose', 'Airco', 'Retrofit', 'VAG specialist'].map((item) => (
                                 <span
                                     key={item}
                                     className="rounded-full border border-white/10 bg-black/30 px-4 py-2 backdrop-blur-sm"
@@ -145,7 +145,7 @@ export default function Hero() {
                                         RDW erkend bedrijf
                                     </div>
                                     <div className="mt-1 text-sm text-white/58">
-                                        Erkende werkplaats voor APK, onderhoud en diagnose.
+                                        Erkende werkplaats met focus op onderhoud en diagnose.
                                     </div>
                                 </div>
                             </a>
@@ -178,7 +178,7 @@ export default function Hero() {
                             </div>
                             <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
                                 <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-white/40">Specialisme</p>
-                                <p className="mt-2 text-sm text-white/85">Audi, Volkswagen, SEAT, Skoda, APK en storingsdiagnose</p>
+                                <p className="mt-2 text-sm text-white/85">Audi, Volkswagen, SEAT, Skoda, onderhoud en storingsdiagnose</p>
                             </div>
                             <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
                                 <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-white/40">Regio</p>

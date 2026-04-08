@@ -7,7 +7,6 @@ import dynamic from 'next/dynamic'
 const MobileStickyCTA = dynamic(() => import('./MobileStickyCTA'), { ssr: false })
 
 const serviceLinks = [
-  { href: '/diensten/apk-keuring', label: 'APK keuring' },
   { href: '/diensten/onderhoud-service', label: 'Onderhoud & service' },
   { href: '/diensten/diagnose-storing', label: 'Diagnose & storing' },
   { href: '/diensten/airco-service', label: 'Airco service' },

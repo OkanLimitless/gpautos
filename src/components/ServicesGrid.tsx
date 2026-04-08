@@ -29,11 +29,11 @@ const SERVICES = [
     icon: <DiagnosticIcon />
   },
   {
-    title: 'APK Keuring',
-    description: 'Officiële APK-keuring met heldere terugkoppeling en snelle doorlooptijd.',
+    title: 'Airco Service',
+    description: 'Controle, onderhoud en service voor een airco die goed blijft koelen en comfortabel rijdt.',
     image: '/images/IMG_4210.jpeg',
-    slug: 'apk-keuring',
-    icon: <CheckIcon />
+    slug: 'airco-service',
+    icon: <SnowflakeIcon />
   },
   {
     title: 'Retrofit & Tuning',
@@ -54,7 +54,7 @@ export default function ServicesGrid() {
           </p>
           <h2 className="text-4xl font-bold text-white mb-4 uppercase font-bebas tracking-wider">Onze Diensten</h2>
           <p className="max-w-3xl text-white/60 leading-7">
-            Van APK tot diagnose: wij helpen klanten uit Lichtenvoorde, Groenlo, Aalten, Winterswijk, Varsseveld en Eibergen met duidelijke service en een praktische planning.
+            Van onderhoud tot diagnose: wij helpen klanten uit Lichtenvoorde, Groenlo, Aalten, Winterswijk, Varsseveld en Eibergen met duidelijke service en een praktische planning.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             {SERVICE_AREAS.map((area) => (
@@ -123,9 +123,9 @@ function DiagnosticIcon() {
   )
 }
 
-function CheckIcon() {
+function SnowflakeIcon() {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" /><polyline points="22 4 12 14.01 9 11.01" /></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v20" /><path d="m4.93 4.93 14.14 14.14" /><path d="M2 12h20" /><path d="m4.93 19.07 14.14-14.14" /></svg>
   )
 }
 

@@ -171,7 +171,7 @@ export default function AudiSpecialistPage() {
                                     <li>Diagnose van motorstoringen, elektronische meldingen en rijhulpsystemen.</li>
                                     <li>Onderhoud voor TFSI, TDI, S tronic, quattro en e-tron modellen.</li>
                                     <li>Software-updates, chiptuning en gerichte technische ondersteuning.</li>
-                                    <li>APK-voorbereiding en herstelwerk met transparante prioriteiten.</li>
+                                    <li>Remmen, onderstel en herstelwerk met transparante prioriteiten.</li>
                                 </ul>
                             </div>
                             <div className="rounded-2xl border border-white/10 bg-zinc-900 p-6">

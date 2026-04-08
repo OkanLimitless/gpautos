@@ -52,7 +52,7 @@ export default function AboutSection() {
             </p>
             <h2 className="text-4xl font-bold text-white mb-6 font-bebas tracking-wider uppercase">Waarom GP Auto&apos;s</h2>
             <p className="text-white/60 mb-8 leading-relaxed">
-              GP Auto&apos;s combineert praktische werkplaatskennis met duidelijke communicatie. Voor automobilisten uit Lichtenvoorde en de Achterhoek is dat vooral handig als u snel wilt schakelen voor onderhoud, APK of een storingsdiagnose.
+              GP Auto&apos;s combineert praktische werkplaatskennis met duidelijke communicatie. Voor automobilisten uit Lichtenvoorde en de Achterhoek is dat vooral handig als u snel wilt schakelen voor onderhoud of een storingsdiagnose.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-10">

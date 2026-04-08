@@ -37,7 +37,7 @@ export default function SocialProof() {
               <span className="text-xs font-semibold tracking-wider text-white/70 uppercase">Google Beoordeling</span>
             </div>
             <p className="mt-3 max-w-xs text-center text-xs leading-5 text-white/45">
-              Gemaakt op basis van ervaringen van klanten die onderhoud, APK en diagnose bij ons laten uitvoeren.
+              Gemaakt op basis van ervaringen van klanten die onderhoud en diagnose bij ons laten uitvoeren.
             </p>
           </a>
 
