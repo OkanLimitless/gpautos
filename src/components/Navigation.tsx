@@ -16,10 +16,14 @@ const MOBILE_MENU_ID = 'primary-mobile-menu'
 
 export default function Navigation() {
   const pathname = usePathname()
+  const isHome = pathname === '/'
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const toggleButtonRef = useRef<HTMLButtonElement | null>(null)
   const firstMobileLinkRef = useRef<HTMLAnchorElement | null>(null)
+
+  // On home, nav starts transparent over the dark hero; once scrolled it becomes white
+  const isTransparent = isHome && !isScrolled && !isMobileMenuOpen
 
   const closeMobileMenu = () => {
     setIsMobileMenuOpen(false)
@@ -74,9 +78,9 @@ export default function Navigation() {
       <nav
         aria-label="Hoofdnavigatie"
         className={`transition-all duration-300 ${
-          isScrolled || isMobileMenuOpen
-            ? 'bg-white/90 backdrop-blur-xl shadow-[0_1px_0_rgba(0,0,0,0.06)]'
-            : 'bg-transparent'
+          isTransparent
+            ? 'bg-transparent'
+            : 'bg-white/90 backdrop-blur-xl shadow-[0_1px_0_rgba(0,0,0,0.06)]'
         }`}
       >
         <div className="container flex items-center justify-between h-16 md:h-[72px]">
@@ -97,7 +101,11 @@ export default function Navigation() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-sm font-medium text-gray-600 transition-colors hover:text-gray-900"
+                className={`text-sm font-medium transition-colors ${
+                  isTransparent
+                    ? 'text-white/80 hover:text-white'
+                    : 'text-gray-600 hover:text-gray-900'
+                }`}
               >
                 {link.label}
               </Link>
@@ -112,7 +120,11 @@ export default function Navigation() {
             ref={toggleButtonRef}
             type="button"
             onClick={() => setIsMobileMenuOpen((v) => !v)}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-gray-200 bg-white text-gray-700 transition-colors hover:bg-gray-50 md:hidden"
+            className={`inline-flex h-10 w-10 items-center justify-center rounded-xl transition-colors md:hidden ${
+              isTransparent
+                ? 'border border-white/20 bg-white/10 text-white hover:bg-white/20'
+                : 'border border-gray-200 bg-white text-gray-700 hover:bg-gray-50'
+            }`}
             aria-controls={MOBILE_MENU_ID}
             aria-expanded={isMobileMenuOpen}
             aria-label={isMobileMenuOpen ? 'Sluit menu' : 'Open menu'}
