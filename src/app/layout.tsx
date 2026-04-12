@@ -1,12 +1,12 @@
 import type { Metadata } from 'next'
-import { Inter, Outfit, Bebas_Neue } from 'next/font/google'
+import { Inter, Outfit } from 'next/font/google'
 import './globals.css'
 import { Toaster } from 'react-hot-toast'
 import Script from 'next/script'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const outfit = Outfit({ subsets: ['latin'], variable: '--font-outfit' })
-const bebas = Bebas_Neue({ subsets: ['latin'], weight: ['400'], variable: '--font-bebas' })
+
 const siteUrl = 'https://gpautos.nl'
 
 export const metadata: Metadata = {
@@ -96,22 +96,10 @@ const jsonLd = {
     }
   ],
   "areaServed": [
-    {
-      "@type": "Place",
-      "name": "Lichtenvoorde"
-    },
-    {
-      "@type": "Place",
-      "name": "Achterhoek"
-    },
-    {
-      "@type": "Place",
-      "name": "Groenlo"
-    },
-    {
-      "@type": "Place",
-      "name": "Aalten"
-    }
+    { "@type": "Place", "name": "Lichtenvoorde" },
+    { "@type": "Place", "name": "Achterhoek" },
+    { "@type": "Place", "name": "Groenlo" },
+    { "@type": "Place", "name": "Aalten" }
   ],
   "slogan": "Autoservice op afspraak in Lichtenvoorde en de Achterhoek",
   "sameAs": [
@@ -128,10 +116,10 @@ export default function RootLayout({
   return (
     <html lang="nl">
       <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="mobile-web-app-capable" content="yes" />
-        <meta name="theme-color" content="#18181b" />
+        <meta name="theme-color" content="#FAFAF9" />
         {/* Google tag (gtag.js) */}
         <Script src="https://www.googletagmanager.com/gtag/js?id=AW-697295426" strategy="afterInteractive" />
         <Script id="gtag-init" strategy="afterInteractive">
@@ -163,16 +151,17 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className={`${inter.variable} ${outfit.variable} ${bebas.variable} bg-zinc-950 text-white`}>
+      <body className={`${inter.variable} ${outfit.variable}`}>
         {children}
         <Toaster
           position="bottom-center"
           toastOptions={{
             duration: 5000,
             style: {
-              background: '#18181b',
-              color: '#fff',
-              border: '1px solid #3f3f46',
+              background: '#FFFFFF',
+              color: '#1A1A1A',
+              border: '1px solid #E5E7EB',
+              borderRadius: '12px',
             },
           }}
         />

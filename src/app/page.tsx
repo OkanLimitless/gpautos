@@ -1,9 +1,9 @@
 import type { Metadata } from 'next'
 import Hero from '@/components/Hero'
 import Layout from '@/components/Layout'
+import SocialProof from '@/components/SocialProof'
 import ServicesGrid from '@/components/ServicesGrid'
 import AboutSection from '@/components/AboutSection'
-import WorkshopGallery from '@/components/WorkshopGallery'
 import ContactSection from '@/components/ContactSection'
 
 export const metadata: Metadata = {
@@ -37,7 +37,7 @@ export default function Home() {
       <Hero />
       <ServicesGrid />
       <AboutSection />
-      <WorkshopGallery />
+      <SocialProof />
       <ContactSection />
     </Layout>
   )

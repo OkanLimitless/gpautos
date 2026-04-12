@@ -8,30 +8,21 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#E10600', // Ferrari Red
-        secondary: '#111111', // Anthracite background
-        accent: '#1A1A1A', // Card background
-        light: '#FFFFFF', // White for sections
-        'light-gray': '#F5F5F5', // Light gray background
-        text: {
-          white: '#FFFFFF', // White text
-          dark: '#1F1F1F', // Dark text for light backgrounds
-          gray: '#CCCCCC', // Gray text
-          light: '#F2F2F2', // Light text
-        }
+        primary: '#DC2626',
+        secondary: '#1A1A1A',
+        accent: '#DC2626',
       },
       fontFamily: {
         sans: ['var(--font-inter)'],
         inter: ['var(--font-inter)'],
-        outfit: ['var(--font-outfit)'],
-        bebas: ['var(--font-bebas)'],
         heading: ['var(--font-outfit)'],
+        outfit: ['var(--font-outfit)'],
       },
-      boxShadow: {
-        'sonic': '0 8px 24px rgba(0,0,0,0.4)',
-        'sonic-hover': '0 20px 40px -15px rgba(0,0,0,0.5)',
+      borderRadius: {
+        '2xl': '16px',
+        '3xl': '24px',
       },
     },
   },
   plugins: [],
-} 
+}

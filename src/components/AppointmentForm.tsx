@@ -1,43 +1,41 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import type { ReactNode, FormEvent } from 'react'
 import DatePicker, { registerLocale } from 'react-datepicker'
 import { nl } from 'date-fns/locale'
-import "react-datepicker/dist/react-datepicker.css"
+import 'react-datepicker/dist/react-datepicker.css'
 import toast from 'react-hot-toast'
 
 // Register Dutch locale
 registerLocale('nl', nl)
 
 interface AppointmentFormProps {
-  variant?: 'dark' | 'light'
+  variant?: 'dark' | 'light' | 'home'
   minDateOffsetDays?: number
   autoFocusNext?: boolean
 }
 
-export default function AppointmentForm({ variant = 'dark', minDateOffsetDays = 0, autoFocusNext = false }: AppointmentFormProps) {
+export default function AppointmentForm({
+  variant = 'dark',
+  minDateOffsetDays = 0,
+  autoFocusNext = false,
+}: AppointmentFormProps) {
   const isLight = variant === 'light'
+  const isHome = variant === 'home'
 
-  const containerClasses = isLight
-    ? 'space-y-6 bg-white p-8 rounded-xl border border-zinc-200 shadow-sm'
-    : 'space-y-6 bg-zinc-800 p-8 rounded-lg'
+  const containerClasses = isHome
+    ? 'space-y-5'
+    : isLight
+      ? 'space-y-5 bg-white p-8 rounded-xl border border-gray-200 shadow-sm'
+      : 'space-y-5 bg-gray-800 p-8 rounded-xl'
 
-  const sectionTitleClasses = isLight
-    ? 'text-sm font-semibold text-zinc-900 tracking-wide'
-    : 'text-sm font-semibold text-white tracking-wide'
+  const labelClasses = 'mb-1.5 block text-sm font-medium text-gray-700'
 
-  const labelClasses = isLight
-    ? 'block text-xs font-medium text-zinc-600 mb-1 uppercase tracking-wide'
-    : 'block text-xs font-medium text-gray-300 mb-1 uppercase tracking-wide'
-
-  const inputBase = 'mt-1 block w-full rounded-lg shadow-sm sm:text-sm transition-colors'
-  const inputClasses = isLight
-    ? `${inputBase} bg-white border border-zinc-300 text-zinc-900 placeholder:text-zinc-400 focus:border-primary focus:ring-2 focus:ring-primary/30`
-    : `${inputBase} bg-zinc-900 border border-zinc-700 text-white placeholder:text-zinc-400 focus:border-red-600 focus:ring-2 focus:ring-red-600/30`
+  const inputBase = 'mt-1 block w-full rounded-xl shadow-sm text-sm transition-colors'
+  const inputClasses = `${inputBase} border border-gray-200 bg-gray-50 px-4 py-3 text-gray-900 placeholder:text-gray-400 focus:border-red-500 focus:ring-2 focus:ring-red-500/10 focus:bg-white`
 
   const textareaClasses = inputClasses
-
-  const hintClasses = isLight ? 'text-xs text-zinc-500 mt-1' : 'text-xs text-gray-300 mt-1'
 
   const [selectedDate, setSelectedDate] = useState<Date | null>(null)
   const [loading, setLoading] = useState(false)
@@ -47,7 +45,7 @@ export default function AppointmentForm({ variant = 'dark', minDateOffsetDays = 
     name: '',
     email: '',
     phone: '',
-    description: ''
+    description: '',
   })
 
   // Marketing attribution capture (for Ads)
@@ -71,14 +69,14 @@ export default function AppointmentForm({ variant = 'dark', minDateOffsetDays = 
     }
   }, [])
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
     const newErrors: { [key: string]: string | undefined } = {}
     if (!formData.kenteken) newErrors.kenteken = 'Vul uw kenteken in'
     if (!selectedDate) newErrors.date = 'Selecteer een datum'
     if (!formData.name) newErrors.name = 'Vul uw naam in'
     if (!formData.phone) newErrors.phone = 'Vul uw telefoonnummer in'
-    if (!formData.email) newErrors.email = 'Vul uw e‑mail in'
+    if (!formData.email) newErrors.email = 'Vul uw e-mail in'
     if (!formData.description) newErrors.description = 'Beschrijf de werkzaamheden'
     setErrors(newErrors)
     if (Object.keys(newErrors).length > 0) {
@@ -121,13 +119,12 @@ export default function AppointmentForm({ variant = 'dark', minDateOffsetDays = 
         ;(window as any).gtag_report_conversion()
       }
 
-      // Reset form
       setFormData({
         kenteken: '',
         name: '',
         email: '',
         phone: '',
-        description: ''
+        description: '',
       })
       setSelectedDate(null)
       setErrors({})
@@ -141,123 +138,132 @@ export default function AppointmentForm({ variant = 'dark', minDateOffsetDays = 
 
   return (
     <form onSubmit={handleSubmit} className={containerClasses} id="afspraak">
-      {/* Details section */}
-      <div className="space-y-5">
-        <div className="grid md:grid-cols-2 gap-4">
-          <div>
-            <label className={labelClasses}>Kenteken</label>
-            <input
-              type="text"
-              required
-              placeholder="AA-11-BB"
-              className={inputClasses}
-              value={formData.kenteken}
-              onChange={(e) => {
-                const val = e.target.value.toUpperCase()
-                setFormData({...formData, kenteken: val})
-                if (autoFocusNext && val.replace(/[^A-Z0-9]/g, '').length >= 6) {
-                  const dateEl = document.querySelector('input[name="date"]') as HTMLInputElement | null
-                  if (dateEl) dateEl.focus()
-                }
-              }}
-              autoFocus
-            />
-            <p className={hintClasses}>Voer uw kenteken in zonder streepjes</p>
-            {errors.kenteken && <p className="text-xs text-red-600 mt-1">{errors.kenteken}</p>}
-          </div>
-          <div>
-            <label className={labelClasses}>Gewenste datum</label>
+      <div className="space-y-4">
+        <div>
+          <label htmlFor="appointment-kenteken" className={labelClasses}>
+            Kenteken
+          </label>
+          <input
+            id="appointment-kenteken"
+            type="text"
+            required
+            autoFocus={variant !== 'home'}
+            placeholder="Bijv. AB-12-CD"
+            className={inputClasses}
+            value={formData.kenteken}
+            onChange={(e) => {
+              const val = e.target.value.toUpperCase()
+              setFormData({ ...formData, kenteken: val })
+              if (autoFocusNext && val.replace(/[^A-Z0-9]/g, '').length >= 6) {
+                const dateEl = document.querySelector('input[name="date"]') as HTMLInputElement | null
+                if (dateEl) dateEl.focus()
+              }
+            }}
+          />
+          {errors.kenteken && <p className="mt-1 text-xs text-red-600">{errors.kenteken}</p>}
+        </div>
+
+        <div>
+          <label htmlFor="appointment-date" className={labelClasses}>
+            Gewenste datum
+          </label>
+          <div className="home-datepicker-wrap">
             <DatePicker
               selected={selectedDate}
               onChange={(date: Date | null) => setSelectedDate(date)}
               locale="nl"
               dateFormat="P"
               minDate={new Date(Date.now() + minDateOffsetDays * 24 * 60 * 60 * 1000)}
+              id="appointment-date"
               className={inputClasses}
-              placeholderText="Selecteer een datum"
+              placeholderText="Kies een datum"
               name="date"
             />
-            {errors.date && <p className="text-xs text-red-600 mt-1">{errors.date}</p>}
           </div>
+          {errors.date && <p className="mt-1 text-xs text-red-600">{errors.date}</p>}
         </div>
 
         <div className="grid md:grid-cols-2 gap-4">
           <div>
-            <label className={labelClasses}>Naam</label>
+            <label htmlFor="appointment-name" className={labelClasses}>
+              Naam
+            </label>
             <input
+              id="appointment-name"
               type="text"
               required
               className={inputClasses}
               value={formData.name}
-              onChange={(e) => setFormData({...formData, name: e.target.value})}
-              placeholder="Uw volledige naam"
+              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+              placeholder="Uw naam"
             />
-            {errors.name && <p className="text-xs text-red-600 mt-1">{errors.name}</p>}
+            {errors.name && <p className="mt-1 text-xs text-red-600">{errors.name}</p>}
           </div>
           <div>
-            <label className={labelClasses}>Telefoonnummer</label>
+            <label htmlFor="appointment-phone" className={labelClasses}>
+              Telefoon
+            </label>
             <input
+              id="appointment-phone"
               type="tel"
               required
               className={inputClasses}
               value={formData.phone}
               onChange={(e) => {
                 let v = e.target.value.replace(/\s+/g, '')
-                if (v.startsWith('31') && !v.startsWith('+31')) v = '+31' + v.slice(2)
-                setFormData({...formData, phone: v})
+                if (v.startsWith('31') && !v.startsWith('+31')) v = `+31${v.slice(2)}`
+                setFormData({ ...formData, phone: v })
               }}
               placeholder="06 12345678"
             />
-            {errors.phone && <p className="text-xs text-red-600 mt-1">{errors.phone}</p>}
+            {errors.phone && <p className="mt-1 text-xs text-red-600">{errors.phone}</p>}
           </div>
         </div>
 
         <div>
-          <label className={labelClasses}>E‑mail</label>
+          <label htmlFor="appointment-email" className={labelClasses}>
+            E-mailadres
+          </label>
           <input
+            id="appointment-email"
             type="email"
             required
             className={inputClasses}
             value={formData.email}
-            onChange={(e) => setFormData({...formData, email: e.target.value})}
+            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
             placeholder="uw.email@voorbeeld.nl"
           />
-          {errors.email && <p className="text-xs text-red-600 mt-1">{errors.email}</p>}
+          {errors.email && <p className="mt-1 text-xs text-red-600">{errors.email}</p>}
         </div>
 
         <div>
-          <label className={labelClasses}>Omschrijving van de werkzaamheden</label>
+          <label htmlFor="appointment-description" className={labelClasses}>
+            Klacht of werkzaamheden
+          </label>
           <textarea
+            id="appointment-description"
             required
-            rows={4}
+            rows={3}
             className={textareaClasses}
             value={formData.description}
-            onChange={(e) => setFormData({...formData, description: e.target.value})}
-            placeholder="Beschrijf kort wat er aan uw auto gedaan moet worden"
+            onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+            placeholder="Omschrijf kort de klacht of gewenste werkzaamheden"
           />
-          {errors.description && <p className="text-xs text-red-600 mt-1">{errors.description}</p>}
+          {errors.description && <p className="mt-1 text-xs text-red-600">{errors.description}</p>}
         </div>
       </div>
 
-      <div className={isLight ? 'text-xs text-zinc-500' : 'text-xs text-gray-300'}>
-        Wij reageren doorgaans binnen 1 werkdag. Door te verzenden gaat u akkoord met onze{' '}
-        <LinkPlaceholder href="/privacyverklaring" className={isLight ? 'text-primary' : 'text-primary'}>
+      <p className="text-xs text-gray-400">
+        Door te verzenden gaat u akkoord met onze{' '}
+        <a href="/privacyverklaring" className="text-red-600 hover:text-red-700">
           privacyverklaring
-        </LinkPlaceholder>.
-      </div>
+        </a>
+        .
+      </p>
 
-      <button
-        type="submit"
-        className="w-full btn btn-primary py-3"
-        disabled={loading}
-      >
-        {loading ? 'Even geduld...' : 'Afspraak Aanvragen'}
+      <button type="submit" className="btn-primary w-full justify-center" disabled={loading}>
+        {loading ? 'Even geduld...' : 'Afspraak aanvragen'}
       </button>
     </form>
   )
 }
-
-// Lightweight anchor shim to avoid importing next/link here
-function LinkPlaceholder({ href, className, children }: { href: string, className?: string, children: React.ReactNode }) {
-  return <a href={href} className={className}>{children}</a>
-} 
