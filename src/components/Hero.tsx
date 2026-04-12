@@ -34,9 +34,9 @@ export default function Hero() {
           fill
           priority
           sizes="100vw"
-          className="object-cover object-center opacity-25"
+          className="object-cover object-center opacity-20"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-gray-900/70 via-gray-900/60 to-gray-900/90" />
+        <div className="absolute inset-0 bg-gradient-to-b from-gray-900/80 via-gray-900/70 to-gray-900/95" />
       </div>
 
       {/* Content */}
@@ -47,7 +47,7 @@ export default function Hero() {
             VAG Specialist · Lichtenvoorde
           </div>
 
-          <h1 data-animate className="mt-6 text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.08]">
+          <h1 data-animate className="mt-6 text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.08]" style={{ textShadow: '0 2px 20px rgba(0,0,0,0.5)' }}>
             Vakkundig onderhoud
             <br />
             <span className="text-red-500">en diagnose.</span>
