@@ -60,7 +60,7 @@ export const cities: City[] = [
             'U krijgt een helder advies over wat direct moet gebeuren en wat nog even kan wachten.',
         ],
         routeTip: 'Vanaf het centrum van Lichtenvoorde bent u in een paar minuten bij onze werkplaats aan de Galileïstraat. Voor dorpen in Oost Gelre is dit meestal de praktischste keuze.',
-        featuredServiceSlugs: ['onderhoud-service', 'diagnose-storing', 'airco-service', 'remmen-wielophanging'],
+        featuredServiceSlugs: ['onderhoud-service', 'diagnose-storing', 'software-chiptuning', 'remmen-wielophanging'],
         nearbyCitySlugs: ['groenlo', 'varsseveld', 'aalten'],
         faqs: [
             {
@@ -91,7 +91,7 @@ export const cities: City[] = [
             'U houdt grip op kosten doordat we helder uitleggen wat nodig is en waarom.',
         ],
         routeTip: 'Vanaf Groenlo rijdt u snel richting Lichtenvoorde. Voor een onderhoudsbeurt of storingscontrole is dit een efficiënte regionale keuze.',
-        featuredServiceSlugs: ['diagnose-storing', 'remmen-wielophanging', 'airco-service'],
+        featuredServiceSlugs: ['diagnose-storing', 'remmen-wielophanging', 'onderhoud-service'],
         nearbyCitySlugs: ['lichtenvoorde', 'eibergen', 'borculo'],
         faqs: [
             {
@@ -100,7 +100,7 @@ export const cities: City[] = [
             },
             {
                 question: 'Doen jullie ook kleinere reparaties voor klanten uit Groenlo?',
-                answer: 'Ja. Denk aan remmen, storingsdiagnose, airco en regulier onderhoud.',
+                answer: 'Ja. Denk aan remmen, storingsdiagnose en regulier onderhoud.',
             },
             {
                 question: 'Kan ik vooraf telefonisch afstemmen wat slim is?',
@@ -122,7 +122,7 @@ export const cities: City[] = [
             'Wij werken veel aan Audi, Volkswagen, SEAT en Skoda, dus de meeste platformen zijn bekend terrein.',
         ],
         routeTip: 'Vanuit Aalten is de rit kort genoeg voor een geplande onderhoudsbeurt of diagnose-afspraak zonder een halve dag kwijt te zijn.',
-        featuredServiceSlugs: ['onderhoud-service', 'diagnose-storing', 'airco-service'],
+        featuredServiceSlugs: ['onderhoud-service', 'diagnose-storing', 'remmen-wielophanging'],
         nearbyCitySlugs: ['winterswijk', 'varsseveld', 'lichtenvoorde'],
         faqs: [
             {
@@ -184,7 +184,7 @@ export const cities: City[] = [
             'Voor VAG-modellen is het prettig dat software, mechanica en onderhoud bij elkaar komen.',
         ],
         routeTip: 'Via de N18 is de verbinding vanuit Eibergen overzichtelijk. Ideaal voor onderhoud, remcontrole of storingsdiagnose.',
-        featuredServiceSlugs: ['diagnose-storing', 'remmen-wielophanging', 'airco-service'],
+        featuredServiceSlugs: ['diagnose-storing', 'remmen-wielophanging', 'onderhoud-service'],
         nearbyCitySlugs: ['groenlo', 'borculo', 'winterswijk'],
         faqs: [
             {
@@ -277,7 +277,7 @@ export const cities: City[] = [
             'U krijgt een helder beeld van de prioriteiten, zodat de auto niet onnodig lang stilstaat.',
         ],
         routeTip: 'Varsseveld ligt gunstig genoeg om een afspraak in Lichtenvoorde eenvoudig te combineren met de rest van uw dag.',
-        featuredServiceSlugs: ['remmen-wielophanging', 'airco-service', 'onderhoud-service'],
+        featuredServiceSlugs: ['remmen-wielophanging', 'diagnose-storing', 'onderhoud-service'],
         nearbyCitySlugs: ['doetinchem', 'aalten', 'lichtenvoorde'],
         faqs: [
             {
@@ -289,8 +289,8 @@ export const cities: City[] = [
                 answer: 'Ja. Remmen en wielophanging zijn een belangrijk deel van onze service.',
             },
             {
-                question: 'Kunnen jullie ook airco-onderhoud uitvoeren?',
-                answer: 'Ja, inclusief vullen, controleren en het opsporen van mogelijke lekkages.',
+                question: 'Kunnen jullie ook een remcontrole uitvoeren als ik twijfel?',
+                answer: 'Ja. We controleren remmen en onderstel gericht en leggen uit wat direct aandacht vraagt en wat nog even kan wachten.',
             },
         ],
     },
@@ -363,7 +363,7 @@ export const services: Service[] = [
                 answer: 'Zeker. Juist dan voorkomt goed onderhoud grotere reparaties later.',
             },
         ],
-        relatedServiceSlugs: ['diagnose-storing', 'airco-service', 'remmen-wielophanging'],
+        relatedServiceSlugs: ['diagnose-storing', 'software-chiptuning', 'remmen-wielophanging'],
     },
     {
         slug: 'diagnose-storing',
@@ -397,41 +397,7 @@ export const services: Service[] = [
                 answer: 'Nee. Ook oudere VAG-modellen profiteren van goede diagnose en technische ervaring.',
             },
         ],
-        relatedServiceSlugs: ['onderhoud-service', 'airco-service', 'remmen-wielophanging'],
-    },
-    {
-        slug: 'airco-service',
-        name: 'Airco Service',
-        shortDescription: 'Airco vullen, reinigen en onderhoud',
-        longDescription: 'Een goed werkende airco is essentieel voor comfort en zicht. Wij vullen het systeem bij met het juiste koelmiddel, controleren op lekkages en kijken of het systeem logisch functioneert.',
-        metaDescription: "Airco service in Lichtenvoorde voor vullen, reinigen en controleren. GP Auto's helpt bij koelingsproblemen, geur of lekkage.",
-        icon: '❄️',
-        intro: 'Wordt de airco minder koud, ruikt het systeem vreemd of blijft de ruit langer beslaan? Dan is inspectie en onderhoud verstandig.',
-        idealFor: [
-            'De airco koelt minder goed dan voorheen.',
-            'U vermoedt een lek of merkt een vreemde geur.',
-            'U wilt de airco voor het seizoen laten nakijken.',
-        ],
-        checklist: [
-            'Koelmiddeltype en vulniveau.',
-            'Druk, werking en mogelijke lekkages.',
-            'Praktisch advies over reiniging of vervolgcontrole.',
-        ],
-        faqs: [
-            {
-                question: 'Welk koelmiddel gebruiken jullie?',
-                answer: 'Dat hangt af van het systeem in de auto. We werken met het juiste type voor de betreffende installatie.',
-            },
-            {
-                question: 'Moet een airco elk jaar worden gevuld?',
-                answer: 'Niet per se. Maar controle is wel verstandig als de werking terugloopt.',
-            },
-            {
-                question: 'Kunnen jullie ook een geurprobleem aanpakken?',
-                answer: 'Ja, als onderdeel van de service kunnen we het systeem beoordelen en reinigen waar dat logisch is.',
-            },
-        ],
-        relatedServiceSlugs: ['onderhoud-service', 'diagnose-storing', 'remmen-wielophanging'],
+        relatedServiceSlugs: ['onderhoud-service', 'software-chiptuning', 'remmen-wielophanging'],
     },
     {
         slug: 'remmen-wielophanging',
@@ -465,7 +431,7 @@ export const services: Service[] = [
                 answer: 'Ja. Slijtage daar beïnvloedt direct stuurgevoel, stabiliteit en bandenslijtage.',
             },
         ],
-        relatedServiceSlugs: ['diagnose-storing', 'onderhoud-service', 'airco-service'],
+        relatedServiceSlugs: ['diagnose-storing', 'onderhoud-service', 'software-chiptuning'],
     },
     {
         slug: 'software-chiptuning',
@@ -499,7 +465,7 @@ export const services: Service[] = [
                 answer: 'Ja. Softwarewerk heeft pas waarde als de basis van de auto goed is.',
             },
         ],
-        relatedServiceSlugs: ['diagnose-storing', 'onderhoud-service', 'airco-service'],
+        relatedServiceSlugs: ['diagnose-storing', 'onderhoud-service', 'remmen-wielophanging'],
     },
 ];
 

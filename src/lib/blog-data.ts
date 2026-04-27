@@ -59,7 +59,7 @@ export const blogPosts: BlogPost[] = [
     readingTime: '6 min',
     focusKeyword: 'auto onderhoud Achterhoek',
     focusArea: 'Achterhoek, Lichtenvoorde en omgeving',
-    relatedServices: ['onderhoud-service', 'diagnose-storing', 'airco-service'],
+    relatedServices: ['onderhoud-service', 'diagnose-storing', 'remmen-wielophanging'],
     blocks: [
       {
         type: 'lead',
@@ -77,7 +77,7 @@ export const blogPosts: BlogPost[] = [
         items: [
           'De auto maakt nieuwe geluiden bij remmen, sturen of optrekken.',
           'Het brandstofverbruik loopt ineens op zonder duidelijke reden.',
-          'De airco koelt minder goed of de ventilatie ruikt vreemd.',
+          'De auto voelt minder strak aan of maakt nieuwe geluiden bij remmen of sturen.',
           'Er brandt een storingslampje of het dashboard geeft een melding.',
         ],
       },
@@ -106,7 +106,7 @@ export const blogPosts: BlogPost[] = [
         type: 'callout',
         title: 'Onderhoud slim combineren',
         text:
-          'Heeft uw auto ook een storing, aircoprobleem of remgeluid? Dan is het vaak efficiënter om dat meteen mee te laten nemen in dezelfde afspraak.',
+          'Heeft uw auto ook een storing of remgeluid? Dan is het vaak efficiënter om dat meteen mee te laten nemen in dezelfde afspraak.',
       },
     ],
     faqs: [

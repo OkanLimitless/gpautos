@@ -19,7 +19,6 @@ export default function AppointmentPage() {
   const [captchaValue, setCaptchaValue] = useState<string | null>(null)
   const [formData, setFormData] = useState({
     kenteken: '',
-    chassisnummer: '',
     name: '',
     email: '',
     phone: '',
@@ -29,9 +28,9 @@ export default function AppointmentPage() {
   const [submitted, setSubmitted] = useState(false)
 
   const handleNextFromStep1 = () => {
-    const { kenteken, chassisnummer } = formData
-    if (!kenteken.trim() || !chassisnummer.trim()) {
-      toast.error('Vul zowel kenteken als chassisnummer in')
+    const { kenteken } = formData
+    if (!kenteken.trim()) {
+      toast.error('Vul uw kenteken in')
       return
     }
     setStep(2)
@@ -150,11 +149,6 @@ export default function AppointmentPage() {
                       <input id="kenteken" type="text" required placeholder="AA11BB" className="mt-1 block w-full rounded-md bg-gray-50 border border-gray-300 text-gray-900 focus:border-transparent focus:ring-2 focus:ring-primary py-3 px-4 placeholder:text-gray-400" value={formData.kenteken} onChange={(e) => setFormData({...formData, kenteken: e.target.value.toUpperCase()})} />
                       <p className="mt-2 text-xs text-gray-500">Voer uw kenteken in zonder streepjes</p>
                     </div>
-                    <div>
-                      <label htmlFor="vin" className="block text-sm font-semibold text-gray-700 uppercase mb-2">Chassisnummer</label>
-                      <input id="vin" type="text" placeholder="17 tekens" className="mt-1 block w-full rounded-md bg-gray-50 border border-gray-300 text-gray-900 focus:border-transparent focus:ring-2 focus:ring-primary py-3 px-4 placeholder:text-gray-400" value={formData.chassisnummer} onChange={(e) => setFormData({...formData, chassisnummer: e.target.value.toUpperCase()})} />
-                      <p className="mt-2 text-xs text-gray-500">Vul hier het volledige chassisnummer van uw voertuig in</p>
-                    </div>
                     <div className="grid gap-4 md:grid-cols-2">
                       <button type="button" onClick={handleNextFromStep1} className="md:col-start-2 w-full bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg px-6 py-3">Volgende</button>
                     </div>
@@ -184,7 +178,6 @@ export default function AppointmentPage() {
                     <div className="rounded-lg bg-gray-50 border border-gray-200 p-4 text-sm">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                         <div><span className="text-gray-500">Kenteken:</span> <span className="font-medium text-gray-900">{formData.kenteken || '-'}</span></div>
-                        <div><span className="text-gray-500">Chassisnummer:</span> <span className="font-medium text-gray-900">{formData.chassisnummer || '-'}</span></div>
                         <div><span className="text-gray-500">Datum:</span> <span className="font-medium text-gray-900">{formData.date ? formData.date.toLocaleDateString('nl-NL') : '-'}</span></div>
                         <div className="md:col-span-2"><span className="text-gray-500">Omschrijving:</span> <span className="font-medium text-gray-900">{formData.description || '-'}</span></div>
                       </div>
