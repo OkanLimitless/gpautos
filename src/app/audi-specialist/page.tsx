@@ -28,7 +28,7 @@ export const metadata: Metadata = {
 
 export default function AudiSpecialistPage() {
     const relevantServices = services.filter((service) =>
-        ['onderhoud-service', 'diagnose-storing', 'software-chiptuning', 'airco-service'].includes(service.slug)
+        ['onderhoud-service', 'diagnose-storing', 'software-chiptuning', 'remmen-wielophanging'].includes(service.slug)
     );
 
     const audiModels = ['A1', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'Q2', 'Q3', 'Q5', 'Q7', 'Q8', 'TT', 'e-tron'];
@@ -132,7 +132,7 @@ export default function AudiSpecialistPage() {
                             <div className="rounded-2xl border border-white/10 bg-zinc-900 p-6">
                                 <h2 className="text-2xl font-bold mb-4">Diensten voor uw Audi</h2>
                                 <p className="text-white/65 mb-6">
-                                    Van onderhoud en diagnose tot softwarewerk en aircoservice.
+                                    Van onderhoud en diagnose tot softwarewerk en remmen & onderstel.
                                 </p>
                                 <div className="space-y-3">
                                     {relevantServices.map((service) => (

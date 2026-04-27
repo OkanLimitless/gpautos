@@ -26,6 +26,11 @@ const nextConfig = {
         destination: '/kennisbank',
         permanent: true,
       },
+      {
+        source: '/diensten/airco-service',
+        destination: '/diensten/remmen-wielophanging',
+        permanent: true,
+      },
     ];
   },
 };

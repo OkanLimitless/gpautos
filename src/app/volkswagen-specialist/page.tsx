@@ -28,7 +28,7 @@ export const metadata: Metadata = {
 
 export default function VolkswagenSpecialistPage() {
     const relevantServices = services.filter((service) =>
-        ['onderhoud-service', 'diagnose-storing', 'remmen-wielophanging', 'airco-service'].includes(service.slug)
+        ['onderhoud-service', 'diagnose-storing', 'remmen-wielophanging', 'software-chiptuning'].includes(service.slug)
     );
 
     const vwModels = ['Polo', 'Golf', 'T-Cross', 'T-Roc', 'Tiguan', 'Passat', 'Arteon', 'Touran', 'Touareg', 'ID.3', 'ID.4', 'ID.5', 'Caddy', 'Transporter'];
@@ -132,7 +132,7 @@ export default function VolkswagenSpecialistPage() {
                             <div className="rounded-2xl border border-white/10 bg-zinc-900 p-6">
                                 <h2 className="text-2xl font-bold mb-4">Diensten voor uw Volkswagen</h2>
                                 <p className="text-white/65 mb-6">
-                                    Van onderhoud en diagnose tot remwerk en aircoservice.
+                                    Van onderhoud en diagnose tot remwerk en software-optimalisatie.
                                 </p>
                                 <div className="space-y-3">
                                     {relevantServices.map((service) => (

@@ -9,7 +9,7 @@ import type { ReactNode } from 'react'
 const serviceLinks = [
   { href: '/diensten/onderhoud-service', label: 'Onderhoud & service' },
   { href: '/diensten/diagnose-storing', label: 'Diagnose & storing' },
-  { href: '/diensten/airco-service', label: 'Airco service' },
+  { href: '/diensten/remmen-wielophanging', label: 'Remmen & wielophanging' },
 ] as const
 
 const regionLinks = [
