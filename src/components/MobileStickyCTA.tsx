@@ -1,10 +1,60 @@
 'use client'
 
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 export default function MobileStickyCTA() {
+  const pathname = usePathname()
+  const [isHidden, setIsHidden] = useState(false)
+
+  useEffect(() => {
+    if (pathname === '/afspraak') {
+      setIsHidden(true)
+      return
+    }
+
+    const targets = ['contact', 'afspraak']
+      .map((id) => document.getElementById(id))
+      .filter((target): target is HTMLElement => Boolean(target))
+
+    if (targets.length === 0 || !('IntersectionObserver' in window)) {
+      setIsHidden(false)
+      return
+    }
+
+    const visibleTargets = new Set<Element>()
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            visibleTargets.add(entry.target)
+          } else {
+            visibleTargets.delete(entry.target)
+          }
+        })
+        setIsHidden(visibleTargets.size > 0)
+      },
+      {
+        rootMargin: '0px',
+        threshold: 0.08,
+      }
+    )
+
+    targets.forEach((target) => observer.observe(target))
+
+    return () => {
+      observer.disconnect()
+    }
+  }, [pathname])
+
   return (
-    <div className="pointer-events-none fixed inset-x-0 bottom-0 z-50 md:hidden">
+    <div
+      className={`pointer-events-none fixed inset-x-0 bottom-0 z-50 transition-all duration-200 md:hidden ${
+        isHidden ? 'translate-y-full opacity-0' : 'translate-y-0 opacity-100'
+      }`}
+      aria-hidden={isHidden}
+    >
       <div className="px-4 pb-[calc(env(safe-area-inset-bottom)+0.75rem)]">
         <div className="pointer-events-auto overflow-hidden rounded-2xl bg-white/95 backdrop-blur-xl shadow-lg border border-gray-200">
           <div className="grid grid-cols-2">
@@ -18,7 +68,7 @@ export default function MobileStickyCTA() {
               Bellen
             </a>
             <Link
-              href="/afspraak"
+              href="/#contact"
               className="flex min-h-[52px] items-center justify-center gap-2 px-3 text-sm font-semibold text-white bg-red-600 transition-colors hover:bg-red-700"
             >
               Afspraak maken

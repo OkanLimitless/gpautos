@@ -39,8 +39,8 @@ export default function AudiSpecialistPage() {
             answer: 'Ja. Wij helpen met regulier onderhoud, diagnose en service voor recente Audi-modellen, inclusief e-tron varianten en modellen met complexe elektronica.',
         },
         {
-            question: 'Kan ik terecht voor S tronic, storingen en software-updates?',
-            answer: 'Ja. Wij combineren merkgerichte diagnose met onderhoud en softwarewerk, zodat u niet onnodig onderdelen laat vervangen.',
+            question: 'Kan ik terecht voor S tronic, storingen en coderingen?',
+            answer: 'Ja. Wij combineren merkgerichte diagnose met onderhoud en VAG-coderingen, zodat u niet onnodig onderdelen laat vervangen.',
         },
         {
             question: 'Helpen jullie klanten uit de hele Achterhoek?',
@@ -132,7 +132,7 @@ export default function AudiSpecialistPage() {
                             <div className="rounded-2xl border border-white/10 bg-zinc-900 p-6">
                                 <h2 className="text-2xl font-bold mb-4">Diensten voor uw Audi</h2>
                                 <p className="text-white/65 mb-6">
-                                    Van onderhoud en diagnose tot softwarewerk en remmen & onderstel.
+                                    Van onderhoud en diagnose tot coderen en remmen & onderstel.
                                 </p>
                                 <div className="space-y-3">
                                     {relevantServices.map((service) => (
@@ -170,7 +170,7 @@ export default function AudiSpecialistPage() {
                                 <ul className="space-y-3 text-white/75">
                                     <li>Diagnose van motorstoringen, elektronische meldingen en rijhulpsystemen.</li>
                                     <li>Onderhoud voor TFSI, TDI, S tronic, quattro en e-tron modellen.</li>
-                                    <li>Software-updates, chiptuning en gerichte technische ondersteuning.</li>
+                                    <li>VAG-COM/VCDS coderingen en gerichte technische ondersteuning.</li>
                                     <li>Remmen, onderstel en herstelwerk met transparante prioriteiten.</li>
                                 </ul>
                             </div>

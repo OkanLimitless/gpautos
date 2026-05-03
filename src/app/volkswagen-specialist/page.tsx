@@ -119,7 +119,7 @@ export default function VolkswagenSpecialistPage() {
                                 <div className="grid md:grid-cols-2 gap-4">
                                     {[
                                         'Ervaring met TSI, TDI, DSG, AdBlue en elektrische ID-modellen.',
-                                        'Merkgerichte diagnose bij foutmeldingen, slijtage en softwareproblemen.',
+                                        'Merkgerichte diagnose bij foutmeldingen, slijtage en elektronische klachten.',
                                         'Onderhoud volgens voorschrift met duidelijke uitleg over wat direct nodig is.',
                                         'Lokale garage in Lichtenvoorde voor heel de Achterhoek.',
                                     ].map((item) => (
@@ -132,7 +132,7 @@ export default function VolkswagenSpecialistPage() {
                             <div className="rounded-2xl border border-white/10 bg-zinc-900 p-6">
                                 <h2 className="text-2xl font-bold mb-4">Diensten voor uw Volkswagen</h2>
                                 <p className="text-white/65 mb-6">
-                                    Van onderhoud en diagnose tot remwerk en software-optimalisatie.
+                                    Van onderhoud en diagnose tot remwerk en coderen.
                                 </p>
                                 <div className="space-y-3">
                                     {relevantServices.map((service) => (

@@ -5,23 +5,25 @@ export async function POST(request: Request) {
   try {
     // Parse the request body
     const body = await request.json()
-    const { kenteken, name, email, phone, description, date, ...rest } = body as Record<string, any>
+    const { kenteken, name, email, phone, description, date, requestType, ...rest } = body as Record<string, any>
+    const isCallbackRequest = requestType === 'callback'
 
-    if (!kenteken || !name || !email || !phone || !description || !date) {
+    if (!kenteken || !phone || (!isCallbackRequest && (!name || !email || !description || !date))) {
       return NextResponse.json(
-        { error: 'Alle velden zijn verplicht' },
+        { error: isCallbackRequest ? 'Kenteken en telefoonnummer zijn verplicht' : 'Alle velden zijn verplicht' },
         { status: 400 }
       )
     }
 
     // Format the date
-    const appointmentDate = new Date(date)
-    const formattedDate = appointmentDate.toLocaleDateString('nl-NL', {
-      weekday: 'long',
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    })
+    const formattedDate = date
+      ? new Date(date).toLocaleDateString('nl-NL', {
+          weekday: 'long',
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        })
+      : 'Nog af te stemmen'
 
     // Optional marketing attribution
     const attributionEntries = Object.entries(rest).filter(([_, v]) => typeof v === 'string' && v)
@@ -48,16 +50,16 @@ export async function POST(request: Request) {
     const mailOptions = {
       from: process.env.EMAIL_USER || 'okangalatasaray001@gmail.com',
       to: process.env.EMAIL_RECIPIENT || 'okangalatasaray001@gmail.com',
-      subject: `Nieuwe afspraak aanvraag - ${kenteken}`,
+      subject: `${isCallbackRequest ? 'Nieuw terugbelverzoek' : 'Nieuwe afspraak aanvraag'} - ${kenteken}`,
       html: `
-        <h1>Nieuwe afspraak aanvraag</h1>
+        <h1>${isCallbackRequest ? 'Nieuw terugbelverzoek' : 'Nieuwe afspraak aanvraag'}</h1>
         <p><strong>Kenteken:</strong> ${kenteken}</p>
         <p><strong>Datum:</strong> ${formattedDate}</p>
-        <p><strong>Naam:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Naam:</strong> ${name || 'Niet opgegeven'}</p>
+        <p><strong>Email:</strong> ${email || 'Niet opgegeven'}</p>
         <p><strong>Telefoon:</strong> ${phone}</p>
         <p><strong>Omschrijving:</strong></p>
-        <p>${description.replace(/\n/g, '<br>')}</p>
+        <p>${String(description || 'Geen extra omschrijving').replace(/\n/g, '<br>')}</p>
         ${attributionHtml}
       `
     }

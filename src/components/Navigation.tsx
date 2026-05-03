@@ -110,7 +110,7 @@ export default function Navigation() {
                 {link.label}
               </Link>
             ))}
-            <Link href="/afspraak" className="btn-primary px-5 py-2.5 text-sm">
+            <Link href="/#contact" className="btn-primary px-5 py-2.5 text-sm">
               Afspraak maken
             </Link>
           </div>
@@ -171,7 +171,7 @@ export default function Navigation() {
                 Bel direct
               </a>
               <Link
-                href="/afspraak"
+                href="/#contact"
                 onClick={closeMobileMenu}
                 className="btn-primary justify-center min-h-[48px] text-sm"
               >

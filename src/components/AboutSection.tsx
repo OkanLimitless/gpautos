@@ -69,22 +69,23 @@ export default function AboutSection() {
   }, [])
 
   return (
-    <section id="over-ons" ref={rootRef} className="section bg-white">
+    <section id="over-ons" ref={rootRef} className="bg-gray-950 py-12 text-white md:py-24">
       <div className="container">
         <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
-          {/* Image side */}
           <div className="reveal relative">
             <div className="relative aspect-[4/5] rounded-2xl overflow-hidden">
               <Image
-                src="/images/overgp.jpeg"
+                src="/images/gp-service-brakes.png"
                 alt="Werkplaats van GP Auto's in Lichtenvoorde"
                 fill
                 sizes="(min-width: 1024px) 50vw, 100vw"
                 className="object-cover"
               />
+              <div className="absolute left-4 top-4 rounded-lg bg-white/92 px-3 py-2 shadow-xl backdrop-blur-sm">
+                <Image src="/logo.png" alt="GP Auto's" width={104} height={31} className="h-7 w-auto" />
+              </div>
             </div>
-            {/* Floating stat card */}
-            <div className="absolute -bottom-6 -right-4 sm:right-8 bg-white rounded-2xl shadow-lg border border-gray-100 p-5 flex items-center gap-4">
+            <div className="absolute -bottom-6 -right-4 flex items-center gap-4 rounded-2xl border border-white/10 bg-white p-5 shadow-2xl shadow-black/30 sm:right-8">
               <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-red-50 text-red-600">
                 <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
@@ -97,14 +98,13 @@ export default function AboutSection() {
             </div>
           </div>
 
-          {/* Text side */}
           <div>
             <div className="reveal">
               <p className="kicker">Waarom GP Auto&apos;s</p>
-              <h2 className="section-heading mt-3">
-                Een werkplaats die <span className="text-red-600">doet wat nodig is.</span>
+              <h2 className="mt-3 text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl lg:text-5xl">
+                Eerlijk advies, rustig uitgelegd.
               </h2>
-              <p className="mt-5 text-gray-500 text-lg leading-relaxed max-w-lg">
+              <p className="mt-5 max-w-lg text-lg leading-relaxed text-white/62">
                 Geen verkoopdruk of vage adviezen. De waarde zit in een technische aanpak die rustig wordt opgebouwd en helder wordt uitgelegd.
               </p>
             </div>
@@ -116,11 +116,11 @@ export default function AboutSection() {
                   className="reveal"
                   style={{ transitionDelay: `${index * 80}ms` }}
                 >
-                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gray-100 text-gray-700 mb-3">
+                  <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-white/8 text-white">
                     {item.icon}
                   </div>
-                  <h3 className="font-semibold text-gray-900">{item.title}</h3>
-                  <p className="mt-1.5 text-sm text-gray-500 leading-relaxed">{item.text}</p>
+                  <h3 className="font-semibold text-white">{item.title}</h3>
+                  <p className="mt-1.5 text-sm leading-relaxed text-white/55">{item.text}</p>
                 </div>
               ))}
             </div>
@@ -129,7 +129,7 @@ export default function AboutSection() {
               <Link href="/afspraak" className="btn-primary">
                 Plan werkplaatsbezoek
               </Link>
-              <Link href="/kennisbank" className="btn-secondary">
+              <Link href="/kennisbank" className="btn-ghost">
                 Lees de kennisbank
               </Link>
             </div>

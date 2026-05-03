@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import type { ReactNode, FormEvent } from 'react'
+import type { FormEvent } from 'react'
 import DatePicker, { registerLocale } from 'react-datepicker'
 import { nl } from 'date-fns/locale'
 import 'react-datepicker/dist/react-datepicker.css'
@@ -10,32 +10,46 @@ import toast from 'react-hot-toast'
 // Register Dutch locale
 registerLocale('nl', nl)
 
+const WORK_TYPES = [
+  'Onderhoud',
+  'Diagnose',
+  'Remmen',
+  'Coderen',
+] as const
+
 interface AppointmentFormProps {
-  variant?: 'dark' | 'light' | 'home'
+  variant?: 'dark' | 'light' | 'home' | 'embedded'
   minDateOffsetDays?: number
   autoFocusNext?: boolean
+  formId?: string | null
 }
 
 export default function AppointmentForm({
   variant = 'dark',
   minDateOffsetDays = 0,
   autoFocusNext = false,
+  formId = 'afspraak',
 }: AppointmentFormProps) {
   const isLight = variant === 'light'
   const isHome = variant === 'home'
+  const isEmbedded = variant === 'embedded'
 
   const containerClasses = isHome
     ? 'space-y-5'
+    : isEmbedded
+      ? 'space-y-5'
     : isLight
       ? 'space-y-5 bg-white p-8 rounded-xl border border-gray-200 shadow-sm'
       : 'space-y-5 bg-gray-800 p-8 rounded-xl'
 
-  const labelClasses = 'mb-1.5 block text-sm font-medium text-gray-700'
+  const labelClasses = 'mb-1.5 block text-sm font-semibold text-gray-800'
 
-  const inputBase = 'mt-1 block w-full rounded-xl shadow-sm text-sm transition-colors'
-  const inputClasses = `${inputBase} border border-gray-200 bg-gray-50 px-4 py-3 text-gray-900 placeholder:text-gray-400 focus:border-red-500 focus:ring-2 focus:ring-red-500/10 focus:bg-white`
+  const inputBase = 'mt-1 block w-full rounded-xl text-base transition-colors sm:text-sm'
+  const inputClasses = `${inputBase} border border-gray-200 bg-gray-50 px-4 py-3.5 text-gray-950 placeholder:text-gray-400 focus:border-red-500 focus:ring-2 focus:ring-red-500/10 focus:bg-white`
+  const homeInputClasses = `${inputBase} border border-gray-200 bg-white px-4 py-4 text-gray-950 placeholder:text-gray-400 shadow-[0_1px_0_rgba(17,24,39,0.03)] focus:border-red-500 focus:ring-2 focus:ring-red-500/10`
 
-  const textareaClasses = inputClasses
+  const fieldClasses = isHome ? homeInputClasses : inputClasses
+  const textareaClasses = fieldClasses
 
   const [selectedDate, setSelectedDate] = useState<Date | null>(null)
   const [loading, setLoading] = useState(false)
@@ -47,6 +61,7 @@ export default function AppointmentForm({
     phone: '',
     description: '',
   })
+  const [selectedWorkType, setSelectedWorkType] = useState<string>('')
 
   // Marketing attribution capture (for Ads)
   const [marketing, setMarketing] = useState<{ [key: string]: string | undefined }>({})
@@ -73,11 +88,13 @@ export default function AppointmentForm({
     e.preventDefault()
     const newErrors: { [key: string]: string | undefined } = {}
     if (!formData.kenteken) newErrors.kenteken = 'Vul uw kenteken in'
-    if (!selectedDate) newErrors.date = 'Selecteer een datum'
-    if (!formData.name) newErrors.name = 'Vul uw naam in'
     if (!formData.phone) newErrors.phone = 'Vul uw telefoonnummer in'
-    if (!formData.email) newErrors.email = 'Vul uw e-mail in'
-    if (!formData.description) newErrors.description = 'Beschrijf de werkzaamheden'
+    if (!isHome) {
+      if (!selectedDate) newErrors.date = 'Selecteer een datum'
+      if (!formData.name) newErrors.name = 'Vul uw naam in'
+      if (!formData.email) newErrors.email = 'Vul uw e-mail in'
+      if (!formData.description) newErrors.description = 'Beschrijf de werkzaamheden'
+    }
     setErrors(newErrors)
     if (Object.keys(newErrors).length > 0) {
       toast.error('Controleer de invoer en probeer opnieuw')
@@ -93,11 +110,16 @@ export default function AppointmentForm({
         },
         body: JSON.stringify({
           kenteken: formData.kenteken,
-          name: formData.name,
-          email: formData.email,
+          name: formData.name || 'Niet opgegeven',
+          email: formData.email || '',
           phone: formData.phone,
-          description: formData.description,
+          description: [
+            isHome ? 'Homepage terugbelverzoek' : '',
+            selectedWorkType ? `Werksoort: ${selectedWorkType}` : '',
+            formData.description || '',
+          ].filter(Boolean).join('\n'),
           date: selectedDate,
+          requestType: isHome ? 'callback' : 'appointment',
           ...marketing,
         }),
       })
@@ -126,6 +148,7 @@ export default function AppointmentForm({
         phone: '',
         description: '',
       })
+      setSelectedWorkType('')
       setSelectedDate(null)
       setErrors({})
     } catch (error) {
@@ -137,33 +160,120 @@ export default function AppointmentForm({
   }
 
   return (
-    <form onSubmit={handleSubmit} className={containerClasses} id="afspraak">
+    <form onSubmit={handleSubmit} className={containerClasses} id={formId ?? undefined}>
       <div className="space-y-4">
+        <div>
+          <span className={labelClasses}>Waarvoor komt u langs?</span>
+          <div className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-4">
+            {WORK_TYPES.map((type) => {
+              const isSelected = selectedWorkType === type
+              return (
+                <button
+                  key={type}
+                  type="button"
+                  onClick={() => {
+                    setSelectedWorkType(type)
+                  }}
+                  className={`min-h-[46px] rounded-xl border px-3 text-sm font-semibold transition-colors ${
+                    isSelected
+                      ? 'border-red-600 bg-red-600 text-white'
+                      : 'border-gray-200 bg-white text-gray-700 hover:border-gray-300 hover:bg-gray-50'
+                  }`}
+                >
+                  {type}
+                </button>
+              )
+            })}
+          </div>
+        </div>
+
         <div>
           <label htmlFor="appointment-kenteken" className={labelClasses}>
             Kenteken
           </label>
-          <input
-            id="appointment-kenteken"
-            type="text"
-            required
-            autoFocus={variant !== 'home'}
-            placeholder="Bijv. AB-12-CD"
-            className={inputClasses}
-            value={formData.kenteken}
-            onChange={(e) => {
-              const val = e.target.value.toUpperCase()
-              setFormData({ ...formData, kenteken: val })
-              if (autoFocusNext && val.replace(/[^A-Z0-9]/g, '').length >= 6) {
-                const dateEl = document.querySelector('input[name="date"]') as HTMLInputElement | null
-                if (dateEl) dateEl.focus()
-              }
-            }}
-          />
+          <div className={isHome ? 'mt-1 flex overflow-hidden rounded-xl border border-gray-200 bg-white shadow-[0_1px_0_rgba(17,24,39,0.03)] focus-within:border-red-500 focus-within:ring-2 focus-within:ring-red-500/10' : ''}>
+            {isHome && (
+              <div className="flex w-12 shrink-0 flex-col items-center justify-center bg-blue-700 text-[10px] font-bold leading-none text-white">
+                <span className="text-[9px]">EU</span>
+                <span>NL</span>
+              </div>
+            )}
+            <input
+              id="appointment-kenteken"
+              type="text"
+              required
+              autoFocus={variant !== 'home' && variant !== 'embedded'}
+              placeholder="Bijv. AB-12-CD"
+              className={isHome ? 'block min-h-[56px] w-full border-0 bg-white px-4 text-base font-semibold uppercase tracking-wide text-gray-950 placeholder:font-normal placeholder:normal-case placeholder:tracking-normal placeholder:text-gray-400 focus:ring-0' : fieldClasses}
+              value={formData.kenteken}
+              onChange={(e) => {
+                const val = e.target.value.toUpperCase()
+                setFormData({ ...formData, kenteken: val })
+                if (autoFocusNext && val.replace(/[^A-Z0-9]/g, '').length >= 6) {
+                  const dateEl = document.querySelector('input[name="date"]') as HTMLInputElement | null
+                  if (dateEl) dateEl.focus()
+                }
+              }}
+            />
+          </div>
           {errors.kenteken && <p className="mt-1 text-xs text-red-600">{errors.kenteken}</p>}
         </div>
 
-        <div>
+        {isHome && (
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div>
+              <label htmlFor="appointment-phone" className={labelClasses}>
+                Telefoon
+              </label>
+              <input
+                id="appointment-phone"
+                type="tel"
+                required
+                inputMode="tel"
+                className={fieldClasses}
+                value={formData.phone}
+                onChange={(e) => {
+                  let v = e.target.value.replace(/\s+/g, '')
+                  if (v.startsWith('31') && !v.startsWith('+31')) v = `+31${v.slice(2)}`
+                  setFormData({ ...formData, phone: v })
+                }}
+                placeholder="06 12345678"
+              />
+              {errors.phone && <p className="mt-1 text-xs text-red-600">{errors.phone}</p>}
+            </div>
+            <div>
+              <label htmlFor="appointment-name" className={labelClasses}>
+                Naam <span className="font-normal text-gray-400">(optioneel)</span>
+              </label>
+              <input
+                id="appointment-name"
+                type="text"
+                className={fieldClasses}
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                placeholder="Uw naam"
+              />
+            </div>
+          </div>
+        )}
+
+        {isHome && (
+          <div>
+            <label htmlFor="appointment-description" className={labelClasses}>
+              Klacht of vraag <span className="font-normal text-gray-400">(optioneel)</span>
+            </label>
+            <textarea
+              id="appointment-description"
+              rows={3}
+              className={textareaClasses}
+              value={formData.description}
+              onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+              placeholder="Bijv. onderhoudsbeurt, storing, codering of remgeluid"
+            />
+          </div>
+        )}
+
+        {!isHome && <div>
           <label htmlFor="appointment-date" className={labelClasses}>
             Gewenste datum
           </label>
@@ -175,15 +285,15 @@ export default function AppointmentForm({
               dateFormat="P"
               minDate={new Date(Date.now() + minDateOffsetDays * 24 * 60 * 60 * 1000)}
               id="appointment-date"
-              className={inputClasses}
+              className={fieldClasses}
               placeholderText="Kies een datum"
               name="date"
             />
           </div>
           {errors.date && <p className="mt-1 text-xs text-red-600">{errors.date}</p>}
-        </div>
+        </div>}
 
-        <div className="grid md:grid-cols-2 gap-4">
+        {!isHome && <div className="grid md:grid-cols-2 gap-4">
           <div>
             <label htmlFor="appointment-name" className={labelClasses}>
               Naam
@@ -192,7 +302,7 @@ export default function AppointmentForm({
               id="appointment-name"
               type="text"
               required
-              className={inputClasses}
+              className={fieldClasses}
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               placeholder="Uw naam"
@@ -207,7 +317,7 @@ export default function AppointmentForm({
               id="appointment-phone"
               type="tel"
               required
-              className={inputClasses}
+              className={fieldClasses}
               value={formData.phone}
               onChange={(e) => {
                 let v = e.target.value.replace(/\s+/g, '')
@@ -218,9 +328,9 @@ export default function AppointmentForm({
             />
             {errors.phone && <p className="mt-1 text-xs text-red-600">{errors.phone}</p>}
           </div>
-        </div>
+        </div>}
 
-        <div>
+        {!isHome && <div>
           <label htmlFor="appointment-email" className={labelClasses}>
             E-mailadres
           </label>
@@ -228,15 +338,15 @@ export default function AppointmentForm({
             id="appointment-email"
             type="email"
             required
-            className={inputClasses}
+            className={fieldClasses}
             value={formData.email}
             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
             placeholder="uw.email@voorbeeld.nl"
           />
           {errors.email && <p className="mt-1 text-xs text-red-600">{errors.email}</p>}
-        </div>
+        </div>}
 
-        <div>
+        {!isHome && <div>
           <label htmlFor="appointment-description" className={labelClasses}>
             Klacht of werkzaamheden
           </label>
@@ -250,10 +360,18 @@ export default function AppointmentForm({
             placeholder="Omschrijf kort de klacht of gewenste werkzaamheden"
           />
           {errors.description && <p className="mt-1 text-xs text-red-600">{errors.description}</p>}
-        </div>
+        </div>}
       </div>
 
-      <p className="text-xs text-gray-400">
+      {isHome && (
+        <div className="grid gap-2 rounded-xl bg-gray-50 p-3 text-xs text-gray-500 sm:grid-cols-3">
+          <span>Veilig verstuurd</span>
+          <span>Reactie binnen 1 werkdag</span>
+          <span>Planning persoonlijk afgestemd</span>
+        </div>
+      )}
+
+      <p className="text-xs leading-5 text-gray-400">
         Door te verzenden gaat u akkoord met onze{' '}
         <a href="/privacyverklaring" className="text-red-600 hover:text-red-700">
           privacyverklaring
@@ -261,8 +379,8 @@ export default function AppointmentForm({
         .
       </p>
 
-      <button type="submit" className="btn-primary w-full justify-center" disabled={loading}>
-        {loading ? 'Even geduld...' : 'Afspraak aanvragen'}
+      <button type="submit" className="btn-primary w-full justify-center text-base sm:text-sm" disabled={loading}>
+        {loading ? 'Even geduld...' : isHome ? 'Bel mij terug' : 'Afspraak aanvragen'}
       </button>
     </form>
   )

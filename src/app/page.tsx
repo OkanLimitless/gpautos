@@ -35,10 +35,10 @@ export default function Home() {
   return (
     <Layout>
       <Hero />
+      <ContactSection />
       <ServicesGrid />
       <AboutSection />
       <SocialProof />
-      <ContactSection />
     </Layout>
   )
 }

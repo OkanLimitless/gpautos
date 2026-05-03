@@ -3,7 +3,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import Navigation from './Navigation'
-import MobileStickyCTA from './MobileStickyCTA'
 import type { ReactNode } from 'react'
 
 const serviceLinks = [
@@ -21,7 +20,7 @@ const regionLinks = [
 
 const infoLinks = [
   { href: '/kennisbank', label: 'Kennisbank' },
-  { href: '/afspraak', label: 'Afspraak maken' },
+  { href: '/#contact', label: 'Afspraak maken' },
   { href: '/privacyverklaring', label: 'Privacyverklaring' },
 ] as const
 
@@ -30,7 +29,6 @@ export default function Layout({ children }: { children: ReactNode }) {
     <div className="flex min-h-screen flex-col bg-[var(--bg)]">
       <Navigation />
       <main className="flex-grow">{children}</main>
-      <MobileStickyCTA />
 
       {/* Footer */}
       <footer className="border-t border-gray-200 bg-white pb-28 pt-16 md:pb-12">

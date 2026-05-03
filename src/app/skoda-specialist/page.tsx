@@ -132,7 +132,7 @@ export default function SkodaSpecialistPage() {
                             <div className="rounded-2xl border border-white/10 bg-zinc-900 p-6">
                                 <h2 className="text-2xl font-bold mb-4">Diensten voor uw Škoda</h2>
                                 <p className="text-white/65 mb-6">
-                                    Voor onderhoud, diagnose, remwerk en softwarewerk.
+                                    Voor onderhoud, diagnose, remwerk en coderen.
                                 </p>
                                 <div className="space-y-3">
                                     {relevantServices.map((service) => (

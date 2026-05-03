@@ -119,7 +119,7 @@ export default function SeatSpecialistPage() {
                                 <div className="grid md:grid-cols-2 gap-4">
                                     {[
                                         'Kennis van de gedeelde techniek van SEAT, Cupra, Volkswagen en Audi.',
-                                        'Gerichte hulp bij storingen, slijtage, software en onderhoudsintervallen.',
+                                        'Gerichte hulp bij storingen, slijtage, coderingen en onderhoudsintervallen.',
                                         'Praktische uitleg voor rijders die een sportieve maar betaalbare auto willen behouden.',
                                         'Lokale garage in Lichtenvoorde, handig voor de hele Achterhoek.',
                                     ].map((item) => (
@@ -132,7 +132,7 @@ export default function SeatSpecialistPage() {
                             <div className="rounded-2xl border border-white/10 bg-zinc-900 p-6">
                                 <h2 className="text-2xl font-bold mb-4">Diensten voor uw SEAT</h2>
                                 <p className="text-white/65 mb-6">
-                                    Onderhoud, diagnose, remwerk en softwarehulp op een manier die past bij SEAT.
+                                    Onderhoud, diagnose, remwerk en coderen op een manier die past bij SEAT.
                                 </p>
                                 <div className="space-y-3">
                                     {relevantServices.map((service) => (
