@@ -1,4 +1,5 @@
 import Layout from '@/components/Layout'
+import { business } from '@/lib/site-data'
 
 export default function PrivacyPolicy() {
   return (
@@ -63,10 +64,10 @@ export default function PrivacyPolicy() {
             </p>
             <p>
               GP Auto's<br />
-              Galileïstraat 5<br />
-              7131PE Lichtenvoorde<br />
-              Email: info@gpautos.nl<br />
-              Tel: +31 (0)6 15530641
+              {business.address.streetAddress}<br />
+              {business.address.postalCode} {business.address.locality}<br />
+              Email: {business.email}<br />
+              Tel: {business.phoneDisplay}
             </p>
 
             <h2>Wijzigingen</h2>
@@ -83,4 +84,4 @@ export default function PrivacyPolicy() {
       </div>
     </Layout>
   )
-} 
+}

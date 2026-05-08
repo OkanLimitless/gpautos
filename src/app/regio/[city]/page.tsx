@@ -2,12 +2,21 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { cities, getCityBySlug, getServiceBySlug } from '@/lib/seo-data';
+import {
+    breadcrumbStructuredData,
+    business,
+    faqStructuredData,
+    graphStructuredData,
+    localBusinessStructuredData,
+    placeAreaStructuredData,
+    serializeJsonLd,
+    site,
+    webpageStructuredData,
+} from '@/lib/site-data';
 
 interface CityPageProps {
     params: { city: string };
 }
-
-const siteUrl = 'https://gpautos.nl';
 
 export async function generateStaticParams() {
     return cities.map((city) => ({
@@ -36,7 +45,7 @@ export async function generateMetadata({ params }: CityPageProps): Promise<Metad
         openGraph: {
             title,
             description,
-            url: `${siteUrl}/regio/${city.slug}`,
+            url: `${site.url}/regio/${city.slug}`,
             siteName: "GP Auto's",
             locale: 'nl_NL',
             type: 'website',
@@ -67,53 +76,30 @@ export default function CityPage({ params }: CityPageProps) {
         .map((slug) => getCityBySlug(slug))
         .filter((nearbyCity): nearbyCity is NonNullable<ReturnType<typeof getCityBySlug>> => Boolean(nearbyCity));
 
-    const jsonLd = [
-        {
-            '@context': 'https://schema.org',
-            '@type': 'AutoRepair',
-            name: "GP Auto's",
+    const pagePath = `/regio/${city.slug}`;
+    const pageTitle = `Autogarage ${city.name} | VAG specialist in de Achterhoek`;
+    const jsonLd = graphStructuredData([
+        webpageStructuredData(pagePath, pageTitle, city.metaDescription),
+        localBusinessStructuredData({
+            url: `${site.url}${pagePath}`,
             description: city.metaDescription,
-            image: `${siteUrl}/og-image.png`,
-            address: {
-                '@type': 'PostalAddress',
-                streetAddress: 'Galileïstraat 5',
-                addressLocality: 'Lichtenvoorde',
-                postalCode: '7131PE',
-                addressCountry: 'NL',
-            },
             areaServed: [
-                {
-                    '@type': 'City',
-                    name: city.name,
-                },
-                {
-                    '@type': 'AdministrativeArea',
-                    name: city.region,
-                },
+                placeAreaStructuredData(city.name, 'City'),
+                placeAreaStructuredData(city.region, 'AdministrativeArea'),
             ],
-            url: `${siteUrl}/regio/${city.slug}`,
-            telephone: '+31615530641',
-            priceRange: '$$',
-        },
-        {
-            '@context': 'https://schema.org',
-            '@type': 'FAQPage',
-            mainEntity: city.faqs.map((faq) => ({
-                '@type': 'Question',
-                name: faq.question,
-                acceptedAnswer: {
-                    '@type': 'Answer',
-                    text: faq.answer,
-                },
-            })),
-        },
-    ];
+        }),
+        faqStructuredData(city.faqs),
+        breadcrumbStructuredData([
+            { name: 'Home', path: '/' },
+            { name: city.name, path: pagePath },
+        ]),
+    ]);
 
     return (
         <>
             <script
                 type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+                dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
             />
             <main className="min-h-screen bg-zinc-950 text-white">
                 <section className="relative overflow-hidden border-b border-white/5 bg-gradient-to-b from-zinc-900 via-zinc-950 to-zinc-950 py-24 md:py-32">
@@ -131,6 +117,14 @@ export default function CityPage({ params }: CityPageProps) {
                             <p className="mx-auto mb-8 max-w-3xl text-base text-white/60 md:text-lg">
                                 {city.intro}
                             </p>
+                            <div className="mx-auto mb-8 max-w-3xl rounded-2xl border border-white/10 bg-white/5 p-5 text-left">
+                                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-primary">
+                                    Kort antwoord
+                                </p>
+                                <p className="mt-3 text-sm leading-7 text-white/75 md:text-base">
+                                    Zoekt u een autogarage in {city.name} voor onderhoud, diagnose of reparatie? GP Auto&apos;s helpt klanten uit {city.name} en de regio {city.region} vanuit de werkplaats in Lichtenvoorde, met extra focus op Audi, Volkswagen, SEAT en Skoda.
+                                </p>
+                            </div>
                             <div className="flex flex-col justify-center gap-4 sm:flex-row">
                                 <Link
                                     href="/afspraak"
@@ -139,10 +133,10 @@ export default function CityPage({ params }: CityPageProps) {
                                     Maak afspraak
                                 </Link>
                                 <Link
-                                    href="tel:+31615530641"
+                                    href={`tel:${business.phone}`}
                                     className="rounded-lg border border-white/20 px-8 py-4 font-semibold text-white transition-colors hover:bg-white/5"
                                 >
-                                    Bel direct: 0615 530 641
+                                    Bel direct: {business.phoneDisplay}
                                 </Link>
                             </div>
                             <p className="mt-6 text-sm text-white/45">
@@ -216,7 +210,9 @@ export default function CityPage({ params }: CityPageProps) {
                                 <div className="mt-6 grid gap-4 md:grid-cols-2">
                                     <div className="rounded-2xl border border-white/10 bg-zinc-950 p-5">
                                         <p className="text-sm uppercase tracking-[0.24em] text-white/40">Werkplaats</p>
-                                        <p className="mt-2 text-white/80">Galileïstraat 5, 7131PE Lichtenvoorde</p>
+                                        <p className="mt-2 text-white/80">
+                                            {business.address.streetAddress}, {business.address.postalCode} {business.address.locality}
+                                        </p>
                                     </div>
                                     <div className="rounded-2xl border border-white/10 bg-zinc-950 p-5">
                                         <p className="text-sm uppercase tracking-[0.24em] text-white/40">Focus</p>

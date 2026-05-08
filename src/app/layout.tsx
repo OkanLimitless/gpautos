@@ -3,11 +3,17 @@ import { Inter, Outfit } from 'next/font/google'
 import './globals.css'
 import { Toaster } from 'react-hot-toast'
 import Script from 'next/script'
+import {
+  business,
+  graphStructuredData,
+  localBusinessStructuredData,
+  serializeJsonLd,
+  site,
+  websiteStructuredData,
+} from '@/lib/site-data'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const outfit = Outfit({ subsets: ['latin'], variable: '--font-outfit' })
-
-const siteUrl = 'https://gpautos.nl'
 
 export const metadata: Metadata = {
   title: "GP Auto's – Premium autoservice in Lichtenvoorde",
@@ -27,11 +33,11 @@ export const metadata: Metadata = {
   authors: [{ name: "GP Auto's" }],
   creator: "GP Auto's",
   publisher: "GP Auto's",
-  metadataBase: new URL(siteUrl),
+  metadataBase: new URL(site.url),
   openGraph: {
     title: "GP Auto's – Premium autoservice in Lichtenvoorde",
     description: 'Premium onderhoud, reparatie en diagnose in Lichtenvoorde. Uw VAG specialist voor Audi, Volkswagen, SEAT en Skoda.',
-    url: siteUrl,
+    url: site.url,
     siteName: "GP Auto's",
     images: [
       {
@@ -63,50 +69,22 @@ export const metadata: Metadata = {
   },
 }
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": ["AutoRepair", "AutomotiveBusiness", "LocalBusiness"],
-  "@id": `${siteUrl}/#business`,
-  "name": "GP Auto's",
-  "description": "Premium autoservice, onderhoud en diagnose in Lichtenvoorde. Specialist in Audi, Volkswagen, SEAT en Skoda.",
-  "url": siteUrl,
-  "image": `${siteUrl}/og-image.png`,
-  "logo": `${siteUrl}/logo.png`,
-  "telephone": "+31615530641",
-  "priceRange": "$$",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Galileïstraat 5",
-    "addressLocality": "Lichtenvoorde",
-    "postalCode": "7131PE",
-    "addressCountry": "NL"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 51.988019,
-    "longitude": 6.561491
-  },
-  "contactPoint": [
-    {
-      "@type": "ContactPoint",
-      "telephone": "+31615530641",
-      "contactType": "customer service",
-      "areaServed": "NL",
-      "availableLanguage": ["nl"]
-    }
-  ],
-  "areaServed": [
-    { "@type": "Place", "name": "Lichtenvoorde" },
-    { "@type": "Place", "name": "Achterhoek" },
-    { "@type": "Place", "name": "Groenlo" },
-    { "@type": "Place", "name": "Aalten" }
-  ],
-  "slogan": "Autoservice op afspraak in Lichtenvoorde en de Achterhoek",
-  "sameAs": [
-    "https://www.facebook.com/gpautosnl",
-    "https://www.instagram.com/gp.autos"
-  ]
-}
+const jsonLd = graphStructuredData([
+  localBusinessStructuredData({
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: "Autoservices van GP Auto's",
+      itemListElement: business.serviceTypes.map((serviceType) => ({
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: serviceType,
+        },
+      })),
+    },
+  }),
+  websiteStructuredData(),
+])
 
 export default function RootLayout({
   children,
@@ -148,7 +126,7 @@ export default function RootLayout({
         </Script>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
         />
       </head>
       <body className={`${inter.variable} ${outfit.variable}`}>

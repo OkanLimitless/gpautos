@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { business } from '@/lib/site-data'
 
 export default function MobileStickyCTA() {
   const pathname = usePathname()
@@ -59,7 +60,7 @@ export default function MobileStickyCTA() {
         <div className="pointer-events-auto overflow-hidden rounded-2xl bg-white/95 backdrop-blur-xl shadow-lg border border-gray-200">
           <div className="grid grid-cols-2">
             <a
-              href="tel:+31615530641"
+              href={`tel:${business.phone}`}
               className="flex min-h-[52px] items-center justify-center gap-2 px-3 text-sm font-semibold text-gray-700 transition-colors hover:bg-gray-50"
             >
               <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">

@@ -5,6 +5,7 @@ import Link from 'next/link'
 import PhoneCTA from '@/components/PhoneCTA'
 import CTAButton from '@/components/CTAButton'
 import SocialProof from '@/components/SocialProof'
+import { business } from '@/lib/site-data'
 
 export const metadata: Metadata = {
   title: "GP Auto's • Afspraak of Bel Direct",
@@ -28,7 +29,7 @@ export default function AdsLandingPage() {
             <img src="/logo.png" alt="GP Auto's" className="h-10 w-auto" />
             <span className="sr-only">GP Auto's</span>
           </Link>
-          <a href="tel:+31615530641" className="hidden sm:inline-flex bg-primary text-white font-semibold rounded-lg px-4 py-2">Bel direct</a>
+          <a href={`tel:${business.phone}`} className="hidden sm:inline-flex bg-primary text-white font-semibold rounded-lg px-4 py-2">Bel direct</a>
         </div>
       </header>
 
@@ -48,7 +49,7 @@ export default function AdsLandingPage() {
               <CTAButton href="#afspraak" className="w-full sm:w-auto bg-gradient-to-b from-[#E10600] to-[#b10500] hover:brightness-110 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition-transform duration-200 hover:scale-105 active:scale-95 text-center">
                 Afspraak aanvragen
               </CTAButton>
-              <a href="tel:+31615530641" className="w-full sm:w-auto border border-zinc-300 text-zinc-700 hover:bg-zinc-50 font-semibold py-3 px-6 rounded-lg transition-colors text-center">Bel direct</a>
+              <a href={`tel:${business.phone}`} className="w-full sm:w-auto border border-zinc-300 text-zinc-700 hover:bg-zinc-50 font-semibold py-3 px-6 rounded-lg transition-colors text-center">Bel direct</a>
             </div>
             <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
               <USPCard title="Onderhoud, diagnose en reparatie" text="Service voor alle merken" />
@@ -91,18 +92,18 @@ export default function AdsLandingPage() {
             <h3 className="text-xl font-bold mb-2">Liever direct contact?</h3>
             <div className="h-1 w-10 bg-primary mb-4" />
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <a href="tel:+31615530641" className="w-full bg-primary hover:bg-red-700 text-white font-semibold rounded-lg px-5 py-3 text-center">Bel Oktay</a>
+              <a href={`tel:${business.phone}`} className="w-full bg-primary hover:bg-red-700 text-white font-semibold rounded-lg px-5 py-3 text-center">Bel Oktay</a>
               <a href="tel:+31622995398" className="w-full bg-primary hover:bg-red-700 text-white font-semibold rounded-lg px-5 py-3 text-center">Bel Joost</a>
-              <a href="https://wa.me/31615530641" className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg px-5 py-3 text-center">WhatsApp</a>
-              <a href="mailto:info@gpautos.nl" className="w-full bg-gray-200 text-gray-900 hover:bg-gray-300 font-semibold rounded-lg px-5 py-3 text-center">E‑mail</a>
+              <a href={`https://wa.me/${business.phone.replace('+', '')}`} className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg px-5 py-3 text-center">WhatsApp</a>
+              <a href={`mailto:${business.email}`} className="w-full bg-gray-200 text-gray-900 hover:bg-gray-300 font-semibold rounded-lg px-5 py-3 text-center">E‑mail</a>
             </div>
           </div>
           <div className="rounded-lg border border-white/10 p-6">
             <h3 className="text-xl font-bold mb-2">Adres & Openingstijden</h3>
             <div className="h-1 w-10 bg-primary mb-4" />
             <div className="text-white/80 space-y-1">
-              <p>Galileïstraat 5</p>
-              <p>7131PE Lichtenvoorde</p>
+              <p>{business.address.streetAddress}</p>
+              <p>{business.address.postalCode} {business.address.locality}</p>
               <p className="mt-3">Maandag - Zondag: Op afspraak</p>
             </div>
           </div>
@@ -122,7 +123,7 @@ export default function AdsLandingPage() {
           <div className="rounded-t-2xl bg-white/95 backdrop-blur border border-zinc-200 shadow-lg overflow-hidden">
             <div className="grid grid-cols-2">
               <a href="#afspraak" className="py-3 text-center bg-gradient-to-b from-[#E10600] to-[#b10500] text-white font-semibold">📅 Afspraak aanvragen</a>
-              <a href="tel:+31615530641" className="py-3 text-center text-zinc-800 font-semibold">📞 Bel direct</a>
+              <a href={`tel:${business.phone}`} className="py-3 text-center text-zinc-800 font-semibold">📞 Bel direct</a>
             </div>
           </div>
         </div>

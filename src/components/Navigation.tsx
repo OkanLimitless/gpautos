@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { business } from '@/lib/site-data'
 
 const NAV_LINKS = [
   { href: '/#diensten', label: 'Diensten' },
@@ -165,7 +166,7 @@ export default function Navigation() {
             ))}
             <div className="pt-3 grid grid-cols-2 gap-3">
               <a
-                href="tel:+31615530641"
+                href={`tel:${business.phone}`}
                 className="btn-secondary justify-center min-h-[48px] text-sm"
               >
                 Bel direct

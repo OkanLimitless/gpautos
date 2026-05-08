@@ -5,6 +5,7 @@ import SocialProof from '@/components/SocialProof'
 import ServicesGrid from '@/components/ServicesGrid'
 import AboutSection from '@/components/AboutSection'
 import ContactSection from '@/components/ContactSection'
+import { graphStructuredData, serializeJsonLd, webpageStructuredData } from '@/lib/site-data'
 
 export const metadata: Metadata = {
   title: "Autogarage Lichtenvoorde | GP Auto's VAG Specialist",
@@ -32,8 +33,20 @@ export const metadata: Metadata = {
 }
 
 export default function Home() {
+  const jsonLd = graphStructuredData([
+    webpageStructuredData(
+      '/',
+      "Autogarage Lichtenvoorde | GP Auto's VAG Specialist",
+      'Autogarage in Lichtenvoorde voor onderhoud, diagnose, remmen en coderen voor Audi, Volkswagen, SEAT en Skoda.'
+    ),
+  ])
+
   return (
     <Layout>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
+      />
       <Hero />
       <ContactSection />
       <ServicesGrid />

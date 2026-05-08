@@ -2,12 +2,21 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { services, getServiceBySlug } from '@/lib/seo-data';
+import {
+    breadcrumbStructuredData,
+    business,
+    faqStructuredData,
+    graphStructuredData,
+    placeAreaStructuredData,
+    postalAddressStructuredData,
+    serializeJsonLd,
+    site,
+    webpageStructuredData,
+} from '@/lib/site-data';
 
 interface ServicePageProps {
     params: { slug: string };
 }
-
-const siteUrl = 'https://gpautos.nl';
 
 export async function generateStaticParams() {
     return services.map((service) => ({
@@ -36,7 +45,7 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
         openGraph: {
             title,
             description,
-            url: `${siteUrl}/diensten/${service.slug}`,
+            url: `${site.url}/diensten/${service.slug}`,
             siteName: "GP Auto's",
             locale: 'nl_NL',
             type: 'website',
@@ -63,54 +72,41 @@ export default function ServicePage({ params }: ServicePageProps) {
         .map((slug) => getServiceBySlug(slug))
         .filter((relatedService): relatedService is NonNullable<ReturnType<typeof getServiceBySlug>> => Boolean(relatedService));
 
-    const jsonLd = [
+    const pagePath = `/diensten/${service.slug}`;
+    const pageTitle = `${service.name} in Lichtenvoorde | GP Auto's VAG specialist`;
+    const jsonLd = graphStructuredData([
+        webpageStructuredData(pagePath, pageTitle, service.metaDescription),
         {
-            '@context': 'https://schema.org',
             '@type': 'Service',
+            '@id': `${site.url}${pagePath}#service`,
             name: service.name,
             description: service.metaDescription,
             serviceType: service.name,
+            url: `${site.url}${pagePath}`,
             provider: {
                 '@type': 'AutoRepair',
+                '@id': `${site.url}/#business`,
                 name: "GP Auto's",
-                address: {
-                    '@type': 'PostalAddress',
-                    streetAddress: 'Galileïstraat 5',
-                    addressLocality: 'Lichtenvoorde',
-                    postalCode: '7131PE',
-                    addressCountry: 'NL',
-                },
+                address: postalAddressStructuredData(),
             },
             areaServed: [
-                {
-                    '@type': 'Place',
-                    name: 'Achterhoek, Gelderland',
-                },
-                {
-                    '@type': 'City',
-                    name: 'Lichtenvoorde',
-                },
+                placeAreaStructuredData('Achterhoek, Gelderland'),
+                placeAreaStructuredData('Lichtenvoorde', 'City'),
             ],
         },
-        {
-            '@context': 'https://schema.org',
-            '@type': 'FAQPage',
-            mainEntity: service.faqs.map((faq) => ({
-                '@type': 'Question',
-                name: faq.question,
-                acceptedAnswer: {
-                    '@type': 'Answer',
-                    text: faq.answer,
-                },
-            })),
-        },
-    ];
+        faqStructuredData(service.faqs),
+        breadcrumbStructuredData([
+            { name: 'Home', path: '/' },
+            { name: 'Diensten', path: '/#diensten' },
+            { name: service.name, path: pagePath },
+        ]),
+    ]);
 
     return (
         <>
             <script
                 type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+                dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
             />
             <main className="min-h-screen bg-zinc-950 text-white">
                 <section className="relative overflow-hidden border-b border-white/5 bg-gradient-to-b from-zinc-900 via-zinc-950 to-zinc-950 py-24 md:py-32">
@@ -129,6 +125,14 @@ export default function ServicePage({ params }: ServicePageProps) {
                             <p className="mx-auto mb-8 max-w-3xl text-base text-white/60 md:text-lg">
                                 {service.intro}
                             </p>
+                            <div className="mx-auto mb-8 max-w-3xl rounded-2xl border border-white/10 bg-white/5 p-5 text-left">
+                                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-primary">
+                                    Kort antwoord
+                                </p>
+                                <p className="mt-3 text-sm leading-7 text-white/75 md:text-base">
+                                    GP Auto&apos;s verzorgt {service.name.toLowerCase()} in Lichtenvoorde voor Audi, Volkswagen, SEAT en Skoda. Deze service is bedoeld voor automobilisten uit de Achterhoek die duidelijke diagnose, eerlijk advies en onderhoud op afspraak zoeken.
+                                </p>
+                            </div>
                             <div className="flex flex-col justify-center gap-4 sm:flex-row">
                                 <Link
                                     href="/afspraak"
@@ -137,10 +141,10 @@ export default function ServicePage({ params }: ServicePageProps) {
                                     Afspraak maken
                                 </Link>
                                 <Link
-                                    href="tel:+31615530641"
+                                    href={`tel:${business.phone}`}
                                     className="rounded-lg border border-white/20 px-8 py-4 font-semibold text-white transition-colors hover:bg-white/5"
                                 >
-                                    Bel: 0615 530 641
+                                    Bel: {business.phoneDisplay}
                                 </Link>
                             </div>
                         </div>

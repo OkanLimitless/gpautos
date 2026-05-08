@@ -1,8 +1,9 @@
 'use client'
 
 import Link from 'next/link'
+import { business } from '@/lib/site-data'
 
-export default function PhoneCTA({ className = '', theme = 'primary', labelOverride = 'Bel direct', tel = '+31615530641' }: { className?: string, theme?: 'primary' | 'secondary', labelOverride?: string, tel?: string }) {
+export default function PhoneCTA({ className = '', theme = 'primary', labelOverride = 'Bel direct', tel = business.phone }: { className?: string, theme?: 'primary' | 'secondary', labelOverride?: string, tel?: string }) {
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     const target = `tel:${tel}`
     e.preventDefault()

@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { blogPosts } from '@/lib/blog-data'
 import { services } from '@/lib/seo-data'
+import { business, graphStructuredData, serializeJsonLd, site, webpageStructuredData } from '@/lib/site-data'
 
 export const metadata = {
   title: 'Kennisbank | GP Auto\'s Lichtenvoorde',
@@ -18,9 +19,29 @@ export const metadata = {
 
 export default function KnowledgeBasePage() {
   const featuredServices = services.slice(0, 3)
+  const jsonLd = graphStructuredData([
+    webpageStructuredData(
+      '/kennisbank',
+      "Kennisbank | GP Auto's Lichtenvoorde",
+      'Praktische artikelen over onderhoud en storingen voor automobilisten in Lichtenvoorde en de Achterhoek.'
+    ),
+    {
+      '@type': 'CollectionPage',
+      '@id': `${site.url}/kennisbank#collection`,
+      name: "Kennisbank GP Auto's",
+      url: `${site.url}/kennisbank`,
+      hasPart: blogPosts.map((post) => ({
+        '@type': 'Article',
+        headline: post.title,
+        url: `${site.url}/kennisbank/${post.slug}`,
+        dateModified: post.updatedAt,
+      })),
+    },
+  ])
 
   return (
     <main className="min-h-screen bg-zinc-950 text-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }} />
       <section className="relative overflow-hidden border-b border-white/10 bg-gradient-to-b from-zinc-900 via-zinc-950 to-zinc-950">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(220,38,38,0.18),_transparent_35%),radial-gradient(circle_at_bottom_left,_rgba(255,255,255,0.06),_transparent_30%)]" />
         <div className="container relative mx-auto px-4 py-20 md:py-28">
@@ -43,7 +64,7 @@ export default function KnowledgeBasePage() {
                 Afspraak maken
               </Link>
               <a
-                href="tel:+31615530641"
+                href={`tel:${business.phone}`}
                 className="inline-flex items-center justify-center rounded-lg border border-white/15 px-6 py-3 font-semibold text-white transition-colors hover:bg-white/5"
               >
                 Bel direct

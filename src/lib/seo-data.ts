@@ -289,8 +289,8 @@ export const cities: City[] = [
                 answer: 'Ja. Remmen en wielophanging zijn een belangrijk deel van onze service.',
             },
             {
-                question: 'Kunnen jullie ook een remcontrole uitvoeren als ik twijfel?',
-                answer: 'Ja. We controleren remmen en onderstel gericht en leggen uit wat direct aandacht vraagt en wat nog even kan wachten.',
+                question: 'Helpen jullie ook bij storingen voor klanten uit Varsseveld?',
+                answer: 'Ja. We controleren foutcodes, live data en technische symptomen gericht, zodat u weet wat direct aandacht vraagt en wat nog even kan wachten.',
             },
         ],
     },

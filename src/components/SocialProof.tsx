@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react'
 import Link from 'next/link'
+import { business } from '@/lib/site-data'
 
 const REVIEWS = [
   {
@@ -91,7 +92,7 @@ export default function SocialProof() {
 
         <div className="mt-10 text-center reveal">
           <a
-            href="https://www.google.com/maps/place/GP+Auto's/@51.988019,6.561491,17z"
+            href={business.mapsUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-sm font-medium text-red-600 hover:text-red-700 transition-colors"

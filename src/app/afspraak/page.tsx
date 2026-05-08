@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Layout from '@/components/Layout'
 import AppointmentForm from '@/components/AppointmentForm'
+import { business } from '@/lib/site-data'
 
 const steps = [
   ['1', 'Kenteken', 'We herkennen sneller waar het om gaat.'],
@@ -103,9 +104,9 @@ export default function AppointmentPage() {
             </div>
 
             <div className="relative mt-8 grid gap-3 text-sm sm:grid-cols-2 lg:hidden">
-              <a href="tel:+31615530641" className="rounded-xl border border-white/12 bg-white/5 p-4 text-white/80">
+              <a href={`tel:${business.phone}`} className="rounded-xl border border-white/12 bg-white/5 p-4 text-white/80">
                 <span className="block font-semibold text-white">Direct bellen</span>
-                <span className="mt-1 block text-white/55">+31 6 155 30 641</span>
+                <span className="mt-1 block text-white/55">{business.phoneDisplay}</span>
               </a>
               <Link href="/" className="rounded-xl border border-white/12 bg-white/5 p-4 text-white/80">
                 <span className="block font-semibold text-white">Terug naar home</span>

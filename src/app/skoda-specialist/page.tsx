@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { services } from '@/lib/seo-data';
+import { brandSpecialistStructuredData, business, serializeJsonLd } from '@/lib/site-data';
 
 export const metadata: Metadata = {
     title: "Škoda specialist in Lichtenvoorde | GP Auto's",
@@ -48,38 +49,19 @@ export default function SkodaSpecialistPage() {
         },
     ];
 
-    const jsonLd = {
-        '@context': 'https://schema.org',
-        '@type': 'AutoRepair',
-        name: "GP Auto's - Škoda specialist",
-        description: 'Škoda onderhoud, diagnose en reparatie in Lichtenvoorde en de Achterhoek.',
-        image: 'https://gpautos.nl/og-image.png',
-        address: {
-            '@type': 'PostalAddress',
-            streetAddress: 'Galileïstraat 5',
-            addressLocality: 'Lichtenvoorde',
-            postalCode: '7131PE',
-            addressCountry: 'NL',
-        },
-        brand: {
-            '@type': 'Brand',
-            name: 'Škoda',
-        },
-        url: 'https://gpautos.nl/skoda-specialist',
-        telephone: '+31615530641',
-        areaServed: ['Lichtenvoorde', 'Groenlo', 'Aalten', 'Winterswijk', 'Achterhoek'],
-        potentialAction: {
-            '@type': 'Action',
-            name: 'Maak een afspraak',
-            target: 'https://gpautos.nl/afspraak',
-        },
-    };
+    const jsonLd = brandSpecialistStructuredData(
+        '/skoda-specialist',
+        "Škoda specialist in Lichtenvoorde | GP Auto's",
+        'Škoda onderhoud, diagnose en reparatie in Lichtenvoorde en de Achterhoek.',
+        'Škoda',
+        faqItems
+    );
 
     return (
         <>
             <script
                 type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+                dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
             />
             <main className="min-h-screen bg-zinc-950 text-white">
                 <section className="relative py-24 md:py-32 bg-gradient-to-b from-zinc-900 to-zinc-950">
@@ -98,7 +80,7 @@ export default function SkodaSpecialistPage() {
                                 <Link href="/afspraak" className="inline-block px-8 py-4 bg-primary text-white font-semibold rounded-lg hover:bg-primary/90 transition-colors">
                                     Maak afspraak
                                 </Link>
-                                <Link href="tel:+31615530641" className="inline-block px-8 py-4 border border-white/20 text-white font-semibold rounded-lg hover:bg-white/5 transition-colors">
+                                <Link href={`tel:${business.phone}`} className="inline-block px-8 py-4 border border-white/20 text-white font-semibold rounded-lg hover:bg-white/5 transition-colors">
                                     Bel direct
                                 </Link>
                             </div>

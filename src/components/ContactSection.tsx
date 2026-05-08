@@ -2,11 +2,10 @@
 
 import { useEffect, useRef } from 'react'
 import AppointmentForm from './AppointmentForm'
+import { business } from '@/lib/site-data'
 
 export default function ContactSection() {
   const rootRef = useRef<HTMLElement | null>(null)
-  const mapsHref =
-    'https://www.google.com/maps/search/?api=1&query=Galile%C3%AFstraat+5%2C+7131PE+Lichtenvoorde'
 
   useEffect(() => {
     if (!rootRef.current) return
@@ -67,8 +66,10 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <p className="font-semibold text-gray-950">Werkplaats</p>
-                  <p className="mt-1 text-sm text-gray-500">Galileïstraat 5, 7131 PE Lichtenvoorde</p>
-                  <a href={mapsHref} target="_blank" rel="noopener noreferrer" className="mt-1 inline-flex text-sm font-medium text-red-600 hover:text-red-700">
+                  <p className="mt-1 text-sm text-gray-500">
+                    {business.address.streetAddress}, {business.address.postalCode} {business.address.locality}
+                  </p>
+                  <a href={business.mapsUrl} target="_blank" rel="noopener noreferrer" className="mt-1 inline-flex text-sm font-medium text-red-600 hover:text-red-700">
                     Route openen
                   </a>
                 </div>
@@ -82,8 +83,8 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <p className="font-semibold text-gray-950">Liever direct bellen?</p>
-                  <a href="tel:+31615530641" className="mt-1 block text-sm text-gray-500 transition-colors hover:text-gray-950">
-                    +31 6 155 30 641
+                  <a href={`tel:${business.phone}`} className="mt-1 block text-sm text-gray-500 transition-colors hover:text-gray-950">
+                    {business.phoneDisplay}
                   </a>
                 </div>
               </div>

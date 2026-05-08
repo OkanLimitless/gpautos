@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Navigation from './Navigation'
 import type { ReactNode } from 'react'
+import { business } from '@/lib/site-data'
 
 const serviceLinks = [
   { href: '/diensten/onderhoud-service', label: 'Onderhoud & service' },
@@ -106,11 +107,11 @@ export default function Layout({ children }: { children: ReactNode }) {
                 ))}
               </ul>
               <div className="mt-5 space-y-1 text-sm text-gray-500">
-                <a href="tel:+31615530641" className="block hover:text-gray-900 transition-colors">
-                  +31 6 15530641
+                <a href={`tel:${business.phone}`} className="block hover:text-gray-900 transition-colors">
+                  {business.phoneDisplay}
                 </a>
-                <a href="mailto:info@gpautos.nl" className="block hover:text-gray-900 transition-colors">
-                  info@gpautos.nl
+                <a href={`mailto:${business.email}`} className="block hover:text-gray-900 transition-colors">
+                  {business.email}
                 </a>
               </div>
             </div>

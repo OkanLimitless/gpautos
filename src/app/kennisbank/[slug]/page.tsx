@@ -3,6 +3,16 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { blogPosts, getBlogPostBySlug, type BlogBlock } from '@/lib/blog-data'
 import { getServiceBySlug, type Service as SeoService } from '@/lib/seo-data'
+import {
+  absoluteUrl,
+  breadcrumbStructuredData,
+  business,
+  faqStructuredData,
+  graphStructuredData,
+  serializeJsonLd,
+  site,
+  webpageStructuredData,
+} from '@/lib/site-data'
 
 interface KnowledgeArticlePageProps {
   params: {
@@ -35,7 +45,7 @@ export async function generateMetadata({ params }: KnowledgeArticlePageProps): P
     openGraph: {
       title: post.title,
       description: post.metaDescription,
-      url: `https://gpautos.nl/kennisbank/${post.slug}`,
+      url: `${site.url}/kennisbank/${post.slug}`,
       siteName: "GP Auto's",
       locale: 'nl_NL',
       type: 'article',
@@ -109,11 +119,15 @@ export default function KnowledgeArticlePage({ params }: KnowledgeArticlePagePro
     .map((slug) => getServiceBySlug(slug))
     .filter((service): service is SeoService => Boolean(service))
 
-  const articleJsonLd = {
-    '@context': 'https://schema.org',
+  const pagePath = `/kennisbank/${post.slug}`
+  const jsonLd = graphStructuredData([
+    webpageStructuredData(pagePath, post.title, post.metaDescription),
+    {
     '@type': 'Article',
+    '@id': `${site.url}${pagePath}#article`,
     headline: post.title,
     description: post.metaDescription,
+    image: absoluteUrl(site.defaultImage),
     datePublished: post.publishedAt,
     dateModified: post.updatedAt,
     author: {
@@ -125,55 +139,22 @@ export default function KnowledgeArticlePage({ params }: KnowledgeArticlePagePro
       name: "GP Auto's",
       logo: {
         '@type': 'ImageObject',
-        url: 'https://gpautos.nl/logo.png',
+        url: absoluteUrl(site.logo),
       },
     },
-    mainEntityOfPage: `https://gpautos.nl/kennisbank/${post.slug}`,
-  }
-
-  const breadcrumbJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      {
-        '@type': 'ListItem',
-        position: 1,
-        name: 'Home',
-        item: 'https://gpautos.nl',
-      },
-      {
-        '@type': 'ListItem',
-        position: 2,
-        name: 'Kennisbank',
-        item: 'https://gpautos.nl/kennisbank',
-      },
-      {
-        '@type': 'ListItem',
-        position: 3,
-        name: post.title,
-        item: `https://gpautos.nl/kennisbank/${post.slug}`,
-      },
-    ],
-  }
-
-  const faqJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: post.faqs.map((faq) => ({
-      '@type': 'Question',
-      name: faq.question,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: faq.answer,
-      },
-    })),
-  }
+    mainEntityOfPage: `${site.url}${pagePath}`,
+  },
+    breadcrumbStructuredData([
+      { name: 'Home', path: '/' },
+      { name: 'Kennisbank', path: '/kennisbank' },
+      { name: post.title, path: pagePath },
+    ]),
+    faqStructuredData(post.faqs),
+  ])
 
   return (
     <main className="min-h-screen bg-zinc-950 text-white">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }} />
 
       <section className="border-b border-white/10 bg-gradient-to-b from-zinc-900 to-zinc-950">
         <div className="container mx-auto px-4 py-16 md:py-20">
@@ -195,6 +176,8 @@ export default function KnowledgeArticlePage({ params }: KnowledgeArticlePagePro
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-4 text-sm text-white/50">
               <span>Geplaatst op {formatDate(post.publishedAt)}</span>
+              <span className="h-1 w-1 rounded-full bg-white/30" />
+              <span>Bijgewerkt op {formatDate(post.updatedAt)}</span>
               <span className="h-1 w-1 rounded-full bg-white/30" />
               <span>Focus: {post.focusKeyword}</span>
             </div>
@@ -291,10 +274,10 @@ export default function KnowledgeArticlePage({ params }: KnowledgeArticlePagePro
                 Naar afspraak
               </Link>
               <a
-                href="tel:+31615530641"
+                href={`tel:${business.phone}`}
                 className="inline-flex items-center justify-center rounded-lg border border-white/15 px-5 py-3 font-semibold text-white transition-colors hover:bg-white/5"
               >
-                0615 530 641
+                {business.phoneDisplay}
               </a>
             </div>
           </div>
