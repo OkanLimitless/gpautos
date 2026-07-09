@@ -44,6 +44,10 @@ export interface BlogPost {
   relatedServices: string[]
   blocks: BlogBlock[]
   faqs: BlogFaq[]
+  sources?: {
+    name: string
+    url: string
+  }[]
 }
 
 export const blogPosts: BlogPost[] = [
@@ -204,6 +208,166 @@ export const blogPosts: BlogPost[] = [
         question: 'Waarom is een VAG specialist handig?',
         answer:
           'Omdat merkspecifieke kennis en apparatuur de kans vergroten dat de echte oorzaak sneller wordt gevonden.',
+      },
+    ],
+  },
+  {
+    slug: 'wat-doet-een-vag-specialist',
+    title: 'Wat doet een VAG specialist en wanneer is die handig?',
+    excerpt:
+      'Lees wat een VAG specialist doet, wanneer merkgerichte diagnose verschil maakt en voor welke Audi, Volkswagen, SEAT en Skoda-vragen u terechtkunt.',
+    metaDescription:
+      'Wat doet een VAG specialist? Ontdek wanneer merkkennis en gerichte diagnose voor Audi, Volkswagen, SEAT en Skoda verschil maken.',
+    publishedAt: '2026-07-09',
+    updatedAt: '2026-07-09',
+    readingTime: '5 min',
+    focusKeyword: 'wat doet een VAG specialist',
+    focusArea: 'Lichtenvoorde en de Achterhoek',
+    relatedServices: ['diagnose-storing', 'onderhoud-service', 'software-chiptuning'],
+    blocks: [
+      {
+        type: 'lead',
+        text:
+          'Een VAG specialist is een garage die veel werkt aan Audi, Volkswagen, SEAT, Skoda en Cupra. Dat is vooral handig wanneer onderhoud, elektronica, foutcodes of instellingen merkspecifieke kennis vragen.',
+      },
+      {
+        type: 'paragraph',
+        text:
+          'VAG staat voor Volkswagen Aktiengesellschaft, de groep waar verschillende automerken onder vallen. De auto’s delen vaak techniek, maar de uitvoering, software en onderhoudsbehoefte verschillen per model en bouwjaar. Daarom begint goed werk niet met onderdelen vervangen, maar met vaststellen wat er technisch speelt.',
+      },
+      {
+        type: 'bullets',
+        title: 'Wanneer een VAG specialist verschil kan maken',
+        items: [
+          'Bij een storingslampje, foutcode of terugkerende elektronische melding.',
+          'Bij onderhoud waarbij service-intervallen, olie-eisen of digitale registraties belangrijk zijn.',
+          'Bij rem-, onderstel- of rijgedragsklachten waarbij een gerichte controle nodig is.',
+          'Bij VAG-COM of VCDS-coderingen voor geschikte comfortfuncties en instellingen.',
+        ],
+      },
+      {
+        type: 'steps',
+        title: 'Zo verloopt een gerichte diagnose',
+        items: [
+          {
+            title: 'Klacht en voertuiggegevens verzamelen',
+            text:
+              'De omstandigheden waarin een melding of klacht optreedt, geven richting aan de controle.',
+          },
+          {
+            title: 'Foutcodes en meetwaarden beoordelen',
+            text:
+              'Een foutcode is een aanwijzing. Door die te combineren met meetwaarden en het gedrag van de auto ontstaat een beter technisch beeld.',
+          },
+          {
+            title: 'Pas daarna een vervolg voorstellen',
+            text:
+              'U krijgt duidelijkheid over wat aandacht vraagt, wat de logische vervolgstap is en wat eventueel nog kan wachten.',
+          },
+        ],
+      },
+      {
+        type: 'callout',
+        title: 'Kort antwoord',
+        text:
+          'Voor Audi, Volkswagen, SEAT en Skoda is een VAG specialist vooral waardevol wanneer een standaardbeurt niet genoeg is en merkspecifieke diagnose, onderhoud of codering nodig is. GP Auto’s werkt vanuit Lichtenvoorde voor automobilisten uit de Achterhoek, op afspraak.',
+      },
+    ],
+    faqs: [
+      {
+        question: 'Werkt een VAG specialist alleen aan Volkswagen?',
+        answer:
+          'Nee. VAG-specialisme richt zich doorgaans op Audi, Volkswagen, SEAT, Skoda en vaak ook Cupra. Welke werkzaamheden passend zijn, hangt af van het model, bouwjaar en de klacht.',
+      },
+      {
+        question: 'Is een foutcode meteen de oorzaak van een storing?',
+        answer:
+          'Nee. Een foutcode geeft een richting, maar moet worden gecontroleerd met de klacht, meetwaarden en een technische inspectie voordat een reparatie wordt geadviseerd.',
+      },
+      {
+        question: 'Kan onderhoud worden gecombineerd met diagnose?',
+        answer:
+          'Vaak wel. Als u de klacht vooraf doorgeeft, kan worden beoordeeld of onderhoud en diagnose logisch in één afspraak passen.',
+      },
+    ],
+  },
+  {
+    slug: 'remmen-controleren-signalen',
+    title: 'Wanneer moet u de remmen van uw auto laten controleren?',
+    excerpt:
+      'Piepen, trillen of een sponsachtig pedaal? Lees welke remsignalen u serieus moet nemen en wanneer een controle verstandig is.',
+    metaDescription:
+      'Wanneer moeten remmen gecontroleerd worden? Herken piepen, trillen en andere signalen en plan op tijd een remcontrole.',
+    publishedAt: '2026-07-09',
+    updatedAt: '2026-07-09',
+    readingTime: '5 min',
+    focusKeyword: 'wanneer remmen laten controleren',
+    focusArea: 'Lichtenvoorde en de Achterhoek',
+    relatedServices: ['remmen-wielophanging', 'onderhoud-service', 'diagnose-storing'],
+    blocks: [
+      {
+        type: 'lead',
+        text:
+          'Laat uw remmen controleren zodra het rempedaal anders aanvoelt, de auto bij remmen trilt of u nieuwe geluiden hoort. Remklachten zijn veiligheidsrelevant: uitstellen maakt een gerichte controle niet slimmer of goedkoper.',
+      },
+      {
+        type: 'paragraph',
+        text:
+          'Slijtage aan remblokken en remschijven hoort bij normaal gebruik, maar het tempo verschilt per auto en rijstijl. Ook banden, wielophanging en elektronische systemen kunnen invloed hebben op wat u tijdens het remmen voelt. Alleen op een geluid afgaan is daarom niet genoeg voor een betrouwbare conclusie.',
+      },
+      {
+        type: 'bullets',
+        title: 'Signalen om niet te negeren',
+        items: [
+          'Een schurend, metaalachtig of voortdurend piepend geluid bij remmen.',
+          'Trillingen in stuur of rempedaal zodra u afremt.',
+          'Een rempedaal dat duidelijk sponsachtiger aanvoelt dan normaal.',
+          'De auto trekt naar één kant bij remmen of een remwaarschuwingslampje brandt.',
+        ],
+      },
+      {
+        type: 'steps',
+        title: 'Wat een remcontrole oplevert',
+        items: [
+          {
+            title: 'De oorzaak in beeld',
+            text:
+              'De werkplaats beoordeelt onder meer de conditie van remblokken en -schijven, het remsysteem en relevante delen van het onderstel.',
+          },
+          {
+            title: 'Duidelijke prioriteit',
+            text:
+              'U weet welke punten direct aandacht vragen en welke punten u kunt blijven volgen.',
+          },
+          {
+            title: 'Een passende vervolgstap',
+            text:
+              'Pas na de controle is duidelijk of onderhoud, herstelwerk of aanvullende diagnose nodig is.',
+          },
+        ],
+      },
+      {
+        type: 'callout',
+        title: 'Bij twijfel: niet afwachten',
+        text:
+          'Bij een rood remwaarschuwingslampje, duidelijk verminderd remvermogen of een auto die onveilig aanvoelt, rijd dan niet verder dan nodig is. Neem contact op voor een gerichte beoordeling.',
+      },
+    ],
+    faqs: [
+      {
+        question: 'Hoe lang gaan remblokken en remschijven mee?',
+        answer:
+          'Dat verschilt sterk per auto, rijstijl, gebruik en soort ritten. Een inspectie tijdens onderhoud of bij klachten geeft een betrouwbaarder antwoord dan een vaste kilometerstand.',
+      },
+      {
+        question: 'Is piepen altijd een teken dat remmen versleten zijn?',
+        answer:
+          'Niet altijd, maar nieuw of aanhoudend piepen verdient wel controle. Het kan samenhangen met slijtage, vuil, vocht of een ander onderdeel van het remsysteem.',
+      },
+      {
+        question: 'Kan een trillend stuur door de remmen komen?',
+        answer:
+          'Dat kan, vooral wanneer de trilling vooral bij afremmen optreedt. Een technische controle is nodig om remmen, banden en onderstel goed van elkaar te onderscheiden.',
       },
     ],
   },

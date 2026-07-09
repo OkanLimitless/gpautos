@@ -108,6 +108,7 @@ export function localBusinessStructuredData(overrides: Record<string, unknown> =
       latitude: business.geo.latitude,
       longitude: business.geo.longitude,
     },
+    hasMap: business.mapsUrl,
     contactPoint: [
       {
         '@type': 'ContactPoint',

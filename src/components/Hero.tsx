@@ -60,7 +60,7 @@ export default function Hero() {
           <h1 data-animate className="mt-4 max-w-3xl text-4xl font-bold leading-[1.02] tracking-tight sm:mt-5 sm:text-6xl lg:text-7xl" style={{ textShadow: '0 2px 24px rgba(0,0,0,0.45)' }}>
             GP Auto&apos;s
             <span className="mt-2 block text-2xl leading-tight text-white/84 sm:text-4xl lg:text-5xl">
-              onderhoud zonder gedoe.
+              uw autogarage in Lichtenvoorde.
             </span>
           </h1>
 

@@ -8,6 +8,7 @@ import { business } from '@/lib/site-data'
 
 const NAV_LINKS = [
   { href: '/#diensten', label: 'Diensten' },
+  { href: '/kennisbank', label: 'Kennisbank' },
   { href: '/#over-ons', label: 'Over ons' },
   { href: '/#reviews', label: 'Reviews' },
   { href: '/#contact', label: 'Contact' },
