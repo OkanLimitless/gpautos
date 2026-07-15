@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { business } from '@/lib/site-data'
 
 const USP_ITEMS = [
   {
@@ -85,17 +86,23 @@ export default function AboutSection() {
                 <Image src="/logo.png" alt="GP Auto's" width={104} height={31} className="h-7 w-auto" />
               </div>
             </div>
-            <div className="absolute -bottom-6 -right-4 flex items-center gap-4 rounded-2xl border border-white/10 bg-white p-5 shadow-2xl shadow-black/30 sm:right-8">
+            <a
+              href={business.googleBusinessProfileUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="absolute -bottom-6 -right-4 flex items-center gap-4 rounded-2xl border border-white/10 bg-white p-5 shadow-2xl shadow-black/30 transition-transform hover:-translate-y-1 sm:right-8"
+              aria-label={`Bekijk ${business.googleReviewCount} Google-reviews van GP Auto's`}
+            >
               <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-red-50 text-red-600">
                 <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
                 </svg>
               </div>
               <div>
-                <p className="text-2xl font-bold text-gray-900">5.0</p>
-                <p className="text-sm text-gray-500">Google Reviews</p>
+                <p className="text-2xl font-bold text-gray-900">{business.googleRating.toFixed(1)}</p>
+                <p className="text-sm text-gray-500">{business.googleReviewCount} Google-reviews</p>
               </div>
-            </div>
+            </a>
           </div>
 
           <div>

@@ -70,7 +70,7 @@ export default function AppointmentForm({
     try {
       const params = new URLSearchParams(window.location.search)
       const attribution: { [key: string]: string | undefined } = {
-        source: 'ads-landing',
+        source: isHome ? 'homepage-callback' : isEmbedded ? 'appointment-page' : 'ads-landing',
         utmSource: params.get('utm_source') || undefined,
         utmMedium: params.get('utm_medium') || undefined,
         utmCampaign: params.get('utm_campaign') || undefined,
@@ -82,7 +82,7 @@ export default function AppointmentForm({
     } catch {
       // ignore
     }
-  }, [])
+  }, [isEmbedded, isHome])
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
@@ -134,7 +134,10 @@ export default function AppointmentForm({
 
       // Analytics hook for GTM if present
       if (typeof window !== 'undefined' && (window as any).dataLayer) {
-        ;(window as any).dataLayer.push({ event: 'lead_submit', form: 'ads_landing' })
+        ;(window as any).dataLayer.push({
+          event: 'lead_submit',
+          form: isHome ? 'homepage_callback' : isEmbedded ? 'appointment_page' : 'ads_landing',
+        })
       }
       // Google Ads conversion
       if (typeof window !== 'undefined' && typeof (window as any).gtag_report_conversion === 'function') {
@@ -162,7 +165,7 @@ export default function AppointmentForm({
   return (
     <form onSubmit={handleSubmit} className={containerClasses} id={formId ?? undefined}>
       <div className="space-y-4">
-        <div>
+        {!isHome && <div>
           <span className={labelClasses}>Waarvoor komt u langs?</span>
           <div className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-4">
             {WORK_TYPES.map((type) => {
@@ -185,45 +188,45 @@ export default function AppointmentForm({
               )
             })}
           </div>
-        </div>
+        </div>}
 
-        <div>
-          <label htmlFor="appointment-kenteken" className={labelClasses}>
-            Kenteken
-          </label>
-          <div className={isHome ? 'mt-1 flex overflow-hidden rounded-xl border border-gray-200 bg-white shadow-[0_1px_0_rgba(17,24,39,0.03)] focus-within:border-red-500 focus-within:ring-2 focus-within:ring-red-500/10' : ''}>
-            {isHome && (
-              <div className="flex w-12 shrink-0 flex-col items-center justify-center bg-blue-700 text-[10px] font-bold leading-none text-white">
-                <span className="text-[9px]">EU</span>
-                <span>NL</span>
-              </div>
-            )}
-            <input
-              id="appointment-kenteken"
-              type="text"
-              required
-              autoFocus={variant !== 'home' && variant !== 'embedded'}
-              placeholder="Bijv. AB-12-CD"
-              className={isHome ? 'block min-h-[56px] w-full border-0 bg-white px-4 text-base font-semibold uppercase tracking-wide text-gray-950 placeholder:font-normal placeholder:normal-case placeholder:tracking-normal placeholder:text-gray-400 focus:ring-0' : fieldClasses}
-              value={formData.kenteken}
-              onChange={(e) => {
-                const val = e.target.value.toUpperCase()
-                setFormData({ ...formData, kenteken: val })
-                if (autoFocusNext && val.replace(/[^A-Z0-9]/g, '').length >= 6) {
-                  const dateEl = document.querySelector('input[name="date"]') as HTMLInputElement | null
-                  if (dateEl) dateEl.focus()
-                }
-              }}
-            />
+        <div className={isHome ? 'grid gap-4 sm:grid-cols-2' : ''}>
+          <div>
+            <label htmlFor="appointment-kenteken" className={labelClasses}>
+              Kenteken
+            </label>
+            <div className={isHome ? 'mt-1 flex overflow-hidden rounded-xl border border-gray-200 bg-white shadow-[0_1px_0_rgba(17,24,39,0.03)] focus-within:border-red-500 focus-within:ring-2 focus-within:ring-red-500/10' : ''}>
+              {isHome && (
+                <div className="flex w-12 shrink-0 flex-col items-center justify-center bg-blue-700 text-[10px] font-bold leading-none text-white">
+                  <span className="text-[9px]">EU</span>
+                  <span>NL</span>
+                </div>
+              )}
+              <input
+                id="appointment-kenteken"
+                type="text"
+                required
+                autoFocus={variant !== 'home' && variant !== 'embedded'}
+                placeholder="Bijv. AB-12-CD"
+                className={isHome ? 'block min-h-[56px] w-full border-0 bg-white px-4 text-base font-semibold uppercase tracking-wide text-gray-950 placeholder:font-normal placeholder:normal-case placeholder:tracking-normal placeholder:text-gray-400 focus:ring-0' : fieldClasses}
+                value={formData.kenteken}
+                onChange={(e) => {
+                  const val = e.target.value.toUpperCase()
+                  setFormData({ ...formData, kenteken: val })
+                  if (autoFocusNext && val.replace(/[^A-Z0-9]/g, '').length >= 6) {
+                    const dateEl = document.querySelector('input[name="date"]') as HTMLInputElement | null
+                    if (dateEl) dateEl.focus()
+                  }
+                }}
+              />
+            </div>
+            {errors.kenteken && <p className="mt-1 text-xs text-red-600">{errors.kenteken}</p>}
           </div>
-          {errors.kenteken && <p className="mt-1 text-xs text-red-600">{errors.kenteken}</p>}
-        </div>
 
-        {isHome && (
-          <div className="grid gap-4 sm:grid-cols-2">
+          {isHome && (
             <div>
               <label htmlFor="appointment-phone" className={labelClasses}>
-                Telefoon
+                Telefoonnummer
               </label>
               <input
                 id="appointment-phone"
@@ -241,37 +244,8 @@ export default function AppointmentForm({
               />
               {errors.phone && <p className="mt-1 text-xs text-red-600">{errors.phone}</p>}
             </div>
-            <div>
-              <label htmlFor="appointment-name" className={labelClasses}>
-                Naam <span className="font-normal text-gray-400">(optioneel)</span>
-              </label>
-              <input
-                id="appointment-name"
-                type="text"
-                className={fieldClasses}
-                value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                placeholder="Uw naam"
-              />
-            </div>
-          </div>
-        )}
-
-        {isHome && (
-          <div>
-            <label htmlFor="appointment-description" className={labelClasses}>
-              Klacht of vraag <span className="font-normal text-gray-400">(optioneel)</span>
-            </label>
-            <textarea
-              id="appointment-description"
-              rows={3}
-              className={textareaClasses}
-              value={formData.description}
-              onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-              placeholder="Bijv. onderhoudsbeurt, storing, codering of remgeluid"
-            />
-          </div>
-        )}
+          )}
+        </div>
 
         {!isHome && <div>
           <label htmlFor="appointment-date" className={labelClasses}>
@@ -362,14 +336,6 @@ export default function AppointmentForm({
           {errors.description && <p className="mt-1 text-xs text-red-600">{errors.description}</p>}
         </div>}
       </div>
-
-      {isHome && (
-        <div className="grid gap-2 rounded-xl bg-gray-50 p-3 text-xs text-gray-500 sm:grid-cols-3">
-          <span>Veilig verstuurd</span>
-          <span>Reactie binnen 1 werkdag</span>
-          <span>Planning persoonlijk afgestemd</span>
-        </div>
-      )}
 
       <p className="text-xs leading-5 text-gray-400">
         Door te verzenden gaat u akkoord met onze{' '}
