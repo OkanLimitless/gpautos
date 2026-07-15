@@ -144,8 +144,10 @@ export default function Navigation() {
 
       {/* Mobile menu overlay */}
       <div
-        className={`transition-all duration-300 md:hidden ${
-          isMobileMenuOpen ? 'visible opacity-100' : 'invisible opacity-0'
+        className={`fixed inset-x-0 top-16 max-h-[calc(100svh-4rem)] overflow-y-auto transition-all duration-300 md:hidden ${
+          isMobileMenuOpen
+            ? 'visible pointer-events-auto translate-y-0 opacity-100'
+            : 'invisible pointer-events-none -translate-y-2 opacity-0'
         }`}
       >
         <div

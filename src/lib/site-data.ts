@@ -1,5 +1,7 @@
 import type { FaqItem } from './seo-data'
 
+const googleBusinessProfileUrl = 'https://www.google.com/maps?cid=9334292203983253296'
+
 export const site = {
   url: 'https://gpautos.nl',
   name: "GP Auto's",
@@ -29,9 +31,17 @@ export const business = {
     latitude: 51.988019,
     longitude: 6.561491,
   },
-  mapsUrl:
-    'https://www.google.com/maps/search/?api=1&query=Galile%C3%AFstraat+5%2C+7131PE+Lichtenvoorde',
-  sameAs: ['https://www.facebook.com/gpautosnl', 'https://www.instagram.com/gp.autos'],
+  googleBusinessProfileUrl,
+  googleRating: 5,
+  googleReviewCount: 19,
+  directionsUrl:
+    'https://www.google.com/maps/dir/?api=1&destination=Galile%C3%AFstraat+5%2C+7131+PE+Lichtenvoorde',
+  sameAs: [
+    googleBusinessProfileUrl,
+    'https://www.facebook.com/gpautosnl',
+    'https://www.instagram.com/gpautos.nl/',
+    'https://www.tiktok.com/@gpautos.nl',
+  ],
   areaServed: [
     'Lichtenvoorde',
     'Oost Gelre',
@@ -108,7 +118,7 @@ export function localBusinessStructuredData(overrides: Record<string, unknown> =
       latitude: business.geo.latitude,
       longitude: business.geo.longitude,
     },
-    hasMap: business.mapsUrl,
+    hasMap: business.googleBusinessProfileUrl,
     contactPoint: [
       {
         '@type': 'ContactPoint',

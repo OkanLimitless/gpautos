@@ -46,7 +46,7 @@ export default function Layout({ children }: { children: ReactNode }) {
               </p>
               <div className="mt-5 flex gap-3">
                 <a
-                  href="https://www.instagram.com/gp.autos"
+                  href="https://www.instagram.com/gpautos.nl/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex h-9 w-9 items-center justify-center rounded-lg bg-gray-100 text-gray-500 transition-colors hover:bg-gray-200 hover:text-gray-700"
@@ -107,11 +107,21 @@ export default function Layout({ children }: { children: ReactNode }) {
                 ))}
               </ul>
               <div className="mt-5 space-y-1 text-sm text-gray-500">
+                <p>{business.address.streetAddress}</p>
+                <p>{business.address.postalCode} {business.address.locality}</p>
                 <a href={`tel:${business.phone}`} className="block hover:text-gray-900 transition-colors">
                   {business.phoneDisplay}
                 </a>
                 <a href={`mailto:${business.email}`} className="block hover:text-gray-900 transition-colors">
                   {business.email}
+                </a>
+                <a
+                  href={business.googleBusinessProfileUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block pt-2 font-medium text-red-600 hover:text-red-700"
+                >
+                  Bekijk op Google
                 </a>
               </div>
             </div>
