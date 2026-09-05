@@ -23,18 +23,19 @@ The advertising page has a short callback form and minimal navigation. The appoi
 - Visible, keyboard-focused success states and inline retryable errors.
 - Optional service selection, explicit field labels and native required-field validation.
 - A mobile navigation menu with focus containment and Escape-to-close.
-- Website and advertising enquiries receive distinct attribution; ad query parameters are retained in submissions.
+- Homepage callbacks, appointment requests and advertising enquiries receive distinct attribution; ad query parameters are retained in submissions.
 - Appointment dates are submitted as calendar dates instead of UTC instants. The email formats them in the workshop's Amsterdam timezone.
 - Development sessions do not load live advertising conversion scripts.
 - Existing page URLs, canonical metadata, noindex on the ad route and FAQ structured data are preserved.
 
 ## Verification
 
-- Production build completed; all 32 generated routes/assets built successfully.
+- Production build completed; all 34 generated routes/assets built successfully.
 - ESLint and TypeScript passed.
-- All 24 content pages returned HTTP 200 with one main landmark and one H1, valid JSON-LD, expected canonical metadata and working local anchors.
+- All 26 content pages returned HTTP 200 with one main landmark and one H1, valid JSON-LD, expected canonical metadata and working local anchors.
 - Browser checks covered desktop, tablet, ordinary phones and narrow phones, plus service selection and mobile keyboard navigation.
 - Callback validation, server failure/retry, success confirmation, service preselection and date selection were exercised through a local mock endpoint. No test emails were sent.
 - The requested date was verified in the outgoing payload after the timezone correction.
+- After integrating the latest main branch, the build, lint, TypeScript and all 26 page checks passed again. Updated Google profile, directions and Instagram links, visible FAQ/schema parity and article sitemap dates were also checked.
 
 Email delivery through the live SMTP account was not exercised.

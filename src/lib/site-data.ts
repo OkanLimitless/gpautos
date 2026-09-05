@@ -1,5 +1,8 @@
 import type { FaqItem } from './seo-data'
 
+const googleBusinessProfileUrl = 'https://www.google.com/maps?cid=9334292203983253296'
+const instagramUrl = 'https://www.instagram.com/gpautos.nl/'
+
 export const site = {
   url: 'https://gpautos.nl',
   name: "GP Auto's",
@@ -29,11 +32,16 @@ export const business = {
     latitude: 51.988019,
     longitude: 6.561491,
   },
-  mapsUrl:
-    'https://www.google.com/maps/search/?api=1&query=Galile%C3%AFstraat+5%2C+7131PE+Lichtenvoorde',
+  googleBusinessProfileUrl,
+  googleReviewCount: 19,
+  instagramUrl,
+  directionsUrl:
+    'https://www.google.com/maps/dir/?api=1&destination=Galile%C3%AFstraat+5%2C+7131+PE+Lichtenvoorde',
   sameAs: [
+    googleBusinessProfileUrl,
     'https://www.facebook.com/gpautosnl',
-    'https://www.instagram.com/gp.autos',
+    instagramUrl,
+    'https://www.tiktok.com/@gpautos.nl',
   ],
   areaServed: [
     'Lichtenvoorde',
@@ -53,8 +61,7 @@ export const business = {
   /**
    * Verified facts only. Nothing here may be added without confirmation from the
    * business — the landing page copy is built on the assumption that it is true.
-   * Notably absent, and deliberately so: opening hours (the workshop works by
-   * appointment only) and a Google review count (score is 5.0, count unknown).
+   * Opening hours are omitted because the workshop works by appointment only.
    */
   appointmentOnly: true,
   credentials: ['RDW erkend bedrijf'],
@@ -126,6 +133,7 @@ export function localBusinessStructuredData(
       latitude: business.geo.latitude,
       longitude: business.geo.longitude,
     },
+    hasMap: business.googleBusinessProfileUrl,
     contactPoint: [
       {
         '@type': 'ContactPoint',

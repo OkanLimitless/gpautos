@@ -52,7 +52,11 @@ export default function AppointmentForm({
   useEffect(() => {
     const params = new URLSearchParams(window.location.search)
     const source =
-      window.location.pathname === '/ads' ? 'ads-landing' : 'website'
+      window.location.pathname === '/ads'
+        ? 'ads-landing'
+        : callback
+          ? 'homepage-callback'
+          : 'appointment-page'
     const data: Record<string, string> = {
       source,
       landingPage: window.location.pathname,
@@ -71,7 +75,7 @@ export default function AppointmentForm({
     setMarketing(data)
     const service = params.get('dienst')
     if (WORK_TYPES.some((type) => type === service)) setWorkType(service!)
-  }, [])
+  }, [callback])
 
   useEffect(() => {
     if (submitted) successHeading.current?.focus()
@@ -139,7 +143,12 @@ export default function AppointmentForm({
       }
       analytics.dataLayer?.push({
         event: 'lead_submit',
-        form: callback ? 'callback' : 'appointment',
+        form:
+          marketing.source === 'ads-landing'
+            ? 'ads_landing'
+            : callback
+              ? 'homepage_callback'
+              : 'appointment_page',
         source: marketing.source,
       })
       analytics.gtag_report_conversion?.()

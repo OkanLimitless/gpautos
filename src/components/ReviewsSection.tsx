@@ -22,7 +22,7 @@ export default function ReviewsSection() {
           <p>Lees de ervaringen van klanten met onze werkplaats.</p>
         </div>
         <a
-          href={business.mapsUrl}
+          href={business.googleBusinessProfileUrl}
           target="_blank"
           rel="noopener noreferrer"
           className="text-link"

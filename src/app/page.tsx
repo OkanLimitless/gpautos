@@ -46,10 +46,7 @@ export const metadata: Metadata = {
 }
 
 export default function Home() {
-  // The FAQ copy rendered on the page is the same array we publish as FAQPage
-  // data, so the two can never drift. No aggregateRating: the Google score is
-  // 5.0 but the review count is unverified, and rating markup without one is a
-  // structured-data risk.
+  // Render the same FAQ copy in the page and its structured data.
   const jsonLd = graphStructuredData([
     webpageStructuredData('/', TITLE, DESCRIPTION),
     faqStructuredData(HOME_FAQS),

@@ -36,7 +36,7 @@ export default function ContactSection() {
               <p>Uitsluitend op afspraak</p>
               <a
                 className="text-link"
-                href={business.mapsUrl}
+                href={business.directionsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
               >

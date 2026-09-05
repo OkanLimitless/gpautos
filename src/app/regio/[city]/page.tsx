@@ -184,7 +184,7 @@ export default function CityPage({ params }: CityPageProps) {
               {business.address.postalCode} {business.address.locality}
             </p>
             <a
-              href={business.mapsUrl}
+              href={business.directionsUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-ink"

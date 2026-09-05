@@ -24,7 +24,7 @@ export default function Layout({
             <BrandMark />
             <p>Goed voor uw auto. Helder voor u.</p>
             <a
-              href={business.sameAs[1]}
+              href={business.instagramUrl}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -69,7 +69,7 @@ export default function Layout({
               <Link href="/kennisbank">Kennisbank</Link>
               <Link href="/#faq">Veelgestelde vragen</Link>
               <a
-                href={business.mapsUrl}
+                href={business.directionsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
               >
