@@ -23,9 +23,8 @@ export default function AdsLandingPage() {
       <section className="ads-hero">
         <div className="container booking-grid">
           <div className="booking-copy">
-            <p className="eyebrow">
-              <span className="red-square" />
-              UW VAG-SPECIALIST IN LICHTENVOORDE
+            <p className="eyebrow section-label">
+              VAG-specialist in Lichtenvoorde
             </p>
             <h1>
               Uw auto in
@@ -58,7 +57,7 @@ export default function AdsLandingPage() {
             </p>
           </div>
           <div id="afspraak" className="booking-card">
-            <p className="eyebrow">LATEN WE UW AFSPRAAK REGELEN</p>
+            <p className="eyebrow section-label">Terugbelverzoek</p>
             <h2>Waar helpen we u mee?</h2>
             <p>
               Uw kenteken en telefoonnummer zijn genoeg. Wij bellen u terug om
@@ -78,7 +77,9 @@ export default function AdsLandingPage() {
       <section className="section-tight">
         <div className="container flex flex-wrap items-center justify-between gap-6">
           <div>
-            <p className="eyebrow">GALILEÏSTRAAT 5, LICHTENVOORDE</p>
+            <p className="eyebrow section-label">
+              Galileïstraat 5, Lichtenvoorde
+            </p>
             <h2 className="mt-3 text-3xl">We horen graag van u.</h2>
           </div>
           <a href="#afspraak" className="btn-primary">

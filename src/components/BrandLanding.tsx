@@ -51,10 +51,7 @@ export default function BrandLanding({
       <section className="section detail-section">
         <div className="container detail-grid">
           <div>
-            <p className="eyebrow">
-              <span className="red-square" />
-              MERKKENNIS MAAKT HET VERSCHIL
-            </p>
+            <p className="eyebrow section-label">Ons specialisme</p>
             <h2>
               De techniek kennen.
               <br />
@@ -74,10 +71,7 @@ export default function BrandLanding({
       </section>
       <section className="section model-section">
         <div className="container">
-          <p className="eyebrow">
-            <span className="red-square" />
-            VAN COMPACT TOT RUIM
-          </p>
+          <p className="eyebrow section-label">Modellen</p>
           <div className="section-intro">
             <h2 className="section-heading">Uw model. Bekende techniek.</h2>
             <p className="section-lead">
@@ -96,10 +90,7 @@ export default function BrandLanding({
         <div className="container">
           <div className="section-intro">
             <div>
-              <p className="eyebrow">
-                <span className="red-square" />
-                ONZE DIENSTEN
-              </p>
+              <p className="eyebrow section-label">Diensten</p>
               <h2 className="section-heading">
                 Aandacht voor uw {brand.name}.
               </h2>

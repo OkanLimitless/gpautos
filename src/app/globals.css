@@ -2280,3 +2280,11 @@
   font-weight: 500;
   line-height: 1.16;
 }
+
+/* Simple section names keep the headings in focus. */
+.eyebrow.section-label {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+}

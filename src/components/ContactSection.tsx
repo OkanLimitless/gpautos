@@ -8,10 +8,7 @@ export default function ContactSection() {
     <section id="contact" className="section contact-section">
       <div className="container contact-grid">
         <div className="contact-copy">
-          <p className="eyebrow">
-            <span className="red-square" />
-            UW AUTO IS WELKOM
-          </p>
+          <p className="eyebrow section-label">Contact</p>
           <h2 className="section-heading">
             Even contact.
             <br />
@@ -50,7 +47,7 @@ export default function ContactSection() {
           </div>
         </div>
         <div id="afspraak" className="contact-form-panel">
-          <p className="eyebrow">LATEN WE BEGINNEN MET UW AUTO</p>
+          <p className="eyebrow section-label">Terugbelverzoek</p>
           <h3>Wij bellen u terug.</h3>
           <p>
             Een paar gegevens zijn genoeg. De afspraak stemmen we daarna

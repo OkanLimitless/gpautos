@@ -16,10 +16,7 @@ export default function ServicesSection() {
       <div className="container">
         <div className="section-intro">
           <div>
-            <p className="eyebrow">
-              <span className="red-square" />
-              01 / ONZE DIENSTEN
-            </p>
+            <p className="eyebrow section-label">Diensten</p>
             <h2 className="section-heading">
               Alles wat uw auto
               <br />

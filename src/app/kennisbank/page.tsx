@@ -55,7 +55,7 @@ export default function KnowledgeBasePage() {
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
       />
       <PageHero
-        eyebrow="DE KENNISBANK"
+        eyebrow="Kennisbank"
         title={
           <>
             Meer weten.
@@ -70,10 +70,7 @@ export default function KnowledgeBasePage() {
       />
       <section className="section detail-section">
         <div className="container">
-          <p className="eyebrow mb-6">
-            <span className="red-square" />
-            UIT DE WERKPLAATS
-          </p>
+          <p className="eyebrow mb-6 section-label">Artikelen</p>
           <div className="knowledge-grid">
             {blogPosts.map((post, i) => (
               <article key={post.slug} className="knowledge-card">
@@ -97,7 +94,7 @@ export default function KnowledgeBasePage() {
         <div className="container">
           <div className="section-intro">
             <div>
-              <p className="eyebrow">LIEVER DAT WIJ EVEN MEEKIJKEN?</p>
+              <p className="eyebrow section-label">Onze diensten</p>
               <h2 className="section-heading">We helpen u verder.</h2>
             </div>
           </div>

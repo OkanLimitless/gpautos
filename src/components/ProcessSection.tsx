@@ -21,10 +21,7 @@ export default function ProcessSection() {
       <div className="container">
         <div className="section-intro">
           <div>
-            <p className="eyebrow">
-              <span className="red-square" />
-              02 / ZO WERKEN WIJ
-            </p>
+            <p className="eyebrow section-label">Werkwijze</p>
             <h2 className="section-heading">
               Goed geregeld.
               <br />

@@ -25,10 +25,7 @@ export default function AppointmentPage() {
           </nav>
           <div className="booking-grid">
             <div className="booking-copy">
-              <p className="eyebrow">
-                <span className="red-square" />
-                TIJD VOOR UW AUTO
-              </p>
+              <p className="eyebrow section-label">Afspraak maken</p>
               <h1>
                 Goed geregeld.
                 <br />
@@ -60,7 +57,7 @@ export default function AppointmentPage() {
               </p>
             </div>
             <div className="booking-card">
-              <p className="eyebrow">UW AFSPRAAKAANVRAAG</p>
+              <p className="eyebrow section-label">Afspraakaanvraag</p>
               <h2>Waar kunnen we u mee helpen?</h2>
               <p>
                 Wij bevestigen de afspraak persoonlijk. Tot die tijd is de

@@ -17,7 +17,7 @@ export default function ReviewsSection() {
           </div>
         </div>
         <div className="review-copy">
-          <p className="eyebrow">VERTROUWEN MOET JE VERDIENEN</p>
+          <p className="eyebrow section-label">Beoordelingen</p>
           <h2>Goed werk spreekt zich rond.</h2>
           <p>Lees de ervaringen van klanten met onze werkplaats.</p>
         </div>

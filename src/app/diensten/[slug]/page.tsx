@@ -133,9 +133,8 @@ export default function ServicePage({ params }: ServicePageProps) {
       <section className="section detail-section">
         <div className="container detail-grid">
           <div>
-            <p className="eyebrow">
-              <span className="red-square" />
-              HERKENT U DIT?
+            <p className="eyebrow section-label">
+              Wanneer is deze dienst nodig?
             </p>
             <h2>
               Dan kijken we graag
@@ -150,10 +149,7 @@ export default function ServicePage({ params }: ServicePageProps) {
       <section className="section bg-[var(--bg-alt)]">
         <div className="container detail-grid">
           <div>
-            <p className="eyebrow">
-              <span className="red-square" />
-              ONZE AANPAK
-            </p>
+            <p className="eyebrow section-label">Onze aanpak</p>
             <h2>
               Weten wat nodig is.
               <br />
@@ -172,10 +168,7 @@ export default function ServicePage({ params }: ServicePageProps) {
         <div className="container">
           <div className="section-intro">
             <div>
-              <p className="eyebrow">
-                <span className="red-square" />
-                OOK GOED OM TE WETEN
-              </p>
+              <p className="eyebrow section-label">Gerelateerde diensten</p>
               <h2 className="section-heading">Meer voor uw auto.</h2>
             </div>
             <p className="section-lead">

@@ -33,10 +33,7 @@ export function PageHero({
         </nav>
         <div className="page-hero-grid">
           <div>
-            <p className="eyebrow">
-              <span className="red-square" />
-              {eyebrow}
-            </p>
+            <p className="eyebrow section-label">{eyebrow}</p>
             <h1>{title}</h1>
             <p className="section-lead">{description}</p>
             <div className="hero-actions">

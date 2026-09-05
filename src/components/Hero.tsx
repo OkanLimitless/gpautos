@@ -16,9 +16,8 @@ export default function Hero() {
         />
         <div className="hero-shade" />
         <div className="hero-content">
-          <p className="eyebrow rise">
-            <span className="red-square" />
-            VAG-SPECIALIST IN LICHTENVOORDE
+          <p className="eyebrow rise section-label">
+            VAG-specialist in Lichtenvoorde
           </p>
           <h1 id="hero-title" className="rise">
             Goed voor

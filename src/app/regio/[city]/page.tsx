@@ -136,10 +136,7 @@ export default function CityPage({ params }: CityPageProps) {
       <section className="section detail-section">
         <div className="container detail-grid">
           <div>
-            <p className="eyebrow">
-              <span className="red-square" />
-              THUIS IN DE ACHTERHOEK
-            </p>
+            <p className="eyebrow section-label">Garage in de Achterhoek</p>
             <h2>
               Een vertrouwd adres.
               <br />
@@ -154,10 +151,7 @@ export default function CityPage({ params }: CityPageProps) {
         <div className="container">
           <div className="section-intro">
             <div>
-              <p className="eyebrow">
-                <span className="red-square" />
-                WAAR WE MEE HELPEN
-              </p>
+              <p className="eyebrow section-label">Diensten</p>
               <h2 className="section-heading">Goed voor uw auto.</h2>
             </div>
             <p className="section-lead">
@@ -171,10 +165,7 @@ export default function CityPage({ params }: CityPageProps) {
       <section className="section">
         <div className="container detail-grid">
           <div>
-            <p className="eyebrow">
-              <span className="red-square" />
-              DE WEG NAAR ONZE WERKPLAATS
-            </p>
+            <p className="eyebrow section-label">Bereikbaarheid</p>
             <h2>
               We zien u graag
               <br />
@@ -208,7 +199,7 @@ export default function CityPage({ params }: CityPageProps) {
       <ContactSection />
       <section className="section-tight">
         <div className="container">
-          <p className="eyebrow">OOK VANUIT DEZE PLAATSEN BENT U WELKOM</p>
+          <p className="eyebrow section-label">In de buurt</p>
           <div className="city-links">
             {nearbyCities.map((nearby) => (
               <Link key={nearby.slug} href={`/regio/${nearby.slug}`}>

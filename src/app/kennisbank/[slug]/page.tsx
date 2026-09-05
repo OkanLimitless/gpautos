@@ -170,9 +170,8 @@ export default function KnowledgeArticlePage({
             <span aria-current="page">Artikel</span>
           </nav>
           <div className="max-w-4xl">
-            <p className="eyebrow">
-              <span className="red-square" />
-              KENNISBANK / {post.readingTime}
+            <p className="eyebrow section-label">
+              Kennisbank · {post.readingTime}
             </p>
             <h1>{post.title}</h1>
             <p className="section-lead">{post.excerpt}</p>
@@ -218,7 +217,7 @@ export default function KnowledgeArticlePage({
       </section>
       <section className="section-tight">
         <div className="container">
-          <p className="eyebrow mb-4">VERDER LEZEN</p>
+          <p className="eyebrow mb-4 section-label">Verder lezen</p>
           {relatedArticles.map((related) => (
             <Link
               className="text-link"

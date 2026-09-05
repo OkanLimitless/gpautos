@@ -28,10 +28,7 @@ export default function AboutSection() {
           </div>
         </div>
         <div className="about-copy">
-          <p className="eyebrow">
-            <span className="red-square" />
-            03 / HET GEZICHT ACHTER DE GARAGE
-          </p>
+          <p className="eyebrow section-label">Over ons</p>
           <h2 className="section-heading">
             Liefde voor techniek.
             <br />

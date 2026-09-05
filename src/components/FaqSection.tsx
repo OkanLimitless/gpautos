@@ -93,10 +93,7 @@ export default function FaqSection({
     <section id="faq" className="section">
       <div className="container faq-grid">
         <div>
-          <p className="eyebrow">
-            <span className="red-square" />
-            VEELGESTELDE VRAGEN
-          </p>
+          <p className="eyebrow section-label">Veelgestelde vragen</p>
           <h2 className="section-heading">{title}</h2>
           <p className="section-lead">
             Liever even overleggen? We denken graag met u mee.
