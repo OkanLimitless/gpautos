@@ -1,5 +1,9 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Layout from '@/components/Layout'
+import FaqSection from '@/components/FaqSection'
+import { ServiceCards } from '@/components/LandingSections'
+import { ArrowUpRight } from '@/components/Icons'
 import { notFound } from 'next/navigation'
 import { blogPosts, getBlogPostBySlug, type BlogBlock } from '@/lib/blog-data'
 import { getServiceBySlug, type Service as SeoService } from '@/lib/seo-data'
@@ -26,7 +30,9 @@ export async function generateStaticParams() {
   }))
 }
 
-export async function generateMetadata({ params }: KnowledgeArticlePageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: KnowledgeArticlePageProps): Promise<Metadata> {
   const post = getBlogPostBySlug(params.slug)
   if (!post) return {}
 
@@ -64,57 +70,53 @@ function formatDate(date: string) {
 function renderBlock(block: BlogBlock) {
   switch (block.type) {
     case 'lead':
-      return <p className="text-xl leading-8 text-white/80">{block.text}</p>
+      return <p className="text-lg">{block.text}</p>
     case 'paragraph':
-      return <p className="text-base leading-8 text-white/70">{block.text}</p>
+      return <p>{block.text}</p>
     case 'bullets':
       return (
-        <section className="space-y-4">
-          {block.title ? <h2 className="text-2xl font-semibold text-white">{block.title}</h2> : null}
-          <ul className="space-y-3 rounded-2xl border border-white/10 bg-white/5 p-6 text-white/75">
+        <section>
+          {block.title && <h2>{block.title}</h2>}
+          <ul>
             {block.items.map((item) => (
-              <li key={item} className="flex gap-3">
-                <span className="mt-2 h-2 w-2 rounded-full bg-primary" />
-                <span>{item}</span>
-              </li>
+              <li key={item}>{item}</li>
             ))}
           </ul>
         </section>
       )
     case 'steps':
       return (
-        <section className="space-y-4">
-          {block.title ? <h2 className="text-2xl font-semibold text-white">{block.title}</h2> : null}
-          <div className="grid gap-4 md:grid-cols-3">
-            {block.items.map((item, index) => (
-              <div key={item.title} className="rounded-2xl border border-white/10 bg-zinc-900 p-5">
-                <div className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">
-                  Stap {index + 1}
-                </div>
-                <h3 className="mt-3 text-lg font-semibold">{item.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-white/70">{item.text}</p>
-              </div>
-            ))}
-          </div>
+        <section>
+          {block.title && <h2>{block.title}</h2>}
+          {block.items.map((item, i) => (
+            <div key={item.title}>
+              <h3>
+                {i + 1}. {item.title}
+              </h3>
+              <p>{item.text}</p>
+            </div>
+          ))}
         </section>
       )
     case 'callout':
       return (
-        <section className="rounded-2xl border border-primary/20 bg-primary/10 p-6">
-          <h2 className="text-2xl font-semibold text-white">{block.title}</h2>
-          <p className="mt-3 max-w-3xl text-white/75">{block.text}</p>
+        <section className="my-8 border-l-2 border-[var(--accent)] bg-[var(--bg-alt)] p-6">
+          <h2 className="!mt-0">{block.title}</h2>
+          <p>{block.text}</p>
         </section>
       )
-    default:
-      return null
   }
 }
 
-export default function KnowledgeArticlePage({ params }: KnowledgeArticlePageProps) {
+export default function KnowledgeArticlePage({
+  params,
+}: KnowledgeArticlePageProps) {
   const post = getBlogPostBySlug(params.slug)
   if (!post) notFound()
 
-  const relatedArticles = blogPosts.filter((article) => article.slug !== post.slug).slice(0, 2)
+  const relatedArticles = blogPosts
+    .filter((article) => article.slug !== post.slug)
+    .slice(0, 2)
   const relatedServices = post.relatedServices
     .map((slug) => getServiceBySlug(slug))
     .filter((service): service is SeoService => Boolean(service))
@@ -123,27 +125,27 @@ export default function KnowledgeArticlePage({ params }: KnowledgeArticlePagePro
   const jsonLd = graphStructuredData([
     webpageStructuredData(pagePath, post.title, post.metaDescription),
     {
-    '@type': 'Article',
-    '@id': `${site.url}${pagePath}#article`,
-    headline: post.title,
-    description: post.metaDescription,
-    image: absoluteUrl(site.defaultImage),
-    datePublished: post.publishedAt,
-    dateModified: post.updatedAt,
-    author: {
-      '@type': 'Organization',
-      name: "GP Auto's",
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: "GP Auto's",
-      logo: {
-        '@type': 'ImageObject',
-        url: absoluteUrl(site.logo),
+      '@type': 'Article',
+      '@id': `${site.url}${pagePath}#article`,
+      headline: post.title,
+      description: post.metaDescription,
+      image: absoluteUrl(site.defaultImage),
+      datePublished: post.publishedAt,
+      dateModified: post.updatedAt,
+      author: {
+        '@type': 'Organization',
+        name: "GP Auto's",
       },
+      publisher: {
+        '@type': 'Organization',
+        name: "GP Auto's",
+        logo: {
+          '@type': 'ImageObject',
+          url: absoluteUrl(site.logo),
+        },
+      },
+      mainEntityOfPage: `${site.url}${pagePath}`,
     },
-    mainEntityOfPage: `${site.url}${pagePath}`,
-  },
     breadcrumbStructuredData([
       { name: 'Home', path: '/' },
       { name: 'Kennisbank', path: '/kennisbank' },
@@ -153,136 +155,81 @@ export default function KnowledgeArticlePage({ params }: KnowledgeArticlePagePro
   ])
 
   return (
-    <main className="min-h-screen bg-zinc-950 text-white">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }} />
-
-      <section className="border-b border-white/10 bg-gradient-to-b from-zinc-900 to-zinc-950">
-        <div className="container mx-auto px-4 py-16 md:py-20">
+    <Layout>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
+      />
+      <section className="page-hero">
+        <div className="container">
+          <nav className="breadcrumbs" aria-label="Broodkruimel">
+            <Link href="/">Home</Link>
+            <span>/</span>
+            <Link href="/kennisbank">Kennisbank</Link>
+            <span>/</span>
+            <span aria-current="page">Artikel</span>
+          </nav>
           <div className="max-w-4xl">
-            <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.2em] text-white/50">
-              <Link href="/kennisbank" className="hover:text-white">
-                Kennisbank
-              </Link>
-              <span className="h-1 w-1 rounded-full bg-white/30" />
-              <span>{post.focusArea}</span>
-              <span className="h-1 w-1 rounded-full bg-white/30" />
-              <span>{post.readingTime}</span>
-            </div>
-            <h1 className="mt-5 text-4xl font-bebas uppercase leading-none tracking-tight sm:text-5xl md:text-7xl">
-              {post.title}
-            </h1>
-            <p className="mt-6 max-w-3xl text-lg leading-8 text-white/70 md:text-xl">
-              {post.metaDescription}
+            <p className="eyebrow">
+              <span className="red-square" />
+              KENNISBANK / {post.readingTime}
             </p>
-            <div className="mt-8 flex flex-wrap items-center gap-4 text-sm text-white/50">
-              <span>Geplaatst op {formatDate(post.publishedAt)}</span>
-              <span className="h-1 w-1 rounded-full bg-white/30" />
-              <span>Bijgewerkt op {formatDate(post.updatedAt)}</span>
-              <span className="h-1 w-1 rounded-full bg-white/30" />
-              <span>Focus: {post.focusKeyword}</span>
-            </div>
+            <h1>{post.title}</h1>
+            <p className="section-lead">{post.excerpt}</p>
+            <p className="mt-6 text-xs text-[var(--text-secondary)]">
+              GP Auto&apos;s · Bijgewerkt op{' '}
+              <time dateTime={post.updatedAt}>
+                {formatDate(post.updatedAt)}
+              </time>
+            </p>
           </div>
         </div>
       </section>
-
-      <section className="py-16 md:py-20">
-        <div className="container mx-auto px-4">
-          <div className="grid gap-10 lg:grid-cols-[minmax(0,1.5fr)_minmax(280px,0.75fr)]">
-            <article className="space-y-10">
-              {post.blocks.map((block, index) => (
-                <div key={`${post.slug}-${index}`}>{renderBlock(block)}</div>
-              ))}
-
-              <section className="rounded-2xl border border-white/10 bg-white/5 p-6">
-                <h2 className="text-2xl font-semibold">Veelgestelde vragen</h2>
-                <div className="mt-5 space-y-5">
-                  {post.faqs.map((faq) => (
-                    <div key={faq.question} className="rounded-xl border border-white/10 bg-zinc-900 p-5">
-                      <h3 className="text-lg font-semibold">{faq.question}</h3>
-                      <p className="mt-3 text-white/70 leading-7">{faq.answer}</p>
-                    </div>
-                  ))}
-                </div>
-              </section>
-            </article>
-
-            <aside className="space-y-6">
-              <div className="rounded-2xl border border-primary/20 bg-primary/10 p-6">
-                <h2 className="text-xl font-semibold">Snel hulp nodig?</h2>
-                <p className="mt-3 text-white/75">
-                  Heeft uw auto een storing, remprobleem of onderhoud nodig? Dan kunt u direct een afspraak
-                  plannen.
-                </p>
-                <Link
-                  href="/afspraak"
-                  className="mt-5 inline-flex rounded-lg bg-primary px-5 py-3 font-semibold text-white transition-colors hover:bg-primary/90"
-                >
-                  Afspraak maken
-                </Link>
-              </div>
-
-              <div className="rounded-2xl border border-white/10 bg-zinc-900 p-6">
-                <h2 className="text-xl font-semibold">Gerelateerde diensten</h2>
-                <div className="mt-4 space-y-3">
-                  {relatedServices.map((service) => (
-                    <Link
-                      key={service.slug}
-                      href={`/diensten/${service.slug}`}
-                      className="block rounded-xl border border-white/10 bg-black/20 px-4 py-3 transition-colors hover:border-primary/30 hover:bg-white/5"
-                    >
-                      <span className="block text-sm text-white/50">{service.shortDescription}</span>
-                      <span className="mt-1 block font-medium">{service.name}</span>
-                    </Link>
-                  ))}
-                </div>
-              </div>
-
-              <div className="rounded-2xl border border-white/10 bg-zinc-900 p-6">
-                <h2 className="text-xl font-semibold">Meer lezen</h2>
-                <div className="mt-4 space-y-3">
-                  {relatedArticles.map((article) => (
-                    <Link
-                      key={article.slug}
-                      href={`/kennisbank/${article.slug}`}
-                      className="block rounded-xl border border-white/10 bg-black/20 px-4 py-3 transition-colors hover:border-primary/30 hover:bg-white/5"
-                    >
-                      <span className="block text-sm text-white/50">{article.focusKeyword}</span>
-                      <span className="mt-1 block font-medium">{article.title}</span>
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            </aside>
-          </div>
+      <section className="section detail-section">
+        <div className="container article-layout">
+          <article className="article-body">
+            {post.blocks.map((block, i) => (
+              <div key={i}>{renderBlock(block)}</div>
+            ))}
+          </article>
+          <aside className="article-sidebar">
+            <h2>Even overleggen?</h2>
+            <p>
+              Heeft u een vraag over uw eigen auto? Geef uw kenteken en klacht
+              door. We denken met u mee.
+            </p>
+            <Link href="/afspraak" className="btn-primary">
+              Plan uw afspraak <ArrowUpRight />
+            </Link>
+            <a href={`tel:${business.phone}`} className="text-link mt-3">
+              Of bel {business.phoneDisplay}
+            </a>
+          </aside>
         </div>
       </section>
-
-      <section className="border-t border-white/10 bg-zinc-900/70 py-16">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col gap-4 rounded-2xl border border-white/10 bg-black/20 p-6 md:flex-row md:items-center md:justify-between">
-            <div>
-              <h2 className="text-2xl font-semibold">Wilt u dat we meekijken?</h2>
-              <p className="mt-2 text-white/70">
-                Voor onderhoud, diagnose en reparatie in Lichtenvoorde kunt u direct contact opnemen.
-              </p>
-            </div>
-            <div className="flex flex-col gap-3 sm:flex-row">
-              <Link
-                href="/afspraak"
-                className="inline-flex items-center justify-center rounded-lg bg-primary px-5 py-3 font-semibold text-white transition-colors hover:bg-primary/90"
-              >
-                Naar afspraak
-              </Link>
-              <a
-                href={`tel:${business.phone}`}
-                className="inline-flex items-center justify-center rounded-lg border border-white/15 px-5 py-3 font-semibold text-white transition-colors hover:bg-white/5"
-              >
-                {business.phoneDisplay}
-              </a>
-            </div>
+      <FaqSection items={post.faqs} />
+      <section className="section bg-[var(--bg-alt)]">
+        <div className="container">
+          <div className="section-intro">
+            <h2 className="section-heading">Passende diensten.</h2>
           </div>
+          <ServiceCards items={relatedServices} />
         </div>
       </section>
-    </main>
+      <section className="section-tight">
+        <div className="container">
+          <p className="eyebrow mb-4">VERDER LEZEN</p>
+          {relatedArticles.map((related) => (
+            <Link
+              className="text-link"
+              href={`/kennisbank/${related.slug}`}
+              key={related.slug}
+            >
+              {related.title} <ArrowUpRight />
+            </Link>
+          ))}
+        </div>
+      </section>
+    </Layout>
   )
 }

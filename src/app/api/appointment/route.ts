@@ -5,12 +5,29 @@ export async function POST(request: Request) {
   try {
     // Parse the request body
     const body = await request.json()
-    const { kenteken, name, email, phone, description, date, requestType, ...rest } = body as Record<string, any>
+    const {
+      kenteken,
+      name,
+      email,
+      phone,
+      description,
+      date,
+      requestType,
+      ...rest
+    } = body as Record<string, any>
     const isCallbackRequest = requestType === 'callback'
 
-    if (!kenteken || !phone || (!isCallbackRequest && (!name || !email || !description || !date))) {
+    if (
+      !kenteken ||
+      !phone ||
+      (!isCallbackRequest && (!name || !email || !description || !date))
+    ) {
       return NextResponse.json(
-        { error: isCallbackRequest ? 'Kenteken en telefoonnummer zijn verplicht' : 'Alle velden zijn verplicht' },
+        {
+          error: isCallbackRequest
+            ? 'Kenteken en telefoonnummer zijn verplicht'
+            : 'Alle velden zijn verplicht',
+        },
         { status: 400 }
       )
     }
@@ -18,15 +35,18 @@ export async function POST(request: Request) {
     // Format the date
     const formattedDate = date
       ? new Date(date).toLocaleDateString('nl-NL', {
+          timeZone: 'Europe/Amsterdam',
           weekday: 'long',
           year: 'numeric',
           month: 'long',
-          day: 'numeric'
+          day: 'numeric',
         })
       : 'Nog af te stemmen'
 
     // Optional marketing attribution
-    const attributionEntries = Object.entries(rest).filter(([_, v]) => typeof v === 'string' && v)
+    const attributionEntries = Object.entries(rest).filter(
+      ([_, v]) => typeof v === 'string' && v
+    )
     const attributionHtml = attributionEntries.length
       ? `
         <hr />
@@ -42,8 +62,8 @@ export async function POST(request: Request) {
       service: 'gmail',
       auth: {
         user: process.env.EMAIL_USER || 'okangalatasaray001@gmail.com',
-        pass: process.env.EMAIL_PASSWORD
-      }
+        pass: process.env.EMAIL_PASSWORD,
+      },
     })
 
     // Email content
@@ -61,7 +81,7 @@ export async function POST(request: Request) {
         <p><strong>Omschrijving:</strong></p>
         <p>${String(description || 'Geen extra omschrijving').replace(/\n/g, '<br>')}</p>
         ${attributionHtml}
-      `
+      `,
     }
 
     // Send email
@@ -75,4 +95,4 @@ export async function POST(request: Request) {
       { status: 500 }
     )
   }
-} 
+}

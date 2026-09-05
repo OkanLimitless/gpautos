@@ -1,387 +1,395 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useId, useRef, useState } from 'react'
 import type { FormEvent } from 'react'
 import DatePicker, { registerLocale } from 'react-datepicker'
 import { nl } from 'date-fns/locale'
+import { format } from 'date-fns'
 import 'react-datepicker/dist/react-datepicker.css'
-import toast from 'react-hot-toast'
+import { ArrowUpRight, Check } from './Icons'
+import { business } from '@/lib/site-data'
 
-// Register Dutch locale
 registerLocale('nl', nl)
-
-const WORK_TYPES = [
-  'Onderhoud',
-  'Diagnose',
-  'Remmen',
-  'Coderen',
-] as const
+const WORK_TYPES = ['Onderhoud', 'Diagnose', 'Remmen', 'Coderen'] as const
+const EMPTY_FORM = {
+  kenteken: '',
+  name: '',
+  email: '',
+  phone: '',
+  description: '',
+}
 
 interface AppointmentFormProps {
   variant?: 'dark' | 'light' | 'home' | 'embedded'
   minDateOffsetDays?: number
-  autoFocusNext?: boolean
   formId?: string | null
 }
 
 export default function AppointmentForm({
-  variant = 'dark',
-  minDateOffsetDays = 0,
-  autoFocusNext = false,
+  variant = 'embedded',
+  minDateOffsetDays = 1,
   formId = 'afspraak',
 }: AppointmentFormProps) {
-  const isLight = variant === 'light'
-  const isHome = variant === 'home'
-  const isEmbedded = variant === 'embedded'
-
-  const containerClasses = isHome
-    ? 'space-y-5'
-    : isEmbedded
-      ? 'space-y-5'
-    : isLight
-      ? 'space-y-5 bg-white p-8 rounded-xl border border-gray-200 shadow-sm'
-      : 'space-y-5 bg-gray-800 p-8 rounded-xl'
-
-  const labelClasses = 'mb-1.5 block text-sm font-semibold text-gray-800'
-
-  const inputBase = 'mt-1 block w-full rounded-xl text-base transition-colors sm:text-sm'
-  const inputClasses = `${inputBase} border border-gray-200 bg-gray-50 px-4 py-3.5 text-gray-950 placeholder:text-gray-400 focus:border-red-500 focus:ring-2 focus:ring-red-500/10 focus:bg-white`
-  const homeInputClasses = `${inputBase} border border-gray-200 bg-white px-4 py-4 text-gray-950 placeholder:text-gray-400 shadow-[0_1px_0_rgba(17,24,39,0.03)] focus:border-red-500 focus:ring-2 focus:ring-red-500/10`
-
-  const fieldClasses = isHome ? homeInputClasses : inputClasses
-  const textareaClasses = fieldClasses
-
-  const [selectedDate, setSelectedDate] = useState<Date | null>(null)
+  const callback = variant === 'home'
+  const prefix = useId()
+  const id = (field: string) => `${prefix}-${field}`
+  const [form, setForm] = useState(EMPTY_FORM)
+  const [workType, setWorkType] = useState('')
+  const [date, setDate] = useState<Date | null>(null)
   const [loading, setLoading] = useState(false)
-  const [errors, setErrors] = useState<{ [key: string]: string | undefined }>({})
-  const [formData, setFormData] = useState({
-    kenteken: '',
-    name: '',
-    email: '',
-    phone: '',
-    description: '',
+  const [submitted, setSubmitted] = useState(false)
+  const [error, setError] = useState('')
+  const [dateError, setDateError] = useState('')
+  const [marketing, setMarketing] = useState<Record<string, string>>({})
+  const successHeading = useRef<HTMLHeadingElement>(null)
+  const [minDate] = useState(() => {
+    const earliest = new Date()
+    earliest.setDate(earliest.getDate() + minDateOffsetDays)
+    earliest.setHours(0, 0, 0, 0)
+    return earliest
   })
-  const [selectedWorkType, setSelectedWorkType] = useState<string>('')
-
-  // Marketing attribution capture (for Ads)
-  const [marketing, setMarketing] = useState<{ [key: string]: string | undefined }>({})
 
   useEffect(() => {
-    try {
-      const params = new URLSearchParams(window.location.search)
-      const attribution: { [key: string]: string | undefined } = {
-        source: 'ads-landing',
-        utmSource: params.get('utm_source') || undefined,
-        utmMedium: params.get('utm_medium') || undefined,
-        utmCampaign: params.get('utm_campaign') || undefined,
-        utmTerm: params.get('utm_term') || undefined,
-        utmContent: params.get('utm_content') || undefined,
-        gclid: params.get('gclid') || undefined,
-      }
-      setMarketing(attribution)
-    } catch {
-      // ignore
+    const params = new URLSearchParams(window.location.search)
+    const source =
+      window.location.pathname === '/ads' ? 'ads-landing' : 'website'
+    const data: Record<string, string> = {
+      source,
+      landingPage: window.location.pathname,
     }
+    for (const [query, key] of [
+      ['utm_source', 'utmSource'],
+      ['utm_medium', 'utmMedium'],
+      ['utm_campaign', 'utmCampaign'],
+      ['utm_term', 'utmTerm'],
+      ['utm_content', 'utmContent'],
+      ['gclid', 'gclid'],
+    ]) {
+      const value = params.get(query)
+      if (value) data[key] = value
+    }
+    setMarketing(data)
+    const service = params.get('dienst')
+    if (WORK_TYPES.some((type) => type === service)) setWorkType(service!)
   }, [])
 
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault()
-    const newErrors: { [key: string]: string | undefined } = {}
-    if (!formData.kenteken) newErrors.kenteken = 'Vul uw kenteken in'
-    if (!formData.phone) newErrors.phone = 'Vul uw telefoonnummer in'
-    if (!isHome) {
-      if (!selectedDate) newErrors.date = 'Selecteer een datum'
-      if (!formData.name) newErrors.name = 'Vul uw naam in'
-      if (!formData.email) newErrors.email = 'Vul uw e-mail in'
-      if (!formData.description) newErrors.description = 'Beschrijf de werkzaamheden'
-    }
-    setErrors(newErrors)
-    if (Object.keys(newErrors).length > 0) {
-      toast.error('Controleer de invoer en probeer opnieuw')
+  useEffect(() => {
+    if (submitted) successHeading.current?.focus()
+  }, [submitted])
+  const update = (field: keyof typeof form, value: string) =>
+    setForm((current) => ({ ...current, [field]: value }))
+  const label = 'mb-2 block font-semibold text-[var(--text)]'
+  const input =
+    'block w-full min-h-[48px] border border-[var(--border)] bg-white px-3 py-3 text-[var(--text)] placeholder:text-[#808577] focus:border-[var(--accent)]'
+
+  async function submit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+    if (loading) return
+    setError('')
+    setDateError('')
+    if (!callback && (!date || date < minDate)) {
+      setDateError('Kies een datum vanaf morgen, of bel ons om te overleggen.')
+      document.getElementById(id('date'))?.focus()
       return
     }
-
+    if (
+      !form.kenteken.trim() ||
+      !form.phone.trim() ||
+      (!callback && (!form.name.trim() || !form.description.trim()))
+    ) {
+      setError(
+        'Vul de verplichte velden in. Alleen spaties zijn niet voldoende.'
+      )
+      return
+    }
+    setLoading(true)
     try {
-      setLoading(true)
       const response = await fetch('/api/appointment', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          kenteken: formData.kenteken,
-          name: formData.name || 'Niet opgegeven',
-          email: formData.email || '',
-          phone: formData.phone,
+          ...form,
+          kenteken: form.kenteken.trim(),
+          phone: form.phone.trim(),
+          name: form.name.trim() || 'Niet opgegeven',
           description: [
-            isHome ? 'Homepage terugbelverzoek' : '',
-            selectedWorkType ? `Werksoort: ${selectedWorkType}` : '',
-            formData.description || '',
-          ].filter(Boolean).join('\n'),
-          date: selectedDate,
-          requestType: isHome ? 'callback' : 'appointment',
+            callback ? 'Terugbelverzoek' : '',
+            workType ? `Werksoort: ${workType}` : '',
+            form.description.trim(),
+          ]
+            .filter(Boolean)
+            .join('\n'),
+          // A requested day is a calendar date, not a timezone-dependent instant.
+          date: date ? format(date, 'yyyy-MM-dd') : null,
+          requestType: callback ? 'callback' : 'appointment',
           ...marketing,
         }),
       })
-
-      const data = await response.json()
-
       if (!response.ok) {
-        throw new Error(data.error || 'Er is iets misgegaan')
+        const data = await response.json().catch(() => null)
+        throw new Error(
+          data?.error ||
+            'Verzenden is niet gelukt. Probeer het opnieuw of bel ons.'
+        )
       }
-
-      toast.success('Bedankt! We nemen zo spoedig mogelijk contact met u op.')
-
-      // Analytics hook for GTM if present
-      if (typeof window !== 'undefined' && (window as any).dataLayer) {
-        ;(window as any).dataLayer.push({ event: 'lead_submit', form: 'ads_landing' })
+      setSubmitted(true)
+      const analytics = window as Window & {
+        dataLayer?: Record<string, string>[]
+        gtag_report_conversion?: () => void
       }
-      // Google Ads conversion
-      if (typeof window !== 'undefined' && typeof (window as any).gtag_report_conversion === 'function') {
-        ;(window as any).gtag_report_conversion()
-      }
-
-      setFormData({
-        kenteken: '',
-        name: '',
-        email: '',
-        phone: '',
-        description: '',
+      analytics.dataLayer?.push({
+        event: 'lead_submit',
+        form: callback ? 'callback' : 'appointment',
+        source: marketing.source,
       })
-      setSelectedWorkType('')
-      setSelectedDate(null)
-      setErrors({})
-    } catch (error) {
-      console.error('Error submitting appointment:', error)
-      toast.error(error instanceof Error ? error.message : 'Er is iets misgegaan')
+      analytics.gtag_report_conversion?.()
+    } catch (caught) {
+      setError(
+        caught instanceof Error
+          ? caught.message
+          : 'Geen verbinding. Probeer het opnieuw of bel ons.'
+      )
     } finally {
       setLoading(false)
     }
   }
 
+  if (submitted)
+    return (
+      <div id={formId ?? undefined} className="form-success" role="status">
+        <span className="success-check">
+          <Check />
+        </span>
+        <h3 ref={successHeading} tabIndex={-1}>
+          Bedankt, we hebben uw {callback ? 'terugbelverzoek' : 'aanvraag'}{' '}
+          ontvangen.
+        </h3>
+        <p>
+          Wij nemen contact met u op om de werkzaamheden en een geschikt moment
+          te bespreken. Uw afspraak is definitief zodra we die persoonlijk
+          hebben bevestigd.
+        </p>
+        <button
+          className="text-link"
+          onClick={() => {
+            setSubmitted(false)
+            setForm(EMPTY_FORM)
+            setDate(null)
+            setWorkType('')
+          }}
+        >
+          Nog een aanvraag doen <ArrowUpRight />
+        </button>
+      </div>
+    )
+
   return (
-    <form onSubmit={handleSubmit} className={containerClasses} id={formId ?? undefined}>
-      <div className="space-y-4">
+    <form
+      id={formId ?? undefined}
+      onSubmit={submit}
+      className="appointment-form space-y-5"
+      aria-busy={loading}
+    >
+      <fieldset disabled={loading} className="space-y-5">
+        <legend className="sr-only">
+          {callback ? 'Uw terugbelverzoek' : 'Uw afspraakaanvraag'}
+        </legend>
+        <fieldset>
+          <legend className={label}>Waar kunnen we u mee helpen?</legend>
+          <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+            {WORK_TYPES.map((type) => (
+              <button
+                key={type}
+                type="button"
+                className={`work-type border px-2 ${workType === type ? 'border-[var(--accent)] bg-[var(--accent)] text-white' : 'border-[var(--border)] bg-white text-[var(--text)] hover:border-[var(--accent)]'}`}
+                aria-pressed={workType === type}
+                onClick={() => setWorkType(workType === type ? '' : type)}
+              >
+                {type}
+              </button>
+            ))}
+          </div>
+        </fieldset>
         <div>
-          <span className={labelClasses}>Waarvoor komt u langs?</span>
-          <div className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-4">
-            {WORK_TYPES.map((type) => {
-              const isSelected = selectedWorkType === type
-              return (
-                <button
-                  key={type}
-                  type="button"
-                  onClick={() => {
-                    setSelectedWorkType(type)
-                  }}
-                  className={`min-h-[46px] rounded-xl border px-3 text-sm font-semibold transition-colors ${
-                    isSelected
-                      ? 'border-red-600 bg-red-600 text-white'
-                      : 'border-gray-200 bg-white text-gray-700 hover:border-gray-300 hover:bg-gray-50'
-                  }`}
-                >
-                  {type}
-                </button>
-              )
-            })}
+          <label className={label} htmlFor={id('kenteken')}>
+            Uw kenteken{' '}
+            <span className="font-normal text-[var(--text-secondary)]">
+              (verplicht)
+            </span>
+          </label>
+          <div className="license-plate flex overflow-hidden border focus-within:ring-2 focus-within:ring-[var(--accent)]">
+            <div
+              aria-hidden="true"
+              className="flex w-10 shrink-0 flex-col items-center justify-center bg-[#274c9a] text-white"
+            >
+              <span className="text-[10px] text-[#ffe373]">✦</span>
+              <span className="text-[10px] font-semibold">NL</span>
+            </div>
+            <input
+              id={id('kenteken')}
+              name="kenteken"
+              required
+              maxLength={15}
+              autoCapitalize="characters"
+              autoComplete="off"
+              spellCheck={false}
+              placeholder="AB-12-CD"
+              value={form.kenteken}
+              onChange={(e) => update('kenteken', e.target.value.toUpperCase())}
+              className="min-h-[54px] w-full min-w-0 border-0 px-4 py-3 uppercase"
+            />
           </div>
         </div>
-
-        <div>
-          <label htmlFor="appointment-kenteken" className={labelClasses}>
-            Kenteken
-          </label>
-          <div className={isHome ? 'mt-1 flex overflow-hidden rounded-xl border border-gray-200 bg-white shadow-[0_1px_0_rgba(17,24,39,0.03)] focus-within:border-red-500 focus-within:ring-2 focus-within:ring-red-500/10' : ''}>
-            {isHome && (
-              <div className="flex w-12 shrink-0 flex-col items-center justify-center bg-blue-700 text-[10px] font-bold leading-none text-white">
-                <span className="text-[9px]">EU</span>
-                <span>NL</span>
-              </div>
-            )}
-            <input
-              id="appointment-kenteken"
-              type="text"
-              required
-              autoFocus={variant !== 'home' && variant !== 'embedded'}
-              placeholder="Bijv. AB-12-CD"
-              className={isHome ? 'block min-h-[56px] w-full border-0 bg-white px-4 text-base font-semibold uppercase tracking-wide text-gray-950 placeholder:font-normal placeholder:normal-case placeholder:tracking-normal placeholder:text-gray-400 focus:ring-0' : fieldClasses}
-              value={formData.kenteken}
-              onChange={(e) => {
-                const val = e.target.value.toUpperCase()
-                setFormData({ ...formData, kenteken: val })
-                if (autoFocusNext && val.replace(/[^A-Z0-9]/g, '').length >= 6) {
-                  const dateEl = document.querySelector('input[name="date"]') as HTMLInputElement | null
-                  if (dateEl) dateEl.focus()
-                }
-              }}
-            />
-          </div>
-          {errors.kenteken && <p className="mt-1 text-xs text-red-600">{errors.kenteken}</p>}
-        </div>
-
-        {isHome && (
-          <div className="grid gap-4 sm:grid-cols-2">
-            <div>
-              <label htmlFor="appointment-phone" className={labelClasses}>
-                Telefoon
-              </label>
-              <input
-                id="appointment-phone"
-                type="tel"
-                required
-                inputMode="tel"
-                className={fieldClasses}
-                value={formData.phone}
-                onChange={(e) => {
-                  let v = e.target.value.replace(/\s+/g, '')
-                  if (v.startsWith('31') && !v.startsWith('+31')) v = `+31${v.slice(2)}`
-                  setFormData({ ...formData, phone: v })
-                }}
-                placeholder="06 12345678"
-              />
-              {errors.phone && <p className="mt-1 text-xs text-red-600">{errors.phone}</p>}
-            </div>
-            <div>
-              <label htmlFor="appointment-name" className={labelClasses}>
-                Naam <span className="font-normal text-gray-400">(optioneel)</span>
-              </label>
-              <input
-                id="appointment-name"
-                type="text"
-                className={fieldClasses}
-                value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                placeholder="Uw naam"
-              />
-            </div>
-          </div>
-        )}
-
-        {isHome && (
+        <div className="grid gap-4 sm:grid-cols-2">
           <div>
-            <label htmlFor="appointment-description" className={labelClasses}>
-              Klacht of vraag <span className="font-normal text-gray-400">(optioneel)</span>
-            </label>
-            <textarea
-              id="appointment-description"
-              rows={3}
-              className={textareaClasses}
-              value={formData.description}
-              onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-              placeholder="Bijv. onderhoudsbeurt, storing, codering of remgeluid"
-            />
-          </div>
-        )}
-
-        {!isHome && <div>
-          <label htmlFor="appointment-date" className={labelClasses}>
-            Gewenste datum
-          </label>
-          <div className="home-datepicker-wrap">
-            <DatePicker
-              selected={selectedDate}
-              onChange={(date: Date | null) => setSelectedDate(date)}
-              locale="nl"
-              dateFormat="P"
-              minDate={new Date(Date.now() + minDateOffsetDays * 24 * 60 * 60 * 1000)}
-              id="appointment-date"
-              className={fieldClasses}
-              placeholderText="Kies een datum"
-              name="date"
-            />
-          </div>
-          {errors.date && <p className="mt-1 text-xs text-red-600">{errors.date}</p>}
-        </div>}
-
-        {!isHome && <div className="grid md:grid-cols-2 gap-4">
-          <div>
-            <label htmlFor="appointment-name" className={labelClasses}>
-              Naam
+            <label className={label} htmlFor={id('phone')}>
+              Telefoonnummer{' '}
+              <span className="font-normal text-[var(--text-secondary)]">
+                (verplicht)
+              </span>
             </label>
             <input
-              id="appointment-name"
-              type="text"
-              required
-              className={fieldClasses}
-              value={formData.name}
-              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-              placeholder="Uw naam"
-            />
-            {errors.name && <p className="mt-1 text-xs text-red-600">{errors.name}</p>}
-          </div>
-          <div>
-            <label htmlFor="appointment-phone" className={labelClasses}>
-              Telefoon
-            </label>
-            <input
-              id="appointment-phone"
+              id={id('phone')}
+              name="phone"
               type="tel"
+              autoComplete="tel"
               required
-              className={fieldClasses}
-              value={formData.phone}
-              onChange={(e) => {
-                let v = e.target.value.replace(/\s+/g, '')
-                if (v.startsWith('31') && !v.startsWith('+31')) v = `+31${v.slice(2)}`
-                setFormData({ ...formData, phone: v })
-              }}
+              maxLength={30}
+              minLength={7}
+              title="Vul een telefoonnummer in met minstens 7 tekens."
               placeholder="06 12345678"
+              className={input}
+              value={form.phone}
+              onChange={(e) => update('phone', e.target.value)}
             />
-            {errors.phone && <p className="mt-1 text-xs text-red-600">{errors.phone}</p>}
           </div>
-        </div>}
-
-        {!isHome && <div>
-          <label htmlFor="appointment-email" className={labelClasses}>
-            E-mailadres
-          </label>
-          <input
-            id="appointment-email"
-            type="email"
-            required
-            className={fieldClasses}
-            value={formData.email}
-            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-            placeholder="uw.email@voorbeeld.nl"
-          />
-          {errors.email && <p className="mt-1 text-xs text-red-600">{errors.email}</p>}
-        </div>}
-
-        {!isHome && <div>
-          <label htmlFor="appointment-description" className={labelClasses}>
-            Klacht of werkzaamheden
+          <div>
+            <label className={label} htmlFor={id('name')}>
+              Uw naam{' '}
+              <span className="font-normal text-[var(--text-secondary)]">
+                ({callback ? 'optioneel' : 'verplicht'})
+              </span>
+            </label>
+            <input
+              id={id('name')}
+              name="name"
+              autoComplete="name"
+              required={!callback}
+              maxLength={100}
+              placeholder="Voor- en achternaam"
+              className={input}
+              value={form.name}
+              onChange={(e) => update('name', e.target.value)}
+            />
+          </div>
+        </div>
+        {!callback && (
+          <>
+            <div>
+              <label className={label} htmlFor={id('email')}>
+                E-mailadres{' '}
+                <span className="font-normal text-[var(--text-secondary)]">
+                  (verplicht)
+                </span>
+              </label>
+              <input
+                id={id('email')}
+                name="email"
+                autoComplete="email"
+                type="email"
+                required
+                maxLength={254}
+                className={input}
+                placeholder="naam@voorbeeld.nl"
+                value={form.email}
+                onChange={(e) => update('email', e.target.value)}
+              />
+            </div>
+            <div>
+              <label className={label} htmlFor={id('date')}>
+                Gewenste datum{' '}
+                <span className="font-normal text-[var(--text-secondary)]">
+                  (verplicht)
+                </span>
+              </label>
+              <DatePicker
+                id={id('date')}
+                name="date"
+                selected={date}
+                onChange={(value: Date | null) => {
+                  setDate(value)
+                  setDateError('')
+                }}
+                locale="nl"
+                dateFormat="dd-MM-yyyy"
+                minDate={minDate}
+                placeholderText="Kies een datum"
+                className={input}
+                autoComplete="off"
+                ariaInvalid={dateError ? 'true' : undefined}
+                ariaDescribedBy={id('date-help')}
+              />
+              {dateError && (
+                <p className="mt-2 text-xs text-[var(--accent)]" role="alert">
+                  {dateError}
+                </p>
+              )}
+              <p
+                id={id('date-help')}
+                className="mt-2 text-[10px] text-[var(--text-secondary)]"
+              >
+                Een voorkeur, geen bevestigde reservering. Wij stemmen de
+                planning met u af.
+              </p>
+            </div>
+          </>
+        )}
+        <div>
+          <label className={label} htmlFor={id('description')}>
+            {callback ? 'Uw vraag of klacht' : 'Wat wilt u laten doen?'}{' '}
+            <span className="font-normal text-[var(--text-secondary)]">
+              ({callback ? 'optioneel' : 'verplicht'})
+            </span>
           </label>
           <textarea
-            id="appointment-description"
-            required
+            id={id('description')}
+            name="description"
             rows={3}
-            className={textareaClasses}
-            value={formData.description}
-            onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-            placeholder="Omschrijf kort de klacht of gewenste werkzaamheden"
+            required={!callback}
+            maxLength={3000}
+            className={input}
+            placeholder="Bijv. een onderhoudsbeurt of een lampje op het dashboard"
+            value={form.description}
+            onChange={(e) => update('description', e.target.value)}
           />
-          {errors.description && <p className="mt-1 text-xs text-red-600">{errors.description}</p>}
-        </div>}
-      </div>
-
-      {isHome && (
-        <div className="grid gap-2 rounded-xl bg-gray-50 p-3 text-xs text-gray-500 sm:grid-cols-3">
-          <span>Veilig verstuurd</span>
-          <span>Reactie binnen 1 werkdag</span>
-          <span>Planning persoonlijk afgestemd</span>
+        </div>
+      </fieldset>
+      {error && (
+        <div role="alert" className="form-error">
+          {error}{' '}
+          <a className="underline" href={`tel:${business.phone}`}>
+            Bel {business.phoneDisplay}
+          </a>
         </div>
       )}
-
-      <p className="text-xs leading-5 text-gray-400">
-        Door te verzenden gaat u akkoord met onze{' '}
-        <a href="/privacyverklaring" className="text-red-600 hover:text-red-700">
-          privacyverklaring
-        </a>
-        .
-      </p>
-
-      <button type="submit" className="btn-primary w-full justify-center text-base sm:text-sm" disabled={loading}>
-        {loading ? 'Even geduld...' : isHome ? 'Bel mij terug' : 'Afspraak aanvragen'}
+      <button
+        className="btn-primary w-full justify-between"
+        type="submit"
+        disabled={loading}
+      >
+        {loading
+          ? 'Bezig met versturen…'
+          : callback
+            ? 'Bel mij terug'
+            : 'Verstuur mijn aanvraag'}
+        <ArrowUpRight />
       </button>
+      <p className="text-center text-[10px] leading-5 text-[var(--text-secondary)]">
+        Wij gebruiken uw gegevens om contact op te nemen.{' '}
+        <a href="/privacyverklaring" className="underline underline-offset-2">
+          Privacyverklaring
+        </a>
+      </p>
     </form>
   )
 }
