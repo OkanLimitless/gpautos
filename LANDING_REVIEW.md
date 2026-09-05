@@ -1,14 +1,8 @@
 # Landing-page redesign
 
-Review branch: `codex/landers-redesign`
-
-Worktree: `/Users/Okan_1/Git-Projects/gpautos-landers`
-
-The branch starts from the existing checkout, including its unfinished landing-page work. The original checkout is unchanged. No PR has been opened and nothing has been deployed.
-
 ## Preview
 
-Run `npm run build` followed by `npm run start -- --port 3100` in this worktree. For editing, use `npm run dev -- --port 3100` instead.
+Run `npm run build` followed by `npm run start -- --port 3100` from the project directory. For editing, use `npm run dev -- --port 3100` instead.
 
 - [Homepage](http://localhost:3100/)
 - [Advertising landing page](http://localhost:3100/ads)
@@ -20,7 +14,7 @@ Run `npm run build` followed by `npm run start -- --port 3100` in this worktree.
 
 ## Design
 
-Warm off-white and charcoal surfaces, restrained red accents, larger typography, and existing workshop imagery. The homepage introduces an interactive service selector. Shared page components carry the design through all four services, four brand pages and nine regional pages. The knowledge base, article pages, privacy page and booking flow use the same navigation and footer.
+Warm off-white and charcoal surfaces, restrained red accents, larger typography, simple section labels, and existing workshop imagery. The homepage introduces an interactive service selector. Shared page components carry the design through all four services, four brand pages and nine regional pages. The knowledge base, article pages, privacy page and booking flow use the same navigation and footer.
 
 The advertising page has a short callback form and minimal navigation. The appointment page collects a preferred date and the details needed to discuss the work. Both forms clearly explain that the workshop confirms the appointment personally.
 
@@ -28,7 +22,7 @@ The advertising page has a short callback form and minimal navigation. The appoi
 
 - Visible, keyboard-focused success states and inline retryable errors.
 - Optional service selection, explicit field labels and native required-field validation.
-- A phone navigation menu with focus containment and Escape-to-close.
+- A mobile navigation menu with focus containment and Escape-to-close.
 - Website and advertising enquiries receive distinct attribution; ad query parameters are retained in submissions.
 - Appointment dates are submitted as calendar dates instead of UTC instants. The email formats them in the workshop's Amsterdam timezone.
 - Development sessions do not load live advertising conversion scripts.
