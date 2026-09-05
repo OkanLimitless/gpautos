@@ -1,7 +1,9 @@
 declare module 'react-datepicker' {
   import { ComponentProps } from 'react'
-  
+
   export interface ReactDatePickerProps extends ComponentProps<'input'> {
+    ariaInvalid?: string
+    ariaDescribedBy?: string
     selected: Date | null
     onChange: (date: Date | null) => void
     dateFormat?: string
@@ -21,7 +23,13 @@ declare module 'react-hot-toast' {
   import { ReactNode } from 'react'
 
   export interface ToasterProps {
-    position?: 'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right'
+    position?:
+      | 'top-left'
+      | 'top-center'
+      | 'top-right'
+      | 'bottom-left'
+      | 'bottom-center'
+      | 'bottom-right'
     toastOptions?: {
       className?: string
       duration?: number
@@ -43,4 +51,4 @@ declare module 'react-hot-toast' {
 declare module 'date-fns/locale' {
   const nl: any
   export { nl }
-} 
+}

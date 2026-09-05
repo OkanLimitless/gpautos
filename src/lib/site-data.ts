@@ -1,6 +1,7 @@
 import type { FaqItem } from './seo-data'
 
 const googleBusinessProfileUrl = 'https://www.google.com/maps?cid=9334292203983253296'
+const instagramUrl = 'https://www.instagram.com/gpautos.nl/'
 
 export const site = {
   url: 'https://gpautos.nl',
@@ -14,7 +15,7 @@ export const site = {
 export const business = {
   name: "GP Auto's",
   description:
-    'Autogarage in Lichtenvoorde voor onderhoud, diagnose, reparatie, remmen en coderen voor Audi, Volkswagen, SEAT en Skoda.',
+    'Autogarage in Lichtenvoorde voor onderhoud, diagnose, reparatie, remmen en coderen voor Audi, Volkswagen, SEAT en Škoda.',
   phone: '+31615530641',
   phoneDisplay: '+31 6 155 30 641',
   email: 'info@gpautos.nl',
@@ -32,14 +33,14 @@ export const business = {
     longitude: 6.561491,
   },
   googleBusinessProfileUrl,
-  googleRating: 5,
   googleReviewCount: 19,
+  instagramUrl,
   directionsUrl:
     'https://www.google.com/maps/dir/?api=1&destination=Galile%C3%AFstraat+5%2C+7131+PE+Lichtenvoorde',
   sameAs: [
     googleBusinessProfileUrl,
     'https://www.facebook.com/gpautosnl',
-    'https://www.instagram.com/gpautos.nl/',
+    instagramUrl,
     'https://www.tiktok.com/@gpautos.nl',
   ],
   areaServed: [
@@ -55,7 +56,16 @@ export const business = {
     'Varsseveld',
     'Zelhem',
   ],
-  brandsServiced: ['Audi', 'Volkswagen', 'SEAT', 'Skoda', 'Cupra'],
+  // Škoda with the caron — this list is rendered directly into page copy.
+  brandsServiced: ['Audi', 'Volkswagen', 'SEAT', 'Škoda', 'Cupra'],
+  /**
+   * Verified facts only. Nothing here may be added without confirmation from the
+   * business — the landing page copy is built on the assumption that it is true.
+   * Opening hours are omitted because the workshop works by appointment only.
+   */
+  appointmentOnly: true,
+  credentials: ['RDW erkend bedrijf'],
+  googleRating: 5,
   serviceTypes: [
     'auto onderhoud',
     'storingsdiagnose',
@@ -92,14 +102,19 @@ export function postalAddressStructuredData() {
   }
 }
 
-export function placeAreaStructuredData(name: string, type: 'City' | 'AdministrativeArea' | 'Place' = 'Place') {
+export function placeAreaStructuredData(
+  name: string,
+  type: 'City' | 'AdministrativeArea' | 'Place' = 'Place'
+) {
   return {
     '@type': type,
     name,
   }
 }
 
-export function localBusinessStructuredData(overrides: Record<string, unknown> = {}) {
+export function localBusinessStructuredData(
+  overrides: Record<string, unknown> = {}
+) {
   return {
     '@type': ['AutoRepair', 'AutomotiveBusiness', 'LocalBusiness'],
     '@id': `${site.url}/#business`,
@@ -128,7 +143,9 @@ export function localBusinessStructuredData(overrides: Record<string, unknown> =
         availableLanguage: ['nl'],
       },
     ],
-    areaServed: business.areaServed.map((name) => placeAreaStructuredData(name)),
+    areaServed: business.areaServed.map((name) =>
+      placeAreaStructuredData(name)
+    ),
     knowsAbout: business.serviceTypes,
     brand: business.brandsServiced.map((name) => ({
       '@type': 'Brand',
@@ -152,7 +169,11 @@ export function websiteStructuredData() {
   }
 }
 
-export function webpageStructuredData(path: string, name: string, description: string) {
+export function webpageStructuredData(
+  path: string,
+  name: string,
+  description: string
+) {
   return {
     '@type': 'WebPage',
     '@id': `${absoluteUrl(path)}#webpage`,

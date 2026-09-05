@@ -4,14 +4,17 @@ import { business } from '@/lib/site-data'
 export default function PrivacyPolicy() {
   return (
     <Layout>
-      <div className="pt-20 bg-zinc-950">
-        <div className="container py-12">
-          <h1 className="text-4xl font-bold text-white mb-8">Privacyverklaring</h1>
-          
-          <div className="prose prose-lg prose-invert max-w-none">
+      <div className="section">
+        <div className="container max-w-4xl">
+          <h1 className="text-4xl font-medium mb-8 sm:text-5xl">
+            Privacyverklaring
+          </h1>
+
+          <div className="article-body">
             <p>
-              Bij GP Auto's hechten wij groot belang aan de privacy van onze klanten. 
-              Deze privacyverklaring legt uit hoe wij omgaan met uw persoonsgegevens.
+              Bij GP Auto's hechten wij groot belang aan de privacy van onze
+              klanten. Deze privacyverklaring legt uit hoe wij omgaan met uw
+              persoonsgegevens.
             </p>
 
             <h2>Welke gegevens verzamelen wij?</h2>
@@ -29,26 +32,34 @@ export default function PrivacyPolicy() {
               <li>Het inplannen en uitvoeren van onderhoud en reparaties</li>
               <li>Het versturen van afspraakbevestigingen</li>
               <li>Het bijhouden van uw onderhoudshistorie</li>
-              <li>Het versturen van relevante herinneringen (bijv. onderhoudsbeurten)</li>
+              <li>
+                Het versturen van relevante herinneringen (bijv.
+                onderhoudsbeurten)
+              </li>
               <li>Facturatie en administratie</li>
             </ul>
 
             <h2>Hoe lang bewaren wij uw gegevens?</h2>
             <p>
-              Wij bewaren uw persoonsgegevens niet langer dan strikt noodzakelijk is voor de doeleinden 
-              waarvoor deze worden verzameld. Voor administratieve gegevens hanteren wij de wettelijke 
+              Wij bewaren uw persoonsgegevens niet langer dan strikt
+              noodzakelijk is voor de doeleinden waarvoor deze worden verzameld.
+              Voor administratieve gegevens hanteren wij de wettelijke
               bewaartermijn van 7 jaar.
             </p>
 
             <h2>Delen van gegevens</h2>
             <p>
-              Wij delen uw gegevens alleen met derde partijen als dit noodzakelijk is voor onze dienstverlening 
-              of wanneer wij hiertoe wettelijk verplicht zijn. Met bedrijven die uw gegevens verwerken hebben 
-              wij een verwerkersovereenkomst gesloten.
+              Wij delen uw gegevens alleen met derde partijen als dit
+              noodzakelijk is voor onze dienstverlening of wanneer wij hiertoe
+              wettelijk verplicht zijn. Met bedrijven die uw gegevens verwerken
+              hebben wij een verwerkersovereenkomst gesloten.
             </p>
 
             <h2>Uw rechten</h2>
-            <p>U heeft de volgende rechten met betrekking tot uw persoonsgegevens:</p>
+            <p>
+              U heeft de volgende rechten met betrekking tot uw
+              persoonsgegevens:
+            </p>
             <ul>
               <li>Recht op inzage in uw gegevens</li>
               <li>Recht op correctie van onjuiste gegevens</li>
@@ -60,20 +71,26 @@ export default function PrivacyPolicy() {
 
             <h2>Contact</h2>
             <p>
-              Heeft u vragen over ons privacybeleid? Neem dan contact met ons op via:
+              Heeft u vragen over ons privacybeleid? Neem dan contact met ons op
+              via:
             </p>
             <p>
-              GP Auto's<br />
-              {business.address.streetAddress}<br />
-              {business.address.postalCode} {business.address.locality}<br />
-              Email: {business.email}<br />
+              GP Auto's
+              <br />
+              {business.address.streetAddress}
+              <br />
+              {business.address.postalCode} {business.address.locality}
+              <br />
+              Email: {business.email}
+              <br />
               Tel: {business.phoneDisplay}
             </p>
 
             <h2>Wijzigingen</h2>
             <p>
-              Wij behouden ons het recht voor om wijzigingen aan te brengen in deze privacyverklaring. 
-              Controleer daarom regelmatig deze verklaring voor het meest actuele privacybeleid.
+              Wij behouden ons het recht voor om wijzigingen aan te brengen in
+              deze privacyverklaring. Controleer daarom regelmatig deze
+              verklaring voor het meest actuele privacybeleid.
             </p>
 
             <p className="text-sm text-gray-400 mt-8">

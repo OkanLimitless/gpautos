@@ -16,8 +16,9 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const outfit = Outfit({ subsets: ['latin'], variable: '--font-outfit' })
 
 export const metadata: Metadata = {
-  title: "GP Auto's – Premium autoservice in Lichtenvoorde",
-  description: 'Premium onderhoud, reparatie en diagnose in Lichtenvoorde. VAG specialist voor Audi, Volkswagen, SEAT en Skoda.',
+  title: "GP Auto's – Autogarage en VAG-specialist in Lichtenvoorde",
+  description:
+    'Autogarage in Lichtenvoorde voor onderhoud, diagnose, remmen en coderen. VAG-specialist voor Audi, Volkswagen, SEAT en Škoda. Uitsluitend op afspraak.',
   applicationName: "GP Auto's",
   keywords: [
     'autogarage Lichtenvoorde',
@@ -35,8 +36,9 @@ export const metadata: Metadata = {
   publisher: "GP Auto's",
   metadataBase: new URL(site.url),
   openGraph: {
-    title: "GP Auto's – Premium autoservice in Lichtenvoorde",
-    description: 'Premium onderhoud, reparatie en diagnose in Lichtenvoorde. Uw VAG specialist voor Audi, Volkswagen, SEAT en Skoda.',
+    title: "GP Auto's – Autogarage en VAG-specialist in Lichtenvoorde",
+    description:
+      'Onderhoud, diagnose, remmen en coderen in Lichtenvoorde. VAG-specialist voor Audi, Volkswagen, SEAT en Škoda. Uitsluitend op afspraak.',
     url: site.url,
     siteName: "GP Auto's",
     images: [
@@ -52,8 +54,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "GP Auto's – Premium autoservice in Lichtenvoorde",
-    description: 'VAG Specialist in Lichtenvoorde voor premium onderhoud en diagnose.',
+    title: "GP Auto's – Autogarage en VAG-specialist in Lichtenvoorde",
+    description:
+      'Onderhoud, diagnose, remmen en coderen voor Audi, Volkswagen, SEAT en Škoda.',
     images: ['/og-image.png'],
   },
   robots: {
@@ -97,19 +100,24 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="mobile-web-app-capable" content="yes" />
-        <meta name="theme-color" content="#FAFAF9" />
-        {/* Google tag (gtag.js) */}
-        <Script src="https://www.googletagmanager.com/gtag/js?id=AW-697295426" strategy="afterInteractive" />
-        <Script id="gtag-init" strategy="afterInteractive">
-          {`
+        <meta name="theme-color" content="#F6F5F1" />
+        {/* Keep local development and form checks out of live conversion reporting. */}
+        {process.env.NODE_ENV === 'production' && (
+          <>
+            <Script
+              src="https://www.googletagmanager.com/gtag/js?id=AW-697295426"
+              strategy="afterInteractive"
+            />
+            <Script id="gtag-init" strategy="afterInteractive">
+              {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);} 
             gtag('js', new Date());
             gtag('config', 'AW-697295426');
           `}
-        </Script>
-        <Script id="gtag-conversion" strategy="afterInteractive">
-          {`
+            </Script>
+            <Script id="gtag-conversion" strategy="afterInteractive">
+              {`
             function gtag_report_conversion(url) {
               var callback = function () {
                 if (typeof(url) != 'undefined') {
@@ -123,7 +131,9 @@ export default function RootLayout({
               return false;
             }
           `}
-        </Script>
+            </Script>
+          </>
+        )}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}

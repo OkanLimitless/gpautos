@@ -1,190 +1,142 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import BrandMark from './BrandMark'
+import { ArrowUpRight, Phone } from './Icons'
 import { business } from '@/lib/site-data'
 
-const NAV_LINKS = [
-  { href: '/#diensten', label: 'Diensten' },
-  { href: '/kennisbank', label: 'Kennisbank' },
-  { href: '/#over-ons', label: 'Over ons' },
-  { href: '/#reviews', label: 'Reviews' },
-  { href: '/#contact', label: 'Contact' },
-] as const
+const links = [
+  ['Diensten', '/#diensten'],
+  ['Onze aanpak', '/#werkwijze'],
+  ['Over ons', '/#over-ons'],
+  ['Contact', '/#contact'],
+]
 
-const MOBILE_MENU_ID = 'primary-mobile-menu'
-
-export default function Navigation() {
+export default function Navigation({ minimal = false }: { minimal?: boolean }) {
+  const [open, setOpen] = useState(false)
   const pathname = usePathname()
-  const isHome = pathname === '/'
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const toggleButtonRef = useRef<HTMLButtonElement | null>(null)
-  const firstMobileLinkRef = useRef<HTMLAnchorElement | null>(null)
-
-  // On home, nav starts transparent over the dark hero; once scrolled it becomes white
-  const isTransparent = isHome && !isScrolled && !isMobileMenuOpen
-
-  const closeMobileMenu = () => {
-    setIsMobileMenuOpen(false)
-  }
+  const panel = useRef<HTMLDivElement>(null)
+  const toggle = useRef<HTMLButtonElement>(null)
 
   useEffect(() => {
-    const onScroll = () => setIsScrolled(window.scrollY > 12)
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
-
+    setOpen(false)
+  }, [pathname])
   useEffect(() => {
-    const onResize = () => {
-      if (window.innerWidth >= 768) {
-        closeMobileMenu()
+    if (!open) return
+    const previous = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    panel.current?.querySelector<HTMLAnchorElement>('a')?.focus()
+    const close = () => {
+      setOpen(false)
+      toggle.current?.focus()
+    }
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') close()
+      if (e.key !== 'Tab') return
+      const nodes = [
+        toggle.current,
+        ...Array.from(
+          panel.current?.querySelectorAll<HTMLAnchorElement>('a') ?? []
+        ),
+      ].filter(Boolean) as HTMLElement[]
+      const first = nodes[0],
+        last = nodes[nodes.length - 1]
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault()
+        last.focus()
+      }
+      if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault()
+        first.focus()
       }
     }
+    const onResize = () => {
+      if (window.innerWidth >= 1024) setOpen(false)
+    }
+    window.addEventListener('keydown', onKey)
     window.addEventListener('resize', onResize)
-    return () => window.removeEventListener('resize', onResize)
-  }, [])
-
-  useEffect(() => {
-    if (!isMobileMenuOpen) return
-
-    const previousOverflow = document.body.style.overflow
-    document.body.style.overflow = 'hidden'
-
-    const focusFrame = window.requestAnimationFrame(() => {
-      firstMobileLinkRef.current?.focus()
-    })
-
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key !== 'Escape') return
-      closeMobileMenu()
-      window.requestAnimationFrame(() => {
-        toggleButtonRef.current?.focus()
-      })
-    }
-
-    window.addEventListener('keydown', onKeyDown)
-
     return () => {
-      document.body.style.overflow = previousOverflow
-      window.removeEventListener('keydown', onKeyDown)
-      window.cancelAnimationFrame(focusFrame)
+      document.body.style.overflow = previous
+      window.removeEventListener('keydown', onKey)
+      window.removeEventListener('resize', onResize)
     }
-  }, [isMobileMenuOpen])
+  }, [open])
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50">
-      <nav
-        aria-label="Hoofdnavigatie"
-        className={`transition-all duration-300 ${
-          isTransparent
-            ? 'bg-transparent'
-            : 'bg-white/90 backdrop-blur-xl shadow-[0_1px_0_rgba(0,0,0,0.06)]'
-        }`}
-      >
-        <div className="container flex items-center justify-between h-16 md:h-[72px]">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5">
-            <Image
-              src="/logo.png"
-              alt="GP Auto's"
-              width={160}
-              height={48}
-              className="h-8 w-auto md:h-9"
-            />
-          </Link>
-
-          {/* Desktop nav */}
-          <div className="hidden items-center gap-8 md:flex">
-            {NAV_LINKS.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`text-sm font-medium transition-colors ${
-                  isTransparent
-                    ? 'text-white/80 hover:text-white'
-                    : 'text-gray-600 hover:text-gray-900'
-                }`}
-              >
-                {link.label}
+    <header className="site-header">
+      <a href="#hoofdinhoud" className="skip-link">
+        Naar hoofdinhoud
+      </a>
+      <div className="header-inner">
+        <BrandMark />
+        {!minimal && (
+          <nav className="desktop-nav" aria-label="Hoofdnavigatie">
+            {links.map(([label, href]) => (
+              <Link key={href} href={href}>
+                {label}
               </Link>
             ))}
-            <Link href="/#contact" className="btn-primary px-5 py-2.5 text-sm">
-              Afspraak maken
-            </Link>
-          </div>
-
-          {/* Mobile hamburger */}
-          <button
-            ref={toggleButtonRef}
-            type="button"
-            onClick={() => setIsMobileMenuOpen((v) => !v)}
-            className={`inline-flex h-10 w-10 items-center justify-center rounded-xl transition-colors md:hidden ${
-              isTransparent
-                ? 'border border-white/20 bg-white/10 text-white hover:bg-white/20'
-                : 'border border-gray-200 bg-white text-gray-700 hover:bg-gray-50'
-            }`}
-            aria-controls={MOBILE_MENU_ID}
-            aria-expanded={isMobileMenuOpen}
-            aria-label={isMobileMenuOpen ? 'Sluit menu' : 'Open menu'}
+          </nav>
+        )}
+        <div className="header-actions">
+          <a href={`tel:${business.phone}`} className="header-phone">
+            <Phone />
+            <span>06 155 30 641</span>
+          </a>
+          <Link
+            href={minimal ? '#afspraak' : '/afspraak'}
+            className="btn-primary header-book"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-              {isMobileMenuOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              )}
-            </svg>
-          </button>
-        </div>
-      </nav>
-
-      {/* Mobile menu overlay */}
-      <div
-        className={`fixed inset-x-0 top-16 max-h-[calc(100svh-4rem)] overflow-y-auto transition-all duration-300 md:hidden ${
-          isMobileMenuOpen
-            ? 'visible pointer-events-auto translate-y-0 opacity-100'
-            : 'invisible pointer-events-none -translate-y-2 opacity-0'
-        }`}
-      >
-        <div
-          id={MOBILE_MENU_ID}
-          aria-hidden={!isMobileMenuOpen}
-          className="bg-white border-t border-gray-100 shadow-lg"
-        >
-          <div className="container py-4 space-y-1">
-            {NAV_LINKS.map((link, index) => (
-              <Link
-                key={link.href}
-                ref={index === 0 ? firstMobileLinkRef : undefined}
-                href={link.href}
-                onClick={closeMobileMenu}
-                className="block rounded-xl px-4 py-3 text-base font-medium text-gray-700 transition-colors hover:bg-gray-50"
-              >
-                {link.label}
-              </Link>
-            ))}
-            <div className="pt-3 grid grid-cols-2 gap-3">
-              <a
-                href={`tel:${business.phone}`}
-                className="btn-secondary justify-center min-h-[48px] text-sm"
-              >
-                Bel direct
-              </a>
-              <Link
-                href="/#contact"
-                onClick={closeMobileMenu}
-                className="btn-primary justify-center min-h-[48px] text-sm"
-              >
-                Afspraak
-              </Link>
-            </div>
-          </div>
+            Afspraak maken <ArrowUpRight />
+          </Link>
+          {!minimal && (
+            <button
+              ref={toggle}
+              className="menu-toggle"
+              aria-label={open ? 'Sluit menu' : 'Open menu'}
+              aria-expanded={open}
+              aria-controls="mobile-navigation"
+              onClick={() => setOpen(!open)}
+            >
+              <span className={open ? 'menu-lines is-open' : 'menu-lines'}>
+                <i />
+                <i />
+              </span>
+            </button>
+          )}
         </div>
       </div>
+      {!minimal && (
+        <div
+          ref={panel}
+          id="mobile-navigation"
+          className="mobile-nav"
+          hidden={!open}
+        >
+          <nav aria-label="Mobiele navigatie">
+            {links.map(([label, href], index) => (
+              <Link key={href} href={href} onClick={() => setOpen(false)}>
+                <span className="eyebrow">0{index + 1}</span>
+                {label}
+                <ArrowUpRight />
+              </Link>
+            ))}
+            <Link
+              href="/afspraak"
+              className="mobile-book"
+              onClick={() => setOpen(false)}
+            >
+              Afspraak maken <ArrowUpRight />
+            </Link>
+          </nav>
+          <p className="eyebrow">LICHTENVOORDE · UITSLUITEND OP AFSPRAAK</p>
+          <a href={`tel:${business.phone}`} className="mobile-phone">
+            {business.phoneDisplay}
+          </a>
+        </div>
+      )}
     </header>
   )
 }
