@@ -11,6 +11,7 @@ import toast from 'react-hot-toast'
 registerLocale('nl', nl)
 
 const WORK_TYPES = [
+  'APK',
   'Onderhoud',
   'Diagnose',
   'Remmen',
@@ -39,14 +40,14 @@ export default function AppointmentForm({
     : isEmbedded
       ? 'space-y-5'
     : isLight
-      ? 'space-y-5 bg-white p-8 rounded-xl border border-gray-200 shadow-sm'
-      : 'space-y-5 bg-gray-800 p-8 rounded-xl'
+      ? 'space-y-5 bg-[var(--bg)] p-8 rounded border border-[var(--text-muted)] shadow-sm'
+      : 'space-y-5 bg-[var(--bg)] p-8 rounded'
 
-  const labelClasses = 'mb-1.5 block text-sm font-semibold text-gray-800'
+  const labelClasses = 'mb-1.5 block text-sm font-semibold text-[var(--text)]'
 
-  const inputBase = 'mt-1 block w-full rounded-xl text-base transition-colors sm:text-sm'
-  const inputClasses = `${inputBase} border border-gray-200 bg-gray-50 px-4 py-3.5 text-gray-950 placeholder:text-gray-400 focus:border-red-500 focus:ring-2 focus:ring-red-500/10 focus:bg-white`
-  const homeInputClasses = `${inputBase} border border-gray-200 bg-white px-4 py-4 text-gray-950 placeholder:text-gray-400 shadow-[0_1px_0_rgba(17,24,39,0.03)] focus:border-red-500 focus:ring-2 focus:ring-red-500/10`
+  const inputBase = 'mt-1 block w-full rounded text-base transition-colors sm:text-sm'
+  const inputClasses = `${inputBase} border border-[var(--text-muted)] bg-[var(--bg-alt)] px-4 py-3.5 text-[var(--text)] placeholder:text-[var(--text-muted)] focus:border-red-500 focus:ring-2 focus:ring-red-500/10 focus:bg-[var(--bg)]`
+  const homeInputClasses = `${inputBase} border border-[var(--text-muted)] bg-[var(--bg)] px-4 py-4 text-[var(--text)] placeholder:text-[var(--text-muted)] focus:border-red-500 focus:ring-2 focus:ring-red-500/10`
 
   const fieldClasses = isHome ? homeInputClasses : inputClasses
   const textareaClasses = fieldClasses
@@ -70,7 +71,7 @@ export default function AppointmentForm({
     try {
       const params = new URLSearchParams(window.location.search)
       const attribution: { [key: string]: string | undefined } = {
-        source: 'ads-landing',
+        source: window.location.pathname,
         utmSource: params.get('utm_source') || undefined,
         utmMedium: params.get('utm_medium') || undefined,
         utmCampaign: params.get('utm_campaign') || undefined,
@@ -113,11 +114,8 @@ export default function AppointmentForm({
           name: formData.name || 'Niet opgegeven',
           email: formData.email || '',
           phone: formData.phone,
-          description: [
-            isHome ? 'Homepage terugbelverzoek' : '',
-            selectedWorkType ? `Werksoort: ${selectedWorkType}` : '',
-            formData.description || '',
-          ].filter(Boolean).join('\n'),
+          workType: selectedWorkType,
+          description: formData.description,
           date: selectedDate,
           requestType: isHome ? 'callback' : 'appointment',
           ...marketing,
@@ -164,20 +162,21 @@ export default function AppointmentForm({
       <div className="space-y-4">
         <div>
           <span className={labelClasses}>Waarvoor komt u langs?</span>
-          <div className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-4">
+          <div className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-5">
             {WORK_TYPES.map((type) => {
               const isSelected = selectedWorkType === type
               return (
                 <button
                   key={type}
+                  aria-pressed={isSelected}
                   type="button"
                   onClick={() => {
                     setSelectedWorkType(type)
                   }}
-                  className={`min-h-[46px] rounded-xl border px-3 text-sm font-semibold transition-colors ${
+                  className={`min-h-[46px] rounded border px-3 text-sm font-semibold transition-colors ${
                     isSelected
-                      ? 'border-red-600 bg-red-600 text-white'
-                      : 'border-gray-200 bg-white text-gray-700 hover:border-gray-300 hover:bg-gray-50'
+                      ? 'border-[var(--accent)] bg-[var(--accent)] text-[var(--text-on-ink)]'
+                      : 'border-[var(--text-muted)] bg-[var(--bg)] text-[var(--text-secondary)] hover:border-[var(--text-secondary)] hover:bg-[var(--bg-alt)]'
                   }`}
                 >
                   {type}
@@ -191,9 +190,9 @@ export default function AppointmentForm({
           <label htmlFor="appointment-kenteken" className={labelClasses}>
             Kenteken
           </label>
-          <div className={isHome ? 'mt-1 flex overflow-hidden rounded-xl border border-gray-200 bg-white shadow-[0_1px_0_rgba(17,24,39,0.03)] focus-within:border-red-500 focus-within:ring-2 focus-within:ring-red-500/10' : ''}>
+          <div className={isHome ? 'mt-1 flex overflow-hidden rounded border border-[var(--text-muted)] bg-[var(--bg)] focus-within:border-red-500 focus-within:ring-2 focus-within:ring-red-500/10' : ''}>
             {isHome && (
-              <div className="flex w-12 shrink-0 flex-col items-center justify-center bg-blue-700 text-[10px] font-bold leading-none text-white">
+              <div className="flex w-12 shrink-0 flex-col items-center justify-center bg-[var(--plate-blue)] text-[10px] font-bold leading-none text-[var(--text-on-ink)]">
                 <span className="text-[9px]">EU</span>
                 <span>NL</span>
               </div>
@@ -204,7 +203,7 @@ export default function AppointmentForm({
               required
               autoFocus={variant !== 'home' && variant !== 'embedded'}
               placeholder="Bijv. AB-12-CD"
-              className={isHome ? 'block min-h-[56px] w-full border-0 bg-white px-4 text-base font-semibold uppercase tracking-wide text-gray-950 placeholder:font-normal placeholder:normal-case placeholder:tracking-normal placeholder:text-gray-400 focus:ring-0' : fieldClasses}
+              className={isHome ? 'block min-h-[52px] w-full border-0 bg-[var(--bg)] px-4 text-base font-semibold uppercase text-[var(--text)] placeholder:font-normal placeholder:normal-case placeholder:tracking-normal placeholder:text-[var(--text-muted)] focus:ring-0' : fieldClasses}
               value={formData.kenteken}
               onChange={(e) => {
                 const val = e.target.value.toUpperCase()
@@ -216,7 +215,7 @@ export default function AppointmentForm({
               }}
             />
           </div>
-          {errors.kenteken && <p className="mt-1 text-xs text-red-600">{errors.kenteken}</p>}
+          {errors.kenteken && <p className="mt-1 text-xs text-[var(--accent)]">{errors.kenteken}</p>}
         </div>
 
         {isHome && (
@@ -239,11 +238,11 @@ export default function AppointmentForm({
                 }}
                 placeholder="06 12345678"
               />
-              {errors.phone && <p className="mt-1 text-xs text-red-600">{errors.phone}</p>}
+              {errors.phone && <p className="mt-1 text-xs text-[var(--accent)]">{errors.phone}</p>}
             </div>
             <div>
               <label htmlFor="appointment-name" className={labelClasses}>
-                Naam <span className="font-normal text-gray-400">(optioneel)</span>
+                Naam <span className="font-normal text-[var(--text-muted)]">(optioneel)</span>
               </label>
               <input
                 id="appointment-name"
@@ -260,7 +259,7 @@ export default function AppointmentForm({
         {isHome && (
           <div>
             <label htmlFor="appointment-description" className={labelClasses}>
-              Klacht of vraag <span className="font-normal text-gray-400">(optioneel)</span>
+              Klacht of vraag <span className="font-normal text-[var(--text-muted)]">(optioneel)</span>
             </label>
             <textarea
               id="appointment-description"
@@ -268,7 +267,7 @@ export default function AppointmentForm({
               className={textareaClasses}
               value={formData.description}
               onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-              placeholder="Bijv. onderhoudsbeurt, storing, codering of remgeluid"
+              placeholder="Bijv. APK, onderhoudsbeurt, storing of codering"
             />
           </div>
         )}
@@ -290,7 +289,7 @@ export default function AppointmentForm({
               name="date"
             />
           </div>
-          {errors.date && <p className="mt-1 text-xs text-red-600">{errors.date}</p>}
+          {errors.date && <p className="mt-1 text-xs text-[var(--accent)]">{errors.date}</p>}
         </div>}
 
         {!isHome && <div className="grid md:grid-cols-2 gap-4">
@@ -307,7 +306,7 @@ export default function AppointmentForm({
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               placeholder="Uw naam"
             />
-            {errors.name && <p className="mt-1 text-xs text-red-600">{errors.name}</p>}
+            {errors.name && <p className="mt-1 text-xs text-[var(--accent)]">{errors.name}</p>}
           </div>
           <div>
             <label htmlFor="appointment-phone" className={labelClasses}>
@@ -326,7 +325,7 @@ export default function AppointmentForm({
               }}
               placeholder="06 12345678"
             />
-            {errors.phone && <p className="mt-1 text-xs text-red-600">{errors.phone}</p>}
+            {errors.phone && <p className="mt-1 text-xs text-[var(--accent)]">{errors.phone}</p>}
           </div>
         </div>}
 
@@ -343,7 +342,7 @@ export default function AppointmentForm({
             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
             placeholder="uw.email@voorbeeld.nl"
           />
-          {errors.email && <p className="mt-1 text-xs text-red-600">{errors.email}</p>}
+          {errors.email && <p className="mt-1 text-xs text-[var(--accent)]">{errors.email}</p>}
         </div>}
 
         {!isHome && <div>
@@ -359,21 +358,21 @@ export default function AppointmentForm({
             onChange={(e) => setFormData({ ...formData, description: e.target.value })}
             placeholder="Omschrijf kort de klacht of gewenste werkzaamheden"
           />
-          {errors.description && <p className="mt-1 text-xs text-red-600">{errors.description}</p>}
+          {errors.description && <p className="mt-1 text-xs text-[var(--accent)]">{errors.description}</p>}
         </div>}
       </div>
 
       {isHome && (
-        <div className="grid gap-2 rounded-xl bg-gray-50 p-3 text-xs text-gray-500 sm:grid-cols-3">
-          <span>Veilig verstuurd</span>
-          <span>Reactie binnen 1 werkdag</span>
-          <span>Planning persoonlijk afgestemd</span>
+        <div className="grid gap-2 rounded bg-[var(--bg-alt)] p-3 text-xs text-[var(--text-secondary)] sm:grid-cols-3">
+          <span>Geen verplichtingen</span>
+          <span>Wij bellen u terug</span>
+          <span>Samen een moment kiezen</span>
         </div>
       )}
 
-      <p className="text-xs leading-5 text-gray-400">
+      <p className="text-xs leading-5 text-[var(--text-secondary)]">
         Door te verzenden gaat u akkoord met onze{' '}
-        <a href="/privacyverklaring" className="text-red-600 hover:text-red-700">
+        <a href="/privacyverklaring" className="font-medium text-[var(--accent)] hover:text-[var(--accent-hover)]">
           privacyverklaring
         </a>
         .

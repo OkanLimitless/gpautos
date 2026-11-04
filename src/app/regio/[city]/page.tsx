@@ -96,191 +96,119 @@ export default function CityPage({ params }: CityPageProps) {
     ]);
 
     return (
-        <>
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
-            />
-            <main className="min-h-screen bg-zinc-950 text-white">
-                <section className="relative overflow-hidden border-b border-white/5 bg-gradient-to-b from-zinc-900 via-zinc-950 to-zinc-950 py-24 md:py-32">
-                    <div className="container mx-auto px-4">
-                        <div className="mx-auto max-w-5xl text-center">
-                            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-primary">
-                                VAG specialist in de regio {city.region}
-                            </p>
-                            <h1 className="mb-6 font-bebas text-4xl uppercase tracking-tight md:text-6xl lg:text-7xl">
-                                Autogarage {city.name}
-                            </h1>
-                            <p className="mx-auto mb-4 max-w-3xl text-lg text-white/70 md:text-xl">
-                                {city.description}
-                            </p>
-                            <p className="mx-auto mb-8 max-w-3xl text-base text-white/60 md:text-lg">
-                                {city.intro}
-                            </p>
-                            <div className="mx-auto mb-8 max-w-3xl rounded-2xl border border-white/10 bg-white/5 p-5 text-left">
-                                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-primary">
-                                    Kort antwoord
-                                </p>
-                                <p className="mt-3 text-sm leading-7 text-white/75 md:text-base">
-                                    Zoekt u een autogarage in {city.name} voor onderhoud, diagnose of reparatie? GP Auto&apos;s helpt klanten uit {city.name} en de regio {city.region} vanuit de werkplaats in Lichtenvoorde, met extra focus op Audi, Volkswagen, SEAT en Skoda.
-                                </p>
-                            </div>
-                            <div className="flex flex-col justify-center gap-4 sm:flex-row">
-                                <Link
-                                    href="/afspraak"
-                                    className="rounded-lg bg-primary px-8 py-4 font-semibold text-white transition-colors hover:bg-primary/90"
-                                >
-                                    Maak afspraak
-                                </Link>
-                                <Link
-                                    href={`tel:${business.phone}`}
-                                    className="rounded-lg border border-white/20 px-8 py-4 font-semibold text-white transition-colors hover:bg-white/5"
-                                >
-                                    Bel direct: {business.phoneDisplay}
-                                </Link>
-                            </div>
-                            <p className="mt-6 text-sm text-white/45">
-                                {city.distance} van Lichtenvoorde
-                            </p>
+        <div className="detail-page">
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }} />
+            <section className="page-hero">
+                <div className="container">
+                    <nav className="breadcrumb" aria-label="Broodkruimelnavigatie">
+                        <Link href="/">Home</Link><span aria-hidden="true">/</span>
+                        <span aria-current="page">{city.name}</span>
+                    </nav>
+                    <div className="editorial-grid items-end">
+                        <div>
+                            <h1>Autogarage {city.name}</h1>
+                            <p className="page-intro">{city.description}</p>
+                        </div>
+                        <div className="flex flex-col items-start gap-4">
+                            <Link href="/afspraak" className="btn-primary">Maak afspraak</Link>
+                            <a href={`tel:${business.phone}`} className="btn-secondary">Bel {business.phoneDisplay}</a>
+                            <p className="text-sm text-[var(--text-secondary)]">{city.distance} van Lichtenvoorde</p>
                         </div>
                     </div>
-                </section>
+                </div>
+            </section>
 
-                <section className="py-16 md:py-24">
-                    <div className="container mx-auto px-4">
-                        <div className="mx-auto max-w-6xl">
-                            <h2 className="mb-10 text-center font-bebas text-3xl uppercase tracking-tight md:text-4xl">
-                                Waarom klanten uit {city.name} voor GP Auto&apos;s kiezen
-                            </h2>
-                            <div className="grid gap-6 md:grid-cols-3">
-                                {city.whyChoose.map((point) => (
-                                    <article key={point} className="rounded-2xl border border-white/10 bg-zinc-900 p-6">
-                                        <p className="text-sm leading-7 text-white/75">{point}</p>
-                                    </article>
-                                ))}
-                            </div>
-                        </div>
+            <section className="content-section">
+                <div className="container editorial-grid">
+                    <div>
+                        <h2>Vanuit {city.name} naar onze werkplaats</h2>
+                        <p className="mt-6 max-w-[65ch] text-[var(--text-secondary)]">{city.intro}</p>
+                        <p className="mt-4 max-w-[65ch] text-[var(--text-secondary)]">
+                            GP Auto&apos;s helpt klanten uit {city.name} en de regio {city.region} vanuit de werkplaats in Lichtenvoorde,
+                            met extra focus op Audi, Volkswagen, SEAT en Skoda.
+                        </p>
                     </div>
-                </section>
+                    <ul className="detail-list">
+                        {city.whyChoose.map((point) => <li key={point}>{point}</li>)}
+                    </ul>
+                </div>
+            </section>
 
-                <section className="border-y border-white/5 bg-zinc-900/60 py-16 md:py-24">
-                    <div className="container mx-auto px-4">
-                        <div className="mx-auto max-w-6xl">
-                            <div className="mb-8 flex items-end justify-between gap-4">
-                                <div>
-                                    <h2 className="font-bebas text-3xl uppercase tracking-tight md:text-4xl">
-                                        Populaire diensten voor {city.name}
-                                    </h2>
-                                    <p className="mt-2 max-w-2xl text-white/60">
-                                        Veel klanten combineren hun rit met een gerichte afspraak voor onderhoud, diagnose of remwerk.
-                                    </p>
-                                </div>
-                                <Link href="/afspraak" className="hidden text-sm font-semibold text-primary md:block">
-                                    Plan direct
-                                </Link>
-                            </div>
-                            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-                                {featuredServices.map((service) => (
-                                    <Link
-                                        key={service.slug}
-                                        href={`/diensten/${service.slug}`}
-                                        className="group rounded-2xl border border-white/10 bg-zinc-950 p-6 transition-all hover:-translate-y-1 hover:border-primary/30"
-                                    >
-                                        <span className="mb-4 block text-3xl">{service.icon}</span>
-                                        <h3 className="mb-2 text-xl font-semibold">{service.name}</h3>
-                                        <p className="text-sm leading-6 text-white/60">{service.shortDescription}</p>
-                                        <span className="mt-4 inline-flex text-sm font-semibold text-primary">
-                                            Bekijk dienst
-                                        </span>
-                                    </Link>
-                                ))}
-                            </div>
+            <section className="content-section bg-[var(--bg-alt)]">
+                <div className="container">
+                    <div className="editorial-grid mb-8">
+                        <h2>Populaire diensten voor {city.name}</h2>
+                        <div>
+                            <p className="text-[var(--text-secondary)]">Veel klanten combineren hun rit met een gerichte afspraak voor onderhoud, diagnose of remwerk.</p>
+                            <Link href="/afspraak" className="mt-4 inline-block underline underline-offset-4">Plan direct</Link>
                         </div>
                     </div>
-                </section>
+                    {featuredServices.map((service) => (
+                        <Link key={service.slug} href={`/diensten/${service.slug}`} className="service-row">
+                            <h3>{service.name}</h3>
+                            <p>{service.shortDescription}</p>
+                            <span>Bekijk dienst</span>
+                        </Link>
+                    ))}
+                </div>
+            </section>
 
-                <section className="py-16 md:py-24">
-                    <div className="container mx-auto px-4">
-                        <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[1.2fr_0.8fr]">
-                            <div className="rounded-3xl border border-white/10 bg-zinc-900 p-8">
-                                <h2 className="font-bebas text-3xl uppercase tracking-tight md:text-4xl">
-                                    Bereikbaarheid en aanpak
-                                </h2>
-                                <p className="mt-4 text-white/70">{city.routeTip}</p>
-                                <div className="mt-6 grid gap-4 md:grid-cols-2">
-                                    <div className="rounded-2xl border border-white/10 bg-zinc-950 p-5">
-                                        <p className="text-sm uppercase tracking-[0.24em] text-white/40">Werkplaats</p>
-                                        <p className="mt-2 text-white/80">
-                                            {business.address.streetAddress}, {business.address.postalCode} {business.address.locality}
-                                        </p>
-                                    </div>
-                                    <div className="rounded-2xl border border-white/10 bg-zinc-950 p-5">
-                                        <p className="text-sm uppercase tracking-[0.24em] text-white/40">Focus</p>
-                                        <p className="mt-2 text-white/80">Onderhoud, diagnose en reparatie voor VAG-modellen</p>
-                                    </div>
-                                </div>
+            <section className="content-section">
+                <div className="container editorial-grid">
+                    <div>
+                        <h2>Bereikbaarheid en aanpak</h2>
+                        <p className="mt-6 max-w-[65ch] text-[var(--text-secondary)]">{city.routeTip}</p>
+                        <dl className="mt-8 border-t border-[var(--border)]">
+                            <div className="grid gap-4 border-b border-[var(--border)] py-6 sm:grid-cols-2">
+                                <dt className="font-semibold">Werkplaats</dt>
+                                <dd>{business.address.streetAddress}, {business.address.postalCode} {business.address.locality}</dd>
                             </div>
-                            <div className="rounded-3xl border border-primary/20 bg-gradient-to-b from-primary/10 to-zinc-900 p-8">
-                                <h3 className="font-bebas text-3xl uppercase tracking-tight">
-                                    Snelle samenvatting
-                                </h3>
-                                <ul className="mt-6 space-y-4 text-sm leading-6 text-white/75">
-                                    <li>Lokale werkplaats in Lichtenvoorde met regionale dekking.</li>
-                                    <li>Gericht op Audi, Volkswagen, SEAT en Skoda.</li>
-                                    <li>Praktisch advies over wat direct moet en wat nog even kan wachten.</li>
-                                </ul>
+                            <div className="grid gap-4 border-b border-[var(--border)] py-6 sm:grid-cols-2">
+                                <dt className="font-semibold">Focus</dt>
+                                <dd>Onderhoud, diagnose en reparatie voor VAG-modellen</dd>
                             </div>
-                        </div>
+                        </dl>
                     </div>
-                </section>
+                    <aside>
+                        <h3>Onze aanpak</h3>
+                        <ul className="detail-list mt-6">
+                            <li>Lokale werkplaats in Lichtenvoorde met regionale dekking.</li>
+                            <li>Gericht op Audi, Volkswagen, SEAT en Skoda.</li>
+                            <li>Praktisch advies over wat direct moet en wat nog even kan wachten.</li>
+                        </ul>
+                    </aside>
+                </div>
+            </section>
 
-                <section className="border-y border-white/5 bg-zinc-900/60 py-16 md:py-24">
-                    <div className="container mx-auto px-4">
-                        <div className="mx-auto max-w-4xl">
-                            <h2 className="font-bebas text-3xl uppercase tracking-tight md:text-4xl">
-                                Veelgestelde vragen
-                            </h2>
-                            <div className="mt-8 space-y-4">
-                                {city.faqs.map((faq) => (
-                                    <details key={faq.question} className="group rounded-2xl border border-white/10 bg-zinc-950 p-6">
-                                        <summary className="cursor-pointer list-none text-lg font-semibold text-white">
-                                            {faq.question}
-                                        </summary>
-                                        <p className="mt-4 text-sm leading-7 text-white/65">{faq.answer}</p>
-                                    </details>
-                                ))}
-                            </div>
-                        </div>
+            <section className="content-section bg-[var(--bg-alt)]">
+                <div className="container editorial-grid">
+                    <h2>Veelgestelde vragen</h2>
+                    <div className="border-t border-[var(--border)]">
+                        {city.faqs.map((faq) => (
+                            <details key={faq.question} className="border-b border-[var(--border)] py-6">
+                                <summary className="cursor-pointer text-lg font-semibold">{faq.question}</summary>
+                                <p className="mt-4 text-[var(--text-secondary)]">{faq.answer}</p>
+                            </details>
+                        ))}
                     </div>
-                </section>
+                </div>
+            </section>
 
-                <section className="py-16 md:py-24">
-                    <div className="container mx-auto px-4">
-                        <div className="mx-auto max-w-6xl">
-                            <div className="mb-8">
-                                <h2 className="font-bebas text-3xl uppercase tracking-tight md:text-4xl">
-                                    Ook interessant in de buurt
-                                </h2>
-                                <p className="mt-2 max-w-2xl text-white/60">
-                                    Handig als u tussen meerdere plaatsen in de Achterhoek zoekt naar een garage die technisch sterk is.
-                                </p>
-                            </div>
-                            <div className="grid gap-4 md:grid-cols-3">
-                                {nearbyCities.map((nearbyCity) => (
-                                    <Link
-                                        key={nearbyCity.slug}
-                                        href={`/regio/${nearbyCity.slug}`}
-                                        className="rounded-2xl border border-white/10 bg-zinc-900 p-5 transition-colors hover:border-primary/30"
-                                    >
-                                        <p className="text-lg font-semibold">{nearbyCity.name}</p>
-                                        <p className="mt-2 text-sm text-white/60">{nearbyCity.description}</p>
-                                    </Link>
-                                ))}
-                            </div>
-                        </div>
+            <section className="content-section">
+                <div className="container">
+                    <div className="editorial-grid mb-8">
+                        <h2>Ook interessant in de buurt</h2>
+                        <p className="text-[var(--text-secondary)]">Handig als u tussen meerdere plaatsen in de Achterhoek zoekt naar een garage die technisch sterk is.</p>
                     </div>
-                </section>
-            </main>
-        </>
+                    {nearbyCities.map((nearbyCity) => (
+                        <Link key={nearbyCity.slug} href={`/regio/${nearbyCity.slug}`} className="service-row">
+                            <h3>{nearbyCity.name}</h3>
+                            <p>{nearbyCity.description}</p>
+                            <span>Bekijk locatie</span>
+                        </Link>
+                    ))}
+                </div>
+            </section>
+        </div>
     );
 }

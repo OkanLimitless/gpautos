@@ -12,7 +12,7 @@ export const site = {
 export const business = {
   name: "GP Auto's",
   description:
-    'Autogarage in Lichtenvoorde voor onderhoud, diagnose, reparatie, remmen en coderen voor Audi, Volkswagen, SEAT en Skoda.',
+    'Autogarage in Lichtenvoorde voor onderhoud, APK, diagnose, reparatie, remmen en coderen voor Audi, Volkswagen, SEAT en Škoda.',
   phone: '+31615530641',
   phoneDisplay: '+31 6 155 30 641',
   email: 'info@gpautos.nl',
@@ -45,8 +45,19 @@ export const business = {
     'Varsseveld',
     'Zelhem',
   ],
-  brandsServiced: ['Audi', 'Volkswagen', 'SEAT', 'Skoda', 'Cupra'],
+  // Škoda with the caron — this list is rendered directly into page copy.
+  brandsServiced: ['Audi', 'Volkswagen', 'SEAT', 'Škoda', 'Cupra'],
+  /**
+   * Verified facts only. Nothing here may be added without confirmation from the
+   * business — the landing page copy is built on the assumption that it is true.
+   * Notably absent, and deliberately so: opening hours (the workshop works by
+   * appointment only) and a Google review count (score is 5.0, count unknown).
+   */
+  appointmentOnly: true,
+  credentials: ['RDW erkend bedrijf'],
+  googleRating: 5,
   serviceTypes: [
+    'APK',
     'auto onderhoud',
     'storingsdiagnose',
     'auto reparatie',

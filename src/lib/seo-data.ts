@@ -332,6 +332,40 @@ export const cities: City[] = [
 // ============================================
 export const services: Service[] = [
     {
+        slug: 'apk',
+        name: 'APK',
+        shortDescription: 'APK-keuring op afspraak in Lichtenvoorde',
+        longDescription: 'Bij GP Auto\'s kunt u terecht voor de APK van uw auto. We geven duidelijke uitleg over het keuringsresultaat en eventuele aandachtspunten. Wilt u ook onderhoud laten uitvoeren? Geef dit aan bij het maken van uw afspraak, zodat we de werkzaamheden samen kunnen plannen.',
+        metaDescription: "APK in Lichtenvoorde bij GP Auto's. Laat uw auto op afspraak keuren en combineer de APK met onderhoud. Plan uw afspraak online of bel ons.",
+        icon: '📋',
+        intro: 'Is uw auto toe aan de APK? Plan uw keuring bij GP Auto\'s in Lichtenvoorde. U krijgt heldere uitleg over het resultaat en de eventuele vervolgstappen.',
+        idealFor: [
+            'Uw auto is binnenkort toe aan de APK.',
+            'U wilt de APK combineren met onderhoud.',
+            'U zoekt een garage in Lichtenvoorde voor een keuring op afspraak.',
+        ],
+        checklist: [
+            'APK-keuring van uw auto.',
+            'Uitleg over het keuringsresultaat en eventuele aandachtspunten.',
+            'Afstemming over eventuele vervolgwerkzaamheden.',
+        ],
+        faqs: [
+            {
+                question: 'Kan ik bij GP Auto\'s terecht voor APK?',
+                answer: 'Ja, wij verzorgen APK-keuringen in Lichtenvoorde. Maak hiervoor vooraf een afspraak.',
+            },
+            {
+                question: 'Kan ik APK en onderhoud combineren?',
+                answer: 'Ja. Geef bij uw afspraak aan dat u de APK wilt combineren met onderhoud, zodat we dit samen kunnen inplannen.',
+            },
+            {
+                question: 'Hoe maak ik een afspraak voor APK?',
+                answer: 'Kies APK in het afspraakformulier of bel ons. Vermeld uw kenteken en de gewenste datum, dan nemen we contact op om de afspraak te bevestigen.',
+            },
+        ],
+        relatedServiceSlugs: ['onderhoud-service', 'remmen-wielophanging', 'diagnose-storing'],
+    },
+    {
         slug: 'onderhoud-service',
         name: 'Onderhoud & Service',
         shortDescription: 'Periodiek onderhoud volgens fabrieksvoorschrift',
@@ -363,7 +397,7 @@ export const services: Service[] = [
                 answer: 'Zeker. Juist dan voorkomt goed onderhoud grotere reparaties later.',
             },
         ],
-        relatedServiceSlugs: ['diagnose-storing', 'software-chiptuning', 'remmen-wielophanging'],
+        relatedServiceSlugs: ['diagnose-storing', 'apk', 'remmen-wielophanging'],
     },
     {
         slug: 'diagnose-storing',

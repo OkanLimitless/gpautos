@@ -15,8 +15,8 @@ module.exports = {
       fontFamily: {
         sans: ['var(--font-inter)'],
         inter: ['var(--font-inter)'],
-        heading: ['var(--font-outfit)'],
-        outfit: ['var(--font-outfit)'],
+        heading: ['var(--font-archivo)'],
+        archivo: ['var(--font-archivo)'],
       },
       borderRadius: {
         '2xl': '16px',

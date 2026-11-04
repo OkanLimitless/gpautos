@@ -1,270 +1,115 @@
+/* Hallmark · v2.0.0 · redesign: full · theme: brand · genre: editorial · hero: Banner · signature: GP workshop photograph and service index · brand: GP Auto's, existing source tokens · copy: verbatim · surface: tinted · nav: shared edge bar · footer: service index · sections: workshop, services, process, brands, about, reviews, questions, booking */
+/* Hallmark · pre-emit critique: P4 H4 E4 S4 R4 V3 · weakest: V; replaced the service card grid with ruled service entries and differentiated article layouts. */
+/* Hallmark · waive 59 · compact trust strip and readable service content · the workshop credentials belong directly under its photograph; pages use smaller gaps for booking and service information. */
+/* Hallmark · waive 79 · banner heroes expose useful service content and booking form · the workshop photograph fills the home hero while short detail headers deliberately reveal the task below. */
+/* Hallmark · dropped {`/diensten/${FEATURED.slug}`} · the same diagnose service destination now uses the shared service.slug mapping alongside all five services; no URL removed. */
+/* Hallmark · waive 44c · compact Banner headers keep booking and service content in view · the workshop picture fills the first screen; service and afspraak titles deliberately expose the task below. */
+@import './tokens.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    color-scheme: light;
-    --bg: #FAFAF9;
-    --bg-alt: #FFFFFF;
-    --text: #1A1A1A;
-    --text-secondary: #6B7280;
-    --text-muted: #9CA3AF;
-    --border: #E5E7EB;
-    --border-light: #F3F4F6;
-    --accent: #DC2626;
-    --accent-hover: #B91C1C;
-    --accent-soft: rgba(220, 38, 38, 0.06);
-    --radius: 12px;
-    --radius-lg: 16px;
-    --radius-xl: 24px;
-    --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
-    --shadow-md: 0 4px 12px rgba(0,0,0,0.06);
-    --shadow-lg: 0 12px 32px rgba(0,0,0,0.08);
+    --bg: #FAF9F6; --bg-alt: #F0EEEA; --bg-ink: #171C20; --bg-ink-soft: #252B30;
+    --text: #171C20; --text-secondary: #53595F; --text-muted: #62686E;
+    --text-on-ink: #FAF9F6; --text-on-ink-secondary: #CFD0CE; --text-on-ink-muted: #B0B4B5;
+    --border: #D8D7D2; --border-strong: #ADAEA9; --border-ink: #495054;
+    --accent: #C81E1E; --accent-hover: #A81717; --accent-soft: #F6E9E7;
+    --plate-blue: #234A90; --radius-sm: 4px; --radius: 4px; --radius-lg: 4px; --radius-xl: 4px;
+    --shadow-sm: none; --shadow-md: none; --shadow-lg: none;
   }
+  html, body { overflow-x: clip; }
+  html { scroll-padding-top: 96px; scroll-behavior: smooth; }
+  body { @apply font-sans; background: var(--bg); color: var(--text); font-size: 16px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+  h1,h2,h3,h4,h5,h6 { @apply font-heading; overflow-wrap: break-word; min-width: 0; line-height: 1.1; letter-spacing: -.025em; text-wrap: balance; font-weight: 600; }
+  h1 { overflow-wrap: break-word; min-width: 0; font-size: var(--text-display-s); }
+  h2 { font-size: var(--text-section); }
+  h3 { font-size: var(--text-title); }
+  p { text-wrap: pretty; }
+  ::selection { background: var(--accent-soft); color: var(--text); }
+  :where(a,button,input,select,textarea,summary,[role='button']):focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+  :where(button,[type='submit'],input:not([type='checkbox']),select) { min-height: 44px; }
+  :where(a,button,summary):active { opacity: .8; }
+  :where(button:disabled,[aria-disabled='true']) { opacity: .55; cursor: not-allowed; }
+  a,button { transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease; }
+  summary { cursor: pointer; }
+  @media (prefers-reduced-motion: reduce) { *,*::before,*::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
 }
-
-@layer base {
-  html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 5rem;
-  }
-
-  body {
-    @apply font-sans;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100%;
-    font-size: 16px;
-    line-height: 1.6;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-heading;
-    color: inherit;
-    line-height: 1.1;
-    text-wrap: balance;
-  }
-
-  p {
-    text-wrap: pretty;
-  }
-
-  ::selection {
-    background: rgba(220, 38, 38, 0.12);
-    color: var(--text);
-  }
-
-  a {
-    transition: color 200ms ease, opacity 200ms ease;
-  }
-
-  :where(a, button, input, select, textarea, [role='button']) {
-    -webkit-tap-highlight-color: transparent;
-  }
-
-  :where(a, button, input, select, textarea, [role='button']):focus {
-    outline: none;
-  }
-
-  :where(a, button, input, select, textarea, [role='button']):focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-  }
-
-  :where(button, [type='button'], [type='submit'], [type='reset'], select, textarea, input:not([type='checkbox']):not([type='radio'])) {
-    min-height: 44px;
-  }
-
-  :where(button, [type='button'], [type='submit'], [type='reset']) {
-    touch-action: manipulation;
-  }
-
-  :where(input, select, textarea) {
-    border-radius: var(--radius);
-  }
-
-  :where(input::placeholder, textarea::placeholder) {
-    opacity: 1;
-    color: var(--text-muted);
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    html {
-      scroll-behavior: auto !important;
-    }
-    *, *::before, *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-      scroll-behavior: auto !important;
-    }
-  }
-}
-
 @layer components {
-  .container {
-    @apply max-w-6xl mx-auto px-5 sm:px-6 lg:px-8;
-  }
-
-  /* Primary button */
-  .btn-primary {
-    @apply inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-white rounded-xl transition-all duration-200;
-    background: var(--accent);
-    min-height: 48px;
-  }
-  .btn-primary:hover {
-    background: var(--accent-hover);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.2);
-  }
-  .btn-primary:active {
-    transform: translateY(0);
-  }
-  .btn-primary:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-    transform: none;
-  }
-
-  /* Secondary / outline button */
-  .btn-secondary {
-    @apply inline-flex items-center justify-center px-6 py-3 text-sm font-semibold rounded-xl transition-all duration-200;
-    color: var(--text);
-    border: 1.5px solid var(--border);
-    background: var(--bg-alt);
-    min-height: 48px;
-  }
-  .btn-secondary:hover {
-    border-color: var(--text-muted);
-    transform: translateY(-1px);
-    box-shadow: var(--shadow-sm);
-  }
-
-  /* Ghost button — for dark backgrounds */
-  .btn-ghost {
-    @apply inline-flex items-center justify-center px-6 py-3 text-sm font-semibold rounded-xl transition-all duration-200;
-    color: white;
-    border: 1.5px solid rgba(255,255,255,0.2);
-    min-height: 48px;
-  }
-  .btn-ghost:hover {
-    background: rgba(255,255,255,0.1);
-    border-color: rgba(255,255,255,0.3);
-  }
-
-  /* Section spacing */
-  .section {
-    @apply py-20 md:py-28;
-  }
-
-  /* Kicker label */
-  .kicker {
-    @apply text-xs font-semibold uppercase tracking-widest;
-    color: var(--accent);
-  }
-
-  /* Section headings */
-  .section-heading {
-    @apply text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight;
-    color: var(--text);
-    line-height: 1.08;
-  }
-
-  /* Card */
-  .card {
-    @apply rounded-2xl border p-6 transition-all duration-200;
-    background: var(--bg-alt);
-    border-color: var(--border);
-  }
-  .card:hover {
-    box-shadow: var(--shadow-md);
-    border-color: var(--text-muted);
-  }
-
-  /* Keep content visible by default; JS can still add .visible without risking blank anchor sections. */
-  .reveal {
-    opacity: 1;
-    transform: translateY(0);
-    transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-  }
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  .container { @apply mx-auto w-full; max-width: 1240px; padding-inline: var(--space-lg); }
+  .site-main { padding-top: 72px; }
+  .section { padding-block: var(--space-3xl); }
+  .section-tight { padding-block: var(--space-2xl); }
+  .section-heading { font-size: var(--text-section); font-weight: 600; line-height: 1.08; }
+  .section-lead,.page-intro { color: var(--text-secondary); font-size: var(--text-lead); line-height: 1.6; max-width: 60ch; }
+  .btn-primary,.btn-secondary,.btn-ghost { display: inline-flex; align-items: center; justify-content: center; gap: var(--space-xs); padding: var(--space-sm) var(--space-lg); min-height: 48px; border: 1px solid var(--accent); border-radius: var(--radius); font-size: 14px; font-weight: 600; text-align: center; }
+  .btn-primary { background: var(--accent); color: var(--text-on-ink); }
+  .btn-primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); }
+  .btn-secondary { color: var(--text); border-color: var(--border-strong); background: transparent; }
+  .btn-secondary:hover { background: var(--bg-alt); }
+  .btn-ghost { color: var(--text-on-ink); border-color: var(--border-ink); }
+  .btn-ghost:hover { background: var(--bg-ink-soft); }
+  .link-arrow,.service-more { display: inline-flex; align-items: center; gap: var(--space-sm); font-size: 14px; font-weight: 600; min-height: 44px; text-decoration: underline; text-underline-offset: 5px; }
+  .link-arrow:hover,.service-more:hover { color: var(--accent); }
+  .workshop-hero { background: var(--bg-alt); padding-block: var(--space-xl) var(--space-lg); }
+  .hero-layout { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0,1.1fr); gap: var(--space-lg); align-items: center; }
+  .hero-copy { padding-right: var(--space-lg); }
+  .hero-copy h1 { font-size: clamp(3rem,5.2vw,5rem); max-width: 12ch; letter-spacing: -.045em; }
+  .hero-copy p { margin-top: var(--space-lg); max-width: 33ch; font-size: var(--text-lead); color: var(--text-secondary); }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: var(--space-sm); margin-top: var(--space-xl); }
+  .hero-photo { position: relative; height: min(65svh, 640px); min-height: 460px; overflow: hidden; border-radius: var(--radius); }
+  .hero-caption { display: flex; justify-content: space-between; gap: var(--space-lg); grid-column: 1 / -1; font-size: 14px; color: var(--text-secondary); padding-block: var(--space-sm); }
+  .section-heading-row { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: var(--space-xl); align-items: end; margin-bottom: var(--space-2xl); }
+  .service-entry { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: var(--space-md) var(--space-xl); border-top: 1px solid var(--border); padding-block: var(--space-xl); }
+  .service-title { display: flex; justify-content: space-between; gap: var(--space-lg); align-items: center; }
+  .service-title h3 { font-size: clamp(1.5rem,2.4vw,2.1rem); }
+  .service-entry > p { color: var(--text-secondary); }
+  .service-entry details { grid-column: 2; font-size: 14px; color: var(--text-secondary); }
+  .service-entry details li { padding-block: var(--space-xs); border-bottom: 1px solid var(--border); }
+  .service-entry .service-more { grid-column: 1; grid-row: 2; align-self: start; }
+  .page-hero { padding-block: var(--space-xl) var(--space-2xl); border-bottom: 1px solid var(--border); }
+  .page-hero h1 { max-width: 22ch; margin-bottom: var(--space-lg); }
+  .breadcrumb { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-xl); font-size: 14px; color: var(--text-secondary); }
+  .breadcrumb a { text-decoration: underline; text-underline-offset: 4px; min-height: 44px; display: inline-flex; align-items: center; }
+  .content-section { padding-block: var(--space-2xl); }
+  .editorial-grid { display: grid; grid-template-columns: minmax(0,1.5fr) minmax(0,1fr); gap: var(--space-2xl); align-items: start; }
+  .content-section h2 { font-size: clamp(1.8rem,3vw,2.8rem); margin-bottom: var(--space-lg); }
+  .content-section h3 { margin-bottom: var(--space-sm); }
+  .detail-list > li { padding-block: var(--space-lg); border-top: 1px solid var(--border); }
+  .service-row { display: block; border-top: 1px solid var(--border); padding-block: var(--space-lg); }
+  .service-row:hover h3 { color: var(--accent); }
+  .service-row p { color: var(--text-secondary); }
+  .booking-band { background: var(--bg-alt); padding-block: var(--space-2xl); }
+  .booking-form { background: var(--bg-alt); padding: var(--space-xl); border-radius: var(--radius); }
+  .legal-copy { max-width: 70ch; }
+  .legal-copy h2 { font-size: var(--text-title); margin-top: var(--space-xl); margin-bottom: var(--space-md); }
+  .legal-copy p { margin-block: var(--space-md); }
+  .legal-copy ul { list-style: disc; padding-left: var(--space-lg); }
+  .legal-page h1 { font-size: var(--text-display-s); }
+  .reveal { opacity: 1; transform: none; }
+}
+.react-datepicker-wrapper { width: 100%; }
+.react-datepicker { background: var(--bg) !important; border-color: var(--border) !important; font-family: inherit !important; }
+.react-datepicker__header { background: var(--bg-alt) !important; }
+.react-datepicker__day--selected,.react-datepicker__day--keyboard-selected { background: var(--accent) !important; color: var(--text-on-ink) !important; }
+.react-datepicker__input-container input { width: 100%; background: var(--bg); border: 1px solid var(--text-muted); border-radius: var(--radius); padding: var(--space-sm) var(--space-md); }
+@media (max-width: 767px) {
+  .site-main { padding-top: var(--space-2xl); }
+  .section { padding-block: var(--space-2xl); }
+  .hero-layout,.editorial-grid,.section-heading-row { grid-template-columns: minmax(0,1fr); }
+  .hero-photo { min-height: 0; height: auto; aspect-ratio: 4/3; }
+  .hero-copy { padding-right: 0; }
+  .hero-copy h1 { font-size: clamp(2.7rem,10vw,4rem); max-width: 15ch; }
+  .hero-caption { flex-direction: column; gap: var(--space-xs); }
+  .hero-actions { margin-top: var(--space-lg); margin-bottom: var(--space-sm); }
+  .service-entry { grid-template-columns: minmax(0,1fr); gap: var(--space-md); padding-block: var(--space-lg); }
+  .service-entry details,.service-entry .service-more { grid-column: auto; grid-row: auto; }
+  .booking-form { padding: var(--space-lg); }
+  .page-hero { padding-bottom: var(--space-xl); }
 }
 
-/* DatePicker customization for home variant */
-.react-datepicker-wrapper {
-  @apply w-full;
-}
+#merken :focus-visible { outline-color: var(--text-on-ink); }
+#merken a.group:hover { background: var(--bg-ink-soft); }
 
-.react-datepicker {
-  @apply border rounded-xl shadow-lg bg-white !important;
-  border-color: var(--border) !important;
-}
-
-.react-datepicker__header {
-  @apply bg-gray-50 rounded-t-xl border-b !important;
-  border-color: var(--border) !important;
-}
-
-.react-datepicker__current-month {
-  @apply text-gray-900 font-semibold !important;
-}
-
-.react-datepicker__day-name {
-  @apply text-gray-400 !important;
-}
-
-.react-datepicker__day {
-  @apply text-gray-700 rounded-lg hover:bg-gray-100 !important;
-}
-
-.react-datepicker__day--selected {
-  @apply bg-red-600 text-white !important;
-}
-
-.react-datepicker__day--keyboard-selected {
-  @apply bg-red-500 text-white !important;
-}
-
-.react-datepicker__input-container input {
-  @apply w-full border border-gray-200 bg-white text-gray-900 shadow-sm focus:border-red-500 focus:ring-2 focus:ring-red-500/20 sm:text-sm placeholder:text-gray-400 rounded-xl;
-}
-
-.home-datepicker-wrap .react-datepicker {
-  @apply border bg-white text-gray-900 shadow-xl rounded-xl !important;
-  border-color: var(--border) !important;
-}
-
-.home-datepicker-wrap .react-datepicker__header {
-  @apply border-b bg-gray-50 text-gray-900 rounded-t-xl !important;
-  border-color: var(--border) !important;
-}
-
-.home-datepicker-wrap .react-datepicker__current-month,
-.home-datepicker-wrap .react-datepicker__day-name {
-  @apply text-gray-900 !important;
-}
-
-.home-datepicker-wrap .react-datepicker__day {
-  @apply text-gray-600 rounded-lg !important;
-}
-
-.home-datepicker-wrap .react-datepicker__day--outside-month {
-  color: #d1d5db !important;
-}
-
-.home-datepicker-wrap .react-datepicker__day--selected,
-.home-datepicker-wrap .react-datepicker__day--keyboard-selected,
-.home-datepicker-wrap .react-datepicker__day:hover {
-  @apply text-white !important;
-  background: #dc2626 !important;
-}
-
-.home-datepicker-wrap .react-datepicker__navigation {
-  @apply top-2 h-10 w-10;
-}
+.legal-title { overflow-wrap: break-word; min-width: 0; }

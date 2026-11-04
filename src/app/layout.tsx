@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
-import { Inter, Outfit } from 'next/font/google'
+import { Archivo, Inter, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
+import Layout from '@/components/Layout'
 import { Toaster } from 'react-hot-toast'
 import Script from 'next/script'
 import {
@@ -12,17 +13,21 @@ import {
   websiteStructuredData,
 } from '@/lib/site-data'
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
-const outfit = Outfit({ subsets: ['latin'], variable: '--font-outfit' })
+// latin-ext is needed for the "Š" in Škoda. Archivo's width axis lets the display
+// type run wide, which echoes the extended wordmark in the GP logo.
+const inter = Inter({ subsets: ['latin', 'latin-ext'], variable: '--font-inter' })
+const mono = JetBrains_Mono({ subsets: ['latin', 'latin-ext'], variable: '--font-mono' })
+const archivo = Archivo({ subsets: ['latin', 'latin-ext'], variable: '--font-archivo', axes: ['wdth'] })
 
 export const metadata: Metadata = {
-  title: "GP Auto's – Premium autoservice in Lichtenvoorde",
-  description: 'Premium onderhoud, reparatie en diagnose in Lichtenvoorde. VAG specialist voor Audi, Volkswagen, SEAT en Skoda.',
+  title: "GP Auto's – Autogarage in Lichtenvoorde",
+  description:
+    'Autogarage in Lichtenvoorde voor onderhoud, APK, diagnose, remmen en coderen voor alle merken. Uitsluitend op afspraak.',
   applicationName: "GP Auto's",
   keywords: [
     'autogarage Lichtenvoorde',
     'garage Lichtenvoorde',
-    'VAG specialist Achterhoek',
+    'garage Achterhoek',
     'auto onderhoud',
     'auto reparatie',
     'Audi specialist',
@@ -35,8 +40,9 @@ export const metadata: Metadata = {
   publisher: "GP Auto's",
   metadataBase: new URL(site.url),
   openGraph: {
-    title: "GP Auto's – Premium autoservice in Lichtenvoorde",
-    description: 'Premium onderhoud, reparatie en diagnose in Lichtenvoorde. Uw VAG specialist voor Audi, Volkswagen, SEAT en Skoda.',
+    title: "GP Auto's – Autogarage in Lichtenvoorde",
+    description:
+      'Onderhoud, diagnose, remmen en coderen in Lichtenvoorde, voor alle merken. Uitsluitend op afspraak.',
     url: site.url,
     siteName: "GP Auto's",
     images: [
@@ -52,8 +58,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "GP Auto's – Premium autoservice in Lichtenvoorde",
-    description: 'VAG Specialist in Lichtenvoorde voor premium onderhoud en diagnose.',
+    title: "GP Auto's – Autogarage in Lichtenvoorde",
+    description: 'Onderhoud, diagnose, remmen en coderen voor alle merken.',
     images: ['/og-image.png'],
   },
   robots: {
@@ -97,7 +103,7 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="mobile-web-app-capable" content="yes" />
-        <meta name="theme-color" content="#FAFAF9" />
+        <meta name="theme-color" content="#FFFFFF" />
         {/* Google tag (gtag.js) */}
         <Script src="https://www.googletagmanager.com/gtag/js?id=AW-697295426" strategy="afterInteractive" />
         <Script id="gtag-init" strategy="afterInteractive">
@@ -129,16 +135,16 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
         />
       </head>
-      <body className={`${inter.variable} ${outfit.variable}`}>
-        {children}
+      <body className={`${inter.variable} ${archivo.variable} ${mono.variable}`}>
+        <Layout>{children}</Layout>
         <Toaster
           position="bottom-center"
           toastOptions={{
             duration: 5000,
             style: {
-              background: '#FFFFFF',
-              color: '#1A1A1A',
-              border: '1px solid #E5E7EB',
+              background: 'var(--bg)',
+              color: 'var(--text)',
+              border: '1px solid var(--border)',
               borderRadius: '12px',
             },
           }}

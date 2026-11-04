@@ -29,7 +29,7 @@ export const metadata: Metadata = {
 
 export default function AudiSpecialistPage() {
     const relevantServices = services.filter((service) =>
-        ['onderhoud-service', 'diagnose-storing', 'software-chiptuning', 'remmen-wielophanging'].includes(service.slug)
+        ['apk', 'onderhoud-service', 'diagnose-storing', 'software-chiptuning', 'remmen-wielophanging'].includes(service.slug)
     );
 
     const audiModels = ['A1', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'Q2', 'Q3', 'Q5', 'Q7', 'Q8', 'TT', 'e-tron'];
@@ -58,138 +58,89 @@ export default function AudiSpecialistPage() {
     );
 
     return (
-        <>
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
-            />
-            <main className="min-h-screen bg-zinc-950 text-white">
-                <section className="relative py-24 md:py-32 bg-gradient-to-b from-zinc-900 to-zinc-950">
-                    <div className="container mx-auto px-4">
-                        <div className="max-w-4xl mx-auto text-center">
-                            <p className="text-primary font-medium mb-4 uppercase tracking-wider">
-                                Audi specialist in Lichtenvoorde en de Achterhoek
-                            </p>
-                            <h1 className="text-4xl md:text-6xl font-bold mb-6 font-bebas uppercase tracking-tight">
-                                Audi Specialist
-                            </h1>
-                            <p className="text-xl text-white/70 mb-8 max-w-2xl mx-auto">
-                                Voor Audi onderhoud, diagnose en reparatie aan de Galileïstraat 5 in Lichtenvoorde. Wij helpen u met moderne Audi-techniek, van A1 tot e-tron.
-                            </p>
-                            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                                <Link href="/afspraak" className="inline-block px-8 py-4 bg-primary text-white font-semibold rounded-lg hover:bg-primary/90 transition-colors">
-                                    Maak afspraak
-                                </Link>
-                                <Link href={`tel:${business.phone}`} className="inline-block px-8 py-4 border border-white/20 text-white font-semibold rounded-lg hover:bg-white/5 transition-colors">
-                                    Bel direct
-                                </Link>
-                            </div>
-                            <p className="mt-6 text-sm text-white/55">
-                                Persoonlijke service, duidelijke diagnose en onderhoud dat past bij de techniek van uw Audi.
-                            </p>
-                        </div>
+        <div className="detail-page">
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }} />
+            <section className="page-hero">
+                <div className="container">
+                    <nav className="breadcrumb" aria-label="Kruimelpad">
+                        <Link href="/">Home</Link><span aria-hidden="true">/</span>
+                        <Link href="/#merken">Merken</Link><span aria-hidden="true">/</span>
+                        <span aria-current="page">Audi specialist</span>
+                    </nav>
+                    <h1>Audi specialist in Lichtenvoorde</h1>
+                    <p className="page-intro">Onderhoud, diagnose en reparatie voor uw Audi, op afspraak.</p>
+                    <div className="mt-8 flex flex-wrap gap-3">
+                        <Link href="/afspraak" className="btn-primary">Maak afspraak</Link>
+                        <a href={`tel:${business.phone}`} className="btn-secondary">Bel direct</a>
                     </div>
-                </section>
-
-                <section className="py-16 md:py-20">
-                    <div className="container mx-auto px-4">
-                        <div className="max-w-5xl mx-auto grid gap-10 lg:grid-cols-[1.2fr_0.8fr]">
-                            <div>
-                                <h2 className="text-2xl md:text-3xl font-bold mb-6">
-                                    Waarom Audi-rijders voor GP Auto's kiezen
-                                </h2>
-                                <div className="grid md:grid-cols-2 gap-4">
-                                    {[
-                                        'Merkspecifieke diagnose voor moderne Audi elektronica en assistentiesystemen.',
-                                        'Onderhoud en reparatie met aandacht voor digitale servicehistorie en fabrieksvoorschriften.',
-                                        'Duidelijke uitleg over kosten, planning en wat echt nodig is.',
-                                        'Lokale werkplaats in Lichtenvoorde, handig voor klanten uit de hele Achterhoek.',
-                                    ].map((item) => (
-                                        <div key={item} className="rounded-xl border border-white/10 bg-zinc-900 p-5 text-white/75">
-                                            {item}
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                            <div className="rounded-2xl border border-white/10 bg-zinc-900 p-6">
-                                <h2 className="text-2xl font-bold mb-4">Diensten voor uw Audi</h2>
-                                <p className="text-white/65 mb-6">
-                                    Van onderhoud en diagnose tot coderen en remmen & onderstel.
-                                </p>
-                                <div className="space-y-3">
-                                    {relevantServices.map((service) => (
-                                        <Link key={service.slug} href={`/diensten/${service.slug}`} className="block rounded-lg border border-white/10 bg-zinc-800 px-4 py-3 hover:border-primary/40 hover:bg-zinc-700 transition-colors">
-                                            <div className="font-semibold">{service.name}</div>
-                                            <div className="text-sm text-white/60">{service.shortDescription}</div>
-                                        </Link>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <section className="py-16 bg-zinc-900">
-                    <div className="container mx-auto px-4">
-                        <h2 className="text-2xl md:text-3xl font-bold text-center mb-8">
-                            Audi modellen die wij vaak zien
-                        </h2>
-                        <div className="flex flex-wrap justify-center gap-3 max-w-4xl mx-auto">
-                            {audiModels.map((model) => (
-                                <span key={model} className="px-4 py-2 bg-zinc-800 rounded-lg text-white/80">
-                                    Audi {model}
-                                </span>
+                </div>
+            </section>
+            <section className="content-section">
+                <div className="container editorial-grid">
+                    <div>
+                        <h2>Diensten voor uw Audi</h2>
+                        <p className="mt-4 text-[var(--text-secondary)]">Van onderhoud en diagnose tot coderen en remmen & onderstel.</p>
+                        <div className="mt-8">
+                            {relevantServices.map((service) => (
+                                <Link key={service.slug} href={`/diensten/${service.slug}`} className="service-row">
+                                    <h3>{service.name}</h3>
+                                    <p>{service.shortDescription}</p>
+                                </Link>
                             ))}
                         </div>
                     </div>
-                </section>
-
-                <section className="py-16 md:py-20">
-                    <div className="container mx-auto px-4">
-                        <div className="max-w-5xl mx-auto grid gap-10 lg:grid-cols-2">
-                            <div className="rounded-2xl border border-white/10 bg-zinc-900 p-6">
-                                <h2 className="text-2xl font-bold mb-4">Waar wij u mee helpen</h2>
-                                <ul className="space-y-3 text-white/75">
-                                    <li>Diagnose van motorstoringen, elektronische meldingen en rijhulpsystemen.</li>
+                    <aside className="border-t border-[var(--border)] pt-6">
+                        <h2>Waarom Audi-rijders voor GP Auto&apos;s kiezen</h2>
+                        <p className="mt-4 text-[var(--text-secondary)]">Persoonlijke service, duidelijke diagnose en onderhoud dat past bij de techniek van uw Audi.</p>
+                        <ul className="detail-list mt-6">
+                            {['Merkspecifieke diagnose voor moderne Audi elektronica en assistentiesystemen.',
+                                        'Onderhoud en reparatie met aandacht voor digitale servicehistorie en fabrieksvoorschriften.',
+                                        'Duidelijke uitleg over kosten, planning en wat echt nodig is.',
+                                        'Lokale werkplaats in Lichtenvoorde, handig voor klanten uit de hele Achterhoek.',].map((item) => <li key={item}>{item}</li>)}
+                        </ul>
+                    </aside>
+                </div>
+            </section>
+            <section className="content-section bg-[var(--bg-alt)]">
+                <div className="container editorial-grid">
+                    <div><h2>Audi modellen die wij vaak zien</h2><p className="mt-4 max-w-xl text-[var(--text-secondary)]">Voor Audi onderhoud, diagnose en reparatie aan de Galileïstraat 5 in Lichtenvoorde. Wij helpen u met moderne Audi-techniek, van A1 tot e-tron.</p></div>
+                    <div className="flex flex-wrap gap-x-6 gap-y-3 text-lg">
+                        {audiModels.map((model) => <span key={model}>Audi {model}</span>)}
+                    </div>
+                </div>
+            </section>
+            <section className="content-section">
+                <div className="container editorial-grid">
+                    <div>
+                        <h2>Veelgestelde vragen</h2>
+                        <div className="mt-6">
+                            {faqItems.map((item) => (
+                                <details key={item.question} className="border-b border-[var(--border)] py-5">
+                                    <summary className="cursor-pointer font-semibold">{item.question}</summary>
+                                    <p className="mt-4 text-[var(--text-secondary)]">{item.answer}</p>
+                                </details>
+                            ))}
+                        </div>
+                    </div>
+                    <div>
+                        <h2>Waar wij u mee helpen</h2>
+                        <ul className="detail-list mt-6"><li>Diagnose van motorstoringen, elektronische meldingen en rijhulpsystemen.</li>
                                     <li>Onderhoud voor TFSI, TDI, S tronic, quattro en e-tron modellen.</li>
                                     <li>VAG-COM/VCDS coderingen en gerichte technische ondersteuning.</li>
-                                    <li>Remmen, onderstel en herstelwerk met transparante prioriteiten.</li>
-                                </ul>
-                            </div>
-                            <div className="rounded-2xl border border-white/10 bg-zinc-900 p-6">
-                                <h2 className="text-2xl font-bold mb-4">Veelgestelde vragen</h2>
-                                <div className="space-y-3">
-                                    {faqItems.map((item) => (
-                                        <details key={item.question} className="rounded-lg border border-white/10 bg-zinc-800 px-4 py-3">
-                                            <summary className="cursor-pointer font-semibold">{item.question}</summary>
-                                            <p className="mt-3 text-white/70">{item.answer}</p>
-                                        </details>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
+                                    <li>Remmen, onderstel en herstelwerk met transparante prioriteiten.</li></ul>
                     </div>
-                </section>
-
-                <section className="py-16 bg-zinc-900">
-                    <div className="container mx-auto px-4 text-center">
-                        <h2 className="text-2xl md:text-3xl font-bold mb-4">
-                            Plan uw Audi-bezoek in Lichtenvoorde
-                        </h2>
-                        <p className="text-white/70 max-w-2xl mx-auto mb-8">
-                            Wilt u onderhoud, diagnose of reparatie laten plannen voor uw Audi? Boek direct online of bekijk eerst de relevante dienstpagina's.
-                        </p>
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                            <Link href="/afspraak" className="inline-block px-8 py-4 bg-primary text-white font-semibold rounded-lg hover:bg-primary/90 transition-colors">
-                                Afspraak maken
-                            </Link>
-                            <Link href="/diensten/onderhoud-service" className="inline-block px-8 py-4 border border-white/20 text-white font-semibold rounded-lg hover:bg-white/5 transition-colors">
-                                Onderhoud bekijken
-                            </Link>
-                        </div>
+                </div>
+            </section>
+            <section className="booking-band">
+                <div className="container">
+                    <h2>Plan uw Audi-bezoek in Lichtenvoorde</h2>
+                    <p className="mt-4 max-w-2xl">Wilt u onderhoud, diagnose of reparatie laten plannen voor uw Audi? Boek direct online of bekijk eerst de relevante dienstpagina’s.</p>
+                    <div className="mt-8 flex flex-wrap gap-3">
+                        <Link href="/afspraak" className="btn-primary">Afspraak maken</Link>
+                        <Link href="/diensten/onderhoud-service" className="btn-secondary">Onderhoud bekijken</Link>
                     </div>
-                </section>
-            </main>
-        </>
+                </div>
+            </section>
+        </div>
     );
 }

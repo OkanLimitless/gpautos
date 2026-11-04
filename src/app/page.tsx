@@ -1,30 +1,38 @@
 import type { Metadata } from 'next'
+import './landing.css'
+import RevealObserver from '@/components/RevealObserver'
 import Hero from '@/components/Hero'
-import Layout from '@/components/Layout'
-import SocialProof from '@/components/SocialProof'
-import ServicesGrid from '@/components/ServicesGrid'
+import ServicesSection from '@/components/ServicesSection'
 import AboutSection from '@/components/AboutSection'
 import ContactSection from '@/components/ContactSection'
-import { graphStructuredData, serializeJsonLd, webpageStructuredData } from '@/lib/site-data'
+import {
+  absoluteUrl,
+  graphStructuredData,
+  serializeJsonLd,
+  webpageStructuredData,
+} from '@/lib/site-data'
+
+const TITLE = "Autogarage Lichtenvoorde | GP Auto's"
+const DESCRIPTION =
+  'Autogarage in Lichtenvoorde voor onderhoud, APK, diagnose, remmen en coderen voor alle merken. Uitsluitend op afspraak, ook voor de rest van de Achterhoek.'
 
 export const metadata: Metadata = {
-  title: "Autogarage Lichtenvoorde | GP Auto's VAG Specialist",
-  description:
-    'GP Auto\'s is uw autogarage in Lichtenvoorde voor onderhoud, diagnose en VAG-service. Ook voor klanten uit Groenlo, Aalten, Winterswijk, Eibergen en de rest van de Achterhoek.',
+  title: TITLE,
+  description: DESCRIPTION,
   keywords: [
     'autogarage Lichtenvoorde',
     'garage Lichtenvoorde',
     'onderhoud Lichtenvoorde',
     'diagnose Achterhoek',
-    'VAG specialist Lichtenvoorde',
+    'autogarage alle merken Lichtenvoorde',
+    'coderen VCDS Achterhoek',
   ],
   alternates: {
     canonical: '/',
   },
   openGraph: {
-    title: "Autogarage Lichtenvoorde | GP Auto's VAG Specialist",
-    description:
-      'Onderhoud, diagnose en VAG-service in Lichtenvoorde voor Audi, Volkswagen, SEAT en Skoda. Ook bereikbaar voor klanten uit de Achterhoek.',
+    title: TITLE,
+    description: DESCRIPTION,
     url: 'https://gpautos.nl',
     siteName: "GP Auto's",
     locale: 'nl_NL',
@@ -33,25 +41,28 @@ export const metadata: Metadata = {
 }
 
 export default function Home() {
+  // No aggregateRating: the Google score is 5.0 but the review count is
+  // unverified, and rating markup without one is a structured-data risk.
   const jsonLd = graphStructuredData([
-    webpageStructuredData(
-      '/',
-      "Autogarage Lichtenvoorde | GP Auto's VAG Specialist",
-      'Autogarage in Lichtenvoorde voor onderhoud, diagnose, remmen en coderen voor Audi, Volkswagen, SEAT en Skoda.'
-    ),
+    webpageStructuredData('/', TITLE, DESCRIPTION),
+    {
+      '@type': 'ReserveAction',
+      name: 'Afspraak maken',
+      target: absoluteUrl('/#afspraak'),
+    },
   ])
 
   return (
-    <Layout>
+    <div className="lp">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
       />
+      <RevealObserver />
       <Hero />
-      <ContactSection />
-      <ServicesGrid />
+      <ServicesSection />
       <AboutSection />
-      <SocialProof />
-    </Layout>
+      <ContactSection />
+    </div>
   )
 }

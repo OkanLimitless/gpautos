@@ -1,14 +1,15 @@
-import Layout from '@/components/Layout'
+import Link from 'next/link'
 import { business } from '@/lib/site-data'
 
 export default function PrivacyPolicy() {
   return (
-    <Layout>
-      <div className="pt-20 bg-zinc-950">
-        <div className="container py-12">
-          <h1 className="text-4xl font-bold text-white mb-8">Privacyverklaring</h1>
+    <>
+      <div className="detail-page legal-page">
+        <div className="container content-section">
+          <nav className="breadcrumb" aria-label="Broodkruimel"><Link href="/">Home</Link><span>/</span><span>Privacyverklaring</span></nav>
+          <h1 className="legal-title mb-8 min-w-0 break-words">Privacyverklaring</h1>
           
-          <div className="prose prose-lg prose-invert max-w-none">
+          <div className="legal-copy">
             <p>
               Bij GP Auto's hechten wij groot belang aan de privacy van onze klanten. 
               Deze privacyverklaring legt uit hoe wij omgaan met uw persoonsgegevens.
@@ -76,12 +77,12 @@ export default function PrivacyPolicy() {
               Controleer daarom regelmatig deze verklaring voor het meest actuele privacybeleid.
             </p>
 
-            <p className="text-sm text-gray-400 mt-8">
+            <p className="text-sm text-[var(--text-secondary)] mt-8">
               Laatste update: {new Date().toLocaleDateString('nl-NL')}
             </p>
           </div>
         </div>
       </div>
-    </Layout>
+    </>
   )
 }
