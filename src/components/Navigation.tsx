@@ -9,7 +9,6 @@ import { business } from '@/lib/site-data'
 
 const links = [
   ['Diensten', '/#diensten'],
-  ['Onze aanpak', '/#werkwijze'],
   ['Over ons', '/#over-ons'],
   ['Contact', '/#contact'],
 ]

@@ -116,13 +116,8 @@ export default function AppointmentForm({
           kenteken: form.kenteken.trim(),
           phone: form.phone.trim(),
           name: form.name.trim() || 'Niet opgegeven',
-          description: [
-            callback ? 'Terugbelverzoek' : '',
-            workType ? `Werksoort: ${workType}` : '',
-            form.description.trim(),
-          ]
-            .filter(Boolean)
-            .join('\n'),
+          workType,
+          description: form.description.trim(),
           // A requested day is a calendar date, not a timezone-dependent instant.
           date: date ? format(date, 'yyyy-MM-dd') : null,
           requestType: callback ? 'callback' : 'appointment',

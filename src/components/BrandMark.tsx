@@ -12,7 +12,7 @@ export default function BrandMark() {
         <Image src="/logo.png" alt="" width={110} height={110} priority />
       </span>
       <span className="brand-wordmark">
-        GP AUTO&apos;S<span>VAG SPECIALIST</span>
+        GP AUTO&apos;S<span>AUTOGARAGE</span>
       </span>
     </Link>
   )

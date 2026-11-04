@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Inter, Outfit } from 'next/font/google'
+import { Archivo, Inter, JetBrains_Mono, Outfit } from 'next/font/google'
 import './globals.css'
 import { Toaster } from 'react-hot-toast'
 import Script from 'next/script'
@@ -14,16 +14,19 @@ import {
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const outfit = Outfit({ subsets: ['latin'], variable: '--font-outfit' })
+// Homepage type: latin-ext is needed for the "Š" in Škoda; the width axis lets the headline run wide.
+const archivo = Archivo({ subsets: ['latin', 'latin-ext'], variable: '--font-archivo', axes: ['wdth'] })
+const mono = JetBrains_Mono({ subsets: ['latin', 'latin-ext'], variable: '--font-mono' })
 
 export const metadata: Metadata = {
-  title: "GP Auto's – Autogarage en VAG-specialist in Lichtenvoorde",
+  title: "GP Auto's – Autogarage in Lichtenvoorde",
   description:
-    'Autogarage in Lichtenvoorde voor onderhoud, diagnose, remmen en coderen. VAG-specialist voor Audi, Volkswagen, SEAT en Škoda. Uitsluitend op afspraak.',
+    'Autogarage in Lichtenvoorde voor onderhoud, diagnose, remmen en coderen voor alle merken. Uitsluitend op afspraak.',
   applicationName: "GP Auto's",
   keywords: [
     'autogarage Lichtenvoorde',
     'garage Lichtenvoorde',
-    'VAG specialist Achterhoek',
+    'garage Achterhoek',
     'auto onderhoud',
     'auto reparatie',
     'Audi specialist',
@@ -36,9 +39,9 @@ export const metadata: Metadata = {
   publisher: "GP Auto's",
   metadataBase: new URL(site.url),
   openGraph: {
-    title: "GP Auto's – Autogarage en VAG-specialist in Lichtenvoorde",
+    title: "GP Auto's – Autogarage in Lichtenvoorde",
     description:
-      'Onderhoud, diagnose, remmen en coderen in Lichtenvoorde. VAG-specialist voor Audi, Volkswagen, SEAT en Škoda. Uitsluitend op afspraak.',
+      'Onderhoud, diagnose, remmen en coderen in Lichtenvoorde, voor alle merken. Uitsluitend op afspraak.',
     url: site.url,
     siteName: "GP Auto's",
     images: [
@@ -54,9 +57,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "GP Auto's – Autogarage en VAG-specialist in Lichtenvoorde",
+    title: "GP Auto's – Autogarage in Lichtenvoorde",
     description:
-      'Onderhoud, diagnose, remmen en coderen voor Audi, Volkswagen, SEAT en Škoda.',
+      'Onderhoud, diagnose, remmen en coderen voor alle merken.',
     images: ['/og-image.png'],
   },
   robots: {
@@ -139,7 +142,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
         />
       </head>
-      <body className={`${inter.variable} ${outfit.variable}`}>
+      <body className={`${inter.variable} ${outfit.variable} ${archivo.variable} ${mono.variable}`}>
         {children}
         <Toaster
           position="bottom-center"
