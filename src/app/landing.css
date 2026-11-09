@@ -51,8 +51,8 @@
 .lp-hero-media { position: absolute; inset: 0 0 0 28%; z-index: -2; animation: lp-settle 1.8s var(--ease-out) both; }
 .lp-hero-media img { object-fit: cover; object-position: 62% 40%; }
 .lp-hero::after { content: ''; position: absolute; inset: 0; z-index: -1; background:
-  linear-gradient(90deg, var(--bg-ink) 0%, var(--bg-ink) 28%, color-mix(in srgb, var(--bg-ink) 60%, transparent) 46%, color-mix(in srgb, var(--bg-ink) 0%, transparent) 70%),
-  linear-gradient(0deg, var(--bg-ink) 0%, color-mix(in srgb, var(--bg-ink) 0%, transparent) 22%); }
+  linear-gradient(90deg, var(--bg-ink) 0%, var(--bg-ink) 28%, color-mix(in srgb, var(--bg-ink) 60%, transparent) 46%, transparent 70%),
+  linear-gradient(0deg, var(--bg-ink) 0%, transparent 22%); }
 .lp-hero-inner { display: flex; flex-direction: column; justify-content: flex-end; min-height: clamp(560px, calc(100svh - 72px), 820px); padding-top: 64px; }
 .lp-hero-kicker { font-size: 12.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--text-on-ink-secondary); animation: lp-fade-up .8s var(--ease-out) .05s both; }
 .lp-hero-title { margin-top: 20px; max-width: none; font-size: clamp(2.3rem, 5.4vw + .4rem, 6rem); font-stretch: 114%; line-height: 1; letter-spacing: -.035em; text-wrap: nowrap; }
