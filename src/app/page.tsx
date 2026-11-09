@@ -1,25 +1,21 @@
 import type { Metadata } from 'next'
 import Layout from '@/components/Layout'
-import Hero from '@/components/Hero'
-import TrustBar from '@/components/TrustBar'
-import ServicesSection from '@/components/ServicesSection'
-import ProcessSection from '@/components/ProcessSection'
-import BrandsSection from '@/components/BrandsSection'
-import AboutSection from '@/components/AboutSection'
-import ReviewsSection from '@/components/ReviewsSection'
-import FaqSection, { HOME_FAQS } from '@/components/FaqSection'
-import ContactSection from '@/components/ContactSection'
+import './landing.css'
+import RevealObserver from '@/components/home/RevealObserver'
+import HomeHero from '@/components/home/HomeHero'
+import HomeServices from '@/components/home/HomeServices'
+import HomeAbout from '@/components/home/HomeAbout'
+import HomeContact from '@/components/home/HomeContact'
 import {
   absoluteUrl,
-  faqStructuredData,
   graphStructuredData,
   serializeJsonLd,
   webpageStructuredData,
 } from '@/lib/site-data'
 
-const TITLE = "Autogarage Lichtenvoorde | GP Auto's VAG-specialist"
+const TITLE = "Autogarage Lichtenvoorde | GP Auto's"
 const DESCRIPTION =
-  'Autogarage in Lichtenvoorde voor onderhoud, diagnose, remmen en coderen aan Audi, Volkswagen, SEAT en Škoda. Uitsluitend op afspraak, ook voor de rest van de Achterhoek.'
+  'Autogarage in Lichtenvoorde voor onderhoud, diagnose, remmen en coderen voor alle merken. Uitsluitend op afspraak, ook voor de rest van de Achterhoek.'
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -29,7 +25,7 @@ export const metadata: Metadata = {
     'garage Lichtenvoorde',
     'onderhoud Lichtenvoorde',
     'diagnose Achterhoek',
-    'VAG specialist Lichtenvoorde',
+    'autogarage alle merken Lichtenvoorde',
     'coderen VCDS Achterhoek',
   ],
   alternates: {
@@ -46,10 +42,8 @@ export const metadata: Metadata = {
 }
 
 export default function Home() {
-  // Render the same FAQ copy in the page and its structured data.
   const jsonLd = graphStructuredData([
     webpageStructuredData('/', TITLE, DESCRIPTION),
-    faqStructuredData(HOME_FAQS),
     {
       '@type': 'ReserveAction',
       name: 'Afspraak maken',
@@ -63,15 +57,13 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
       />
-      <Hero />
-      <TrustBar />
-      <BrandsSection />
-      <ServicesSection />
-      <ProcessSection />
-      <AboutSection />
-      <ReviewsSection />
-      <FaqSection />
-      <ContactSection />
+      <div className="lp">
+        <RevealObserver />
+        <HomeHero />
+        <HomeServices />
+        <HomeAbout />
+        <HomeContact />
+      </div>
     </Layout>
   )
 }

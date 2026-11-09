@@ -88,7 +88,7 @@ export default function Layout({
           </div>
           <div className="footer-bottom">
             <p>© {new Date().getFullYear()} GP Auto&apos;s</p>
-            <p>Onafhankelijke VAG-specialist · RDW erkend</p>
+            <p>Onafhankelijke garage · RDW erkend</p>
             <a href="#hoofdinhoud">Terug naar boven ↑</a>
           </div>
         </div>
